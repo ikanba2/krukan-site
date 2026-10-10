@@ -203,6 +203,11 @@
     .subs{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
     .subs span{padding:2px 9px;color:#e9f2ff;background:color-mix(in srgb,var(--c) 22%,rgba(255,255,255,.04));border:1px solid color-mix(in srgb,var(--c) 45%,transparent);border-radius:999px;font-size:12px}
     .card .go{display:inline-flex;align-items:center;justify-content:center;gap:8px;flex:none;height:48px;padding:0 24px 0 18px;color:#04120f;text-decoration:none;background:linear-gradient(100deg,#fff,var(--c));clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);font:700 16px/1 'Kanit',sans-serif;white-space:nowrap;transition:filter .2s,transform .2s}
+    .card .go{flex-direction:row;align-items:baseline;gap:10px;height:56px;animation:map-glow 2.2s ease-in-out infinite}
+    .card .go small{font:800 11px/1 var(--hud);letter-spacing:.16em;opacity:.85}
+    .card .go small::before{content:'·';margin-right:10px;opacity:.6}
+    .card .go{align-items:center}
+    @keyframes map-glow{50%{filter:brightness(1.12)}}
     .card .go:hover{filter:brightness(1.08) drop-shadow(0 0 12px var(--c));transform:translateY(-2px)}
     .card.swap .card-info{animation:swap .4s ease}
     @keyframes swap{from{opacity:0;transform:translateY(6px)}}
@@ -365,7 +370,7 @@
         '<div class="card-info"><small lang="en">STAR SYSTEM · '+esc(g.code)+'</small><h2>'+esc(g.name)+'</h2>'+
         '<p>'+(el?el.emoji+' ดาว'+el.name:'')+(g.monster?' · ผู้พิทักษ์ '+esc(g.monster.name):'')+'</p>'+
         '<div class="subs">'+g.subjects.map(s=>'<span>'+esc(s)+'</span>').join('')+'</div></div>'+
-        '<a class="go" href="'+link(g.url)+'" '+ext+'>🚀 เข้าสู่ระบบดาว '+esc(g.short)+'</a>';
+        '<a class="go" href="'+link(g.url)+'" '+ext+'><span>🚀 เข้าสู่ระบบดาว '+esc(g.short)+'</span><small lang="en">ENTER CLASS</small></a>';
       card.classList.remove('swap');void card.offsetWidth;card.classList.add('swap');
       $('#say').textContent='ระบบดาว'+g.short+' มี '+g.subjects.length+' วิชาให้สำรวจ! กด “เข้าสู่ระบบดาว” ได้เลย';
     }

@@ -88,7 +88,7 @@
 
     /* ===== Orbit stage ===== */
     .galaxy{position:relative;flex:1;display:flex;flex-direction:column;margin-top:6px}
-    .stage{position:relative;flex:1 1 290px;min-height:290px;max-height:540px;touch-action:pan-y;user-select:none;cursor:grab;outline:none}
+    .stage{position:relative;flex:1 1 270px;min-height:262px;max-height:540px;touch-action:pan-y;user-select:none;cursor:grab;outline:none}
     .stage.dragging{cursor:grabbing}
     .stage:focus-visible .orbit{border-color:var(--sun);border-style:dashed}
     .orbit{position:absolute;border-radius:50%;border:1px solid color-mix(in srgb,var(--c) 35%,rgba(255,255,255,.55));box-shadow:0 0 6px color-mix(in srgb,var(--c) 35%,transparent);pointer-events:none;transition:border-color .5s,box-shadow .5s}
@@ -206,6 +206,22 @@
     .go{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;margin-top:12px;padding:0 28px 0 22px;color:#04120f;text-decoration:none;background:linear-gradient(100deg,#fff,var(--c));clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);font:600 16px/1 'Kanit',sans-serif;white-space:nowrap;transition:filter .2s,transform .2s}
     .go svg{width:14px;height:14px;fill:currentColor}
     a.go:hover{filter:brightness(1.08) drop-shadow(0 0 12px var(--c));transform:translateY(-2px)}
+    /* Main "enter class" button: same cut-corner frame as the subject chips, filled with the planet colour */
+    .go-wrap{display:inline-flex;margin-top:12px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.55))}
+    .go.go-main{position:relative;isolation:isolate;overflow:hidden;justify-content:flex-start;gap:12px;min-width:340px;height:58px;margin:0;padding:0 18px 0 10px;color:#fff;background:linear-gradient(120deg,color-mix(in srgb,var(--c) 70%,#fff),var(--c));clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);animation:go-pulse 2.4s ease-in-out infinite}
+    .go.go-main::before{content:'';position:absolute;inset:2px;z-index:-1;clip-path:inherit;background:radial-gradient(ellipse at 20% 0,color-mix(in srgb,var(--c) 55%,transparent),transparent 70%),linear-gradient(120deg,color-mix(in srgb,var(--c) 42%,#0b0f28),color-mix(in srgb,var(--c) 18%,#0b0f28))}
+    .go.go-main::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.22) 50%,transparent 60%);transform:translateX(-120%);animation:go-shine 3.2s ease-in-out infinite;pointer-events:none}
+    @keyframes go-shine{0%,55%{transform:translateX(-120%)}85%,100%{transform:translateX(120%)}}
+    @keyframes go-pulse{50%{filter:brightness(1.18)}}
+    .go-ico{width:38px;height:42px;flex:none;display:grid;place-items:center;color:#0b0f28;background:linear-gradient(160deg,#fff,var(--c));clip-path:var(--hex)}
+    .go-ico svg{width:17px;height:17px;fill:currentColor;transform:translateX(1px)}
+    .go-txt{display:flex;align-items:center;gap:12px;white-space:nowrap;line-height:1.1}
+    .go-txt b{font:700 20px/1.15 'Kanit',sans-serif;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+    .go-txt small{padding-left:12px;border-left:1px solid color-mix(in srgb,var(--c) 60%,rgba(255,255,255,.4));color:color-mix(in srgb,var(--c) 45%,#fff);font:800 11.5px/1.6 var(--hud);letter-spacing:.16em}
+    .go-arrow{width:22px;height:22px;margin-left:auto;color:color-mix(in srgb,var(--c) 40%,#fff);stroke-width:2.6;animation:go-nudge 1.2s ease-in-out infinite}
+    @keyframes go-nudge{50%{transform:translateX(5px)}}
+    a.go.go-main:hover{transform:translateY(-2px)}
+    a.go.go-main:hover::before{background:radial-gradient(ellipse at 20% 0,color-mix(in srgb,var(--c) 70%,transparent),transparent 70%),linear-gradient(120deg,color-mix(in srgb,var(--c) 55%,#0b0f28),color-mix(in srgb,var(--c) 28%,#0b0f28))}
     .go.soon{position:relative;isolation:isolate;height:40px;color:#c8d2e2;font-weight:500;background:rgba(255,255,255,.3);cursor:default}
     .go.soon::before{content:'';position:absolute;inset:1px;z-index:-1;background:rgba(10,14,34,.8);clip-path:inherit}
     .go.soon svg{fill:none}
@@ -243,6 +259,8 @@
       .ring{width:calc(var(--planet)*1.95)}
       .nav{display:none}
       .info h2{font-size:23px}
+      .go-wrap{align-self:stretch}.go.go-main{min-width:0;width:100%;height:56px}
+      @media(max-width:360px){.go.go-main{gap:9px;padding:0 12px 0 8px}.go-txt{gap:8px}.go-txt b{font-size:18px}.go-txt small{padding-left:8px;font-size:10px;letter-spacing:.08em}.go-arrow{display:none}}
       /* Phones: every subject visible at once in a 2-column grid (no sideways scrolling) */
       .picker{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:6px}
       .pick{min-width:0;gap:8px;padding:7px 10px 7px 7px}
@@ -582,7 +600,7 @@
         (locked?'<p class="soon-note">'+(elOf(s)?'<span class="el-tag">'+elOf(s).emoji+' ดาว'+elOf(s).name+'</span> · ':'')+'ครูกำลังเตรียมบทเรียน</p>':'')+
         (s.theme?'<p class="theme">✦ '+esc(s.theme)+'</p>':'')+
         (!locked&&(s.meta||elOf(s))?'<div class="meta">'+(elOf(s)?'<span class="el-tag">'+elOf(s).emoji+' ดาว'+elOf(s).name+'</span>':'')+(s.meta||[]).map(m=>'<span>'+esc(m)+'</span>').join('')+(monOf(s)?.name?'<span class="mon-name">👾 '+esc(monOf(s).name)+'</span>':'')+'</div>':'')+
-        (locked?'<span class="go soon"><i data-lucide="lock"></i>เร็ว ๆ นี้</span>':'<a class="go" href="'+link(s.url)+'" '+ext+'><i data-lucide="play"></i>เข้าเรียน</a>');
+        (locked?'<span class="go soon"><i data-lucide="lock"></i>เร็ว ๆ นี้</span>':'<span class="go-wrap"><a class="go go-main" href="'+link(s.url)+'" '+ext+' aria-label="เข้าเรียนวิชา'+esc(s.title)+'"><span class="go-ico"><i data-lucide="play"></i></span><span class="go-txt"><b>เข้าเรียน</b><small lang="en">START LESSON</small></span><i class="go-arrow" data-lucide="chevrons-right"></i></a></span>');
     };
     const sayText=s=>s.say||(s.status==='soon'?'ดาว'+s.title+'ยังสำรวจไม่ได้นะ ครูกำลังเตรียมอยู่':'ดาว'+s.title+'พร้อมแล้ว! กด “เข้าเรียน” ได้เลย');
 

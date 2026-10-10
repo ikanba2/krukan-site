@@ -162,6 +162,7 @@
 | หน้าใน Sites | ไฟล์โค้ดฝัง |
 |---|---|
 | `/home` | `Home-Play-Learn-Gaming.html` |
+| `/etc` (บทเรียนอื่นๆ) | `Etc-Side-Quests.html` |
 | `/Class` (เลือกชั้นเรียน) | `Class-Select-Galaxy.html` |
 | `/Class/Primary1` … `/Class/Primary6` | `Class-P1-Subject-Galaxy.html` … `Class-P6-Subject-Galaxy.html` |
 | `/Class/Secondary1` … `/Class/Secondary3` | `Class-M1-Subject-Galaxy.html` … `Class-M3-Subject-Galaxy.html` |
