@@ -157,3 +157,13 @@
 - ตั้งชื่อ path ไม่สม่ำเสมอ (ตัวพิมพ์เล็ก/ใหญ่ปนกัน, `-` ท้ายชื่อ, `P2--4`, `p3-technology`) ถ้าจะแก้ ให้แก้ทั้งใน Sites และในโค้ดฝังพร้อมกัน ไม่อย่างนั้นลิงก์จะเสีย
 - path ภาษาไทยบางหน้าสระหายตอน Sites แปลงเป็น URL (`เขยนโปรแกรมแบบวนซำ`, `การเขยนโปรแกรมแแบบมเงอนไข`) ควรตั้ง Custom path เป็นภาษาอังกฤษ
 - ชั้นที่มีหน้าบทเรียนย่อยในเมนู: ป.2, ป.4, ป.6, ม.1, ม.2, ม.3 · ชั้นที่บทเรียนอยู่ในโค้ดฝัง: ป.1 (ป.3, ป.5 ยังไม่ได้ตรวจ)
+
+## หน้าโค้ดฝัง (Embed) ที่ใช้กับแต่ละหน้าใน Sites
+| หน้าใน Sites | ไฟล์โค้ดฝัง |
+|---|---|
+| `/home` | `Home-Play-Learn-Gaming.html` |
+| `/Class` (เลือกชั้นเรียน) | `Class-Select-Galaxy.html` |
+| `/Class/Primary1` … `/Class/Primary6` | `Class-P1-Subject-Galaxy.html` … `Class-P6-Subject-Galaxy.html` |
+| `/Class/Secondary1` … `/Class/Secondary3` | `Class-M1-Subject-Galaxy.html` … `Class-M3-Subject-Galaxy.html` |
+
+ไฟล์ `Class-*` ทั้งหมดสร้างจาก `tools/build-subject-pages.py` (แก้ข้อมูลในตาราง `GRADES` แล้วรัน `python tools/build-subject-pages.py`)

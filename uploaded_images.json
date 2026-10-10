@@ -1,0 +1,27 @@
+{
+  "m2-ct-hero.webp": {
+    "file_id": "1G-j8IcgfyKvIP0oLu66gg0SHB2Gk9Qz1",
+    "lh3_url": "https://lh3.googleusercontent.com/d/1G-j8IcgfyKvIP0oLu66gg0SHB2Gk9Qz1",
+    "local_path": "images/hero_comp_thinking.webp"
+  },
+  "m2-ct-decomposition-bicycle.webp": {
+    "file_id": "1KlCByK-9OR2Kn9GBbRcs9JT4lDBNPa8T",
+    "lh3_url": "https://lh3.googleusercontent.com/d/1KlCByK-9OR2Kn9GBbRcs9JT4lDBNPa8T",
+    "local_path": "images/decomp_bicycle.webp"
+  },
+  "m2-ct-pattern-recognition.webp": {
+    "file_id": "1F3GUPsCoLrX7VIuM7lct0TtZqAdkaWrV",
+    "lh3_url": "https://lh3.googleusercontent.com/d/1F3GUPsCoLrX7VIuM7lct0TtZqAdkaWrV",
+    "local_path": "images/pattern_hub.webp"
+  },
+  "m2-ct-abstraction.webp": {
+    "file_id": "1kVShlFMYzjlwUkLv7W3elLQQN7m1i4ls",
+    "lh3_url": "https://lh3.googleusercontent.com/d/1kVShlFMYzjlwUkLv7W3elLQQN7m1i4ls",
+    "local_path": "images/abstraction_hub.webp"
+  },
+  "m2-ct-algorithm.webp": {
+    "file_id": "1AAfnZvgkjyo0PIJQ2noAsNy_QDXLdEms",
+    "lh3_url": "https://lh3.googleusercontent.com/d/1AAfnZvgkjyo0PIJQ2noAsNy_QDXLdEms",
+    "local_path": "images/algorithm_hub.webp"
+  }
+}
