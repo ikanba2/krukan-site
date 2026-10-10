@@ -22,6 +22,7 @@
     .head{display:flex;align-items:center;gap:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.08)}
     .avatar{width:76px;height:86px;flex:none;display:grid;place-items:end center;overflow:hidden;clip-path:var(--hex);background:radial-gradient(circle at 50% 35%,color-mix(in srgb,var(--a) 55%,transparent),#0b1120 75%)}
     .avatar img{width:100%;height:auto;transform:translateY(8%)}
+    .avatar .avatar-text{align-self:center;font:800 18px/1 var(--tech);color:#fff;text-shadow:0 1px 6px #0008}
     .who{min-width:0;flex:1}
     .crumbs{display:flex;gap:6px;color:#7d8ca4;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .crumbs a{color:#9fb0c6;text-decoration:none}
@@ -73,6 +74,19 @@
     }
     @media(max-width:340px){.go span{display:none}.go{padding:0 12px}}
     @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+    /* AI Disclosure Statement (contest rule 10.3): opens a SweetAlert2 popup */
+    .ai-note{margin:8px auto 0;text-align:center}
+    .ai-btn{padding:4px 14px;color:#dfe7f3;background:rgba(10,14,34,.6);border:1px solid rgba(255,255,255,.22);border-radius:999px;font:500 12px/1.5 'Kanit',sans-serif;cursor:pointer;transition:border-color .2s,background .2s}
+    .ai-btn:hover{border-color:rgba(255,255,255,.55);background:rgba(10,14,34,.85)}
+    .swal2-popup.ai-popup{font-family:'Kanit',sans-serif;border:1px solid rgba(255,255,255,.18);border-radius:18px}
+    .ai-popup .swal2-title{font-size:20px}
+    .ai-popup .ai-body{text-align:left;font-size:14px;line-height:1.65;color:#c9d4e3}
+    .ai-popup dl{margin:0}.ai-popup dt{margin-top:10px;color:#fff;font-weight:600}.ai-popup dd{margin:2px 0 0}.ai-popup ul{margin:2px 0 0;padding-left:20px}
+    .ai-popup b{color:#fff}
+    .ai-popup .ai-ok{color:#04120f!important;font-weight:600;font-family:inherit}
+    .ai-fallback{position:fixed;inset:0;z-index:2000;display:grid;place-items:center;padding:16px;background:rgba(3,4,12,.72)}
+    .ai-fallback>div{width:min(640px,100%);max-height:85%;overflow:auto;padding:20px 22px;background:#0b0f28;color:#e9f2ff;border:1px solid rgba(255,255,255,.18);border-radius:18px;font-family:'Kanit',sans-serif}
+    .ai-fallback button{margin-top:14px;padding:8px 22px;border:0;border-radius:10px;background:#4ef4d2;color:#04120f;font:600 15px 'Kanit',sans-serif;cursor:pointer}
   </style>
 </head>
 <body>
@@ -91,7 +105,20 @@
       <div class="grid" id="grid"></div>
     </main>
 
-    <footer>KruKan.in.th · อัปเดตล่าสุด <time id="updated"></time> · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a></footer>
+    <footer>KruKan.in.th · อัปเดตล่าสุด <time id="updated"></time> · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a>
+    <div class="ai-note"><button class="ai-btn" type="button" id="ai-btn">🤖 การใช้ AI · AI Disclosure</button></div>
+    <template id="ai-note-tpl"><div class="ai-body"><dl>
+          <dt>เครื่องมือ AI ที่ใช้</dt>
+          <dd>Claude (Anthropic) · ChatGPT Images (OpenAI) · Nano Banana (Google Gemini)</dd>
+          <dt>ขอบเขตการใช้</dt>
+          <dd><ul>
+            <li><b>Claude:</b> ช่วยเขียนและปรับแต่งโค้ด HTML/CSS/JavaScript ของหน้าแรก หน้าเลือกชั้นเรียน และหน้าเลือกวิชา รวมถึงโค้ดสร้างพื้นผิวดาวเคราะห์</li>
+            <li><b>ChatGPT Images และ Nano Banana:</b> ช่วยสร้างภาพตัวละคร MaskRider Techno มอนสเตอร์ และภาพประกอบต่าง ๆ</li>
+          </ul></dd>
+          <dt>ระดับการช่วยเหลือ</dt>
+          <dd>ผู้จัดทำเป็นผู้กำหนดแนวคิด เนื้อหาบทเรียน การออกแบบการเรียนรู้ ธีม และทิศทางการออกแบบทั้งหมด ใช้ AI เป็นเครื่องมือช่วยสร้างโค้ดและภาพตามที่ผู้จัดทำกำหนด แล้วตรวจสอบ ทดสอบ และปรับแก้ผลลัพธ์ทุกขั้นตอนก่อนนำไปใช้จัดการเรียนรู้จริงกับนักเรียน</dd>
+        </dl></div></template>
+    </footer>
   </div>
 
   <script>
@@ -116,7 +143,7 @@
         title:'วิทยาการคำนวณ', icon:'wand-sparkles', color:'#06b6d4',
         theme:'แผนการเดินทางสู่จอมขมังเวทน้อย',
         meta:['9 บทเรียน','2 ภาคเรียน'],
-        url:'https://sites.google.com/view/krukansite/Class/Primary1/P1-Technology-',
+        url:'/Class/Primary1/P1-Technology-',
         status:'open'
       }
       ,{title:'คณิตศาสตร์', icon:'calculator', color:'#f59e0b', url:'', status:'soon'}
@@ -140,6 +167,8 @@
 
     document.documentElement.style.setProperty('--a',STAGE.color);
     document.title=STAGE.name+' · เลือกวิชา | KruKan.in.th';
+    // If the mascot image can't load (Drive links sometimes fail), show the stage short name instead
+    $('#stage-mascot').addEventListener('error',e=>{e.target.closest('.avatar').innerHTML='<span class="avatar-text">'+esc(STAGE.short)+'</span>'},{once:true});
     $('#stage-mascot').src=STAGE.mascot;
     $('#crumbs').innerHTML='<a href="'+link('/home')+'" '+ext+'>หน้าแรก</a><span aria-hidden="true">›</span><a href="'+link('/Class')+'" '+ext+'>ห้องเรียน</a><span aria-hidden="true">›</span><span aria-current="page">'+esc(STAGE.short)+'</span>';
     $('#stage-title').innerHTML=esc(STAGE.name)+'<small lang="en">'+esc(STAGE.code)+'</small>';
@@ -166,6 +195,22 @@
     s.src='https://unpkg.com/lucide@1.44.0/dist/umd/lucide.min.js';s.async=true;
     s.onload=()=>{try{lucide.createIcons({attrs:{'aria-hidden':'true','focusable':'false'}})}catch{}};
     document.head.appendChild(s);
+  </script>
+  <script>
+    // AI Disclosure popup: SweetAlert2 is loaded only when the button is first clicked
+    (()=>{
+      const btn=document.getElementById('ai-btn'),tpl=document.getElementById('ai-note-tpl');
+      if(!btn||!tpl)return;
+      const title='🤖 การประกาศการใช้ปัญญาประดิษฐ์';
+      const fallback=()=>{const o=document.createElement('div');o.className='ai-fallback';o.setAttribute('role','dialog');o.innerHTML='<div class="ai-popup"><h2 class="swal2-title">'+title+'</h2>'+tpl.innerHTML+'<button type="button">รับทราบ</button></div>';o.addEventListener('click',e=>{if(e.target===o||e.target.tagName==='BUTTON')o.remove()});document.body.appendChild(o);o.querySelector('button').focus()};
+      const show=()=>Swal.fire({title,html:tpl.innerHTML,width:640,background:'#0b0f28',color:'#e9f2ff',confirmButtonText:'รับทราบ',confirmButtonColor:'#4ef4d2',customClass:{popup:'ai-popup',confirmButton:'ai-ok'},backdrop:'rgba(3,4,12,.72)',heightAuto:false,scrollbarPadding:false});
+      let loading=null;
+      btn.addEventListener('click',()=>{
+        if(window.Swal)return show();
+        loading=loading||new Promise((res,rej)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.all.min.js';s.onload=res;s.onerror=rej;document.head.appendChild(s)});
+        loading.then(show).catch(()=>{loading=null;fallback()});
+      });
+    })();
   </script>
 </body>
 </html>
