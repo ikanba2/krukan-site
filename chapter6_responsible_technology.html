@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สื่อการสอน: บทที่ 6 การใช้งานเทคโนโลยีสารสนเทศอย่างมีความรับผิดชอบ | วิทยาการคำนวณ ม.2</title>
+    <!-- Tailwind CSS, Font Awesome, Google Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Sarabun', 'Noto Sans Thai', sans-serif; scroll-behavior: smooth; }
+        #progress-bar { position: fixed; top: 0; left: 0; height: 5px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); width: 0%; z-index: 100; transition: width 0.1s; }
+        .section-title { background: linear-gradient(135deg, #059669 0%, #0d9488 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card { background-color: white; border-radius: 1.25rem; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02); border: 1px solid rgba(226, 232, 240, 0.8); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03); }
+        .nav-link { transition: color 0.3s, border-bottom-color 0.3s; }
+        .nav-link:hover { color: #059669; border-bottom-color: #059669; }
+        .fade-in-section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+        #back-to-top { position: fixed; bottom: 24px; right: 24px; display: none; transition: opacity 0.3s, transform 0.3s; background-color: #059669; z-index: 99; }
+        #back-to-top:hover { transform: translateY(-3px); background-color: #047857; }
+        .answer-btn.selected { border-color: #059669; background-color: #ecfdf5; }
+        .answer-btn.correct { border-color: #10b981 !important; background-color: #d1fae5 !important; color: #065f46 !important; }
+        .answer-btn.incorrect { border-color: #ef4444 !important; background-color: #fee2e2 !important; color: #991b1b !important; }
+        .draggable-item { cursor: grab; user-select: none; }
+        .draggable-item:active { cursor: grabbing; }
+        .drop-zone { border: 2px dashed #94a3b8; transition: background-color 0.3s, border-color 0.3s; }
+        .drop-zone.over { background-color: #d1fae5; border-color: #10b981; }
+        .match-item { cursor: pointer; transition: background-color 0.3s, transform 0.2s, border-color 0.2s; border: 2px solid transparent; }
+        .match-item.selected { border-color: #059669; background-color: #ecfdf5; transform: scale(1.03); }
+        .match-item.correct { background-color: #d1fae5 !important; border-color: #10b981 !important; color: #065f46; cursor: not-allowed; opacity: 0.85; }
+        .match-item.wrong { background-color: #fee2e2; border-color: #ef4444; color: #991b1b; }
+        
+        .img-showcase { border-radius: 1.25rem; overflow: hidden; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; background: #ffffff; }
+        .img-showcase img { width: 100%; height: auto; display: block; transition: transform 0.5s ease; }
+        .img-showcase:hover img { transform: scale(1.015); }
+        .img-caption { padding: 12px 20px; background: #f8fafc; border-top: 1px solid #e2e8f0; font-size: 0.93rem; color: #475569; display: flex; align-items: center; gap: 8px; font-weight: 500; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-emerald-100 selection:text-emerald-900">
+
+    <div id="progress-bar"></div>
+
+    <!-- Top Navigation Bar -->
+    <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-slate-100">
+        <nav class="container mx-auto px-6 py-3.5 flex justify-between items-center">
+            <h1 class="text-xl md:text-2xl font-bold text-emerald-700 flex items-center">
+                <i class="fas fa-shield-halved mr-2 text-emerald-600"></i> วิทยาการคำนวณ ม.2
+            </h1>
+            <div class="hidden lg:flex items-center space-x-3 text-sm font-medium">
+                <a href="chapter1_computational_thinking.html" class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+                    <i class="fas fa-brain text-slate-500 mr-1"></i> บทที่ 1
+                </a>
+                <a href="chapter4_computer_system.html" class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+                    <i class="fas fa-microchip text-slate-500 mr-1"></i> บทที่ 4
+                </a>
+                <a href="M2_L5_เทคโนโลยีการสื่อสาร.html" class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+                    <i class="fas fa-wifi text-slate-500 mr-1"></i> บทที่ 5
+                </a>
+                <a href="chapter6_responsible_technology.html" class="px-3 py-1.5 rounded-full bg-emerald-600 text-white font-bold shadow-sm">
+                    <i class="fas fa-user-shield mr-1"></i> บทที่ 6
+                </a>
+                <span class="text-slate-300">|</span>
+                <a href="#guidelines" class="nav-link text-slate-600">แนวปฏิบัติ</a>
+                <a href="#impacts" class="nav-link text-slate-600">ผลกระทบ</a>
+                <a href="#papa" class="nav-link text-slate-600">PAPA</a>
+                <a href="#copyright" class="nav-link text-slate-600">สิทธิ์ผลงาน</a>
+                <a href="#netiquette" class="nav-link text-slate-600">มารยาท</a>
+                <a href="#quiz" class="px-3 py-1.5 bg-emerald-700 text-white rounded-lg hover:bg-emerald-800 transition">แบบทดสอบ</a>
+            </div>
+            <button id="mobile-menu-button" class="lg:hidden text-slate-700 focus:outline-none p-2"><i class="fas fa-bars text-xl"></i></button>
+        </nav>
+        <div id="mobile-menu" class="hidden lg:hidden px-6 pb-4 bg-white border-b border-slate-100 space-y-2 font-medium">
+             <div class="flex flex-wrap gap-2 py-2 border-b border-slate-100 mb-2">
+                <a href="chapter1_computational_thinking.html" class="text-xs px-2.5 py-1 rounded bg-slate-100">บทที่ 1</a>
+                <a href="chapter4_computer_system.html" class="text-xs px-2.5 py-1 rounded bg-slate-100">บทที่ 4</a>
+                <a href="M2_L5_เทคโนโลยีการสื่อสาร.html" class="text-xs px-2.5 py-1 rounded bg-slate-100">บทที่ 5</a>
+                <a href="chapter6_responsible_technology.html" class="text-xs px-2.5 py-1 rounded bg-emerald-600 text-white font-bold">บทที่ 6</a>
+             </div>
+             <a href="#guidelines" class="block py-1.5 text-slate-600 hover:text-emerald-700">1. แนวปฏิบัติเมื่อพบเนื้อหาไม่เหมาะสม</a>
+             <a href="#impacts" class="block py-1.5 text-slate-600 hover:text-emerald-700">2. ผลกระทบจากการเผยแพร่ข้อมูล</a>
+             <a href="#papa" class="block py-1.5 text-slate-600 hover:text-emerald-700">3. การพิจารณาข้อมูล (PAPA)</a>
+             <a href="#copyright" class="block py-1.5 text-slate-600 hover:text-emerald-700">4. สิทธิ์ผลงาน Creative Commons</a>
+             <a href="#netiquette" class="block py-1.5 text-slate-600 hover:text-emerald-700">5. มารยาทในการสื่อสาร (Netiquette)</a>
+             <a href="#quiz" class="block py-1.5 text-emerald-700 font-bold">6. แบบทดสอบท้ายบท</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 md:px-6 py-10 max-w-6xl">
+        <!-- Hero Section -->
+        <section class="text-center mb-16 fade-in-section">
+            <div class="bg-white p-6 md:p-10 rounded-2xl shadow-xl border border-emerald-100">
+                <span class="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 text-emerald-700 text-sm font-bold rounded-full mb-4 border border-emerald-200">
+                    <i class="fas fa-shield-cat text-emerald-600"></i> วิชาวิทยาการคำนวณ ชั้นมัธยมศึกษาปีที่ 2 • บทที่ 6
+                </span>
+                <h2 class="text-3xl md:text-5xl font-extrabold mb-4 section-title">การใช้งานเทคโนโลยีสารสนเทศอย่างมีความรับผิดชอบ</h2>
+                <p class="text-base md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-8">
+                    เรียนรู้วิธีการเป็นพลเมืองดิจิทัลที่ดี (Digital Citizenship) เข้าใจผลกระทบ เคารพสิทธิ์ของผู้อื่น รู้เท่าทันภัยไซเบอร์ และสื่อสารอย่างสร้างสรรค์บนโลกออนไลน์
+                </p>
+
+                <!-- Hero AI Illustration Card -->
+                <div class="img-showcase max-w-4xl mx-auto">
+                    <img src="https://lh3.googleusercontent.com/d/135KLxNw3HXGG3v5ZrhInoG_vXGjgI1c3" alt="แผนภาพพลเมืองดิจิทัลและการใช้งานเทคโนโลยีสารสนเทศอย่างมีความรับผิดชอบ">
+                    <div class="img-caption justify-between flex-wrap">
+                        <span><i class="fas fa-sparkles text-emerald-600"></i> <b>ภาพรวมบทเรียน:</b> การเป็นพลเมืองดิจิทัล (Digital Citizenship), การปกป้องข้อมูลส่วนบุคคล และความปลอดภัยออนไลน์</span>
+                        <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-full"><i class="fas fa-check-circle"></i> ภาพประกอบทางการศึกษา</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. Guidelines Section -->
+        <section id="guidelines" class="mb-20 pt-10 fade-in-section">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <span class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl font-bold"><i class="fas fa-hand-holding-medical"></i></span>
+                <h3 class="text-2xl md:text-4xl font-bold section-title">1. แนวทางปฏิบัติเมื่อพบเนื้อหาที่ไม่เหมาะสม</h3>
+            </div>
+            <p class="text-center text-base md:text-lg text-slate-600 mb-8 max-w-3xl mx-auto">
+                เมื่อเราพบข้อมูลที่ไม่ถูกต้อง ข่าวปลอม (Fake News) หรือเนื้อหาที่สร้างความเกลียดชังและการกลั่นแกล้ง ควรมีสติและปฏิบัติตาม 5 ขั้นตอนสำคัญดังนี้
+            </p>
+
+            <!-- Section 1 AI Illustration -->
+            <div class="img-showcase max-w-4xl mx-auto mb-10">
+                <img src="https://lh3.googleusercontent.com/d/1lzF2469nE97eQAXzADwtWcoSbRpgKcDT" alt="5 ขั้นตอนปฏิบัติเมื่อพบเนื้อหาไม่เหมาะสม">
+                <div class="img-caption">
+                    <i class="fas fa-shield-alt text-emerald-600"></i>
+                    <b>ภาพที่ 6.1:</b> ลำดับ 5 ขั้นตอนความปลอดภัย (1.ปฏิเสธ 2.ไม่ส่งต่อ 3.แจ้งผู้ใหญ่ 4.แจ้งผู้ดูแลระบบ 5.แจ้งเจ้าหน้าที่)
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 text-center">
+                <div class="card p-5">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-red-50 text-red-500 flex items-center justify-center text-2xl mb-3"><i class="fas fa-hand-paper"></i></div>
+                    <h4 class="font-bold text-slate-800 text-lg mb-1">1. ปฏิเสธ</h4>
+                    <p class="text-xs md:text-sm text-slate-500">ไม่เปิดดู ไม่กดไลก์ ไม่บันทึกเก็บไว้</p>
+                </div>
+                <div class="card p-5">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-orange-50 text-orange-500 flex items-center justify-center text-2xl mb-3"><i class="fas fa-share-alt-slash"></i></div>
+                    <h4 class="font-bold text-slate-800 text-lg mb-1">2. ไม่ส่งต่อ</h4>
+                    <p class="text-xs md:text-sm text-slate-500">หยุดการแพร่กระจาย ไม่แชร์ ไม่ส่งซ้ำ</p>
+                </div>
+                <div class="card p-5">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-amber-50 text-amber-500 flex items-center justify-center text-2xl mb-3"><i class="fas fa-user-shield"></i></div>
+                    <h4 class="font-bold text-slate-800 text-lg mb-1">3. แจ้งผู้ใหญ่</h4>
+                    <p class="text-xs md:text-sm text-slate-500">บอกคุณครูหรือผู้ปกครองเพื่อให้คำแนะนำ</p>
+                </div>
+                <div class="card p-5">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-blue-50 text-blue-500 flex items-center justify-center text-2xl mb-3"><i class="fas fa-flag"></i></div>
+                    <h4 class="font-bold text-slate-800 text-lg mb-1">4. แจ้งผู้ดูแล</h4>
+                    <p class="text-xs md:text-sm text-slate-500">กด Report ไปยังแพลตฟอร์ม (Facebook, YouTube, TikTok)</p>
+                </div>
+                <div class="card p-5 col-span-2 md:col-span-1">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-purple-50 text-purple-500 flex items-center justify-center text-2xl mb-3"><i class="fas fa-balance-scale"></i></div>
+                    <h4 class="font-bold text-slate-800 text-lg mb-1">5. แจ้งเจ้าหน้าที่</h4>
+                    <p class="text-xs md:text-sm text-slate-500">หากเข้าข่ายผิดกฎหมายร้ายแรงหรือคุกคามชีวิต</p>
+                </div>
+            </div>
+
+            <!-- Guidelines Game -->
+            <div class="card p-6 md:p-8 mt-10 max-w-4xl mx-auto border-2 border-emerald-100">
+                <h4 class="text-xl md:text-2xl font-bold text-center mb-4 text-emerald-800 flex items-center justify-center gap-2">
+                    <i class="fas fa-gamepad text-emerald-600"></i> เกมตอบไว: ควรทำหรือไม่?
+                </h4>
+                <div id="guideline-game-scenario" class="text-center text-base md:text-lg p-5 bg-slate-100 rounded-xl mb-6 min-h-[90px] flex items-center justify-center font-medium text-slate-700 shadow-inner"></div>
+                <div class="flex justify-center gap-6">
+                    <button id="guideline-game-yes" class="bg-emerald-600 text-white font-bold py-3 px-8 md:px-10 rounded-xl text-lg hover:bg-emerald-700 transition-all shadow-md flex items-center gap-2">
+                        <i class="fas fa-check-circle"></i> ควรทำ
+                    </button>
+                    <button id="guideline-game-no" class="bg-rose-500 text-white font-bold py-3 px-8 md:px-10 rounded-xl text-lg hover:bg-rose-600 transition-all shadow-md flex items-center gap-2">
+                        <i class="fas fa-times-circle"></i> ไม่ควรทำ
+                    </button>
+                </div>
+                <div id="guideline-game-feedback" class="text-center mt-4 font-bold text-lg h-6"></div>
+            </div>
+        </section>
+
+        <!-- 2. Impacts Section -->
+        <section id="impacts" class="mb-20 pt-10 fade-in-section">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <span class="w-10 h-10 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center text-xl font-bold"><i class="fas fa-heart-crack"></i></span>
+                <h3 class="text-2xl md:text-4xl font-bold section-title">2. ผลกระทบจากการเผยแพร่ข้อมูลที่ไม่เหมาะสม</h3>
+            </div>
+            <p class="text-center text-base md:text-lg text-slate-600 mb-8 max-w-3xl mx-auto">
+                การโพสต์หรือส่งต่อข้อมูลเท็จและข้อความสร้างความเกลียดชัง ย่อมส่งผลเสียร้ายแรงต่อทั้งสองฝ่าย
+            </p>
+
+            <!-- Section 2 AI Illustration -->
+            <div class="img-showcase max-w-4xl mx-auto mb-10">
+                <img src="https://lh3.googleusercontent.com/d/1TxxGjbSiOodk8DqGfeZ9-FLx4w5XL7K6" alt="ผลกระทบจากการเผยแพร่ข้อมูลที่ไม่เหมาะสม">
+                <div class="img-caption">
+                    <i class="fas fa-balance-scale text-rose-600"></i>
+                    <b>ภาพที่ 6.2:</b> การวิเคราะห์ผลกระทบจากการกลั่นแกล้งบนไซเบอร์ (Cyberbullying) และข่าวปลอม ต่อจิตใจ สังคม และทางกฎหมาย
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+                <div class="card p-6 md:p-8 border-l-4 border-l-rose-500">
+                    <h4 class="text-xl md:text-2xl font-bold text-rose-600 mb-4 flex items-center gap-2">
+                        <i class="fas fa-user-injured"></i> ผลกระทบต่อ “ผู้ถูกกระทำ”
+                    </h4>
+                    <ul class="space-y-3 text-slate-700">
+                        <li class="flex items-start gap-2">
+                            <span class="text-rose-500 font-bold">•</span>
+                            <span><b>ด้านจิตใจ:</b> เกิดความเสียใจ หวาดระแวง อับอาย ซึมเศร้า และรู้สึกไม่ปลอดภัยในชีวิต</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-rose-500 font-bold">•</span>
+                            <span><b>ด้านสังคม:</b> ถูกเข้าใจผิด เสียชื่อเสียง กลายเป็นเป้าสายตา และสูญเสียความสัมพันธ์กับคนรอบข้าง</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-rose-500 font-bold">•</span>
+                            <span><b>ด้านการเรียน/การงาน:</b> เสียสมาธิในการเรียน ไม่กล้าไปโรงเรียน หรืออาจถูกให้ออกจากงาน</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card p-6 md:p-8 border-l-4 border-l-amber-500">
+                    <h4 class="text-xl md:text-2xl font-bold text-amber-600 mb-4 flex items-center gap-2">
+                        <i class="fas fa-gavel"></i> ผลกระทบต่อ “ผู้กระทำ”
+                    </h4>
+                    <ul class="space-y-3 text-slate-700">
+                        <li class="flex items-start gap-2">
+                            <span class="text-amber-500 font-bold">•</span>
+                            <span><b>ด้านจิตใจ:</b> รู้สึกผิด เสียใจในภายหลังเมื่อเรื่องบานปลายจนแก้ไขไม่ได้</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-amber-500 font-bold">•</span>
+                            <span><b>ด้านสังคม:</b> ถูกสังคมประณาม ติดประวัติดิจิทัล (Digital Footprint) ที่ลบไม่ออกตลอดไป</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-amber-500 font-bold">•</span>
+                            <span><b>ด้านกฎหมาย:</b> มีความผิดตาม พ.ร.บ. ว่าด้วยการกระทำความผิดเกี่ยวกับคอมพิวเตอร์ฯ มีโทษทั้งจำคุกและปรับเงิน</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Impact Game -->
+            <div class="card p-6 md:p-8 mt-10 max-w-4xl mx-auto border-2 border-emerald-100">
+                <h4 class="text-xl md:text-2xl font-bold text-center mb-2 text-emerald-800 flex items-center justify-center gap-2">
+                    <i class="fas fa-puzzle-piece text-emerald-600"></i> เกม: จับคู่ผลกระทบ
+                </h4>
+                <p class="text-center text-sm md:text-base text-slate-500 mb-6">คลิกเลือก "การกระทำ" ทางซ้าย แล้วคลิกจับคู่กับ "ผลกระทบ" ทางขวา</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div id="impact-actions" class="space-y-3">
+                        <div class="match-item p-4 bg-slate-100 rounded-xl font-medium" data-match="1">📢 แชร์ข่าวปลอมโดยไม่ตรวจสอบ</div>
+                        <div class="match-item p-4 bg-slate-100 rounded-xl font-medium" data-match="2">🗣️ โพสต์ล้อเลียนรูปร่างหน้าตาเพื่อน</div>
+                        <div class="match-item p-4 bg-slate-100 rounded-xl font-medium" data-match="3">📋 คัดลอกภาพงานคนอื่นมาใช้โดยไม่อ้างอิง</div>
+                    </div>
+                    <div id="impact-consequences" class="space-y-3">
+                        <div class="match-item p-4 bg-slate-100 rounded-xl font-medium" data-match="2">💔 ทำให้เพื่อนอับอายและซึมเศร้า (ต่อจิตใจ)</div>
+                        <div class="match-item p-4 bg-slate-100 rounded-xl font-medium" data-match="3">⚖️ ละเมิดลิขสิทธิ์และอาจถูกดำเนินคดี (ต่อกฎหมาย)</div>
+                        <div class="match-item p-4 bg-slate-100 rounded-xl font-medium" data-match="1">🌐 สังคมตื่นตระหนกและเกิดความสับสน (ต่อสังคม)</div>
+                    </div>
+                </div>
+                <div id="impact-game-feedback" class="text-center mt-4 font-bold text-lg h-6"></div>
+            </div>
+        </section>
+
+        <!-- 3. PAPA Section -->
+        <section id="papa" class="mb-20 pt-10 fade-in-section">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <span class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl font-bold"><i class="fas fa-check-to-slot"></i></span>
+                <h3 class="text-2xl md:text-4xl font-bold section-title">3. แนวทางการพิจารณาก่อนเผยแพร่ (PAPA)</h3>
+            </div>
+            <p class="text-center text-base md:text-lg text-slate-600 mb-8 max-w-3xl mx-auto">
+                ก่อนจะโพสต์ กดไลก์ หรือแชร์ข้อมูลใด ๆ สู่สาธารณะ ควรตรวจสอบตามกรอบจริยธรรมข้อมูล 4 มิติ <b>PAPA</b>
+            </p>
+
+            <!-- Section 3 AI Illustration -->
+            <div class="img-showcase max-w-4xl mx-auto mb-10">
+                <img src="https://lh3.googleusercontent.com/d/1cUotYOiDA_yWqTT_zEzfwDxYrAJaDDrq" alt="4 มิติกรอบจริยธรรมข้อมูล PAPA">
+                <div class="img-caption">
+                    <i class="fas fa-cubes text-emerald-600"></i>
+                    <b>ภาพที่ 6.3:</b> หลักจริยธรรม 4 ประการ (P-Privacy, A-Accuracy, P-Property, A-Access)
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card p-6 border-t-4 border-t-blue-500">
+                    <span class="text-xs font-black uppercase text-blue-600 tracking-wider">มิติที่ 1</span>
+                    <h4 class="text-2xl font-black text-slate-800 my-2">P - Privacy</h4>
+                    <p class="font-semibold text-slate-700 mb-2">ความเป็นส่วนตัว</p>
+                    <p class="text-sm text-slate-600">เรากำลังนำข้อมูลส่วนตัว รหัสผ่าน หรือภาพถ่ายของผู้อื่นไปเปิดเผยโดยไม่ได้รับอนุญาตหรือไม่?</p>
+                </div>
+                <div class="card p-6 border-t-4 border-t-emerald-500">
+                    <span class="text-xs font-black uppercase text-emerald-600 tracking-wider">มิติที่ 2</span>
+                    <h4 class="text-2xl font-black text-slate-800 my-2">A - Accuracy</h4>
+                    <p class="font-semibold text-slate-700 mb-2">ความถูกต้อง</p>
+                    <p class="text-sm text-slate-600">ข้อมูลนี้เป็นความจริง น่าเชื่อถือ และได้ตรวจสอบแหล่งข่าวต้นตอแล้วอย่างรอบคอบใช่ไหม?</p>
+                </div>
+                <div class="card p-6 border-t-4 border-t-amber-500">
+                    <span class="text-xs font-black uppercase text-amber-600 tracking-wider">มิติที่ 3</span>
+                    <h4 class="text-2xl font-black text-slate-800 my-2">P - Property</h4>
+                    <p class="font-semibold text-slate-700 mb-2">ความเป็นเจ้าของ</p>
+                    <p class="text-sm text-slate-600">เราเป็นเจ้าของผลงาน หรือได้ขออนุญาตและให้เครดิตอ้างอิงเจ้าของลิขสิทธิ์ถูกต้องแล้วหรือยัง?</p>
+                </div>
+                <div class="card p-6 border-t-4 border-t-purple-500">
+                    <span class="text-xs font-black uppercase text-purple-600 tracking-wider">มิติที่ 4</span>
+                    <h4 class="text-2xl font-black text-slate-800 my-2">A - Access</h4>
+                    <p class="font-semibold text-slate-700 mb-2">สิทธิ์การเข้าถึง</p>
+                    <p class="text-sm text-slate-600">ข้อมูลนี้ใครมีสิทธิ์มองเห็นได้บ้าง มีการจำกัดการเข้าถึงเฉพาะกลุ่มที่สมควรหรือไม่?</p>
+                </div>
+            </div>
+
+            <!-- PAPA Game -->
+            <div class="card p-6 md:p-8 mt-10 max-w-4xl mx-auto border-2 border-emerald-100">
+                <h4 class="text-xl md:text-2xl font-bold text-center mb-4 text-emerald-800 flex items-center justify-center gap-2">
+                    <i class="fas fa-brain text-emerald-600"></i> เกม: สถานการณ์นี้ตรงกับหลัก PAPA ข้อใด?
+                </h4>
+                <div id="papa-game-scenario" class="text-center text-base md:text-lg p-5 bg-slate-100 rounded-xl mb-6 min-h-[90px] flex items-center justify-center font-medium text-slate-700 shadow-inner"></div>
+                <div id="papa-game-choices" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <button data-choice="P1" class="papa-choice bg-blue-600 text-white font-bold py-3 px-4 rounded-xl hover:bg-blue-700 transition shadow">Privacy</button>
+                    <button data-choice="A1" class="papa-choice bg-emerald-600 text-white font-bold py-3 px-4 rounded-xl hover:bg-emerald-700 transition shadow">Accuracy</button>
+                    <button data-choice="P2" class="papa-choice bg-amber-600 text-white font-bold py-3 px-4 rounded-xl hover:bg-amber-700 transition shadow">Property</button>
+                    <button data-choice="A2" class="papa-choice bg-purple-600 text-white font-bold py-3 px-4 rounded-xl hover:bg-purple-700 transition shadow">Access</button>
+                </div>
+                <div id="papa-game-feedback" class="text-center mt-4 font-bold text-lg h-6"></div>
+            </div>
+        </section>
+
+        <!-- 4. Copyright Section -->
+        <section id="copyright" class="mb-20 pt-10 fade-in-section">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <span class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl font-bold"><i class="fas fa-copyright"></i></span>
+                <h3 class="text-2xl md:text-4xl font-bold section-title">4. การสร้างและแสดงสิทธิ์ความเป็นเจ้าของผลงาน</h3>
+            </div>
+            <p class="text-center text-base md:text-lg text-slate-600 mb-8 max-w-3xl mx-auto">
+                สัญญาอนุญาต <b>ครีเอทีฟคอมมอนส์ (Creative Commons หรือ CC)</b> คือสัญลักษณ์สากลที่เจ้าของผลงานใช้กำหนดเงื่อนไขให้ผู้อื่นนำผลงานไปใช้งานได้อย่างถูกต้องตามกฎหมาย
+            </p>
+
+            <!-- Section 4 AI Illustration -->
+            <div class="img-showcase max-w-4xl mx-auto mb-10">
+                <img src="https://lh3.googleusercontent.com/d/1Bf1NsjkR7PQHEgWwcA5AFVo3o6PLCiQr" alt="สัญลักษณ์สัญญาอนุญาต Creative Commons">
+                <div class="img-caption">
+                    <i class="fas fa-certificate text-emerald-600"></i>
+                    <b>ภาพที่ 6.4:</b> สัญญาอนุญาตสากล Creative Commons (CC) สำหรับการเผยแพร่ผลงานดิจิทัลอย่างถูกต้อง
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center">
+                <div class="card p-6">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-slate-100 text-slate-800 flex items-center justify-center text-2xl mb-3 font-bold">
+                        <i class="fab fa-creative-commons-by"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-slate-800 mb-1">BY (Attribution)</h4>
+                    <p class="text-xs md:text-sm text-slate-500">นำไปใช้ได้ แต่ต้องแสดงที่มาและให้เครดิตเจ้าของผลงาน</p>
+                </div>
+                <div class="card p-6">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-slate-100 text-slate-800 flex items-center justify-center text-2xl mb-3 font-bold">
+                        <i class="fab fa-creative-commons-sa"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-slate-800 mb-1">SA (Share Alike)</h4>
+                    <p class="text-xs md:text-sm text-slate-500">ดัดแปลงได้ แต่ผลงานใหม่ต้องใช้สัญญาอนุญาตแบบเดิม</p>
+                </div>
+                <div class="card p-6">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-slate-100 text-slate-800 flex items-center justify-center text-2xl mb-3 font-bold">
+                        <i class="fab fa-creative-commons-nc"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-slate-800 mb-1">NC (Non-Commercial)</h4>
+                    <p class="text-xs md:text-sm text-slate-500">ห้ามนำผลงานนี้ไปใช้เพื่อแสวงหากำไรหรือการค้า</p>
+                </div>
+                <div class="card p-6">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-slate-100 text-slate-800 flex items-center justify-center text-2xl mb-3 font-bold">
+                        <i class="fab fa-creative-commons-nd"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-slate-800 mb-1">ND (No Derivatives)</h4>
+                    <p class="text-xs md:text-sm text-slate-500">ห้ามดัดแปลง ตัดทอน หรือแก้ไขผลงานต้นฉบับ</p>
+                </div>
+            </div>
+
+            <!-- CC Game -->
+            <div class="card p-6 md:p-8 mt-10 max-w-4xl mx-auto border-2 border-emerald-100">
+                <h4 class="text-xl md:text-2xl font-bold text-center mb-2 text-emerald-800 flex items-center justify-center gap-2">
+                    <i class="fas fa-key text-emerald-600"></i> เกม: ถอดรหัสสัญญาอนุญาต
+                </h4>
+                <p class="text-center text-base md:text-lg mb-6 text-slate-700">
+                    หากพบสัญลักษณ์ <span class="px-3 py-1 bg-slate-800 text-white font-bold rounded-lg font-mono">CC BY-NC</span> หมายความว่าอย่างไร? (เลือกได้มากกว่า 1 ข้อ)
+                </p>
+                <div id="cc-choices" class="space-y-3">
+                    <button class="cc-choice w-full text-left p-4 bg-slate-100 rounded-xl border-2 border-transparent font-medium hover:bg-slate-200 transition" data-correct="true">
+                        <i class="far fa-circle mr-2"></i> ต้องอ้างอิงและระบุแหล่งที่มาของเจ้าของผลงาน
+                    </button>
+                    <button class="cc-choice w-full text-left p-4 bg-slate-100 rounded-xl border-2 border-transparent font-medium hover:bg-slate-200 transition" data-correct="false">
+                        <i class="far fa-circle mr-2"></i> ห้ามนำผลงานไปใช้งานทุกกรณี
+                    </button>
+                    <button class="cc-choice w-full text-left p-4 bg-slate-100 rounded-xl border-2 border-transparent font-medium hover:bg-slate-200 transition" data-correct="true">
+                        <i class="far fa-circle mr-2"></i> ห้ามนำไปใช้เพื่อแสวงหากำไรหรือการค้า
+                    </button>
+                    <button class="cc-choice w-full text-left p-4 bg-slate-100 rounded-xl border-2 border-transparent font-medium hover:bg-slate-200 transition" data-correct="false">
+                        <i class="far fa-circle mr-2"></i> นำไปใช้ในโฆษณาสินค้าได้โดยไม่ต้องขออนุญาต
+                    </button>
+                </div>
+                <div class="text-center mt-6">
+                    <button id="cc-submit" class="bg-emerald-600 text-white font-bold py-3 px-8 rounded-xl hover:bg-emerald-700 transition shadow">ตรวจคำตอบ</button>
+                </div>
+                <div id="cc-game-feedback" class="text-center mt-4 font-bold text-lg h-6"></div>
+            </div>
+        </section>
+
+        <!-- 5. Netiquette Section -->
+        <section id="netiquette" class="mb-20 pt-10 fade-in-section">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <span class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl font-bold"><i class="fas fa-comments"></i></span>
+                <h3 class="text-2xl md:text-4xl font-bold section-title">5. มารยาทในการติดต่อสื่อสาร (Netiquette)</h3>
+            </div>
+            <p class="text-center text-base md:text-lg text-slate-600 mb-8 max-w-3xl mx-auto">
+                มารยาทบนเครือข่ายดิจิทัลช่วยให้การอยู่ร่วมกันในสังคมออนไลน์เป็นไปด้วยความราบรื่นและสร้างสรรค์
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+                <div class="card p-6 md:p-8 border-l-4 border-l-emerald-500">
+                    <h4 class="text-xl md:text-2xl font-bold text-emerald-700 mb-4 flex items-center gap-2">
+                        <i class="fas fa-check-circle text-emerald-600"></i> สิ่งที่ “ควรทำ”
+                    </h4>
+                    <ul class="space-y-3 text-slate-700">
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-600 mt-1"></i> ใช้ภาษาที่สุภาพ เหมาะสมกับกาลเทศะ ชัดเจน ตรงประเด็น</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-600 mt-1"></i> ระบุหัวเรื่องชัดเจนและแนะนำตนเองเมื่อส่งอีเมลหรือทักข้อความใหม่</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-600 mt-1"></i> เคารพความคิดเห็นที่แตกต่าง เปิดใจรับฟัง ไม่ใช้อารมณ์ตัดสิน</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-600 mt-1"></i> ตรวจสอบข้อเท็จจริงและความถูกต้องของข้อมูลก่อนกดแชร์ทุกครั้ง</li>
+                    </ul>
+                </div>
+                <div class="card p-6 md:p-8 border-l-4 border-l-rose-500">
+                    <h4 class="text-xl md:text-2xl font-bold text-rose-700 mb-4 flex items-center gap-2">
+                        <i class="fas fa-times-circle text-rose-600"></i> สิ่งที่ “ไม่ควรทำ”
+                    </h4>
+                    <ul class="space-y-3 text-slate-700">
+                        <li class="flex items-start gap-2"><i class="fas fa-times text-rose-600 mt-1"></i> ใช้ถ้อยคำหยาบคาย ใส่ร้าย ยั่วยุ หรือก่อให้เกิดความแตกแยก</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-times text-rose-600 mt-1"></i> พิมพ์ด้วยตัวอักษรพิมพ์ใหญ่ทั้งหมดในภาษาอังกฤษ (เสมือนการตะโกนใส่ผู้อื่น)</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-times text-rose-600 mt-1"></i> ส่งต่อข้อความลูกโซ่ ขยะโฆษณา (Spam) หรือข้อความรบกวนเวลาพักผ่อน</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-times text-rose-600 mt-1"></i> แอบอ้างเป็นผู้อื่น ปลอมแปลงบัญชี หรือขโมยภาพคนอื่นมาเป็นรูปโปรไฟล์</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Netiquette Game -->
+            <div class="card p-6 md:p-8 mt-10 max-w-4xl mx-auto border-2 border-emerald-100">
+                <h4 class="text-xl md:text-2xl font-bold text-center mb-2 text-emerald-800 flex items-center justify-center gap-2">
+                    <i class="fas fa-hand-pointer text-emerald-600"></i> เกม: ลากจัดหมวดหมู่มารยาทออนไลน์
+                </h4>
+                <p class="text-center text-sm md:text-base text-slate-500 mb-6">ลากพฤติกรรมแต่ละข้อไปวางในกล่อง "มารยาทดี" หรือ "ควรปรับปรุง"</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div id="netiquette-items" class="bg-slate-100 p-4 rounded-xl space-y-3">
+                        <p class="font-bold text-slate-700 text-center mb-2">พฤติกรรม</p>
+                        <div draggable="true" data-type="good" class="draggable-item p-3 bg-white rounded-lg shadow-sm border border-slate-200 text-sm font-medium">✔️ ตรวจสอบข่าวสารก่อนแชร์</div>
+                        <div draggable="true" data-type="bad" class="draggable-item p-3 bg-white rounded-lg shadow-sm border border-slate-200 text-sm font-medium">❌ พิมพ์ด่าทอด้วยอารมณ์</div>
+                        <div draggable="true" data-type="good" class="draggable-item p-3 bg-white rounded-lg shadow-sm border border-slate-200 text-sm font-medium">✔️ เคารพความเป็นส่วนตัวของเพื่อน</div>
+                        <div draggable="true" data-type="bad" class="draggable-item p-3 bg-white rounded-lg shadow-sm border border-slate-200 text-sm font-medium">❌ ส่งข้อความลูกโซ่รบกวนผู้อื่น</div>
+                    </div>
+                    <div class="text-center">
+                        <p class="font-bold text-emerald-700 mb-2"><i class="fas fa-thumbs-up"></i> มารยาทดี</p>
+                        <div data-type="good" class="drop-zone p-4 rounded-xl min-h-[220px] bg-emerald-50 border-2 border-dashed border-emerald-300 space-y-2"></div>
+                    </div>
+                    <div class="text-center">
+                        <p class="font-bold text-rose-700 mb-2"><i class="fas fa-thumbs-down"></i> ควรปรับปรุง</p>
+                        <div data-type="bad" class="drop-zone p-4 rounded-xl min-h-[220px] bg-rose-50 border-2 border-dashed border-rose-300 space-y-2"></div>
+                    </div>
+                </div>
+                <div id="netiquette-game-feedback" class="text-center mt-4 font-bold text-lg h-6"></div>
+            </div>
+        </section>
+
+        <!-- 6. Quiz Section -->
+        <section id="quiz" class="mb-20 pt-10 fade-in-section">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <span class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl font-bold"><i class="fas fa-pen-alt"></i></span>
+                <h3 class="text-2xl md:text-4xl font-bold section-title">แบบทดสอบท้ายบท</h3>
+            </div>
+            <p class="text-center text-slate-600 mb-8 max-w-xl mx-auto">ทดสอบความรู้ความเข้าใจเพื่อประเมินตนเอง (ทั้งหมด 10 ข้อ)</p>
+
+            <div id="quiz-container" class="card p-6 md:p-8 max-w-3xl mx-auto border-2 border-emerald-100"></div>
+            
+            <div id="quiz-result" class="hidden card p-8 max-w-3xl mx-auto text-center border-2 border-emerald-200">
+                <h4 class="text-2xl md:text-3xl font-extrabold mb-3 text-slate-800">🎉 สรุปผลการทดสอบ</h4>
+                <p id="score-text" class="text-2xl font-bold mb-6 text-emerald-700"></p>
+                <div class="flex justify-center gap-4 flex-wrap">
+                    <button id="retry-quiz-btn" class="bg-slate-600 text-white font-bold py-3 px-8 rounded-xl hover:bg-slate-700 transition shadow">
+                        <i class="fas fa-redo mr-2"></i> ทำใหม่อีกครั้ง
+                    </button>
+                    <button id="show-answers-btn" class="bg-emerald-600 text-white font-bold py-3 px-8 rounded-xl hover:bg-emerald-700 transition shadow">
+                        <i class="fas fa-list-check mr-2"></i> แสดงเฉลยคำตอบ
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-center py-10 border-t border-slate-800">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <p class="text-slate-200 font-semibold text-base mb-2">
+                สื่อการสอนวิทยาการคำนวณ ระดับชั้นมัธยมศึกษาปีที่ 2 • บทที่ 6 การใช้งานเทคโนโลยีสารสนเทศอย่างมีความรับผิดชอบ
+            </p>
+            <p class="text-xs text-slate-500">
+                โรงเรียนวัดท่าชุมนุม • สนับสนุนการจัดการเรียนรู้วิทยาศาสตร์และเทคโนโลยีตามหลักสูตรแกนกลาง
+            </p>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="text-white rounded-full shadow-lg w-12 h-12 flex items-center justify-center" title="กลับสู่ด้านบน">
+        <i class="fas fa-arrow-up text-lg"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Progress Bar & Scroll
+            const progressBar = document.getElementById('progress-bar');
+            const backToTopButton = document.getElementById('back-to-top');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            window.addEventListener('scroll', () => {
+                const scrollTotal = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                progressBar.style.width = `${(window.scrollY / scrollTotal) * 100}%`;
+                backToTopButton.style.display = (window.scrollY > 300) ? 'flex' : 'none';
+            });
+            backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+            // Fade in animation
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('is-visible');
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+            
+            // Drag and drop logic
+            let draggedItem = null;
+            document.querySelectorAll('.draggable-item').forEach(item => {
+                item.addEventListener('dragstart', e => {
+                    draggedItem = e.target;
+                    setTimeout(() => e.target.classList.add('opacity-50'), 0);
+                });
+                item.addEventListener('dragend', () => {
+                    if(draggedItem) draggedItem.classList.remove('opacity-50');
+                });
+            });
+            
+            function setupDropZone(zone, onCorrect) {
+                 zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('over'); });
+                 zone.addEventListener('dragleave', () => zone.classList.remove('over'));
+                 zone.addEventListener('drop', e => {
+                    e.preventDefault();
+                    zone.classList.remove('over');
+                    if (draggedItem && zone.dataset.type === draggedItem.dataset.type) {
+                        zone.appendChild(draggedItem);
+                        draggedItem.setAttribute('draggable', 'false');
+                        draggedItem.classList.add('cursor-not-allowed', 'opacity-80');
+                        onCorrect();
+                    }
+                });
+            }
+
+            // 1. Guideline Game
+            const guidelineScenarios = [
+                { text: "เพื่อนส่งต่อ 'ข่าวดี! กดแชร์ 10 ครั้งจะได้เน็ตฟรี 50GB' มาให้ จึงรีบแชร์ต่อทันที", answer: 'no' },
+                { text: "พบเห็นเพจที่โพสต์ภาพรุนแรงและข้อความคุกคาม จึงกดปุ่ม Report ไปยังผู้ดูแลระบบ", answer: 'yes' },
+                { text: "ได้รับอีเมลบอกว่าได้รับรางวัลใหญ่ แต่ต้องกรอกรหัสผ่านและข้อมูลบัตรประชาชน จึงกรอกทันที", answer: 'no' },
+                { text: "เห็นเพื่อนถูกเปิดเผยข้อมูลส่วนตัวในกลุ่มแชต จึงแจ้งคุณครูประจำชั้นให้ช่วยดูแล", answer: 'yes' }
+            ];
+            let currentGuideline = 0;
+            const guidelineScenarioEl = document.getElementById('guideline-game-scenario');
+            const guidelineFeedbackEl = document.getElementById('guideline-game-feedback');
+            
+            function loadGuidelineScenario() {
+                guidelineScenarioEl.textContent = guidelineScenarios[currentGuideline].text;
+                guidelineFeedbackEl.textContent = '';
+            }
+            document.getElementById('guideline-game-yes').addEventListener('click', () => checkGuidelineAnswer('yes'));
+            document.getElementById('guideline-game-no').addEventListener('click', () => checkGuidelineAnswer('no'));
+            
+            function checkGuidelineAnswer(choice) {
+                if (choice === guidelineScenarios[currentGuideline].answer) {
+                    guidelineFeedbackEl.textContent = '🎉 ถูกต้อง! เก่งมากครับ';
+                    guidelineFeedbackEl.className = 'text-center mt-4 font-bold text-lg text-emerald-600';
+                } else {
+                    guidelineFeedbackEl.textContent = '❌ ยังไม่ถูกต้อง ลองคิดดูใหม่อีกนิดนะ';
+                    guidelineFeedbackEl.className = 'text-center mt-4 font-bold text-lg text-rose-600';
+                }
+                currentGuideline = (currentGuideline + 1) % guidelineScenarios.length;
+                setTimeout(loadGuidelineScenario, 1500);
+            }
+            loadGuidelineScenario();
+
+            // 2. Matching Game
+            function setupMatchingGame(containerId, feedbackId, totalPairs) {
+                const items = document.querySelectorAll(`#${containerId} .match-item`);
+                const feedback = document.getElementById(feedbackId);
+                let selected = null;
+                let correct = 0;
+
+                items.forEach(item => {
+                    item.addEventListener('click', () => {
+                        if (item.classList.contains('correct')) return;
+                        if (!selected) {
+                            selected = item;
+                            item.classList.add('selected');
+                        } else {
+                            if (selected === item) {
+                                selected.classList.remove('selected');
+                                selected = null;
+                                return;
+                            }
+                            if (selected.dataset.match === item.dataset.match) {
+                                selected.classList.add('correct');
+                                item.classList.add('correct');
+                                correct++;
+                                if (correct === totalPairs) {
+                                    feedback.textContent = '🎉 สุดยอด! คุณจับคู่ผลกระทบได้ครบถ้วนสมบูรณ์!';
+                                    feedback.className = 'text-center mt-4 font-bold text-lg text-emerald-600';
+                                }
+                            } else {
+                                selected.classList.add('wrong');
+                                item.classList.add('wrong');
+                                setTimeout(() => {
+                                    selected.classList.remove('wrong');
+                                    item.classList.remove('wrong');
+                                }, 800);
+                            }
+                            selected.classList.remove('selected');
+                            selected = null;
+                        }
+                    });
+                });
+            }
+            setupMatchingGame('impacts', 'impact-game-feedback', 3);
+            
+            // 3. PAPA Game
+            const papaScenarios = [
+                { text: "แอบถ่ายรูปเพื่อนตอนเผลอแล้วเอาไปโพสต์ลงกลุ่มสาธารณะโดยไม่ได้ขออนุญาต", answer: "P1" },
+                { text: "เห็นหัวข้อข่าวดังดูน่าตกใจ เลยรีบแชร์ทันทีโดยยังไม่ได้ตรวจสอบว่าจริงหรือไม่", answer: "A1" },
+                { text: "นำเพลงและภาพวาดที่มีลิขสิทธิ์ของผู้อื่นไปประกอบวิดีโอแล้วอ้างว่าเป็นของตนเอง", answer: "P2" },
+                { text: "เข้าถึงและเปิดดูโฟลเดอร์ไฟล์คะแนนสอบของเพื่อนโดยไม่ได้รับอนุญาต", answer: "A2" }
+            ];
+            let currentPapa = 0;
+            const papaScenarioEl = document.getElementById('papa-game-scenario');
+            const papaFeedbackEl = document.getElementById('papa-game-feedback');
+            
+            function loadPapaScenario() {
+                papaScenarioEl.textContent = papaScenarios[currentPapa].text;
+                papaFeedbackEl.textContent = '';
+            }
+            document.querySelectorAll('.papa-choice').forEach(btn => {
+                btn.addEventListener('click', (e) => checkPapaAnswer(e.currentTarget.dataset.choice));
+            });
+
+            function checkPapaAnswer(choice) {
+                 if (choice === papaScenarios[currentPapa].answer) {
+                    papaFeedbackEl.textContent = '🎉 ถูกต้องแม่นยำ!';
+                    papaFeedbackEl.className = 'text-center mt-4 font-bold text-lg text-emerald-600';
+                } else {
+                    papaFeedbackEl.textContent = '❌ เกือบถูกแล้ว ลองทบทวนหลัก PAPA อีกทีนะ';
+                    papaFeedbackEl.className = 'text-center mt-4 font-bold text-lg text-rose-600';
+                }
+                currentPapa = (currentPapa + 1) % papaScenarios.length;
+                setTimeout(loadPapaScenario, 1500);
+            }
+            loadPapaScenario();
+
+            // 4. CC Game
+            const ccChoices = document.querySelectorAll('.cc-choice');
+            const ccSubmit = document.getElementById('cc-submit');
+            const ccFeedback = document.getElementById('cc-game-feedback');
+            ccChoices.forEach(choice => {
+                choice.addEventListener('click', () => {
+                    choice.classList.toggle('selected');
+                    const icon = choice.querySelector('i');
+                    if (choice.classList.contains('selected')) {
+                        choice.classList.add('border-emerald-500', 'bg-emerald-50');
+                        icon.className = 'fas fa-check-circle mr-2 text-emerald-600';
+                    } else {
+                        choice.classList.remove('border-emerald-500', 'bg-emerald-50');
+                        icon.className = 'far fa-circle mr-2';
+                    }
+                });
+            });
+            ccSubmit.addEventListener('click', () => {
+                let correct = true;
+                ccChoices.forEach(choice => {
+                    const isCorrect = choice.dataset.correct === 'true';
+                    const isSelected = choice.classList.contains('selected');
+                    if (isSelected !== isCorrect) {
+                        correct = false;
+                    }
+                });
+                if (correct) {
+                    ccFeedback.textContent = '🎉 ถูกต้องยอดเยี่ยม! CC BY-NC คือต้องอ้างอิงแหล่งที่มา และห้ามใช้เพื่อการค้า';
+                    ccFeedback.className = 'text-center mt-4 font-bold text-lg text-emerald-600';
+                } else {
+                    ccFeedback.textContent = '❌ ยังไม่ถูกต้อง (ต้องเลือก 2 ข้อ: อ้างอิงแหล่งที่มา และ ห้ามใช้เพื่อการค้า)';
+                    ccFeedback.className = 'text-center mt-4 font-bold text-lg text-rose-600';
+                }
+            });
+            
+            // 5. Netiquette Game
+            let netiquetteCorrect = 0;
+            const netiquetteFeedback = document.getElementById('netiquette-game-feedback');
+            document.querySelectorAll('#netiquette .drop-zone').forEach(zone => {
+                setupDropZone(zone, () => {
+                    netiquetteCorrect++;
+                    if (netiquetteCorrect === 4) {
+                        netiquetteFeedback.textContent = '🎉 เยี่ยมมาก! คุณมีมารยาทในการสื่อสารออนไลน์ที่ดีเยี่ยม!';
+                        netiquetteFeedback.className = 'text-center mt-4 font-bold text-lg text-emerald-600';
+                    }
+                });
+            });
+
+            // 6. Quiz Logic
+            const quizContainer = document.getElementById('quiz-container');
+            const quizResult = document.getElementById('quiz-result');
+            const scoreText = document.getElementById('score-text');
+            const retryBtn = document.getElementById('retry-quiz-btn');
+            const showAnswersBtn = document.getElementById('show-answers-btn');
+
+            const quizData = [
+                { question: "1. เมื่อพบเห็นข่าวปลอมบนโซเชียลมีเดีย สิ่งแรกที่ควรปฏิบัติมากที่สุดคืออะไร?", answers: ["แชร์ต่อทันทีเพื่อเตือนเพื่อน", "คอมเมนต์ด่าทอเจ้าของโพสต์", "ไม่เปิดดู ไม่ส่งต่อ และกดรายงาน (Report)", "ดาวน์โหลดเก็บไว้ในมือถือ"], correct: "ไม่เปิดดู ไม่ส่งต่อ และกดรายงาน (Report)" },
+                { question: "2. การนำภาพถ่ายของเพื่อนไปตัดต่อล้อเลียน ส่งผลกระทบต่อเพื่อนในด้านใดรุนแรงและยาวนานที่สุด?", answers: ["ด้านกฎหมาย", "ด้านจิตใจและความรู้สึก", "ด้านการเงิน", "ด้านสุขภาพกาย"], correct: "ด้านจิตใจและความรู้สึก" },
+                { question: "3. การตรวจสอบความถูกต้องและความน่าเชื่อถือของข้อมูลก่อนแชร์ เกี่ยวข้องกับหลัก PAPA ข้อใด?", answers: ["Privacy", "Accuracy", "Property", "Access"], correct: "Accuracy" },
+                { question: "4. สัญลักษณ์ Creative Commons ใดที่ระบุว่า 'อนุญาตให้ดัดแปลงได้ แต่ผลงานใหม่ต้องใช้สัญญาอนุญาตแบบเดิม'?", answers: ["BY (Attribution)", "SA (Share Alike)", "NC (Non-Commercial)", "ND (No Derivatives)"], correct: "SA (Share Alike)" },
+                { question: "5. การพิมพ์ข้อความด้วยตัวอักษรภาษาอังกฤษพิมพ์ใหญ่ทั้งหมด (ALL CAPS) ในการแชต มีความหมายอย่างไร?", answers: ["เป็นการเน้นย้ำความสุภาพ", "เปรียบเสมือนการตะโกนใส่คู่สนทนา", "เป็นมาตรฐานการสื่อสารทางการ", "ไม่มีความหมายใดๆ"], correct: "เปรียบเสมือนการตะโกนใส่คู่สนทนา" },
+                { question: "6. ข้อใดถือเป็นการกระทำที่ผิดมารยาทในการใช้อีเมล (Netiquette)?", answers: ["ระบุหัวข้อเรื่อง (Subject) ชัดเจน", "แนะนำตัวเองในครั้งแรกที่ติดต่อ", "ส่งต่ออีเมลลูกโซ่ (Chain Mail) หรือโฆษณาขยะ", "ใช้ถ้อยคำสุภาพเหมาะสม"], correct: "ส่งต่ออีเมลลูกโซ่ (Chain Mail) หรือโฆษณาขยะ" },
+                { question: "7. การนำที่อยู่ เบอร์โทรศัพท์ และรหัสผ่านของผู้อื่นไปเปิดเผยต่อสาธารณะ เป็นการละเมิดหลัก PAPA ข้อใด?", answers: ["Privacy", "Accuracy", "Property", "Access"], correct: "Privacy" },
+                { question: "8. หากต้องการนำรูปภาพที่มีสัญญาอนุญาต CC BY-NC ไปใช้ ข้อใดสามารถทำได้ถูกต้องตามกฎหมาย?", answers: ["นำไปประกอบสินค้าและวางขาย", "นำไปใช้ในใบงานการศึกษาและระบุแหล่งที่มา", "นำไปดัดแปลงแล้วขายต่อ", "นำไปใช้ได้เลยโดยไม่ต้องให้เครดิต"], correct: "นำไปใช้ในใบงานการศึกษาและระบุแหล่งที่มา" },
+                { question: "9. หากถูกคุกคามทางเพศหรือขู่กรรโชกทางออนไลน์อย่างรุนแรง ควรดำเนินการอย่างไรเป็นลำดับถัดไป?", answers: ["ตอบโต้ด้วยความรุนแรงกลับ", "ลบบัญชีหนีและเงียบไว้", "เก็บหลักฐานและแจ้งครู ผู้ปกครอง หรือเจ้าหน้าที่ตำรวจ (บช.สอท.)", "ยอมทำตามข้อเรียกร้อง"], correct: "เก็บหลักฐานและแจ้งครู ผู้ปกครอง หรือเจ้าหน้าที่ตำรวจ (บช.สอท.)" },
+                { question: "10. ข้อใดคือผลกระทบสำคัญต่อ 'ผู้กระทำ' ในการเผยแพร่ข้อมูลบิดเบือนหรือภาพลามกอนาจาร?", answers: ["มีความผิดตาม พ.ร.บ.คอมพิวเตอร์ฯ มีโทษจำคุกและปรับ", "ไม่มีผลกระทบใดๆ เพราะใช้บัญชีหลุม", "ได้รับความนิยมเพิ่มขึ้น", "คอมพิวเตอร์จะพัง"], correct: "มีความผิดตาม พ.ร.บ.คอมพิวเตอร์ฯ มีโทษจำคุกและปรับ" }
+            ];
+
+            let userAnswers = [];
+            let currentQuestionIndex = 0;
+
+            function loadQuiz() {
+                quizResult.classList.add('hidden');
+                quizContainer.classList.remove('hidden');
+                userAnswers = Array(quizData.length).fill(null);
+                currentQuestionIndex = 0;
+                showQuestion();
+            }
+
+            function showQuestion() {
+                const q = quizData[currentQuestionIndex];
+                quizContainer.innerHTML = `
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-sm font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">ข้อที่ ${currentQuestionIndex + 1} จาก ${quizData.length}</span>
+                        <span class="text-xs text-slate-400">เลือกคำตอบที่ถูกต้องที่สุด</span>
+                    </div>
+                    <h4 class="text-lg md:text-xl font-bold mt-2 mb-6 text-slate-800">${q.question}</h4>
+                    <div class="space-y-3">${q.answers.map(a => `<button class="answer-btn block w-full text-left p-4 bg-slate-50 rounded-xl border border-slate-200 hover:bg-emerald-50 hover:border-emerald-300 font-medium transition text-slate-700 text-sm md:text-base">${a}</button>`).join('')}</div>
+                `;
+                document.querySelectorAll('.answer-btn').forEach(btn => btn.addEventListener('click', selectAnswer));
+            }
+
+            function selectAnswer(e) {
+                userAnswers[currentQuestionIndex] = e.target.textContent.trim();
+                currentQuestionIndex++;
+                if (currentQuestionIndex < quizData.length) showQuestion();
+                else showResults();
+            }
+
+            function showResults() {
+                quizContainer.classList.add('hidden');
+                quizResult.classList.remove('hidden');
+                let score = userAnswers.reduce((acc, answer, i) => acc + (answer === quizData[i].correct ? 1 : 0), 0);
+                let message = score >= 8 ? '🎉 ยอดเยี่ยมมาก! คุณมีความรู้เรื่องจริยธรรมดิจิทัลในระดับดีเยี่ยม' : score >= 5 ? '👍 เก่งมาก! ผ่านเกณฑ์การประเมิน' : '📖 ควรกลับไปทบทวนบทเรียนอีกครั้งนะครับ';
+                scoreText.innerHTML = `คุณได้ <span class="text-3xl text-emerald-600 font-extrabold">${score}</span> จาก ${quizData.length} คะแนน<br><span class="text-sm font-normal text-slate-600">${message}</span>`;
+            }
+
+            function showAnswers() {
+                quizResult.classList.add('hidden');
+                quizContainer.classList.remove('hidden');
+                quizContainer.innerHTML = '<h4 class="text-xl font-bold mb-6 text-slate-800 border-b pb-3"><i class="fas fa-clipboard-check text-emerald-600 mr-2"></i>เฉลยคำตอบแบบทดสอบท้ายบท</h4>';
+                quizData.forEach((q, i) => {
+                    const el = document.createElement('div');
+                    el.className = 'mb-6 p-5 border border-slate-200 rounded-xl bg-slate-50';
+                    let answersHtml = q.answers.map(a => {
+                        let cls = 'bg-white border-slate-200 text-slate-700';
+                        if (a === q.correct) cls = 'correct font-bold';
+                        if (a === userAnswers[i] && a !== q.correct) cls = 'incorrect';
+                        return `<div class="answer-btn ${cls} block w-full text-left p-3.5 rounded-lg border text-sm mb-2">${a}</div>`;
+                    }).join('');
+                    el.innerHTML = `
+                        <h5 class="text-base font-bold mb-3 text-slate-800">${i + 1}. ${q.question}</h5>
+                        <div class="space-y-1">${answersHtml}</div>
+                        <p class="mt-2 text-xs font-semibold ${userAnswers[i] === q.correct ? 'text-emerald-700' : 'text-rose-600'}">
+                            คำตอบของคุณ: ${userAnswers[i] || 'ไม่ได้ตอบ'} ${userAnswers[i] === q.correct ? '✓ ถูกต้อง' : '✗ ไม่ถูกต้อง'}
+                        </p>
+                    `;
+                    quizContainer.appendChild(el);
+                });
+                const backBtn = document.createElement('button');
+                backBtn.innerHTML = '<i class="fas fa-arrow-left mr-2"></i> กลับไปหน้าสรุปคะแนน';
+                backBtn.className = 'mt-4 bg-emerald-600 text-white font-bold py-3 px-6 rounded-xl hover:bg-emerald-700 transition shadow';
+                backBtn.onclick = showResults;
+                quizContainer.appendChild(backBtn);
+            }
+            
+            retryBtn.addEventListener('click', loadQuiz);
+            showAnswersBtn.addEventListener('click', showAnswers);
+            loadQuiz();
+        });
+    </script>
+</body>
+</html>
