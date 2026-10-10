@@ -114,7 +114,7 @@
     .btn-library .cta-arrow{width:34px;height:34px;flex:none;margin-left:auto;padding:8px;color:#061816;background:var(--cyan);clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);transition:transform .22s,background .22s}
     .btn-library:hover{transform:translateY(-3px)}
     .btn-library:hover .cta-arrow{transform:translate(2px,-2px);background:#fff}
-    .quicklinks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:14px}
+    .quicklinks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:14px}
     .quicklink{--cut:10px;--a:var(--c);--edge:linear-gradient(135deg,color-mix(in srgb,var(--c) 55%,transparent),rgba(255,255,255,.08));--fill:linear-gradient(150deg,rgba(17,24,37,.92),rgba(9,13,22,.95));min-width:0;min-height:62px;display:flex;align-items:center;gap:10px;padding:10px;color:#fff;text-decoration:none;transition:transform .2s}
     .quicklink:hover{transform:translateY(-3px)}
     .quick-ico{width:34px;height:38px;flex:none;display:grid;place-items:center;color:var(--c);background:color-mix(in srgb,var(--c) 14%,transparent);clip-path:var(--hex);transition:transform .25s}
@@ -379,6 +379,67 @@
     .tool-card:hover .tool-icon{color:#061412;background:var(--c);transform:rotate(-10deg)}
     .tool-card:hover .tool-arrow{color:var(--c);transform:translate(2px,-2px)}
 
+    /* Special mission: Learning Transform */
+    .section-no.sp{background:linear-gradient(160deg,#fff6c9,var(--sun) 50%,#ff9f1c);filter:drop-shadow(0 0 16px rgba(255,211,79,.5));font-size:24px}
+    .section-no.dom{background:linear-gradient(160deg,#e6f3ff,var(--blue) 60%,#2f6fd6);filter:drop-shadow(0 0 16px rgba(92,169,255,.45));font-size:15px}
+    .section-eyebrow.gold{color:var(--sun)}.section-eyebrow.blue{color:var(--blue)}
+    .btn-cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:10px 24px;color:#04120f;text-decoration:none;background:linear-gradient(100deg,#effffb,var(--cyan));clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);font:600 15px/1.35 'Kanit',sans-serif;transition:transform .2s,filter .2s}
+    .btn-cta:hover{transform:translateY(-2px);filter:brightness(1.08)}
+    .btn-cta svg{width:17px;height:17px;flex:none}
+    .btn-cta.gold{color:#1a0d00;background:linear-gradient(100deg,#fff6c9,var(--sun) 50%,#ff9f1c)}
+    .btn-cta.blue{color:#04101f;background:linear-gradient(100deg,#e6f3ff,var(--blue))}
+    .btn-transform{--a:#ffd34f;--edge:linear-gradient(110deg,var(--sun),var(--pink));--fill:radial-gradient(circle at 95% 0,#ffd34f2e,transparent 40%),linear-gradient(135deg,#2a2210,#151122 58%,#2a1224)}
+    .btn-transform .cta-icon{color:var(--sun);background:linear-gradient(135deg,#ffd34f30,#ff3d9128)}
+    .btn-transform small{color:var(--sun)}
+    .btn-transform .cta-arrow{background:var(--sun)}
+    .transform-panel{--edge:linear-gradient(140deg,var(--sun),rgba(255,255,255,.08) 35%,rgba(255,61,145,.6) 70%,var(--cyan));--fill:radial-gradient(circle at 0 0,rgba(255,211,79,.13),transparent 40%),radial-gradient(circle at 100% 100%,rgba(255,61,145,.13),transparent 40%),linear-gradient(150deg,rgba(18,22,36,.95),rgba(8,11,20,.97));padding:20px}
+    .transform-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;margin-bottom:22px;padding-bottom:18px;border-bottom:1px dashed rgba(255,255,255,.16)}
+    .transform-goal small{display:flex;align-items:center;gap:8px;color:var(--sun);font:700 10px/1.3 var(--hud);letter-spacing:.2em}
+    .transform-goal small svg{width:14px;height:14px}
+    .transform-goal b{display:block;margin-top:7px;font-size:clamp(1.05rem,2vw,1.35rem);font-weight:600;line-height:1.5}
+    .transform-goal p{margin:6px 0 0;color:#a9b6c8;font-size:13.5px}
+    .route{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+    .route::before{content:'';position:absolute;left:6%;right:6%;top:42px;height:2px;background:linear-gradient(90deg,var(--sun),var(--pink),var(--cyan),var(--blue),var(--violet));box-shadow:0 0 12px rgba(255,211,79,.4);opacity:.7}
+    .route-card{--cut:14px;--a:var(--c);--edge:linear-gradient(160deg,color-mix(in srgb,var(--c) 75%,#fff),rgba(255,255,255,.07) 45%,color-mix(in srgb,var(--c) 35%,transparent));--fill:radial-gradient(circle at 100% 0,color-mix(in srgb,var(--c) 20%,transparent),transparent 50%),linear-gradient(160deg,#151d2e,#0a101b);display:flex;flex-direction:column;align-items:flex-start;min-height:224px;padding:16px 14px 14px;color:#fff;text-decoration:none;transition:transform .28s cubic-bezier(.2,.8,.2,1)}
+    .route-hex{width:48px;height:54px;flex:none;display:grid;place-items:center;color:#061412;background:linear-gradient(160deg,#fff,var(--c) 55%);clip-path:var(--hex);font:900 16px/1 var(--hud);filter:drop-shadow(0 0 10px var(--c))}
+    .route-key{margin-top:12px;color:var(--c);font:700 10px/1.2 var(--hud);letter-spacing:.2em}
+    .route-card h3{margin:3px 0 6px;font-size:19px;font-weight:700;line-height:1.3}
+    .route-card p{margin:0;color:#b4c1d3;font-size:13px;line-height:1.55}
+    .route-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;margin-top:auto;padding-top:12px;border-top:1px dashed rgba(255,255,255,.14);color:#e9f2ff;font-size:12px;font-weight:600}
+    .route-foot svg{width:14px;height:14px;transition:transform .2s}
+    .route-status{padding:4px 8px;font:600 11px/1 'Kanit',sans-serif;white-space:nowrap}
+    .route-status.ready{color:#04120f;background:var(--cyan)}
+    .route-status.building{color:#ffe8a3;background:rgba(255,211,79,.08);border:1px solid rgba(255,211,79,.4)}
+    .route-card:hover{transform:translateY(-6px)}
+    .route-card:hover .route-foot svg{transform:translate(2px,-2px)}
+
+    /* .th & .ไทย */
+    .domain-panel{--edge:linear-gradient(140deg,var(--blue),rgba(255,255,255,.08) 45%,var(--cyan));display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:22px;align-items:center;padding:22px}
+    .domain-visual{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:270px;padding:20px;text-align:center;background:radial-gradient(circle,rgba(92,169,255,.18),transparent 65%)}
+    .dv-th,.dv-thai{color:transparent;-webkit-text-fill-color:transparent;-webkit-background-clip:text;background-clip:text}
+    .dv-th{font:900 clamp(4rem,10vw,7rem)/.95 var(--hud);background-image:linear-gradient(100deg,#fff,var(--blue) 50%,var(--cyan));filter:drop-shadow(0 0 22px rgba(92,169,255,.45))}
+    .dv-thai{font:700 clamp(2.6rem,6vw,4.2rem)/1.15 var(--tech);background-image:linear-gradient(100deg,var(--sun),var(--pink))}
+    .dv-url{display:inline-flex;align-items:center;gap:7px;margin-top:12px;padding:8px 14px;color:#dfe9f7;background:rgba(5,10,19,.85);border:1px solid rgba(78,244,210,.4);font:700 14px/1 var(--hud);letter-spacing:.06em}
+    .dv-url b{color:var(--cyan)}.dv-url svg{width:16px;height:16px;color:var(--cyan)}
+    .domain-points{display:grid;gap:10px;margin:0 0 18px;padding:0;list-style:none}
+    .domain-points li{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;background:rgba(255,255,255,.04);border-left:3px solid var(--c)}
+    .dp-ico{width:38px;height:42px;flex:none;display:grid;place-items:center;color:#061412;background:var(--c);clip-path:var(--hex)}
+    .dp-ico svg{width:18px;height:18px}
+    .domain-points b{display:block;font-size:15.5px;font-weight:600;line-height:1.4}
+    .domain-points small{display:block;margin-top:2px;color:#b0bfd2;font-size:13px;line-height:1.5}
+
+    /* Site map (footer) */
+    .world-map{width:min(920px,100%);margin:0 auto 34px}
+    .map-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:14px}
+    .map-link{--cut:10px;--a:var(--c);--edge:linear-gradient(135deg,color-mix(in srgb,var(--c) 55%,transparent),rgba(255,255,255,.08));--fill:linear-gradient(150deg,#121b2b,#0a111d);display:flex;align-items:center;gap:10px;min-height:58px;padding:9px 11px;color:#fff;text-decoration:none;text-align:left;transition:transform .2s}
+    .map-link:hover{transform:translateY(-3px)}
+    .map-ico{width:32px;height:36px;flex:none;display:grid;place-items:center;color:var(--c);background:color-mix(in srgb,var(--c) 16%,transparent);clip-path:var(--hex)}
+    .map-ico svg{width:16px;height:16px}
+    .map-copy{min-width:0}
+    .map-copy b{display:block;font-size:13.5px;font-weight:600;line-height:1.3}
+    .map-copy small{display:block;margin-top:2px;color:var(--c);font:700 8.5px/1.2 var(--hud);letter-spacing:.12em}
+    .map-new{margin-left:auto;padding:3px 6px;color:#1a0d00;background:var(--sun);font:900 8.5px/1 var(--hud);letter-spacing:.1em}
+
     /* Version / patch notes */
     .build-tag{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;color:#ffe8a3;background:rgba(255,211,79,.08);border:1px solid rgba(255,211,79,.3);font:700 10.5px/1.4 var(--hud);letter-spacing:.1em}
     .build-tag b{color:var(--sun)}
@@ -424,11 +485,13 @@
     .guide-capsule-stack{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
     .guide-capsule{--cut:12px;--a:var(--gc);--edge:linear-gradient(120deg,color-mix(in srgb,var(--gc) 70%,transparent),rgba(255,255,255,.1));--fill:linear-gradient(135deg,rgba(14,22,35,.95),rgba(7,12,21,.96));display:inline-flex;align-items:center;gap:10px;min-width:200px;padding:7px 12px 7px 8px;border:0;color:#fff;text-decoration:none;cursor:pointer;transform:translateY(18px) scale(.92);opacity:0;transition:transform .32s cubic-bezier(.18,.8,.2,1.15),opacity .26s ease}
     .web-guide:hover .guide-capsule,.web-guide.is-active .guide-capsule{transform:none;opacity:1}
-    .web-guide:hover .guide-capsule:nth-child(1),.web-guide.is-active .guide-capsule:nth-child(1){transition-delay:.2s}
-    .web-guide:hover .guide-capsule:nth-child(2),.web-guide.is-active .guide-capsule:nth-child(2){transition-delay:.16s}
-    .web-guide:hover .guide-capsule:nth-child(3),.web-guide.is-active .guide-capsule:nth-child(3){transition-delay:.12s}
-    .web-guide:hover .guide-capsule:nth-child(4),.web-guide.is-active .guide-capsule:nth-child(4){transition-delay:.08s}
-    .web-guide:hover .guide-capsule:nth-child(5),.web-guide.is-active .guide-capsule:nth-child(5){transition-delay:.04s}
+    .web-guide:hover .guide-capsule:nth-child(1),.web-guide.is-active .guide-capsule:nth-child(1){transition-delay:0.21s}
+    .web-guide:hover .guide-capsule:nth-child(2),.web-guide.is-active .guide-capsule:nth-child(2){transition-delay:0.18s}
+    .web-guide:hover .guide-capsule:nth-child(3),.web-guide.is-active .guide-capsule:nth-child(3){transition-delay:0.14s}
+    .web-guide:hover .guide-capsule:nth-child(4),.web-guide.is-active .guide-capsule:nth-child(4){transition-delay:0.11s}
+    .web-guide:hover .guide-capsule:nth-child(5),.web-guide.is-active .guide-capsule:nth-child(5){transition-delay:0.07s}
+    .web-guide:hover .guide-capsule:nth-child(6),.web-guide.is-active .guide-capsule:nth-child(6){transition-delay:0.04s}
+    .web-guide:hover .guide-capsule:nth-child(7),.web-guide.is-active .guide-capsule:nth-child(7){transition-delay:0.00s}
     .guide-capsule-ico{width:30px;height:34px;flex:none;display:grid;place-items:center;color:#061411;background:var(--gc);clip-path:var(--hex);transition:transform .22s}
     .guide-capsule-ico svg{width:15px;height:15px;stroke-width:2.4}
     .guide-capsule-text{display:flex;flex-direction:column;align-items:flex-start;min-width:0;text-align:left}
@@ -470,11 +533,14 @@
 
     @media(max-width:1100px){.hero{grid-template-columns:minmax(0,1fr);gap:24px}.hero-copy{width:100%;max-width:760px;margin:auto}.hero-art{width:min(520px,100%);margin:auto}.section-meta{display:none}.section-head{grid-template-columns:auto minmax(0,1fr)}.poster-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.video-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:auto}.video-featured{grid-column:span 2;grid-row:auto}.video-featured .video-thumb{aspect-ratio:16/9;min-height:0}.tool-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.class-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media(max-width:1100px){.hero{gap:0}.hero-copy{display:contents}.hero>*:not(.hero-floor){width:100%;max-width:760px;margin-inline:auto}.hero-tags{order:1}.hero-brand-lockup{order:2}.hero-lead{order:3}.hero-actions{order:4}.hero-art{order:5;width:min(520px,100%);margin-top:28px}.quicklinks{order:6;margin-top:22px}.stat-board{order:7}}
+    @media(max-width:1100px){.route{grid-template-columns:repeat(3,minmax(0,1fr))}.route::before{display:none}.map-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    @media(max-width:900px){.domain-panel{grid-template-columns:1fr}.domain-visual{min-height:200px}.transform-top{grid-template-columns:1fr}}
     @media(max-width:900px){.mission-grid{grid-template-columns:1fr}.mission-card{min-height:250px}}
     @media(max-width:600px){
+      .route{grid-template-columns:1fr}.route-card{min-height:0}.map-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.transform-panel,.domain-panel{padding:14px}.btn-cta{width:100%}
       .patch{padding:14px}.patch-head h2{font-size:16px}
       .hero{padding:24px 16px 40px}.global-tag{font-size:10px;letter-spacing:.06em}.tag-ghost{display:none}.hero-brand-lockup{gap:10px}.hero-lead{font-size:16px;line-height:1.8}
-      .act-start,.act-lib{flex:1 1 100%}.btn-start{width:100%}.quicklinks{grid-template-columns:repeat(2,minmax(0,1fr))}.quicklinks .quicklink:last-child{grid-column:span 2}.stat-board{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .act-start,.act-lib{flex:1 1 100%}.btn-start{width:100%}.stat-board{grid-template-columns:repeat(2,minmax(0,1fr))}
       .portrait-card{width:min(290px,80%)}.portrait-info h2{font-size:20px}.callout{display:none}.portrait-rank{left:-14px;width:52px;height:58px}.portrait-rank b{font-size:20px}
       .class-grid,.poster-grid,.tool-grid{grid-template-columns:1fr}.stage-card{min-height:138px;padding-right:100px}.stage-deco{width:104px;height:118px}.stage-title{font-size:16px}
       .poster-featured{grid-column:span 1;grid-row:span 1}.poster-featured .game-media{flex:none;aspect-ratio:16/9}.poster-featured .game-copy h3{font-size:18px}.feat-label{display:none}
@@ -514,7 +580,7 @@
     <section class="hero" id="home">
       <div class="hero-floor" aria-hidden="true"></div>
       <div class="hero-copy">
-        <div class="hero-tags"><span class="global-tag"><i class="live-dot" aria-hidden="true"></i>NATIONAL STAGE · WEBSITE COMPETITION 2026</span><span class="build-tag" id="build-tag" title="เวอร์ชันและวันที่อัปเดตล่าสุด">BUILD <b data-site-version>v2.1.0</b><span>อัปเดต <time data-site-date-short datetime="2026-10-09">9 ต.ค. 69</time></span></span><span class="tag-ghost" lang="en">// DIGITAL LEARNING GATEWAY</span></div>
+        <div class="hero-tags"><span class="global-tag"><i class="live-dot" aria-hidden="true"></i>NATIONAL STAGE · WEBSITE COMPETITION 2026</span><span class="build-tag" id="build-tag" title="เวอร์ชันและวันที่อัปเดตล่าสุด">BUILD <b data-site-version>v2.2.0</b><span>อัปเดต <time data-site-date-short datetime="2026-10-09">9 ต.ค. 69</time></span></span><span class="tag-ghost" lang="en">// DIGITAL LEARNING GATEWAY</span></div>
         <div class="hero-brand-lockup">
           <div class="hero-brand-mark"><img src="https://lh3.googleusercontent.com/d/1UV58SSpActHLjwxZjSNUWZEqPAjHzR_l" alt="โลโก้ Krukan Online" width="240" height="240" fetchpriority="high" decoding="async"></div>
           <div>
@@ -525,10 +591,11 @@
         <p class="hero-lead">พื้นที่เรียนรู้ที่เชื่อม <strong>บทเรียน สื่อ กิจกรรม การประเมินผล และเครื่องมือดิจิทัล</strong> ไว้ในประสบการณ์เดียว เพื่อให้ผู้เรียนเข้าถึงสิ่งที่ต้องการได้รวดเร็วและสนุกขึ้น</p>
         <div class="hero-actions">
           <div class="act act-start"><button class="btn-start" type="button" data-scroll="learning"><span class="btn-start-ico"><i data-lucide="play"></i></span><span><small lang="en">PRESS START</small><b>เริ่มเรียนรู้</b></span><kbd aria-hidden="true">ENTER</kbd></button></div>
-          <div class="act act-lib"><a class="btn-library edge glow sfx" href="https://script.google.com/macros/s/AKfycbxuMR-BajBEGSI1zKvHzpZHdByOuDAvBk0IpXwMQayjwDRGVQ9RMi_RWk7xtleWpzj3AQ/exec" target="_blank" rel="noopener noreferrer"><span class="cta-icon"><i data-lucide="library-big"></i></span><span><small lang="en">DIGITAL RESOURCE HUB</small><b>คลังสื่อการสอน</b></span><i class="cta-arrow" data-lucide="arrow-up-right"></i></a></div>
+          <div class="act act-lib"><a class="btn-library btn-transform edge glow sfx" data-link="transform" href="https://www.krukan.in.th/learning-transform" target="_blank" rel="noopener noreferrer"><span class="cta-icon"><i data-lucide="zap"></i></span><span><small lang="en">LEARNING TRANSFORM</small><b>แปลงร่างการเรียนรู้</b></span><i class="cta-arrow" data-lucide="arrow-up-right"></i></a></div>
         </div>
         <div class="quicklinks" aria-label="ข้อมูลและผลงาน">
-          <a class="quicklink edge glow sfx" style="--c:#ff5e9f" href="https://www.krukan.in.th/contact" target="_blank" rel="noopener noreferrer"><span class="quick-ico"><i data-lucide="mail"></i></span><span><small>CONTACT</small><b>ช่องทางการติดต่อ</b></span></a>
+          <a class="quicklink edge glow sfx" style="--c:#b78cff" href="https://script.google.com/macros/s/AKfycbxuMR-BajBEGSI1zKvHzpZHdByOuDAvBk0IpXwMQayjwDRGVQ9RMi_RWk7xtleWpzj3AQ/exec" target="_blank" rel="noopener noreferrer"><span class="quick-ico"><i data-lucide="library-big"></i></span><span><small>RESOURCES</small><b>คลังสื่อการสอน</b></span></a>
+          <a class="quicklink edge glow sfx" style="--c:#ff5e9f" href="https://www.krukan.in.th/contact" data-link="contact" target="_blank" rel="noopener noreferrer"><span class="quick-ico"><i data-lucide="mail"></i></span><span><small>CONTACT</small><b>ช่องทางการติดต่อ</b></span></a>
           <a class="quicklink edge glow sfx" style="--c:#4ef4d2" href="https://sites.google.com/atg.go.th/watthachumnum-school/home" target="_blank" rel="noopener noreferrer"><span class="quick-ico"><i data-lucide="school"></i></span><span><small>SCHOOL</small><b>โรงเรียนวัดท่าชุมนุม</b></span></a>
           <a class="quicklink edge glow sfx" style="--c:#5ca9ff" href="https://www.atg.go.th/" target="_blank" rel="noopener noreferrer"><span class="quick-ico"><i data-lucide="landmark"></i></span><span><small>EDUCATION AREA</small><b>สพป.อ่างทอง</b></span></a>
         </div>
@@ -578,6 +645,17 @@
     <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
 
     <main id="main-content">
+      <section class="section reveal" id="transform" tabindex="-1">
+        <div class="section-head"><div class="section-no sp" aria-hidden="true">★</div><div><p class="section-eyebrow gold" lang="en">SPECIAL MISSION · โจทย์พิเศษ</p><h2>LEARNING <span>TRANSFORM</span></h2><p class="sub">แปลงร่างการเรียนรู้ · 1 เว็บ 1 การเปลี่ยนแปลง</p></div><div class="section-meta"><b>5</b> STEPS · BEFORE → AFTER</div></div>
+        <div class="transform-panel panel edge"><span class="panel-top" aria-hidden="true"></span>
+          <div class="transform-top">
+            <div class="transform-goal"><small><i data-lucide="target"></i>การเปลี่ยนแปลงที่ต้องการ</small><b id="transform-goal">อยู่ระหว่างกำหนด “การเปลี่ยนแปลง 1 เรื่อง”</b><p id="transform-target">ติดตามเส้นทางการเปลี่ยนแปลงทั้ง 5 ขั้นได้ด้านล่าง</p></div>
+            <a class="btn-cta gold" data-link="transform" href="https://www.krukan.in.th/learning-transform" target="_blank" rel="noopener noreferrer"><i data-lucide="zap"></i>เข้าสู่หน้าแปลงร่างการเรียนรู้</a>
+          </div>
+          <div class="route" id="route" aria-label="เส้นทางการเปลี่ยนแปลง 5 ขั้น"></div>
+        </div>
+      </section>
+
       <section class="section reveal" id="learning" tabindex="-1">
         <div class="section-head"><div class="section-no">01</div><div><p class="section-eyebrow" lang="en">STAGE SELECT</p><h2>LEARNING <span>ORBITS</span></h2><p class="sub">เลือกชั้นเรียน แล้วเข้าสู่บทเรียนได้ทันที</p></div><div class="section-meta"><b>9</b> STAGES · P1–M3</div></div>
         <div class="learning-panel panel edge"><span class="panel-top" aria-hidden="true"></span>
@@ -679,12 +757,30 @@
           <div id="tool-grid" class="tool-grid"></div>
         </div>
       </section>
+      <section class="section reveal" id="domain" tabindex="-1">
+        <div class="section-head"><div class="section-no dom" aria-hidden="true">.TH</div><div><p class="section-eyebrow blue" lang="en">MISSION .TH · รู้จักโดเมนไทย</p><h2>.TH &amp; <span>.ไทย</span></h2><p class="sub">ชื่อโดเมนของประเทศไทย น่าเชื่อถือ ตรวจสอบได้ และเว็บนี้ก็ใช้ .in.th</p></div><div class="section-meta">KRUKAN<b>.IN.TH</b></div></div>
+        <div class="domain-panel panel edge"><span class="panel-top" aria-hidden="true"></span>
+          <div class="domain-visual" aria-hidden="true"><span class="dv-th">.th</span><span class="dv-thai">.ไทย</span><span class="dv-url"><i data-lucide="badge-check"></i>krukan<b>.in.th</b></span></div>
+          <div>
+            <ul class="domain-points">
+              <li style="--c:#5ca9ff"><span class="dp-ico" aria-hidden="true"><i data-lucide="flag"></i></span><div><b>โดเมนประจำประเทศไทย</b><small>.th และ .ไทย เป็นชื่อโดเมนระดับบนสุดของประเทศไทย บอกได้ทันทีว่าเป็นเว็บไซต์ของคนไทย</small></div></li>
+              <li style="--c:#4ef4d2"><span class="dp-ico" aria-hidden="true"><i data-lucide="shield-check"></i></span><div><b>ตรวจสอบตัวตนผู้จดทะเบียน</b><small>ผู้จดทะเบียนต้องยืนยันตัวตนด้วยเอกสาร ผู้เรียนและผู้ปกครองจึงมั่นใจได้ว่าเว็บนี้เป็นของครูจริง</small></div></li>
+              <li style="--c:#ffd34f"><span class="dp-ico" aria-hidden="true"><i data-lucide="languages"></i></span><div><b>.ไทย ชื่อเว็บภาษาไทย</b><small>ตั้งชื่อเว็บเป็นภาษาไทยได้ทั้งหมด จำง่าย พิมพ์ง่าย เหมาะกับผู้เรียนตัวเล็ก</small></div></li>
+            </ul>
+            <a class="btn-cta blue" data-link="domain" href="https://www.krukan.in.th/domain-th" target="_blank" rel="noopener noreferrer"><i data-lucide="globe"></i>รู้จัก .th และ .ไทย เพิ่มเติม</a>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
+      <nav class="world-map" aria-label="แผนที่เว็บไซต์">
+        <p class="credits-eyebrow" lang="en">WORLD MAP · แผนที่เว็บไซต์</p>
+        <div class="map-grid" id="map-grid"></div>
+      </nav>
       <section class="patch edge" aria-labelledby="patch-title">
         <div class="patch-head">
-          <span class="patch-ver"><span><small>VERSION</small><span data-site-version>v2.1.0</span></span></span>
+          <span class="patch-ver"><span><small>VERSION</small><span data-site-version>v2.2.0</span></span></span>
           <div><p class="patch-eyebrow" lang="en">PATCH NOTES · บันทึกการอัปเดต</p><h2 id="patch-title">อัปเดตล่าสุด <time data-site-date-long datetime="2026-10-09">9 ตุลาคม 2569</time></h2><span class="patch-ago" id="patch-ago" hidden></span></div>
         </div>
         <ul class="patch-list" id="patch-list"></ul>
@@ -704,11 +800,13 @@
         </button>
       </div>
       <nav class="guide-capsule-stack" aria-label="เมนูลัดภายในหน้า">
-        <button class="guide-capsule edge" style="--gc:#ffd34f" type="button" data-scroll="learning" data-guide-nav><span class="guide-capsule-ico"><i data-lucide="book-open"></i></span><span class="guide-capsule-text"><b>บทเรียน</b><small>STAGE SELECT</small></span><span class="guide-capsule-arrow"><i data-lucide="arrow-up-right"></i></span></button>
+        <button class="guide-capsule edge" style="--gc:#ffd34f" type="button" data-scroll="transform" data-guide-nav><span class="guide-capsule-ico"><i data-lucide="zap"></i></span><span class="guide-capsule-text"><b>แปลงร่างการเรียนรู้</b><small>SPECIAL MISSION</small></span><span class="guide-capsule-arrow"><i data-lucide="arrow-up-right"></i></span></button>
+        <button class="guide-capsule edge" style="--gc:#ffb84d" type="button" data-scroll="learning" data-guide-nav><span class="guide-capsule-ico"><i data-lucide="book-open"></i></span><span class="guide-capsule-text"><b>บทเรียน</b><small>STAGE SELECT</small></span><span class="guide-capsule-arrow"><i data-lucide="arrow-up-right"></i></span></button>
         <button class="guide-capsule edge" style="--gc:#ff3d91" type="button" data-scroll="play" data-guide-nav><span class="guide-capsule-ico"><i data-lucide="gamepad-2"></i></span><span class="guide-capsule-text"><b>กิจกรรม</b><small>ARCADE</small></span><span class="guide-capsule-arrow"><i data-lucide="arrow-up-right"></i></span></button>
         <button class="guide-capsule edge" style="--gc:#ff4d67" type="button" data-scroll="watch" data-guide-nav><span class="guide-capsule-ico"><i data-lucide="circle-play"></i></span><span class="guide-capsule-text"><b>วิดีโอ</b><small>CINEMA</small></span><span class="guide-capsule-arrow"><i data-lucide="arrow-up-right"></i></span></button>
         <button class="guide-capsule edge" style="--gc:#4ef4d2" type="button" data-scroll="feedback" data-guide-nav><span class="guide-capsule-ico"><i data-lucide="target"></i></span><span class="guide-capsule-text"><b>ประเมินผล</b><small>MISSIONS</small></span><span class="guide-capsule-arrow"><i data-lucide="arrow-up-right"></i></span></button>
         <button class="guide-capsule edge" style="--gc:#5ca9ff" type="button" data-scroll="tools" data-guide-nav><span class="guide-capsule-ico"><i data-lucide="backpack"></i></span><span class="guide-capsule-text"><b>เครื่องมือ</b><small>LOADOUT</small></span><span class="guide-capsule-arrow"><i data-lucide="arrow-up-right"></i></span></button>
+        <button class="guide-capsule edge" style="--gc:#38bdf8" type="button" data-scroll="domain" data-guide-nav><span class="guide-capsule-ico"><i data-lucide="globe"></i></span><span class="guide-capsule-text"><b>รู้จัก .th และ .ไทย</b><small>DOMAIN</small></span><span class="guide-capsule-arrow"><i data-lucide="arrow-up-right"></i></span></button>
       </nav>
     </div>
     <button class="guide-character" id="guide-toggle" type="button" aria-expanded="false" aria-controls="guide-float-dock" aria-label="เปิดเมนูนำทางโดย MaskRider Techno">
@@ -721,10 +819,36 @@
 
   <script>
     /* ===== เวอร์ชันและวันที่อัปเดต: แก้ตรงนี้ทุกครั้งที่อัปเดตเว็บ ===== */
+    /* ===== เมนูทั้งเว็บไซต์: แก้ลิงก์ตรงนี้ที่เดียว (ใส่ path ของ Google Sites) ===== */
+    const SITE_BASE='https://www.krukan.in.th';
+    const SITE_MENU=[
+      {id:'home',title:'หน้าแรก',en:'HOME',url:'/home',icon:'house',c:'#e2e8f0'},
+      {id:'class',title:'ห้องเรียน',en:'CLASSROOMS',url:'/Class',icon:'school',c:'#5ca9ff'},
+      {id:'etc',title:'บทเรียนอื่นๆ',en:'MORE LESSONS',url:'/etc',icon:'layers',c:'#ff6da8'},
+      {id:'transform',title:'แปลงร่างการเรียนรู้',en:'LEARNING TRANSFORM',url:'/learning-transform',icon:'zap',c:'#ffd34f',isNew:true},
+      {id:'domain',title:'รู้จัก .th และ .ไทย',en:'.TH & .ไทย',url:'/domain-th',icon:'globe',c:'#38bdf8',isNew:true},
+      {id:'training',title:'อบรม',en:'TRAINING',url:'/TcMeeting',icon:'presentation',c:'#b78cff'},
+      {id:'score',title:'คะแนน',en:'SCORE',url:'/score_1',icon:'star',c:'#ff8a5c'},
+      {id:'contact',title:'ติดต่อเรา',en:'CONTACT',url:'/contact',icon:'mail',c:'#4ef4d2'}
+    ];
+    /* ===== แปลงร่างการเรียนรู้: เปลี่ยน ready เป็น true เมื่อหน้านั้นทำเสร็จ ===== */
+    const TRANSFORM={
+      goal:'', // การเปลี่ยนแปลง 1 เรื่อง เช่น 'นักเรียน ป.4 ... เพิ่มขึ้นจาก ... เป็น ...'
+      target:'', // กลุ่มเป้าหมาย เช่น 'นักเรียนชั้น ป.4 จำนวน 25 คน · วิชาวิทยาการคำนวณ'
+      steps:[
+        {no:'01',key:'MISSION',title:'เป้าหมาย',desc:'ปัญหาของผู้เรียน และการเปลี่ยนแปลง 1 เรื่องที่วัดผลได้',url:'/learning-transform/mission',c:'#ffd34f',ready:false},
+        {no:'02',key:'ROUTE',title:'เส้นทาง',desc:'ก่อนเรียน → ระหว่างเรียน → หลังเรียน พร้อมการติดตามและ Feedback',url:'/learning-transform/route',c:'#ff3d91',ready:false},
+        {no:'03',key:'PLAY',title:'ลงมือทำ',desc:'กิจกรรมที่ผู้เรียนลงมือทำและสร้างผลงานจริงผ่านเว็บไซต์',url:'/learning-transform/play',c:'#4ef4d2',ready:false},
+        {no:'04',key:'PROOF',title:'หลักฐาน',desc:'ภาพกิจกรรม ผลงานนักเรียน Feedback และสถิติการใช้งาน',url:'/learning-transform/proof',c:'#5ca9ff',ready:false},
+        {no:'05',key:'RESULT',title:'ผลลัพธ์',desc:'เทียบ Before–After สิ่งที่สำเร็จ ข้อจำกัด และแผนต่อยอด',url:'/learning-transform/result',c:'#b78cff',ready:false}
+      ]
+    };
     const SITE_INFO={
-      version:'2.1.0',
+      version:'2.2.0',
       updated:'2026-10-09', // รูปแบบ ปี ค.ศ.-เดือน-วัน
       notes:[
+        'วางโครงเมนูครบทั้งเว็บ: เพิ่ม “แปลงร่างการเรียนรู้ (Learning Transform)” และ “รู้จัก .th และ .ไทย”',
+        'ย้ายคลังสื่อการสอนไปที่ลิงก์ด่วน และเพิ่มแผนที่เว็บไซต์ท้ายหน้า',
         'เพิ่ม RAISE Playground (MIT) ในหมวด Digital Toolkit สำหรับสร้างโปรเจกต์ AI',
         'โฉมใหม่สไตล์เกม: Stage Select · Arcade · Cinema · Missions · Loadout',
         'การ์ดโปรไฟล์พลิกเป็นมาสไรเดอร์ได้ทั้งเอาเมาส์ชี้และแตะบนมือถือ',
@@ -921,9 +1045,20 @@
       $('#tool-count').textContent=DATA.tools.length;
       icons();
     }
+    const siteLink=path=>/^https?:/i.test(path)?path:SITE_BASE+path;
+    function renderSiteMap(){
+      $$('[data-link]').forEach(a=>{const item=SITE_MENU.find(m=>m.id===a.dataset.link);if(item)a.href=siteLink(item.url)});
+      if(TRANSFORM.goal)$('#transform-goal').textContent=TRANSFORM.goal;
+      if(TRANSFORM.target)$('#transform-target').textContent=TRANSFORM.target;
+      $('#route').innerHTML=TRANSFORM.steps.map(s=>'<a class="route-card edge glow tilt sfx" href="'+siteLink(s.url)+'" target="_blank" rel="noopener noreferrer" style="--c:'+s.c+'">' +
+        '<i class="sweep" aria-hidden="true"></i><span class="route-hex" aria-hidden="true">'+s.no+'</span><span class="route-key" lang="en">'+s.key+'</span>' +
+        '<h3>'+escapeHTML(s.title)+'</h3><p>'+escapeHTML(s.desc)+'</p>' +
+        '<span class="route-foot"><span class="route-status '+(s.ready?'ready':'building')+'">'+(s.ready?'✓ พร้อมแล้ว':'กำลังพัฒนา')+'</span><span>เปิดหน้า <i data-lucide="arrow-up-right"></i></span></span></a>').join('');
+      $('#map-grid').innerHTML=SITE_MENU.map(m=>'<a class="map-link edge glow sfx" href="'+siteLink(m.url)+'" target="_blank" rel="noopener noreferrer" style="--c:'+m.c+'"><span class="map-ico" aria-hidden="true"><i data-lucide="'+m.icon+'"></i></span><span class="map-copy"><b>'+escapeHTML(m.title)+'</b><small lang="en">'+escapeHTML(m.en)+'</small></span>'+(m.isNew?'<span class="map-new">NEW</span>':'')+'</a>').join('');
+    }
     function renderTicker(){
       const fresh=DATA.activities.filter(x=>x.newBadge).map(x=>'NEW GAME · '+x.title);
-      const items=['SEASON 2026 · NATIONAL STAGE','9 LEARNING STAGES',DATA.activities.length+' GAMES IN ARCADE',...fresh,'PLAY · LEARN · LEVEL UP','KRUKAN.IN.TH'];
+      const items=['SEASON 2026 · NATIONAL STAGE','9 LEARNING STAGES',DATA.activities.length+' GAMES IN ARCADE',...fresh,'SPECIAL MISSION · LEARNING TRANSFORM','.TH & .ไทย','PLAY · LEARN · LEVEL UP','KRUKAN.IN.TH'];
       const html=items.map(t=>'<span>'+escapeHTML(t)+'</span>').join('');
       $('#ticker').innerHTML=html+html;
       $('#arcade-count').textContent=DATA.activities.length;
@@ -1197,7 +1332,7 @@
 
     function start(){
       runBoot();
-      renderSiteInfo();renderTicker();renderClasses();renderActivities();renderTools();initCollections();initMotion();initFilters();initScroll();initKeys();initSound();initGlow();initReveal();initProfileFlip();initGuide();initTilt();
+      renderSiteInfo();renderSiteMap();renderTicker();renderClasses();renderActivities();renderTools();initCollections();initMotion();initFilters();initScroll();initKeys();initSound();initGlow();initReveal();initProfileFlip();initGuide();initTilt();
       initSpaceCanvas();
       loadScript('https://unpkg.com/lucide@1.44.0/dist/umd/lucide.min.js').then(icons).catch(()=>{});
     }
