@@ -1,0 +1,30 @@
+{
+  "sheet": "maskrider-techno-shooter-3x2-v1.png",
+  "frameWidth": 512,
+  "frameHeight": 512,
+  "columns": 3,
+  "rows": 2,
+  "frames": {
+    "ready": 0,
+    "shoot": 1,
+    "dodge": 2,
+    "shield": 3,
+    "hurt": 4,
+    "victory": 5
+  },
+  "monsterSheet": "07-golden-parasite-3x3.png",
+  "monsterFrames": {
+    "ready": 3,
+    "rangedAttack": 6,
+    "hurt": 5,
+    "jump": 7,
+    "defeated": 8
+  },
+  "tool": "Built-in image_gen",
+  "references": [
+    "Maskrider-Techno-Rear-Reference.png",
+    "techno-003-thumbs-up.png"
+  ],
+  "prompt": "Generate a transparent 1536x1024 sprite sheet, exact 3 columns x 2 rows, six 512x512 cells, same black silver magenta chibi Maskrider Techno as both references. Row 1: rear three-quarter ready with energy blaster, firing upwards, dodge left. Row 2: rear guarding with cyan shield, rear hurt recoil, front victory fist raised. Full bodies, consistent scale, aligned feet, no grid lines, no words, no environment.",
+  "notes": "Sprite sheet poses are event illustrations, not sequential walk-cycle frames. Use frame 5 for monster hurt (clutching chest), 6 for ranged attack, 8 for defeated kneeling pose. New Techno alpha preserved. Individual PNGs are exact cell crops, no repainting."
+}

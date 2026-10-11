@@ -1,0 +1,556 @@
+{
+  "version": 4,
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "columns": 6,
+  "rows": 6,
+  "normalizedSize": [
+    320,
+    320
+  ],
+  "minimumPadding": 48,
+  "assets": {
+    "socks": {
+      "sourceCell": 0,
+      "sourceBox": [
+        0,
+        0,
+        209,
+        209
+      ],
+      "contentBox": [
+        74,
+        91,
+        246,
+        229
+      ]
+    },
+    "shoe": {
+      "sourceCell": 1,
+      "sourceBox": [
+        209,
+        0,
+        418,
+        209
+      ],
+      "contentBox": [
+        73,
+        81,
+        247,
+        238
+      ]
+    },
+    "tie": {
+      "sourceCell": 2,
+      "sourceBox": [
+        418,
+        0,
+        627,
+        209
+      ],
+      "contentBox": [
+        70,
+        103,
+        250,
+        217
+      ]
+    },
+    "wash": {
+      "sourceCell": 3,
+      "sourceBox": [
+        627,
+        0,
+        836,
+        209
+      ],
+      "contentBox": [
+        67,
+        68,
+        252,
+        251
+      ]
+    },
+    "meal": {
+      "sourceCell": 4,
+      "sourceBox": [
+        836,
+        0,
+        1045,
+        209
+      ],
+      "contentBox": [
+        69,
+        83,
+        251,
+        236
+      ]
+    },
+    "plate": {
+      "sourceCell": 5,
+      "sourceBox": [
+        1045,
+        0,
+        1254,
+        209
+      ],
+      "contentBox": [
+        68,
+        110,
+        251,
+        210
+      ]
+    },
+    "paste": {
+      "sourceCell": 6,
+      "sourceBox": [
+        0,
+        209,
+        209,
+        418
+      ],
+      "contentBox": [
+        67,
+        75,
+        252,
+        245
+      ]
+    },
+    "brush": {
+      "sourceCell": 7,
+      "sourceBox": [
+        209,
+        209,
+        418,
+        418
+      ],
+      "contentBox": [
+        70,
+        68,
+        249,
+        251
+      ]
+    },
+    "cup": {
+      "sourceCell": 8,
+      "sourceBox": [
+        418,
+        209,
+        627,
+        418
+      ],
+      "contentBox": [
+        99,
+        82,
+        220,
+        238
+      ]
+    },
+    "book": {
+      "sourceCell": 9,
+      "sourceBox": [
+        627,
+        209,
+        836,
+        418
+      ],
+      "contentBox": [
+        66,
+        84,
+        253,
+        235
+      ]
+    },
+    "pencil": {
+      "sourceCell": 10,
+      "sourceBox": [
+        836,
+        209,
+        1045,
+        418
+      ],
+      "contentBox": [
+        85,
+        80,
+        235,
+        239
+      ]
+    },
+    "bag": {
+      "sourceCell": 11,
+      "sourceBox": [
+        1045,
+        209,
+        1254,
+        418
+      ],
+      "contentBox": [
+        76,
+        74,
+        244,
+        245
+      ]
+    },
+    "carry": {
+      "sourceCell": 12,
+      "sourceBox": [
+        0,
+        418,
+        209,
+        627
+      ],
+      "contentBox": [
+        94,
+        60,
+        225,
+        259
+      ]
+    },
+    "crystal": {
+      "sourceCell": 13,
+      "sourceBox": [
+        209,
+        418,
+        418,
+        627
+      ],
+      "contentBox": [
+        107,
+        75,
+        213,
+        244
+      ]
+    },
+    "insert": {
+      "sourceCell": 14,
+      "sourceBox": [
+        418,
+        418,
+        627,
+        627
+      ],
+      "contentBox": [
+        62,
+        79,
+        257,
+        241
+      ]
+    },
+    "lid": {
+      "sourceCell": 15,
+      "sourceBox": [
+        627,
+        418,
+        836,
+        627
+      ],
+      "contentBox": [
+        83,
+        77,
+        237,
+        243
+      ]
+    },
+    "press": {
+      "sourceCell": 16,
+      "sourceBox": [
+        836,
+        418,
+        1045,
+        627
+      ],
+      "contentBox": [
+        69,
+        75,
+        250,
+        244
+      ]
+    },
+    "hole": {
+      "sourceCell": 17,
+      "sourceBox": [
+        1045,
+        418,
+        1254,
+        627
+      ],
+      "contentBox": [
+        66,
+        89,
+        253,
+        230
+      ]
+    },
+    "soil": {
+      "sourceCell": 18,
+      "sourceBox": [
+        0,
+        627,
+        209,
+        836
+      ],
+      "contentBox": [
+        79,
+        82,
+        241,
+        238
+      ]
+    },
+    "seed": {
+      "sourceCell": 19,
+      "sourceBox": [
+        209,
+        627,
+        418,
+        836
+      ],
+      "contentBox": [
+        80,
+        105,
+        240,
+        214
+      ]
+    },
+    "water": {
+      "sourceCell": 20,
+      "sourceBox": [
+        418,
+        627,
+        627,
+        836
+      ],
+      "contentBox": [
+        63,
+        68,
+        256,
+        251
+      ]
+    },
+    "flower": {
+      "sourceCell": 21,
+      "sourceBox": [
+        627,
+        627,
+        836,
+        836
+      ],
+      "contentBox": [
+        65,
+        74,
+        254,
+        246
+      ]
+    },
+    "pillow": {
+      "sourceCell": 22,
+      "sourceBox": [
+        836,
+        627,
+        1045,
+        836
+      ],
+      "contentBox": [
+        65,
+        94,
+        255,
+        226
+      ]
+    },
+    "lie": {
+      "sourceCell": 23,
+      "sourceBox": [
+        1045,
+        627,
+        1254,
+        836
+      ],
+      "contentBox": [
+        62,
+        66,
+        258,
+        254
+      ]
+    },
+    "blanket": {
+      "sourceCell": 24,
+      "sourceBox": [
+        0,
+        836,
+        209,
+        1045
+      ],
+      "contentBox": [
+        67,
+        72,
+        253,
+        247
+      ]
+    },
+    "wet": {
+      "sourceCell": 25,
+      "sourceBox": [
+        209,
+        836,
+        418,
+        1045
+      ],
+      "contentBox": [
+        84,
+        67,
+        236,
+        252
+      ]
+    },
+    "soap": {
+      "sourceCell": 26,
+      "sourceBox": [
+        418,
+        836,
+        627,
+        1045
+      ],
+      "contentBox": [
+        76,
+        87,
+        243,
+        232
+      ]
+    },
+    "rinse": {
+      "sourceCell": 27,
+      "sourceBox": [
+        627,
+        836,
+        836,
+        1045
+      ],
+      "contentBox": [
+        72,
+        67,
+        247,
+        252
+      ]
+    },
+    "towel": {
+      "sourceCell": 28,
+      "sourceBox": [
+        836,
+        836,
+        1045,
+        1045
+      ],
+      "contentBox": [
+        69,
+        78,
+        251,
+        241
+      ]
+    },
+    "mouse": {
+      "sourceCell": 29,
+      "sourceBox": [
+        1045,
+        836,
+        1254,
+        1045
+      ],
+      "contentBox": [
+        79,
+        94,
+        241,
+        226
+      ]
+    },
+    "keyboard": {
+      "sourceCell": 30,
+      "sourceBox": [
+        0,
+        1045,
+        209,
+        1254
+      ],
+      "contentBox": [
+        66,
+        94,
+        254,
+        226
+      ]
+    },
+    "eye": {
+      "sourceCell": 31,
+      "sourceBox": [
+        209,
+        1045,
+        418,
+        1254
+      ],
+      "contentBox": [
+        84,
+        81,
+        235,
+        238
+      ]
+    },
+    "rock": {
+      "sourceCell": 32,
+      "sourceBox": [
+        418,
+        1045,
+        627,
+        1254
+      ],
+      "contentBox": [
+        80,
+        96,
+        239,
+        223
+      ]
+    },
+    "leaf": {
+      "sourceCell": 33,
+      "sourceBox": [
+        627,
+        1045,
+        836,
+        1254
+      ],
+      "contentBox": [
+        67,
+        74,
+        252,
+        245
+      ]
+    },
+    "moon": {
+      "sourceCell": 34,
+      "sourceBox": [
+        836,
+        1045,
+        1045,
+        1254
+      ],
+      "contentBox": [
+        84,
+        81,
+        236,
+        238
+      ]
+    },
+    "star": {
+      "sourceCell": 35,
+      "sourceBox": [
+        1045,
+        1045,
+        1254,
+        1254
+      ],
+      "contentBox": [
+        81,
+        83,
+        239,
+        236
+      ]
+    }
+  }
+}
