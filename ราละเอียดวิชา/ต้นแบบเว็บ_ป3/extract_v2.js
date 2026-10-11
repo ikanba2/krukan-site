@@ -1,0 +1,10 @@
+const fs=require('fs'),vm=require('vm'),path=require('path');
+const dir=__dirname,ctx={window:{},console,document:{},location:{hash:''}};
+vm.createContext(ctx);
+for(const f of ['p3-data.js','p3-activity.js'])vm.runInContext(fs.readFileSync(path.join(dir,f),'utf8'),ctx);
+const W=ctx.window;
+vm.runInContext(fs.readFileSync(path.join(dir,'p3-special.js'),'utf8'),ctx);
+const sp=vm.runInContext('({SSEQ,SSEARCH,SMAIL,SCARGO,SAR})',ctx);
+const out={Q:W.P3Q,M:W.P3M,M2:W.P3M2,B:W.P3B,...sp};
+fs.writeFileSync(path.join(dir,'p3v2-banks.json'),JSON.stringify(out));
+console.log(Object.keys(out).map(k=>k+':'+Object.keys(out[k]).length).join(' '));

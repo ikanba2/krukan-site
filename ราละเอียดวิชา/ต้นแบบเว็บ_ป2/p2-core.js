@@ -98,14 +98,14 @@ function enter(){bar();Mascot.mount();Mascot.el.style.display='';Loading.show('�
 
 /* ---------- หน้าเลือกภารกิจ ---------- */
 function renderHome(){
-  Mascot.base='idle';Mascot.set('idle','เลือกภารกิจได้เลย!');
+  document.body.dataset.u='';Mascot.base='idle';Mascot.set('idle','เลือกภารกิจได้เลย!');
   const tot=allScore(),done=[...Array(9)].map((_,i)=>{const n=i+1;return PLAN[n].every((o,k)=>stageDone(n,k))}).filter(Boolean).length;
   const first=(()=>{for(let n=1;n<=9;n++)if(doneCount(n)<PLAN[n].length)return n;return 1})();
   view(`<section class="hero"><div><div class="kick" style="color:var(--mint)">TECHNO ACADEMY · ดาวธาตุน้ำ · ป.2</div><h1>เลือกภารกิจ</h1><p>เรียนรู้ · เล่นเกม · ดวลบอส เพื่อคืนน้ำใสให้ดวงดาว</p>
     <button class="btn warm" id="go">${doneCount(first)?'ไปต่อภารกิจ '+first:'เริ่มภารกิจ 1'} <i class="arr"></i></button>
     <div class="stats"><div class="stat"><b>${tot.score}</b>/ 900 คะแนนวิชา</div><div class="stat"><b>${tot.energy}</b>พลังเกม</div><div class="stat"><b>${done}</b>/ 9 ภารกิจครบ</div><button class="btn sec sm" id="mine">📊 คะแนนของฉัน</button></div></div>
     ${img('P2-TS-01-idle','craft','ยานของ Techno')}</section>
-    <div class="missions">${UNITS.map(u=>{const n=u.number,d=doneCount(n),t=PLAN[n].length,sc=scoreOf(n);return `<button class="mcard" data-n="${n}">${img(u.scene,'im',u.title)}<div class="tx"><small>ภารกิจ ${n}</small><h3>${esc(u.title)}</h3><div class="bar-p"><i style="width:${Math.round(d/t*100)}%"></i></div><div class="meta"><span>ด่าน ${d}/${t}</span><span>${sc.total}/100 คะแนน</span></div></div></button>`}).join('')}</div>`);
+    <div class="missions">${UNITS.map(u=>{const n=u.number,d=doneCount(n),t=PLAN[n].length,sc=scoreOf(n);return `<button class="mcard" data-u="${n}" data-n="${n}"><div class="imw">${img(u.scene,'im',u.title)}<span class="bossb" style="background-image:url(${ASSETS['boss0'+n]})" title="บอสประจำภารกิจ"></span>${d>=t?'<span class="done-r">ครบแล้ว ✓</span>':d>0?'<span class="cont-r">เล่นต่อ ▶</span>':'<span class="new-r">ใหม่!</span>'}</div><div class="tx"><small>ภารกิจ ${n}</small><h3>${esc(u.title)}</h3><div class="bar-p"><i style="width:${Math.round(d/t*100)}%"></i></div><div class="meta"><span>ด่าน ${d}/${t}</span><span>${sc.total}/100 คะแนน</span></div></div></button>`}).join('')}</div>`);
   $('#go').onclick=()=>openStage(first,nextStage(first));$('#mine').onclick=showMine;
   $$('.mcard').forEach(b=>b.onclick=()=>openStage(Number(b.dataset.n),nextStage(Number(b.dataset.n))));
 }
@@ -130,7 +130,7 @@ function bindHead(n,i,speakText){
   $('#listen').onclick=()=>speak(speakText()||$('.panel')?.innerText||'');
 }
 function renderStage(){
-  const {n,i}=CUR,o=PLAN[n][i];Mascot.base=motion(n,i,0);Mascot.set(Mascot.base);
+  const {n,i}=CUR,o=PLAN[n][i];document.body.dataset.u=n;Mascot.base=motion(n,i,0);Mascot.set(Mascot.base);
   const fn={pretest:stageQuiz,posttest:stageQuiz,story:stageStory,topic:stageTopic,minigame:stageGame,lab:stageLab,'real-task':stageReal,boss:stageBoss,report:stageReport}[o.kind];
   fn(n,i,o);
 }
@@ -167,7 +167,7 @@ function showQuizResult(n,i,o,qs,rec){
 function stageStory(n,i,o){
   const u=unit(n),pg=o.pages[0],lines=String(pg.body).replace(/^เรื่องเปิด:\s*/,'').split(/ · เป้าหมาย: | \/ /).map(s=>s.trim()).filter(Boolean);
   view(head(n,i,o)+`<section class="panel"><div class="cols">${img(u.scene,'art',u.title)}<div><div class="kick">เรื่องเปิด</div><h2>${esc(pg.title)}</h2>
-    <p class="big">${esc(lines[0])}</p><div class="note"><b>เป้าหมายของเรา</b><ul style="margin:6px 0 0;padding-left:22px">${lines.slice(1).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
+    ${lines[0].trim()===String(pg.title).trim()?'':`<p class="big">${esc(lines[0])}</p>`}<div class="note"><b>เป้าหมายของเรา</b><ul style="margin:6px 0 0;padding-left:22px">${lines.slice(1).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
     <div style="display:flex;align-items:center;gap:12px">${img('pose-present','',' ').replace('<img','<img style="width:90px"')}<span>Techno พร้อมช่วยเราแล้ว!</span></div>
     <div class="actions">${nextBtn('เริ่มภารกิจ')}</div></div></div></section>`);
   bindHead(n,i,()=>lines.join(' '));

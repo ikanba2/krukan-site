@@ -62,12 +62,13 @@ ACT.choose=(host,P,ctx)=>{
 /* ---- เรียงลำดับ (groups = ตำแหน่งที่สลับกันได้) ---- */
 ACT.order=(host,P,ctx)=>{
   const items=P.items,n=items.length,groups=P.groups||[],err={n:0};
+  const all=[...items,...(P.decoys||[]).map(x=>({x,e:'🎴'}))];
   const same=(a,b)=>a===b||groups.some(g=>g.includes(a)&&g.includes(b));
-  let order=shuffle(items.map((_,i)=>i));if(order.every((v,i)=>v===i))order.reverse();
+  let order=shuffle(all.map((_,i)=>i));if(order.slice(0,n).every((v,i)=>v===i))order.reverse();
   const slots=Array(n).fill(null);
   const draw=()=>{
-    host.innerHTML=`<p class="q">${esc(P.prompt||'เรียงลำดับให้ถูก')}</p><div class="board"><div class="slots">${slots.map((v,k)=>`<div class="slot" data-k="${k}"><i>${k+1}</i>${v!=null?`<div class="card" data-s="${k}">${em(items[v].x,items[v].e)}</div>`:''}</div>`).join('')}</div></div>
-    <div class="cards" id="bank">${order.filter(v=>!slots.includes(v)).map(v=>`<div class="card" data-v="${v}">${em(items[v].x,items[v].e)}</div>`).join('')}</div>
+    host.innerHTML=`<p class="q">${esc(P.prompt||'เรียงลำดับให้ถูก')}</p><div class="board"><div class="slots">${slots.map((v,k)=>`<div class="slot" data-k="${k}"><i>${k+1}</i>${v!=null?`<div class="card" data-s="${k}">${em(all[v].x,all[v].e)}</div>`:''}</div>`).join('')}</div></div>
+    <div class="cards" id="bank">${order.filter(v=>!slots.includes(v)).map(v=>`<div class="card" data-v="${v}">${em(all[v].x,all[v].e)}</div>`).join('')}</div>
     <div class="actions"><button class="btn sm" id="chk" ${slots.includes(null)?'disabled':''}>ตรวจคำตอบ</button></div>`;
     const targets=()=>$$('.slot',host);
     $$('#bank .card',host).forEach(c=>Drag.attach(c,targets,(el,t)=>{put(Number(el.dataset.v),Number(t.dataset.k))},el=>{const k=slots.indexOf(null);if(k>=0)put(Number(el.dataset.v),k)}));
@@ -222,6 +223,36 @@ ACT.table=(host,P,ctx)=>{
       err++;bad.forEach(([i,j])=>{const b=$(`.opt[data-k="${i}:${j}"].sel`,host);b&&b.classList.add('wrong')});
       const [i,j]=bad[0];ctx.say(false,'มีช่องที่ยังไม่ตรง');ctx.fb('bad','💡 แถว “'+P.rows[i].x+'” '+(P.rows[i].cells[j].why||'ลองคิดอีกครั้ง'));
       bad.forEach(([i,j])=>delete ans[i+':'+j]);
+    };
+  };draw();
+};
+
+/* ---- ขนของข้ามสะพาน: เลือกของไม่เกินความจุ ขนให้ครบด้วยเที่ยวน้อยที่สุด ---- */
+ACT.cargo=(host,P,ctx)=>{
+  const cap=P.capacity,items=P.items,min=P.minimum;let sel=[],sent=[],trips=0,err=0;
+  const w=i=>items[i][1];
+  const draw=()=>{
+    const load=sel.reduce((a,i)=>a+w(i),0);
+    host.innerHTML=`<p class="q">สะพานรับได้เที่ยวละ ${cap} หน่วย · ขนให้ครบ ${items.length} ชิ้น ด้วยเที่ยวน้อยที่สุด</p>
+      <div class="ghud" style="background:linear-gradient(90deg,#1f7a48,#3da35d)"><span>เที่ยวที่ ${trips+1}</span><span class="grow"></span><span>น้ำหนัก ${load}/${cap}</span><span>ส่งแล้ว ${sent.length}/${items.length}</span></div>
+      <div class="board"><div class="cards">${items.map((it,i)=>`<div class="card ${sel.includes(i)?'sel':''} ${sent.includes(i)?'used':''}" data-i="${i}"><span class="em">📦</span>${esc(it[0])}<br><b>${it[1]} หน่วย</b></div>`).join('')}</div></div>
+      <div class="bar-p" style="height:18px;margin:8px 0"><i style="width:${Math.min(100,load/cap*100)}%;background:${load>cap?'#ef5b6a':''}"></i></div>
+      <div class="actions"><button class="btn sec sm" id="clr">เลือกใหม่</button><button class="btn" id="send">🚚 ส่งของข้ามสะพาน</button></div>`;
+    $$('.card',host).forEach(c=>c.onclick=()=>{const i=Number(c.dataset.i);if(sent.includes(i))return;
+      if(sel.includes(i))sel=sel.filter(x=>x!==i);
+      else if(load+w(i)>cap){err++;ctx.say(false,'หนักเกินสะพาน');ctx.fb('bad','💡 รวมแล้วเกิน '+cap+' หน่วย ลองเลือกชิ้นอื่น หรือส่งแยกเที่ยว');return}
+      else sel.push(i);
+      beep('click');draw()});
+    $('#clr').onclick=()=>{sel=[];draw()};
+    $('#send').onclick=()=>{
+      if(!sel.length){ctx.fb('hint','เลือกของก่อนส่ง');return}
+      sent.push(...sel);sel=[];trips++;ctx.say(true,'ส่งข้ามแล้ว!');
+      if(sent.length>=items.length){
+        const extra=Math.max(0,trips-min);err+=extra;
+        if(extra){ctx.fb('hint','ครบแล้ว! แต่ใช้ '+trips+' เที่ยว ลองจัดให้เหลือ '+min+' เที่ยวนะ')}
+        else ctx.fb('good','✅ ครบทุกชิ้นด้วย '+trips+' เที่ยว ซึ่งน้อยที่สุด!');
+        draw();ctx.done(err);return}
+      draw();
     };
   };draw();
 };
