@@ -1,0 +1,149 @@
+/* ==================== ตัวอักษร · ปุ่มย้อนกลับ · ระยะห่าง · ตารางคะแนน (โหลดหลัง krukan-theme.css) ==================== */
+/* --- ตัวอักษรไม่เล็กกว่า 15px (ยกเว้นป้ายสั้นในเกมบอส) --- */
+.footer,.footer span,.save-status-pill,.scope-note,.step-caption,.small,small,.muted.small,.note,.result-note,.stage-results b,.stage-results span,
+.eyebrow,.pill,.academic-kicker,.kk-credits,.kk-credits span,.kk-credits a,.kk-ai-btn,.login-demo,.guest-entry p,.guest-entry>span,.login-art-caption,
+.compact-station span,.compact-station small,.compact-tools span,.kk-me-stat small,.kk-tile small,.teacher-note,.unit-total p,.skill-settings label,
+.sg-banner span,.bank-label,.order-note,.live-result,.skill-feedback,.teacher-table th,.teacher-table td,.kk-row,.kk-g-form label{font-size:15px}
+.teacher-table th,.teacher-table td{font-size:15px;line-height:1.5}
+button.quiet,#account-btn,.header-right button,.game-score-hud .quiet,.battle-bottom .quiet,.guide>button.quiet{font-size:16px}
+.battle-bottom,.battle-bottom span{font-size:15px}
+.combat-tag{font-size:13px}
+.battle-controls kbd{font-size:13px;padding:3px 7px}
+.battle-hud b,.battle-hud span{font-size:15px}
+.skill-hud,.skill-hud span,.skill-hud b{font-size:17px}
+.game-score-hud,.game-score-hud span{font-size:17px}
+.timeline-node small{font-size:13px}
+.kk-ai-btn{padding:8px 16px;min-height:42px}
+
+#app .combat-heading .eyebrow{font-size:15px;letter-spacing:.06em}
+#app .combat-tag{font-size:14px}
+#app .lesson-top,#app .lesson-top>span{font-size:16px}
+#app .compact-map-title>span{font-size:15px}
+#app .compact-tools .secondary,#app .scope-note .quiet{font-size:16px}
+#app .timeline-node b,#app .learning-phases span{font-size:15px}
+
+/* --- ปุ่มย้อนกลับ: ใหญ่ ชัด มีลูกศร --- */
+.lesson-top>button.quiet:first-child,#kk-back,#map-btn,#kk-back-dash,#reading-back{
+  display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:8px 22px 8px 16px;font:700 18px var(--font);
+  color:#4a2b00;background:linear-gradient(180deg,#ffe780,#ffc928);border:0;border-radius:999px;
+  box-shadow:0 5px 0 #c58a00,0 8px 14px rgba(26,16,90,.25);transition:transform .15s,box-shadow .15s}
+.lesson-top>button.quiet:first-child:hover,#kk-back:hover,#map-btn:hover,#kk-back-dash:hover,#reading-back:hover{background:linear-gradient(180deg,#fff0a3,#ffd23f);transform:translateY(-2px)}
+.lesson-top>button.quiet:first-child:active,#kk-back:active,#map-btn:active,#kk-back-dash:active,#reading-back:active{transform:translateY(3px);box-shadow:0 2px 0 #c58a00}
+.lesson-top>button.quiet:first-child::before,#kk-back::before,#map-btn::before,#kk-back-dash::before,#reading-back::before{
+  content:'\2190';display:grid;place-items:center;width:30px;height:30px;flex:none;border-radius:50%;background:#4a2b00;color:#ffe780;font-size:20px;line-height:1}
+.kk-back{min-height:46px;padding:0 18px;font-size:16px;font-weight:600;background:rgba(255,255,255,.22);border:2px solid rgba(255,255,255,.7);color:#fff}
+.kk-back:hover{background:rgba(255,255,255,.34)}
+#review-content,#review-stage{min-height:46px;padding:8px 18px;border:3px solid #cdbdff;background:#fff;color:#5a3fc9;border-radius:999px;font-weight:700;box-shadow:0 4px 0 #cbb9ff}
+.close{width:48px;height:48px;font-size:28px;font-weight:700;background:#ffe780;color:#4a2b00;box-shadow:0 4px 0 #c58a00}
+
+/* --- ระยะห่างให้สม่ำเสมอ (สเกล 8 / 14 / 22) --- */
+header{padding:12px 24px;margin-bottom:12px}
+main{padding-top:4px}
+.lesson-top{margin:6px 0 16px;padding:0;gap:14px}
+.number-timeline{margin:10px 0 18px;gap:4px}
+.game-score-hud{margin:0 0 22px;padding:10px 18px}
+.lesson-heading{margin:0 0 16px;gap:18px}
+.lesson-heading h1{margin:2px 0 0;line-height:1.25}
+.eyebrow{margin:0 0 4px}
+.learning-phases{margin:0 0 20px}
+.playfield,.academic-page{padding:30px 34px}
+.academic-heading{margin:0 0 18px}
+.playfield h2{margin:0 0 10px}
+.academic-body{gap:26px;margin-bottom:6px}
+.academic-body p{margin:0 0 14px}
+.example-title{margin:22px 0 12px}
+.lesson-example{margin-bottom:26px}
+.pre-instruction{margin:0 0 18px}
+.pre-question{margin:0 0 22px}
+.pre-question legend{margin-bottom:12px;padding:0}
+.pre-question>div{gap:14px}
+.order-slots{margin:18px 0 20px}
+.bank-label{margin:0 0 10px}
+.bank{gap:14px;margin-bottom:6px}
+.feedback{margin:20px 0 4px;padding:14px 18px}
+.play-actions{margin-top:26px;gap:14px}
+.child-instruction{margin:0 0 14px;line-height:1.5}
+.skill-title{margin-bottom:12px}
+.skill-settings{margin:6px 0 16px;gap:12px 20px}
+.skill-hud{padding:10px 18px}
+.skill-feedback{margin:14px 0 6px}
+.footer{margin-top:30px;padding-top:14px}
+.kk-credits{margin-top:14px;padding-top:14px;row-gap:10px}
+.compact-hero{padding:20px 6px 16px;gap:18px}
+.compact-hero h1{margin:6px 0 10px}
+.compact-hero p{margin:0 0 18px}
+.compact-map-title{margin:12px 0 16px}
+.compact-station{padding:16px 18px}
+.compact-station h3{margin:2px 0 6px}
+.compact-tools{margin-top:22px;padding:18px 22px;gap:12px}
+.kk-me{margin:10px 0 22px}
+.scope-note{margin:14px 0 4px}
+.modal{padding:30px 32px}
+.modal h2{margin:0 36px 14px 0}
+.modal h3{margin:20px 0 8px;line-height:1.4}
+.modal .note,.note{padding:14px 16px;margin:0 0 14px}
+.modal label{margin:14px 0 6px}
+.login-card{padding:32px 34px}
+.login-step{margin:0 0 16px}
+.rider-grid{margin-bottom:26px}
+.password-row{margin-bottom:4px}
+.login-error{margin:10px 0}
+.guest-entry{margin-top:22px;padding-top:20px}
+.welcome-card{padding:34px 34px 30px}
+.welcome-card h1{margin:6px 0 10px}
+.welcome-card .welcome-name{margin:0 0 20px}
+.welcome-card .primary,.welcome-card .quiet{margin:4px 6px}
+.kk-work-grid{gap:18px;margin:16px 0 20px}
+.kk-rows{gap:8px;margin:10px 0 18px}
+.kk-row{padding:10px 16px}
+
+/* --- ตารางคะแนนรายด่าน --- */
+.kk-stage-table{width:100%;border-collapse:separate;border-spacing:0;font-size:15px}
+.kk-stage-table th{position:sticky;top:0;background:#efe8ff;color:var(--kk-ink);text-align:left;padding:10px 12px;font-weight:700}
+.kk-stage-table th:first-child{border-radius:12px 0 0 12px}
+.kk-stage-table th:last-child{border-radius:0 12px 12px 0}
+.kk-stage-table td{padding:10px 12px;border-bottom:1px solid #e6dcff;color:var(--kk-ink);vertical-align:top}
+.kk-stage-table td small{display:block;color:var(--kk-soft);font-size:13px}
+.kk-stage-table tr.done td:first-child b{background:#b4fff0;color:#07543f}
+.kk-stage-table td:first-child b{display:inline-grid;place-items:center;min-width:26px;height:26px;border-radius:50%;background:#efe8ff;color:#5a3fc9;margin-right:6px;font-size:14px}
+.kk-missions{display:grid;gap:10px;margin:10px 0 18px}
+.kk-mission{background:#fff;border:3px solid #ddd0ff;border-radius:20px;padding:12px 16px}
+.kk-mission summary{display:flex;justify-content:space-between;gap:14px;align-items:center;cursor:pointer;font-weight:700;list-style:none}
+.kk-mission summary::-webkit-details-marker{display:none}
+.kk-mission summary b{color:#5a3fc9;white-space:nowrap}
+.kk-mission[open]{border-color:#3ec9a0}
+.kk-mission[open] .scroll-table{margin-top:12px}
+.kk-mission.locked{display:flex;justify-content:space-between;gap:12px;background:#f3f0fa;border-style:dashed;color:var(--kk-soft)}
+.kk-mission.locked b{color:var(--kk-soft)}
+.kk-detail-btn{min-height:40px;padding:4px 14px;font-size:15px;white-space:nowrap}
+@media(max-width:600px){
+  .playfield,.academic-page{padding:20px 16px}
+  .modal{padding:22px 18px}
+  .lesson-top>button.quiet:first-child,#kk-back,#map-btn{min-height:46px;font-size:17px}
+}
+
+/* ระยะห่างเพิ่มเติม */
+#app .lesson-top{margin:8px 0 22px}
+#app .number-timeline{padding:12px 4px 0;margin:0 0 18px}
+#app .game-score-hud{margin:0 0 24px}
+.save-status-pill{display:block;margin:18px 0 4px}
+#app .reading-actions{margin-top:26px}
+.reading-title{margin-bottom:24px}
+.reading-sequence{margin:24px 0 28px}
+.reading-think{margin:28px 0 12px;padding-top:24px}
+.story-scene{padding:28px 24px;margin:22px 0}
+.model-row{margin:22px 0}
+.reflection-options{gap:16px;margin:18px 0}
+.unit-results .result-pair{margin:14px 0}
+.unit-total{margin:16px 0}
+.stage-results{gap:8px 22px}
+.stage-results>div{padding:10px 0}
+.modal:has(.teacher-table),.modal:has(.kk-stage-table){width:min(980px,100%)}
+.teacher-table th,.teacher-table td{padding:12px 10px}
+.kk-unit-line{margin:10px 0 8px;font-size:15px;color:var(--kk-soft)}
+.kk-mission summary{min-height:44px}
+.kk-mission[open]{border-color:#3ec9a0}
+
+.kk-g-extra{margin-top:10px;display:grid;gap:6px}
+.kk-confirm{display:flex;gap:8px;align-items:center;font-size:15px;background:#fff6d6;border-radius:12px;padding:8px 12px}
+.kk-confirm input{width:20px;height:20px;accent-color:#3ec9a0}

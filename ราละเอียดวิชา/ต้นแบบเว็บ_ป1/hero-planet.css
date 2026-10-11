@@ -1,0 +1,35 @@
+/* ดาวสายฟ้าบนหน้าแผนที่ (พอร์ตจากหน้าเลือกวิชา ป.1) */
+.hero-world{width:340px!important;height:210px!important;position:relative}
+.kk-solar{--planet:132px;--pc:#a78bfa;position:absolute;right:30px;top:14px;width:calc(var(--planet)*1.7);height:calc(var(--planet) + 30px);display:grid;place-items:center;grid-template:minmax(0,1fr)/minmax(0,1fr);pointer-events:none}
+.kk-solar>*{grid-area:1/1}
+.ks-halo{width:calc(var(--planet)*1.5);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(167,139,250,.75),transparent 65%);animation:ks-pulse 3.2s ease-in-out infinite}
+@keyframes ks-pulse{50%{transform:scale(1.1);opacity:.7}}
+.ks-aura{width:calc(var(--planet)*1.22);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,transparent 52%,#c4b5fd66 59%,#a78bfa22 66%,transparent 72%);filter:blur(2px)}
+.ks-ring{width:calc(var(--planet)*2.2);aspect-ratio:1;border-radius:50%;transform:rotate(-16deg) scaleY(.25);
+  background:radial-gradient(circle,transparent 0 46%,color-mix(in srgb,var(--pc) 25%,rgba(255,240,215,.28)) 47%,color-mix(in srgb,var(--pc) 35%,rgba(255,244,225,.6)) 53%,rgba(255,255,255,.2) 56%,color-mix(in srgb,var(--pc) 30%,rgba(255,240,215,.55)) 59.5%,transparent 61%,transparent 62.5%,color-mix(in srgb,var(--pc) 25%,rgba(255,240,215,.42)) 63.5%,color-mix(in srgb,var(--pc) 15%,rgba(255,240,215,.2)) 69%,transparent 70%),repeating-radial-gradient(circle,rgba(255,255,255,.08) 0 1px,transparent 1px 3px);
+  -webkit-mask:radial-gradient(circle,transparent 46%,#000 46.5%,#000 69.5%,transparent 70%);mask:radial-gradient(circle,transparent 46%,#000 46.5%,#000 69.5%,transparent 70%);
+  filter:drop-shadow(0 0 3px color-mix(in srgb,var(--pc) 40%,transparent))}
+.ks-ring.front{clip-path:inset(50% 0 0 0);z-index:2}
+.ks-planet{position:relative;z-index:1;width:var(--planet);aspect-ratio:1;overflow:hidden;border-radius:50%;
+  background:radial-gradient(circle at 32% 28%,#ffffffd0 0,#d8ccff 9%,#8b5cf6 38%,#3b0d7a 74%,#05040c 100%);
+  box-shadow:0 0 40px rgba(167,139,250,.6),inset 0 0 calc(var(--planet)*.07) rgba(167,139,250,.7)}
+.ks-planet::after{content:'';position:absolute;inset:0;border-radius:50%;z-index:2;
+  background:radial-gradient(circle at 32% 27%,rgba(255,255,255,.34) 0,rgba(255,255,255,.1) 18%,transparent 36%),radial-gradient(circle at 34% 30%,transparent 38%,rgba(0,0,0,.42) 62%,rgba(0,0,0,.88) 86%)}
+.ks-surface{position:absolute;inset:0;border-radius:50%;background-repeat:repeat-x;background-size:calc(var(--planet)*2) 100%;animation:ks-turn 70s linear infinite}
+@keyframes ks-turn{from{background-position:0 0}to{background-position:calc(var(--planet)*-2) 0}}
+.ks-bolt{position:absolute;z-index:4;width:calc(var(--planet)*.2);height:auto;fill:#fff59d;filter:drop-shadow(0 0 6px #fde047) drop-shadow(0 0 12px #a78bfa);opacity:0;animation:ks-zap 3.2s steps(1) infinite}
+.ks-bolt.b1{left:14%;top:2%;transform:rotate(-18deg)}
+.ks-bolt.b2{right:16%;bottom:6%;transform:rotate(160deg);animation-delay:1.7s}
+@keyframes ks-zap{0%,100%{opacity:0}8%{opacity:1}10%{opacity:.15}12%{opacity:1}17%{opacity:0}}
+.ks-moon-orbit{position:absolute;left:50%;top:50%;width:0;height:0;transform:rotate(-16deg) scaleY(.34);animation:ks-moonz 10s linear infinite}
+.ks-moon{position:absolute;left:-8px;top:-8px;width:16px;height:16px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#9aa6bb 60%,#3a4255);box-shadow:0 0 8px #fff6;animation:ks-moon 10s linear infinite}
+@keyframes ks-moon{0%{transform:rotate(0deg) translateX(calc(var(--planet)*.82)) rotate(0deg) scaleY(2.94) rotate(16deg) scale(.95)}25%{transform:rotate(90deg) translateX(calc(var(--planet)*.82)) rotate(-90deg) scaleY(2.94) rotate(16deg) scale(1.15)}50%{transform:rotate(180deg) translateX(calc(var(--planet)*.82)) rotate(-180deg) scaleY(2.94) rotate(16deg) scale(.95)}75%{transform:rotate(270deg) translateX(calc(var(--planet)*.82)) rotate(-270deg) scaleY(2.94) rotate(16deg) scale(.75)}100%{transform:rotate(360deg) translateX(calc(var(--planet)*.82)) rotate(-360deg) scaleY(2.94) rotate(16deg) scale(.95)}}
+@keyframes ks-moonz{0%,49.9%{z-index:3}50%,100%{z-index:0}}
+.ks-monster{position:absolute;z-index:5;right:-4%;bottom:-6%;width:calc(var(--planet)*.78);aspect-ratio:1;background:no-repeat 0 0/300% 300%;filter:drop-shadow(0 8px 10px #000a);animation:ks-hover 3.6s ease-in-out infinite}
+@keyframes ks-hover{50%{transform:translateY(-7px)}}
+.hero-world>.techno-pose{z-index:6}
+@media(max-width:600px){
+  .hero-world{width:170px!important;height:128px!important}
+  .kk-solar{--planet:70px;right:22px;top:10px}
+}
+@media(prefers-reduced-motion:reduce){.kk-solar *{animation:none!important}}
