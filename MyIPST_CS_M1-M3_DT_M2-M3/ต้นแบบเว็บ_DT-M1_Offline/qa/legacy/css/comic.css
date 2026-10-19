@@ -1,0 +1,1198 @@
+/* COMIC STRIKE สำหรับ DT ม.1 — ธีมเดียวกับหน้าแรก KruKan: กระดาษขาวครีมลายฮาล์ฟโทน ขอบหมึกหนา เงาแข็ง ปุ่มกดแล้วยุบ แถบเฉียง ดาวระเบิด
+   โหลดหลัง gaming.css เพื่อทับเฉพาะผิวหน้า (สี ขอบ เงา) ไม่เปลี่ยนโครงสร้างหรือการทำงาน */
+:root{--ink:#0e1530;--paper:#ffffff;--paper2:#fff8dc;--space:#fff8dc;--g-pink:#ff2e88;--g-yellow:#ffd400;--g-cyan:#00cdb8;--g-lime:#b6f23a;--c-blue:#3b5bff;--c-violet:#7c4dff;--muted:#3f4a66;--line:#0e1530;--radius:8px;--shadow:8px 8px 0 var(--ink)}
+body{background:#fff8dc!important;color:var(--ink)!important}
+body::before{background-image:radial-gradient(rgba(14,21,48,.16) 1.4px,transparent 1.7px)!important;background-size:16px 16px!important;opacity:1!important}
+#main,main{color:var(--ink)}
+/* ---------- แถบบน ---------- */
+.topbar,header .topbar{background:#fff!important;color:var(--ink)!important;border:0!important;border-bottom:5px solid var(--ink)!important;box-shadow:0 6px 0 var(--g-pink)!important;backdrop-filter:none!important}
+.brand,.brand strong,.brand small{color:var(--ink)!important;text-shadow:none!important}
+.brand-mark{background:var(--g-yellow)!important;border:4px solid var(--ink)!important;border-radius:6px!important;box-shadow:3px 3px 0 var(--ink)!important;color:var(--ink)!important;transform:rotate(-6deg)}
+nav a,.nav-btn{color:var(--ink)!important;background:transparent!important;border:3px solid transparent!important;border-radius:6px!important;font-weight:800;text-shadow:none!important}
+nav a:hover,.nav-btn:hover{background:var(--g-yellow)!important;border-color:var(--ink)!important;box-shadow:3px 3px 0 var(--ink)!important;transform:translate(-1px,-1px)}
+nav a.active{background:var(--g-yellow)!important;border-color:var(--ink)!important;box-shadow:4px 4px 0 var(--ink)!important;transform:rotate(-1.5deg)}
+.nav-btn{background:var(--g-pink)!important;color:#fff!important;border-color:var(--ink)!important;box-shadow:4px 4px 0 var(--ink)!important}
+.offline-badge{background:var(--g-cyan)!important;color:var(--ink)!important;border:3px solid var(--ink)!important;border-radius:99px!important}
+.save-state{color:var(--ink)!important;font-weight:700}
+/* ---------- หัวข้อ ---------- */
+h1,h2,h3,h4{color:var(--ink);text-shadow:none!important}
+h1{letter-spacing:0!important}
+.eyebrow,.tag{display:inline-block;background:var(--g-yellow)!important;color:var(--ink)!important;border:3px solid var(--ink)!important;border-radius:4px!important;padding:2px 12px!important;box-shadow:3px 3px 0 var(--ink);transform:rotate(-1.5deg);font-weight:800;letter-spacing:.04em}
+.crumbs,.crumbs a,.crumbs span{color:var(--ink)!important;font-weight:700}
+.muted,.inline-note,.export-note{color:var(--muted)!important}
+.section-head h2,.section-head h3{display:inline-block;background:var(--ink);color:#fff!important;padding:2px 18px;transform:skewX(-8deg);border:0;box-shadow:6px 6px 0 var(--g-pink)}
+.section-head p{color:var(--ink)!important}
+/* ---------- การ์ดและกระดาษ ---------- */
+.paper,.card,.callout,.portfolio-item,.self-check,.mission,.pf-chap,.pf-quest,.work-rubric,.study-index,.gate-card,.module-bottom{background:#fff!important;color:var(--ink)!important;border:4px solid var(--ink)!important;border-radius:6px!important;box-shadow:8px 8px 0 var(--ink)!important}
+.paper{background-image:radial-gradient(rgba(14,21,48,.07) 1.2px,transparent 1.5px)!important;background-size:14px 14px!important}
+.callout{background:var(--g-yellow)!important;box-shadow:5px 5px 0 var(--ink)!important}
+.callout.gold{background:#fff1a8!important}
+.paper p,.paper li,.paper dd,.paper dt,.card p{color:var(--ink)!important}
+.mission{transition:transform .12s cubic-bezier(.3,1.6,.5,1),box-shadow .12s;overflow:hidden}
+.mission:hover{transform:translate(-3px,-3px) rotate(-.4deg);box-shadow:11px 11px 0 var(--g-pink)!important}
+.mission-cover{border-bottom:4px solid var(--ink)!important;background-image:radial-gradient(rgba(14,21,48,.25) 1.4px,transparent 1.7px);background-size:12px 12px}
+.sector-no{background:var(--g-yellow)!important;color:var(--ink)!important;border:3px solid var(--ink)!important;box-shadow:3px 3px 0 var(--ink);transform:rotate(-4deg)}
+.mission-body,.mission-body h3,.mission-body p,.mission .desc,.mission .label{color:var(--ink)!important}
+.progress,.pf-bar{background:#fff!important;border:3px solid var(--ink)!important;border-radius:99px!important}
+.progress i,.progress span{background:repeating-linear-gradient(-45deg,var(--g-pink) 0 10px,#ff6aa9 10px 20px)!important}
+.pf-bar{background:#fff!important}.pf-bar i{background:repeating-linear-gradient(-45deg,var(--g-pink) 0 10px,#ff6aa9 10px 20px)!important}
+/* ---------- แบนเนอร์หลัก ---------- */
+.hero{background:var(--c-blue)!important;background-image:radial-gradient(rgba(255,255,255,.22) 1.4px,transparent 1.7px)!important;background-size:14px 14px!important;color:#fff!important;border:5px solid var(--ink)!important;border-radius:6px!important;box-shadow:12px 12px 0 var(--ink)!important;overflow:hidden;position:relative}
+.hero::after{content:"";position:absolute;right:46%;top:-10%;bottom:-10%;width:26px;background:var(--g-pink);border-inline:4px solid var(--ink);transform:skewX(-14deg);pointer-events:none;opacity:.9}
+.hero>*{position:relative;z-index:1}
+.hero h1,.hero p,.hero .lead,.hero .subject,.hero-meta,.hero-meta *{color:#fff!important;text-shadow:3px 3px 0 var(--ink)!important}
+.hero h1 span{color:var(--g-yellow)!important;-webkit-text-stroke:2px var(--ink);paint-order:stroke fill;text-shadow:5px 5px 0 var(--g-pink)!important}
+.hero .eyebrow{color:var(--ink)!important;text-shadow:none!important}
+.cosmos-cover,.chapter-cover-img{border:5px solid var(--ink)!important;border-radius:6px!important;box-shadow:8px 8px 0 var(--ink)!important}
+.role-panel{background:var(--g-yellow)!important;color:var(--ink)!important;border:4px solid var(--ink)!important;border-radius:6px!important;box-shadow:6px 6px 0 var(--ink)!important}
+.role-panel strong,.role-panel p,.role-panel small,.role-panel .on-dark{color:var(--ink)!important;text-shadow:none!important}
+.project-banner{background:var(--ink)!important;color:#fff!important;border:5px solid var(--ink)!important;border-radius:6px!important;box-shadow:8px 8px 0 var(--g-cyan)!important}
+.project-banner h3,.project-banner p,.project-banner .eyebrow+h3{color:#fff!important}
+.chapter-hero{background:var(--g-cyan)!important;background-image:radial-gradient(rgba(14,21,48,.2) 1.4px,transparent 1.7px)!important;background-size:12px 12px!important;color:var(--ink)!important;border:5px solid var(--ink)!important;border-radius:6px!important;box-shadow:8px 8px 0 var(--ink)!important}
+.chapter-hero h1,.chapter-hero h2,.chapter-hero p,.chapter-hero small,.chapter-hero span{color:var(--ink)!important;text-shadow:none!important}
+.chapter-hero .eyebrow{color:var(--ink)!important}
+/* ---------- ปุ่ม (b3d: กดแล้วยุบ) ---------- */
+.btn,button.btn,a.btn{background:var(--g-yellow)!important;color:var(--ink)!important;border:4px solid var(--ink)!important;border-radius:6px!important;box-shadow:6px 6px 0 var(--ink)!important;font-weight:800;text-shadow:none!important;transition:transform .1s,box-shadow .1s}
+.btn:hover{transform:translate(-2px,-2px) rotate(-1deg);box-shadow:8px 8px 0 var(--ink)!important}
+.btn:active{transform:translate(5px,5px);box-shadow:1px 1px 0 var(--ink)!important}
+.btn.green{background:var(--g-pink)!important;color:#fff!important}
+.btn.secondary{background:#fff!important}
+.btn.ghost{background:#fff!important;color:var(--ink)!important}
+.btn.small{box-shadow:4px 4px 0 var(--ink)!important}
+.tabs{border:0!important;gap:8px;flex-wrap:wrap}
+.tabs button,.tabs a{background:#fff!important;color:var(--ink)!important;border:3px solid var(--ink)!important;border-radius:6px!important;box-shadow:3px 3px 0 var(--ink);font-weight:800}
+.tabs .current,.tabs button.current,.tabs a.current{background:var(--ink)!important;color:#fff!important;box-shadow:4px 4px 0 var(--g-pink)!important;transform:rotate(-1deg)}
+.badge-status,.pill,.chip-t,.pf-count,.pf-lv{border:3px solid var(--ink)!important;border-radius:99px!important;box-shadow:2px 2px 0 var(--ink);color:var(--ink)!important}
+.chapter-number{background:var(--g-pink)!important;color:#fff!important;border:3px solid var(--ink)!important;box-shadow:3px 3px 0 var(--ink);clip-path:none!important;transform:rotate(-5deg)}
+/* ---------- บทเรียน ---------- */
+.lesson h2{display:inline-block;background:var(--ink);color:#fff!important;padding:2px 18px;transform:skewX(-6deg);box-shadow:6px 6px 0 var(--g-pink)}
+.lesson h3{border-left:12px solid var(--g-pink)}
+.study-index a{border:3px solid transparent;border-radius:6px;color:var(--ink)!important;font-weight:700}
+.study-index a:hover{background:var(--g-yellow);border-color:var(--ink)}
+.glossary>div{background:#fff8dc;border:3px solid var(--ink);border-radius:6px;box-shadow:3px 3px 0 var(--ink)}
+.glossary dt{color:var(--ink)!important}
+.lesson-fig,.lesson-fig img,.image-slot{border:4px solid var(--ink)!important;border-radius:6px!important;box-shadow:6px 6px 0 var(--ink)!important}
+.lesson-fig figcaption{background:var(--g-yellow);color:var(--ink);border-top:4px solid var(--ink);font-weight:700}
+.kw{background:var(--g-yellow)!important;color:var(--ink)!important;border:2px solid var(--ink);border-radius:4px;padding:0 5px;box-shadow:2px 2px 0 var(--ink)}
+.steps li::before{background:var(--g-pink)!important;color:#fff!important;border:3px solid var(--ink)!important;box-shadow:2px 2px 0 var(--ink)}
+/* ---------- ด่านฝึก / ฟอร์ม ---------- */
+.prac-ctx{background:var(--g-yellow)!important;border:4px solid var(--ink)!important;border-left:12px solid var(--g-pink)!important;border-radius:6px!important;box-shadow:5px 5px 0 var(--ink)}
+.prac-q{background:transparent!important}
+.opt,.battle-opts .opt{background:#fff!important;color:var(--ink)!important;border:4px solid var(--ink)!important;border-radius:6px!important;box-shadow:5px 5px 0 var(--ink)!important}
+input,textarea,select{background:#fff!important;color:var(--ink)!important;border:4px solid var(--ink)!important;border-radius:6px!important;box-shadow:4px 4px 0 var(--ink)}
+input:focus,textarea:focus,select:focus{outline:4px solid var(--c-blue);outline-offset:2px}
+table{border:4px solid var(--ink)!important;border-radius:6px;box-shadow:6px 6px 0 var(--ink)}
+th{background:var(--ink)!important;color:#fff!important}
+td{color:var(--ink)!important}
+/* ---------- ข้อมูลของฉัน ---------- */
+.pf-hero{background:var(--c-blue)!important;background-image:radial-gradient(rgba(255,255,255,.22) 1.4px,transparent 1.7px)!important;background-size:14px 14px!important;border:5px solid var(--ink)!important;border-radius:6px!important;box-shadow:12px 12px 0 var(--ink)!important}
+.pf-id h1,.pf-id p,.pf-id small,.pf-wp{color:#fff!important;text-shadow:3px 3px 0 var(--ink)!important}
+.pf-id .eyebrow{color:var(--ink)!important;text-shadow:none!important}
+.pf-rank b{color:var(--g-yellow)!important;-webkit-text-stroke:1.5px var(--ink);paint-order:stroke fill}
+.pf-lv{background:var(--g-pink)!important;color:#fff!important}
+.pf-avatar{background:#fff8dc!important;border:5px solid var(--ink)!important;box-shadow:6px 6px 0 var(--g-yellow)}
+.pf-stat{border-radius:6px!important;transition:transform .12s}
+.pf-stat:nth-child(odd){transform:rotate(-1deg)}.pf-stat:nth-child(even){transform:rotate(1deg)}
+.pf-quest{box-shadow:5px 5px 0 var(--ink)!important}
+.pf-quest.ok{background:#d9fbe4!important}
+.pf-reward.got,.pf-item.got{background:var(--g-yellow)!important}
+.pf-item{border-radius:6px!important}
+.pf-item small,.pf-reward small{color:var(--muted)!important}
+.pf-item.got small,.pf-reward.got small{color:var(--ink)!important}
+/* ---------- ตัวอักษรบนพื้นมืดที่ยังคงไว้ ---------- */
+.sim,.sim *,.arena,.arena *{text-shadow:none}
+.sim{border-radius:6px!important}
+footer,.footer,#footer{background:var(--ink)!important;color:#fff!important;border-top:5px solid var(--g-pink)}
+footer *,.footer *,#footer *{color:#fff!important}
+::selection{background:var(--g-pink);color:#fff}
+@media(max-width:700px){.hero{box-shadow:7px 7px 0 var(--ink)!important}.hero::after{display:none}.paper,.card{box-shadow:5px 5px 0 var(--ink)!important}}
+.study-index strong,.study-index small,.sector-no,.sector-no *{color:var(--ink)!important}
+.study-index strong{display:inline-block;background:var(--g-yellow);border:3px solid var(--ink);padding:0 10px;box-shadow:3px 3px 0 var(--ink);transform:rotate(-1.5deg)}
+.chapter-hero .eyebrow{display:inline-block!important;width:auto!important}
+.pf-chap h3,.pf-chap small,.pf-chap header *,.pf-quest h3,.pf-quest p,.pf-quest small,.pf-item b,.pf-reward b,.pf-stat b,.pf-stat small{color:var(--ink)!important}
+.pf-sec h2{color:var(--ink)!important}
+
+/* ===== จังหวะระยะห่างและเลเอาต์ (เดสก์ท็อป) ===== */
+#main{max-width:1240px;margin-inline:auto;padding-top:26px}
+#main>section,#main>.paper,#main>div.paper{margin-block:0 28px}
+.hero{margin-bottom:26px!important;padding:clamp(22px,3vw,40px)!important}
+.role-panel{margin-bottom:28px!important;padding:16px 20px!important}
+.section-head{margin:34px 0 18px!important}
+.section-head h2{font-size:clamp(26px,2.6vw,34px)}
+.missions{gap:22px!important}
+.mission-body{padding:16px 18px 18px!important;display:grid;gap:8px}
+.mission-body h3{margin:0!important;font-size:26px!important;line-height:1.25}
+.mission-body .desc{margin:0!important;font-size:20px!important;line-height:1.5}
+.paper{padding:clamp(18px,2.4vw,32px)!important;margin-bottom:26px}
+.paper h2{margin:0 0 14px!important}
+.paper h3{margin:22px 0 10px!important}
+.paper p{margin:0 0 14px}
+.lesson{margin-bottom:34px!important}
+.card{padding:16px 18px;margin-bottom:16px}
+.tabs{margin:14px 0 22px!important}
+.tabs button,.tabs a{padding:6px 16px!important;font-size:21px!important}
+.work-layout,.study-layout{gap:26px!important}
+.crumbs{margin:0 0 14px!important;font-size:20px}
+.btn{padding:10px 22px!important}
+.btn.small{padding:6px 14px!important;font-size:20px!important}
+.module-bottom,.work-actions,.hero-actions,.tools-flex{display:flex;flex-wrap:wrap;gap:12px}
+.module-bottom{padding:14px 16px!important;margin-top:20px}
+
+/* ===== มือถือ ===== */
+@media(max-width:700px){
+body{font-size:18px!important;line-height:1.55}
+#main{padding:14px 12px 56px!important}
+.topbar{padding:8px 12px 10px!important;gap:6px!important;flex-wrap:wrap;position:static!important}
+.brand{gap:8px}.brand strong{font-size:17px!important}.brand small{display:none!important}
+.brand-mark{width:34px!important;height:34px!important;font-size:18px}
+.topbar nav{display:flex;gap:6px;width:100%;overflow-x:auto;padding:2px 2px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.topbar nav::-webkit-scrollbar{display:none}
+nav a,.nav-btn{flex:none;padding:5px 11px!important;font-size:16px!important;line-height:1.3!important;min-height:38px;display:inline-flex;align-items:center;white-space:nowrap}
+.nav-label{display:none!important}
+.save-state{display:none!important}
+.hero{display:grid!important;grid-template-columns:1fr!important;gap:14px!important;padding:16px!important;border-width:4px!important}
+.hero h1{font-size:clamp(30px,9vw,40px)!important;line-height:1.15!important;margin:6px 0 8px!important}
+.hero .subject{font-size:20px!important;margin:0!important}
+.hero .lead,.hero p{font-size:17px!important;line-height:1.5!important}
+.hero .eyebrow,.eyebrow,.tag{font-size:14px!important;padding:1px 10px!important}
+.hero-actions .btn{flex:1 1 140px;justify-content:center;font-size:17px!important;padding:8px 12px!important}
+.hero-meta{display:grid!important;grid-template-columns:repeat(3,1fr);gap:6px!important;font-size:14px!important}
+.hero-meta>*{padding:0 4px!important}
+.cosmos{transform:none!important;margin:0!important;order:-1}
+.cosmos-cover,.home-cover-img{max-height:190px;object-fit:cover;width:100%}
+.cover-tag{font-size:13px!important;padding:2px 10px!important}
+.role-panel{flex-direction:column;align-items:stretch!important;padding:12px 14px!important;gap:10px}
+.role-panel .btn{flex:1;justify-content:center}
+.role-panel small{font-size:16px!important}
+.path{display:flex!important;gap:8px;overflow-x:auto;padding:4px 2px 10px;scroll-snap-type:x proximity}
+.path>*{flex:0 0 118px;scroll-snap-align:start;font-size:14px!important;padding:6px!important}
+.section-head{margin:24px 0 12px!important}
+.section-head h2{font-size:22px!important;padding:2px 12px}
+.section-head p{font-size:16px!important}
+.missions{grid-template-columns:1fr!important;gap:16px!important}
+.mission-cover{height:150px!important}
+.mission-cover-img{height:150px;object-fit:cover}
+.mission-body{padding:12px 14px 14px!important}
+.mission-body h3{font-size:21px!important}.mission-body .desc{font-size:16.5px!important}
+.project-banner{padding:16px!important;flex-direction:column;align-items:stretch!important}
+.project-banner h3{font-size:22px}.project-banner p{font-size:16px}
+.chapter-hero{padding:12px 14px!important;display:grid!important;grid-template-columns:1fr 84px;gap:10px;align-items:center}
+.chapter-hero h1,.chapter-hero h2{font-size:22px!important;margin:4px 0 0!important}
+.chapter-cover-img{width:84px!important;height:64px!important;object-fit:cover}
+.chapter-hero .eyebrow{font-size:12px!important}
+.tabs{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;gap:6px!important;margin:10px -12px 14px!important;padding:2px 12px 8px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button,.tabs a{flex:none;font-size:16px!important;padding:5px 12px!important;white-space:nowrap}
+.paper{padding:14px!important;box-shadow:5px 5px 0 var(--ink)!important;border-width:3px!important;margin-bottom:18px}
+.paper h2,.lesson h2{font-size:22px!important}
+.lesson h3{font-size:19px!important;border-left-width:8px!important}
+.paper p,.paper li{font-size:17.5px!important;line-height:1.6!important}
+.study-layout{grid-template-columns:1fr!important;gap:14px!important}
+.study-index{position:static!important;display:flex!important;flex-wrap:wrap;gap:6px;padding:10px!important}
+.study-index a{font-size:15px!important;padding:3px 10px!important}
+.study-index small,.study-index hr{display:none}
+.glossary{grid-template-columns:1fr!important}
+.work-layout{grid-template-columns:1fr!important}
+.work-actions .btn,.module-bottom .btn{flex:1 1 100%;justify-content:center}
+.callout{padding:10px 12px!important;font-size:17px}
+.card{padding:12px!important}
+.prac-q{font-size:21px!important;border-left-width:8px!important;padding-left:10px!important}
+.prac-ctx{font-size:16.5px!important;padding:9px 12px!important}
+.opt{padding:10px 12px!important;font-size:18px!important}
+.battle-opts{grid-template-columns:1fr!important}
+.btn{font-size:17px!important;padding:8px 14px!important;min-height:44px}
+input,textarea,select{font-size:17px!important}
+.portfolio-item{grid-template-columns:auto 1fr!important}.portfolio-item .btn{grid-column:1/-1}
+.sim-head h3{font-size:22px!important}.sim-head p{font-size:16px!important}
+.sim-read,.sim-goals li,.sim-rg{font-size:17px!important}
+.sim-b{font-size:17px!important;padding:6px 12px}
+table{font-size:15px}
+.pf-hero{padding:16px!important;gap:12px!important}
+.pf-id h1{font-size:30px!important}.pf-id p{font-size:17px!important}
+.pf-stat{padding:10px 4px!important}.pf-stat b{font-size:24px!important}.pf-stat small{font-size:14px!important}.pf-stat .pf-ic{font-size:26px!important}
+.pf-quest{padding:10px!important}.pf-q-body h3{font-size:19px!important}.pf-q-body p{font-size:16px!important}
+.pf-item b{font-size:15px!important}
+.pf-chap h3{font-size:19px!important}
+.arena{height:260px!important;min-height:0!important}
+}
+@media(min-width:701px) and (max-width:1000px){
+.missions{grid-template-columns:repeat(2,1fr)!important}
+.hero{grid-template-columns:1fr!important}
+.cosmos{transform:none!important;margin:0!important}
+}
+@media(max-width:700px){
+.topbar{padding:6px 12px 6px!important;gap:2px!important}
+.brand-mark{width:30px!important;height:30px!important}
+.brand{min-height:36px}
+nav a,.nav-btn{min-height:36px;padding:3px 10px!important}
+.topbar nav{padding:2px 2px 4px}
+.crumbs a,.tag{display:inline-flex;align-items:center;min-height:36px}
+.chapter-hero .eyebrow,.hero .eyebrow,.cover-tag{font-size:13px!important}
+.pf-chaps{gap:12px!important}
+.pf-chap{padding:10px!important;gap:8px!important}
+.pf-chap header{grid-template-columns:auto 1fr!important}.pf-chap header .starbox{grid-column:1/-1}
+.pf-items{grid-template-columns:repeat(4,1fr)!important;gap:5px!important}
+.pf-item{padding:6px 2px!important}.pf-item small{display:none}.pf-item b{font-size:13px!important}.pf-item .pf-item-ic{font-size:28px!important}
+.pf-chap .btn{width:100%;justify-content:center}
+.pf-quests{gap:10px!important}
+.pf-quest{grid-template-columns:34px 1fr!important}.pf-q-ic{font-size:28px!important}
+.pf-reward{padding:4px 8px!important}.pf-reward span{font-size:24px!important}.pf-reward small{display:none}
+.pf-stats{gap:8px!important}
+}
+
+/* ===== พื้นหลังหนังสือการ์ตูน + สภาพแวดล้อมดาวพฤกษากลไก (เขียวหินทอง) ===== */
+:root{--leaf:#2fa862;--moss:#1f6f4a;--forest:#0f4a37;--mint:#dff3d2;--gold:#ffd400}
+body{background-color:#dff3d2!important;
+ background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22420%22%20height%3D%22420%22%20viewBox%3D%220%200%20420%20420%22%3E%0A%3Cg%20fill%3D%22none%22%20stroke%3D%22%231f6f4a%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%20opacity%3D%22.30%22%3E%0A%3Cpath%20d%3D%22M60%2090c30-50%2080-50%20100-10-30%2040-80%2050-100%2010z%22/%3E%3Cpath%20d%3D%22M62%2088c30%200%2060-10%2096-8%22/%3E%0A%3Cpath%20d%3D%22M300%20300c40-40%2080-30%2090%2010-30%2040-70%2040-90-10z%22/%3E%3Cpath%20d%3D%22M302%20302c30-5%2055-12%2086%206%22/%3E%0A%3Ccircle%20cx%3D%22320%22%20cy%3D%2290%22%20r%3D%2222%22/%3E%3Ccircle%20cx%3D%22320%22%20cy%3D%2290%22%20r%3D%228%22/%3E%3Cpath%20d%3D%22M320%2062v-12M320%20118v12M292%2090h-12M348%2090h12M300%2070l-8-8M340%20110l8%208M340%2070l8-8M300%20110l-8%208%22/%3E%0A%3Ccircle%20cx%3D%22110%22%20cy%3D%22320%22%20r%3D%2230%22/%3E%3Ccircle%20cx%3D%22110%22%20cy%3D%22320%22%20r%3D%2211%22/%3E%3Cpath%20d%3D%22M110%20282v-14M110%20358v14M72%20320H58M148%20320h14M83%20293l-10-10M137%20347l10%2010M137%20293l10-10M83%20347l-10%2010%22/%3E%0A%3C/g%3E%0A%3Cg%20fill%3D%22%23ffd400%22%20stroke%3D%22%230e1530%22%20stroke-width%3D%222.5%22%20opacity%3D%22.55%22%3E%0A%3Cpath%20d%3D%22M210%2040l7%2016%2017%202-13%2011%204%2017-15-9-15%209%204-17-13-11%2017-2z%22/%3E%0A%3Cpath%20d%3D%22M30%20230l5%2011%2012%201-9%208%203%2012-11-6-11%206%203-12-9-8%2012-1z%22/%3E%0A%3Cpath%20d%3D%22M390%20200l5%2011%2012%201-9%208%203%2012-11-6-11%206%203-12-9-8%2012-1z%22/%3E%0A%3Cpath%20d%3D%22M230%20370l4%209%2010%201-7%206%202%2010-9-5-9%205%202-10-7-6%2010-1z%22/%3E%3C/g%3E%0A%3Cg%20fill%3D%22%231f6f4a%22%20opacity%3D%22.28%22%3E%3Ccircle%20cx%3D%22190%22%20cy%3D%22210%22%20r%3D%223%22/%3E%3Ccircle%20cx%3D%22260%22%20cy%3D%22170%22%20r%3D%222.5%22/%3E%3Ccircle%20cx%3D%22150%22%20cy%3D%22150%22%20r%3D%222%22/%3E%3Ccircle%20cx%3D%22350%22%20cy%3D%22250%22%20r%3D%223%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22380%22%20r%3D%222.5%22/%3E%3Ccircle%20cx%3D%22400%22%20cy%3D%22400%22%20r%3D%222%22/%3E%3C/g%3E%0A%3C/svg%3E"),repeating-conic-gradient(from 200deg at 100% 0%,#d3edc3 0 6deg,#e6f7da 6deg 12deg)!important;
+ background-attachment:fixed,fixed!important;background-size:420px 420px,auto!important}
+body::before{background-image:radial-gradient(rgba(15,74,55,.18) 1.5px,transparent 1.8px)!important;background-size:14px 14px!important;z-index:0!important}
+/* ดาวเคราะห์มีวงแหวนมุมขวาบน ตกแต่งแบบปกหนังสือ */
+body::after{content:"";position:fixed;right:-120px;top:-120px;width:380px;height:380px;border-radius:50%;pointer-events:none;z-index:0;
+ background:radial-gradient(circle at 35% 30%,#8fe3a8 0,#2fa862 45%,#0f4a37 100%);border:5px solid #0e1530;box-shadow:10px 10px 0 rgba(14,21,48,.25);opacity:.9}
+#main,#header,.topbar{position:relative;z-index:1}
+.topbar{box-shadow:0 6px 0 var(--leaf)!important;border-bottom-color:var(--ink)!important}
+.eyebrow,.tag{background:var(--gold)}
+.section-head h2,.lesson h2,.study-index strong{box-shadow:6px 6px 0 var(--leaf)!important}
+.tabs .current,.tabs button.current,.tabs a.current{box-shadow:4px 4px 0 var(--leaf)!important}
+.mission:hover{box-shadow:11px 11px 0 var(--leaf)!important}
+.hero,.pf-hero{background-color:#1f8a5b!important;background-image:radial-gradient(rgba(255,255,255,.2) 1.4px,transparent 1.7px)!important}
+.hero::after{background:var(--gold)!important}
+.chapter-hero{background-color:#7fdc9c!important}
+.role-panel{background:#fff!important}
+.project-banner{box-shadow:8px 8px 0 var(--leaf)!important}
+.pf-lv{background:var(--g-pink)!important}
+.pf-avatar{box-shadow:6px 6px 0 var(--gold)}
+@media(max-width:700px){body::after{width:230px;height:230px;right:-90px;top:-90px}body{background-size:300px 300px,auto!important}}
+
+/* ===== สีปุ่ม: ต้องเด่นจากพื้นที่ปุ่มวางอยู่เสมอ ===== */
+.btn.secondary,button.btn.secondary,a.btn.secondary{background:var(--g-cyan)!important;color:var(--ink)!important}
+.btn.ghost{background:#fff!important}
+.btn.green{background:var(--g-pink)!important;color:#fff!important}
+.role-panel{background:var(--gold)!important}
+.role-panel .btn.green{background:var(--g-pink)!important}
+.callout .btn,.prac-ctx .btn,.role-panel .btn:not(.green):not(.ghost){background:#fff!important}
+.chapter-hero .btn,.hero .btn.ghost{background:#fff!important}
+.tabs button,.tabs a{background:#cfe6ff!important}
+.tabs .current,.tabs button.current,.tabs a.current{background:var(--ink)!important}
+.tabs button:hover,.tabs a:hover{background:var(--gold)!important}
+.chip{background:#fff1a8!important;border:3px solid var(--ink)!important;color:var(--ink)!important}
+.opt{background:#fff!important}
+.opt:hover{background:#fff1a8!important}
+.sim-b{background:#fff!important}
+.project-banner .btn{background:var(--gold)!important}
+.btn:disabled,.btn[disabled]{background:#d8dde8!important;color:#6b7590!important;box-shadow:3px 3px 0 #8a93a8!important;border-color:#8a93a8!important}
+.tabs button,.tabs a{background:var(--gold)!important}
+.tabs button:hover,.tabs a:hover{background:#fff!important}
+.tabs .current,.tabs button.current,.tabs a.current{background:var(--ink)!important;color:#fff!important}
+
+/* ===== ระยะห่างปุ่มและแถวปุ่ม ===== */
+.lg-card{background:#fff!important;border-radius:6px!important;box-shadow:10px 10px 0 var(--leaf)!important;gap:22px!important}
+.lg-form{display:grid;gap:12px}
+.lg-form h2{margin:0!important}
+.lg-form input{font-size:30px;text-align:center;letter-spacing:.4em;padding:12px!important;width:100%}
+.lg-form .err{min-height:26px;margin:0!important}
+.lg-form .field-help{margin:0!important;font-size:19px}
+.lg-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px}
+.lg-actions .btn{flex:1 1 150px;justify-content:center;text-align:center}
+.lg-actions .btn.green{flex:2 1 200px}
+.lg-guest{gap:14px!important;padding-top:18px!important;margin-top:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;line-height:1.25}
+.btn+.btn,.btn+button,button+.btn,a.btn+a.btn{margin-left:0}
+.field-grid,.teacher-tools,.work-actions,.module-bottom,.hero-actions,.tools-flex,.prac-actions,.role-panel .tools-flex{gap:14px!important}
+.flex-between{gap:16px;flex-wrap:wrap}
+.paper .btn,.card .btn{margin-top:6px}
+.paper .work-actions .btn,.paper .module-bottom .btn,.paper .tools-flex .btn,.paper .hero-actions .btn,.lg-actions .btn{margin-top:0}
+form .btn[type=submit]{margin-top:4px}
+@media(max-width:700px){.lg-actions{flex-direction:column-reverse}.lg-actions .btn,.lg-actions .btn.green{flex:none;width:100%}.lg-form input{font-size:26px}.lg-card{padding:16px!important;gap:16px!important}.lg-guest{flex-direction:column;align-items:stretch}.lg-guest>span{text-align:center}}
+.staff-card{grid-template-columns:1fr!important;grid-template-areas:"top" "form"!important;max-width:600px;margin-inline:auto}
+.staff-card .lg-form{grid-area:form!important;grid-column:auto!important;width:100%}
+.staff-card .lg-top{justify-content:center}
+
+/* ===== หน้าครู: เมนูข้างกระชับ และหัวเรื่องอ่านออก ===== */
+.teacher-shell{grid-template-columns:230px minmax(0,1fr)!important;gap:24px!important;align-items:start}
+.teacher-shell h1,.teacher-shell>div>h1{color:var(--ink)!important;margin:6px 0 14px!important;font-size:clamp(28px,3vw,38px)}
+.teacher-shell>div>p{color:var(--ink)!important}
+.teacher-side{display:grid!important;gap:8px!important;padding:14px!important;background:var(--gold)!important;border:4px solid var(--ink)!important;border-radius:6px!important;box-shadow:6px 6px 0 var(--ink)!important;position:static!important;height:auto!important}
+.teacher-side>a{display:block!important;padding:8px 12px!important;min-height:0!important;font:700 20px/1.3 var(--display)!important;background:#fff!important;color:var(--ink)!important;border:3px solid var(--ink)!important;border-radius:6px!important;box-shadow:3px 3px 0 var(--ink)}
+.teacher-side>a:hover{background:#fff1a8!important;transform:translate(-1px,-1px)}
+.teacher-side>a.current{background:var(--ink)!important;color:#fff!important;box-shadow:3px 3px 0 var(--g-pink)}
+.teacher-side .eyebrow{justify-self:start;margin-bottom:2px}
+.teacher-side .btn{margin-top:6px!important;width:100%}
+.btn.danger{background:var(--red,#ff3b3b)!important;color:#fff!important}
+@media(max-width:900px){.teacher-shell{grid-template-columns:1fr!important}.teacher-side{display:flex!important;flex-wrap:wrap;gap:8px!important}.teacher-side>a{flex:1 1 auto;font-size:17px!important;padding:6px 10px!important}.teacher-side .btn{width:auto;flex:1 1 100%}}
+.lg-form input::placeholder{letter-spacing:.05em;font-size:22px}
+
+/* ===== รอบกระชับระยะห่าง: จังหวะเดียวกันทั้งเว็บ (ช่องไฟเล็ก 8 · กลาง 14 · ใหญ่ 20) ===== */
+body{line-height:1.5!important}
+#main{padding-top:18px!important}
+.crumbs{margin:0 0 10px!important}
+.hero{padding:26px 30px!important;gap:22px!important;margin-bottom:18px!important}
+.hero h1{font-size:clamp(38px,4.4vw,56px)!important;line-height:1.12!important;margin:6px 0 8px!important}
+.hero .subject{font-size:clamp(21px,2vw,25px)!important;margin:0 0 6px!important}
+.hero .lead{font-size:clamp(18px,1.7vw,22px)!important;line-height:1.5!important;margin:0 0 12px!important}
+.hero-actions{margin:12px 0 14px!important}
+.hero-meta{margin:0!important;gap:0!important}
+.hero-meta>*{padding:2px 12px!important;line-height:1.35!important;font-size:18px!important}
+.role-panel{padding:12px 18px!important;margin-bottom:18px!important}
+.role-panel p{margin:2px 0 0!important}
+.path{margin-bottom:20px!important;gap:8px!important}
+.path a{padding:8px 6px!important;line-height:1.3!important}
+.section-head{margin:22px 0 12px!important;display:grid;gap:4px}
+.section-head p{margin:0!important;line-height:1.5!important;font-size:20px!important}
+.missions{gap:18px!important;margin-bottom:20px!important}
+.mission-cover{height:180px!important}
+.mission-cover-img{height:180px!important;object-fit:cover}
+.mission-body{padding:12px 16px 14px!important;gap:4px!important}
+.mission-body h3{font-size:24px!important}
+.mission-body .desc{line-height:1.45!important;font-size:19px!important}
+.mission .progress{margin:6px 0!important}
+.project-banner{padding:18px 24px!important;gap:20px!important;margin-bottom:18px!important}
+.project-banner h3{margin:4px 0 6px!important}
+.project-banner p{margin:0!important;line-height:1.5}
+.chapter-hero{padding:16px 22px!important;margin-bottom:14px!important;gap:6px 20px!important}
+.chapter-hero h1{font-size:clamp(28px,3vw,38px)!important;margin:4px 0 4px!important}
+.chapter-hero p{margin:0!important;line-height:1.45!important;font-size:21px!important}
+.tabs{margin:10px 0 16px!important}
+.paper{padding:clamp(16px,2vw,24px)!important;margin-bottom:18px!important}
+.paper h2{margin:0 0 10px!important}
+.paper h3{margin:16px 0 8px!important}
+.paper p{margin:0 0 10px!important;line-height:1.55!important}
+.paper ul,.paper ol{margin:6px 0 12px!important}
+.paper li{margin-bottom:4px}
+.lesson{margin-bottom:22px!important}
+.lesson .intro{margin:0 0 8px!important}
+.glossary{gap:10px!important;margin:10px 0 14px!important}
+.glossary>div{padding:8px 12px!important}
+.glossary dd{margin:2px 0 0!important}
+.lesson-fig,.image-slot{margin:14px 0!important}
+.callout{margin:12px 0!important;padding:10px 14px!important}
+.callout p{margin:0 0 6px!important}
+.self-check{margin:14px 0!important;padding:14px 16px!important}
+.module-bottom{margin-top:14px!important}
+.grid2,.study-layout,.work-layout{gap:18px!important}
+.card{padding:12px 16px!important;margin-bottom:12px!important}
+.sim{margin:20px 0!important}
+.work-form{gap:12px!important}
+.work-form label{gap:4px}
+.work-actions{margin-top:12px!important}
+.teacher-shell{gap:18px!important}
+.pf-hero{padding:18px 22px!important;margin:10px 0 14px!important}
+.pf-stats{margin-bottom:14px!important;gap:10px!important}
+.pf-sec{margin-bottom:14px!important}
+.pf-quests,.pf-chaps{gap:10px!important;margin-top:8px!important}
+.pf-quest{padding:10px 14px!important}
+.pf-chap{padding:12px!important;gap:10px!important}
+.lg-card{padding:20px 24px!important;gap:16px!important}
+@media(max-width:700px){
+.hero{padding:14px!important;gap:10px!important}
+.hero h1{font-size:clamp(28px,8.4vw,36px)!important}
+.mission-cover,.mission-cover-img{height:130px!important}
+.paper{padding:12px!important;margin-bottom:14px!important}
+.section-head{margin:16px 0 10px!important}
+.path a{padding:6px!important}
+}
+.eyebrow{margin-bottom:6px!important}
+.section-head p{max-width:none!important}
+.section-head p br{display:none}
+.section-head>div{display:grid;gap:4px;justify-items:start}
+.paper h1{margin:4px 0 8px!important;font-size:clamp(28px,3vw,36px)!important}
+.portfolio-list{gap:10px!important;margin-top:10px}
+.portfolio-item{margin:0!important}
+.prof-guest p{margin:0 0 12px!important}
+.teacher-shell .paper+.paper,.teacher-shell section+section{margin-top:0}
+td,th{padding:6px 10px!important;line-height:1.35!important;font-size:19px}
+.table-wrap{margin:8px 0 12px}
+.teacher-title{margin-bottom:10px!important}
+.teacher-title h1{margin:2px 0 0!important}
+.stats{gap:10px!important;margin:0 0 14px!important}
+.stats>*{padding:10px 14px!important}
+.field-grid{gap:10px 14px!important;margin:8px 0!important}
+.field-grid label,.teacher-paper label{display:grid;gap:4px;line-height:1.35}
+.teacher-paper{margin-top:0!important}
+
+/* ===== แถบ 7 เขตภารกิจ ===== */
+.path{display:grid!important;grid-template-columns:repeat(7,minmax(0,1fr))!important;gap:12px!important;margin:0 0 20px!important;padding:0!important;overflow:visible!important}
+.path a{display:grid!important;grid-template-rows:auto 1fr auto;gap:8px;padding:0 0 10px!important;min-width:0;background:#fff!important;border:4px solid var(--ink)!important;border-radius:6px!important;box-shadow:5px 5px 0 var(--ink)!important;overflow:hidden;text-align:center;transition:transform .12s cubic-bezier(.3,1.6,.5,1),box-shadow .12s}
+.path a:nth-child(n){transform:none}
+.path a:hover{transform:translate(-3px,-3px)!important;box-shadow:8px 8px 0 var(--g-pink)!important}
+.path a:active{transform:translate(4px,4px)!important;box-shadow:1px 1px 0 var(--ink)!important}
+.pth-img{position:relative;display:block;aspect-ratio:16/10;background:var(--leaf);background-image:radial-gradient(rgba(14,21,48,.25) 1.4px,transparent 1.7px);background-size:10px 10px;border-bottom:4px solid var(--ink);overflow:hidden}
+.pth-img img{width:100%;height:100%;object-fit:cover;display:block}
+.pth-img b{position:absolute;left:6px;top:6px;display:grid;place-items:center;min-width:38px;height:38px;padding:0 4px;margin:0!important;background:var(--g-yellow)!important;color:var(--ink)!important;border:3px solid var(--ink)!important;border-radius:6px!important;box-shadow:3px 3px 0 var(--ink);font:800 21px/1 var(--display);transform:rotate(-6deg)}
+.path a:nth-child(even) .pth-img b{background:var(--g-pink)!important;color:#fff!important;transform:rotate(5deg)}
+.pth-img em{position:absolute;right:6px;top:6px;display:grid;place-items:center;width:30px;height:30px;background:#2fd37a;color:#fff;border:3px solid var(--ink);border-radius:50%;font:800 18px/1 var(--body);font-style:normal}
+.pth-name{padding:0 8px;font:700 18px/1.3 var(--display);color:var(--ink);align-self:center;overflow-wrap:anywhere}
+.pth-bar{display:block;height:12px;margin:0 10px;background:#fff;border:3px solid var(--ink);border-radius:99px;overflow:hidden}
+.pth-bar u{display:block;height:100%;background:repeating-linear-gradient(-45deg,var(--g-pink) 0 8px,#ff6aa9 8px 16px)}
+.path a.done{background:#e4fbe9!important}
+@media(max-width:1000px){.path{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
+@media(max-width:700px){.path{display:flex!important;gap:10px!important;overflow-x:auto!important;margin:0 -12px 16px!important;padding:2px 12px 10px!important;scroll-snap-type:x proximity;scrollbar-width:none}
+.path::-webkit-scrollbar{display:none}
+.path a{flex:0 0 132px!important;scroll-snap-align:start;box-shadow:4px 4px 0 var(--ink)!important}
+.pth-name{font-size:16px}.pth-img b{min-width:32px;height:32px;font-size:18px}}
+.path{align-items:stretch!important;grid-auto-rows:1fr}
+.path a{height:100%;align-content:start}
+.pth-name{min-height:2.6em;display:grid;place-items:center}
+@media(max-width:700px){.path{grid-auto-rows:auto}.path a{height:auto}}
+
+/* ===== หน้าปกเลือกบทบาท: ปกหนังสือการ์ตูน ===== */
+.role-portal{max-width:1180px;margin:0 auto;display:grid;gap:26px}
+.portal-banner{position:relative;display:grid!important;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:30px;align-items:center;padding:34px 36px!important;min-height:0!important;background:#1f8a5b!important;background-image:radial-gradient(rgba(255,255,255,.22) 1.5px,transparent 1.8px)!important;background-size:14px 14px!important;border:5px solid var(--ink)!important;border-radius:6px!important;box-shadow:12px 12px 0 var(--ink)!important;overflow:hidden}
+.portal-banner::before{content:"";position:absolute;right:-6%;top:-12%;width:56%;height:130%;background:#0e1530;transform:skewX(-14deg);z-index:0}
+.portal-banner::after{content:"";position:absolute;right:50%;top:-12%;bottom:-12%;width:26px;background:var(--g-yellow);border-inline:4px solid var(--ink);transform:skewX(-14deg);z-index:0}
+.portal-banner>*{position:relative;z-index:1}
+.portal-banner-text{display:grid!important;gap:8px;justify-items:start}
+.portal-banner .eyebrow{font-size:19px!important;background:var(--g-yellow)!important;color:var(--ink)!important;transform:rotate(-2deg)}
+.portal-subject{margin:4px 0 0!important;display:inline-block;background:var(--ink);color:#fff!important;padding:2px 14px;font:700 22px/1.35 var(--display);transform:skewX(-8deg);box-shadow:4px 4px 0 var(--g-pink)}
+.portal-banner h1{margin:4px 0 4px!important;font-size:clamp(40px,5.2vw,70px)!important;line-height:1.08!important;color:#fff!important;-webkit-text-stroke:2px var(--ink);paint-order:stroke fill;text-shadow:5px 5px 0 var(--ink)!important}
+.portal-banner h1 span{color:var(--g-yellow)!important;text-shadow:5px 5px 0 var(--g-pink)!important}
+.portal-banner-text>p:not(.portal-subject){margin:0!important;font-size:clamp(19px,1.7vw,22px);line-height:1.5;color:#fff!important;text-shadow:2px 2px 0 var(--ink)}
+.portal-chips{display:flex;flex-wrap:wrap;gap:10px!important;margin-top:8px}
+.portal-chips span{padding:4px 16px!important;background:#fff!important;color:var(--ink)!important;border:3px solid var(--ink)!important;border-radius:6px!important;box-shadow:4px 4px 0 var(--ink)!important;font:800 19px/1.3 var(--display)!important}
+.portal-chips span:nth-child(odd){transform:rotate(-2deg)}
+.portal-chips span:nth-child(even){transform:rotate(2deg);background:var(--g-yellow)!important}
+.portal-world{position:relative!important;display:block!important;width:100%!important;height:auto!important;min-height:0!important;padding:10px;background:#fff8dc!important;background-image:radial-gradient(rgba(14,21,48,.18) 1.4px,transparent 1.7px)!important;background-size:10px 10px!important;border:5px solid var(--ink)!important;border-radius:6px!important;box-shadow:10px 10px 0 var(--g-pink)!important;transform:rotate(2deg)}
+.portal-cover-img{display:block;width:100%!important;height:auto!important;aspect-ratio:4/3;object-fit:cover;border:4px solid var(--ink)!important;border-radius:3px!important;box-shadow:none!important;filter:none!important}
+.portal-world::after{content:"ตอนที่ 1";position:absolute;right:-26px;top:-26px;width:94px;height:94px;display:grid;place-items:center;text-align:center;background:var(--g-yellow);color:var(--ink);font:900 19px/1.1 var(--display);transform:rotate(14deg);clip-path:polygon(50% 0,61% 20%,82% 10%,80% 32%,100% 38%,86% 54%,100% 70%,78% 74%,80% 96%,60% 86%,50% 100%,40% 86%,20% 96%,22% 74%,0 70%,14% 54%,0 38%,20% 32%,18% 10%,39% 20%)}
+.portal-world::before{content:"";position:absolute;left:50%;top:-16px;width:110px;height:30px;margin-left:-55px;background:rgba(255,212,0,.85);border:3px solid var(--ink);transform:rotate(-3deg);z-index:2}
+.portal-cover-tag,.portal-art-label{display:none!important}
+.portal-role-area{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;display:grid!important;gap:20px}
+.portal-welcome{position:relative;display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 18px!important;background:#fff!important;color:var(--ink)!important;border:4px solid var(--ink)!important;border-radius:14px!important;box-shadow:6px 6px 0 var(--ink)!important;max-width:760px}
+.portal-welcome::after{content:"";position:absolute;left:46px;bottom:-18px;width:24px;height:18px;background:#fff;border:4px solid var(--ink);border-top:0;border-right:0;clip-path:polygon(0 0,100% 0,0 100%)}
+.portal-welcome *{color:var(--ink)!important}
+.portal-welcome strong{font:800 clamp(22px,2.2vw,28px)/1.25 var(--display)}
+.portal-signal{background:var(--g-yellow)!important;border:3px solid var(--ink)!important;border-radius:50%!important;width:40px;height:40px;display:grid;place-items:center}
+.portal-class{margin-left:auto;padding:2px 14px;background:var(--g-cyan);border:3px solid var(--ink)!important;border-radius:99px;font:800 19px var(--display)}
+.portal-role-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:26px!important;padding-top:44px}
+.portal-role-card{position:relative;display:flex!important;flex-direction:column;align-items:center;gap:6px!important;min-height:0!important;padding:58px 20px 22px!important;text-align:center;color:var(--ink)!important;border:5px solid var(--ink)!important;border-radius:6px!important;box-shadow:9px 9px 0 var(--ink)!important;background-image:radial-gradient(rgba(14,21,48,.16) 1.4px,transparent 1.7px)!important;background-size:11px 11px!important;cursor:pointer;transition:transform .12s cubic-bezier(.3,1.6,.5,1),box-shadow .12s}
+.portal-role-card.student{background-color:var(--g-yellow)!important;transform:rotate(-1.2deg)}
+.portal-role-card.guest{background-color:var(--g-cyan)!important}
+.portal-role-card.teacher{background-color:#ff7ab8!important;transform:rotate(1.2deg)}
+.portal-role-card:hover{transform:translate(-4px,-6px) rotate(0)!important;box-shadow:13px 13px 0 var(--ink)!important}
+.portal-role-card:active{transform:translate(5px,5px)!important;box-shadow:2px 2px 0 var(--ink)!important}
+.portal-role-tag{position:absolute;left:-12px;top:14px;padding:3px 16px!important;background:var(--ink)!important;color:#fff!important;border:0!important;font:800 18px/1.3 var(--display)!important;letter-spacing:.06em;transform:rotate(-4deg);box-shadow:3px 3px 0 #fff}
+.portal-role-avatar{position:absolute;left:50%;top:-40px;margin-left:-60px;width:120px!important;height:120px!important;object-fit:cover;background:#fff!important;border:5px solid var(--ink)!important;border-radius:50%!important;box-shadow:5px 5px 0 var(--ink)}
+.portal-role-card strong{margin-top:58px;font:800 clamp(28px,2.6vw,36px)/1.15 var(--display);color:var(--ink)!important;text-shadow:none!important}
+.portal-role-card em{font-style:normal;font:700 19px/1.3 var(--display);padding:1px 12px;background:#fff;border:3px solid var(--ink);border-radius:99px;color:var(--ink)!important}
+.portal-role-desc{font-size:19px!important;line-height:1.45!important;color:var(--ink)!important;margin:6px 0 10px;flex:1}
+.portal-role-cta{display:inline-flex!important;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 24px!important;background:#fff!important;color:var(--ink)!important;border:4px solid var(--ink)!important;border-radius:6px!important;box-shadow:5px 5px 0 var(--ink)!important;font:800 21px/1 var(--display)!important}
+.portal-role-card.student .portal-role-cta{background:var(--ink)!important;color:var(--g-yellow)!important}
+.portal-role-card:hover .portal-role-cta{box-shadow:7px 7px 0 var(--ink)!important}
+.portal-offline-note{margin:0!important;text-align:center;font:700 17px var(--display);color:var(--ink)!important}
+@media(max-width:900px){.portal-banner{grid-template-columns:1fr;padding:22px 18px!important;gap:22px}.portal-banner::before,.portal-banner::after{display:none}.portal-world{transform:rotate(1deg);margin-inline:6px}.portal-role-grid{grid-template-columns:1fr!important;gap:44px!important;padding-top:34px}.portal-role-card.student,.portal-role-card.teacher{transform:none}.portal-class{margin-left:0}}
+@media(max-width:700px){.portal-banner{box-shadow:7px 7px 0 var(--ink)!important}.portal-banner h1{font-size:clamp(32px,9.5vw,44px)!important}.portal-world::after{width:74px;height:74px;right:-12px;top:-20px;font-size:15px}.portal-role-card{padding-top:52px!important;box-shadow:6px 6px 0 var(--ink)!important}.portal-role-card strong{font-size:28px}.portal-welcome{padding:10px 12px!important}}
+.portal-banner-text{max-width:none!important;width:auto!important}
+.portal-cover-img{opacity:1!important;visibility:visible!important;position:static!important;inset:auto!important;transform:none!important}
+.portal-banner .portal-world{inset:auto!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;margin:0!important;max-width:none!important}
+.portal-banner h1{font-size:clamp(36px,4.3vw,58px)!important}
+.portal-banner h1 br{display:none}
+.role-portal{border:0!important;box-shadow:none!important;background:transparent!important;padding:0 14px 8px!important;overflow:visible!important}
+.portal-role-area{padding:0 6px!important}
+.portal-role-grid{gap:32px!important;padding:46px 8px 14px!important}
+.portal-welcome{margin-left:2px}
+
+/* ===== ห้องจำลองพื้นมืด: คืนสีตัวอักษรให้อ่านออก (กฎ .paper p/li ด้านบนทับสีเดิม) ===== */
+.sim,.sim *{text-shadow:none}
+.sim{color:#fff!important}
+.sim .sim-head h3{color:#fff!important}
+.sim .sim-head p{color:#d9f6e8!important}
+.sim .sim-load{color:#a8f3d4!important}
+.sim .sim-goals li,.sim .sim-goals li span{color:#e2f3ec!important}
+.sim .sim-goals li.on,.sim .sim-goals li.on span{color:#fff!important}
+.sim .sim-meter,.sim .sim-meter span{color:#e6fff6!important}
+.sim .sim-meter b{color:#7dffb0!important}
+.sim .sim-rg,.sim .sim-sw,.sim .sim-sw span,.sim .sim-ctl,.sim .sim-ctl span{color:#f0fff8!important}
+.sim .sim-rg b{color:var(--g-yellow)!important}
+.sim .sim-read,.sim .sim-read p,.sim .sim-read b,.sim .sim-read span{color:var(--ink)!important}
+.sim .sim-read p{color:#1d3a36!important}
+.sim .sim-b{background:#fff!important;color:var(--ink)!important}
+.sim .sim-b small{color:#3b4a66!important}
+.sim .sim-b.on,.sim .sim-b.mat.on{background:var(--g-yellow)!important}
+.sim .sim-b.bad.on{background:#ff9d9d!important}
+.sim .sim-b.big{background:var(--g-pink)!important;color:#fff!important}
+.sim .sim-badge{color:var(--ink)!important}
+.sim .sim-tbl,.sim .sim-tbl td{color:var(--ink)!important}
+.sim .sim-tbl th{color:#fff!important}
+.sim .sim-checks div,.sim .sim-checks div b{color:var(--ink)!important}
+.sim .mut{color:#c7d8d2!important}
+.sim .wm-card,.sim .wm-card *,.sim .dm-row,.sim .dm-row *{color:var(--ink)!important}
+.sim .dm-row .no,.sim .no{color:#b3122e!important}
+.sim .dm-legend{color:#cfe3ee!important}
+.sim .dm-cells{color:#ffb24a!important}
+.sim .tg{color:#0b1d1f!important}
+.sim .bar,.sim .bar *{color:var(--ink)!important}
+.sim .sim-chip{color:var(--ink)!important}
+
+/* ===== แก้ตัวอักษรกลืนพื้น (ตรวจด้วยสคริปต์วัดคอนทราสต์) ===== */
+#main header,.pf-chap header,.paper header,.card header{background:transparent!important;border:0!important;backdrop-filter:none!important;position:static!important}
+.teacher-title p,.teacher-title small{color:var(--ink)!important}
+.lab-menu{background:#fff!important;border:4px solid var(--ink)!important;border-radius:6px!important;box-shadow:6px 6px 0 var(--ink)!important;top:12px!important;padding:10px!important;display:grid;gap:8px}
+.lab-menu button{background:#fff8dc!important;color:var(--ink)!important;border:3px solid var(--ink)!important;border-radius:6px!important;box-shadow:3px 3px 0 var(--ink);font-weight:700;padding:8px 10px!important;font-size:19px!important}
+.lab-menu button span{color:var(--ink)!important;background:var(--g-yellow);border:2px solid var(--ink);border-radius:4px;padding:0 6px;font:800 17px var(--display)}
+.lab-menu button:hover{background:#fff1a8!important}
+.lab-menu button.active{background:var(--ink)!important;color:#fff!important;box-shadow:3px 3px 0 var(--g-pink)}
+.lab-menu button.active span{background:var(--g-pink);color:#fff!important}
+.project-banner .btn,.project-banner .btn.green{background:var(--gold)!important;color:var(--ink)!important}
+
+/* ===== สารบัญข้างบทเรียน: ปุ่มต้องเด่นจากพื้นการ์ด ===== */
+.study-index{background:#aee8c0!important;background-image:radial-gradient(rgba(14,21,48,.14) 1.3px,transparent 1.6px)!important;background-size:11px 11px!important;display:grid!important;gap:10px!important;padding:14px!important;align-content:start}
+.study-index strong{justify-self:start}
+.study-index hr{display:none}
+.study-index a{display:block;background:#fff!important;color:var(--ink)!important;border:3px solid var(--ink)!important;border-radius:6px!important;box-shadow:4px 4px 0 var(--ink)!important;padding:8px 12px!important;font:700 19px/1.3 var(--display)!important;text-align:left}
+.study-index a:hover{background:var(--g-yellow)!important;transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)!important}
+.study-index a:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)!important}
+.study-index a.go-prac{background:var(--g-pink)!important;color:#fff!important}
+.study-index a.go-prac:hover{background:#ff5aa5!important}
+.study-index a:not([data-scroll]):not(.go-prac){background:var(--g-cyan)!important}
+.study-index small{display:block;padding:8px 10px;background:#fff8dc;border:3px dashed var(--ink);border-radius:6px;color:var(--ink)!important;font-size:17px!important;line-height:1.4}
+
+/* ===== ปุ่มที่สีเท่าพื้น: เลือกเลขที่ เลือกอาวุธ ปุ่มโปร่ง ===== */
+.nums button{background:#cfe6ff!important}
+.nums button.used{background:#b9f0d4!important}
+.nums button.used::after{content:"✓";font-size:16px;margin-left:4px}
+.nums button.sel{background:var(--g-yellow)!important}
+.weapons .wp{background:#cfe6ff!important;color:var(--ink)!important;border:4px solid var(--ink)!important;border-radius:6px!important;box-shadow:4px 4px 0 var(--ink)!important;font-weight:800}
+.weapons .wp:hover{background:#fff!important}
+.weapons .wp.on,.weapons .wp.sel,.weapons .wp.active,.weapons .wp[aria-pressed="true"]{background:var(--g-yellow)!important;outline:4px solid var(--g-pink);outline-offset:2px}
+.btn.ghost{background:#cfe6ff!important}
+.role-panel .btn.ghost,.hero .btn.ghost{background:#fff!important}
+.lab-menu button{background:#d6f5ee!important}
+.lab-menu button:hover{background:#fff1a8!important}
+.lab-menu button.active{background:var(--ink)!important}
+
+/* ===== แถบตัวเลขสรุปในแบนเนอร์หลัก: ป้ายสถิติแบบการ์ตูน ===== */
+.hero-meta{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px!important;margin:4px 0 0!important}
+.hero-meta .hm{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"n t" "n s";column-gap:10px;align-items:center;padding:8px 12px!important;background:#fff;border:3px solid var(--ink);border-radius:6px;box-shadow:4px 4px 0 var(--ink);border-left-width:3px!important;text-shadow:none!important;min-width:0}
+.hero-meta .hm:nth-child(2){background:var(--g-yellow);transform:rotate(-1deg)}
+.hero-meta .hm:nth-child(1){transform:rotate(1deg)}
+.hero-meta .hm:nth-child(3){background:var(--g-cyan);transform:rotate(-.5deg)}
+.hero-meta .hm b{grid-area:n;font:900 clamp(32px,3vw,42px)/1 var(--display);color:var(--ink)!important;text-shadow:none!important;min-width:1.2em;text-align:center}
+.hero-meta .hm em{grid-area:t;font:800 clamp(17px,1.5vw,20px)/1.2 var(--display);font-style:normal;color:var(--ink)!important;text-shadow:none!important}
+.hero-meta .hm small{grid-area:s;font:600 15px/1.25 var(--font);color:#27304f!important;text-shadow:none!important}
+@media(max-width:700px){.hero-meta{grid-template-columns:1fr!important;gap:8px!important}.hero-meta .hm{transform:none!important;grid-template-columns:52px 1fr;padding:6px 10px!important}.hero-meta .hm b{font-size:30px}}
+.hero-meta .hm em,.hero-meta .hm small{white-space:nowrap}
+.hero-meta .hm{padding:8px 14px!important}
+
+/* ===== ปกการ์ดภารกิจ: ภาพเต็มกรอบ และป้าย SECTOR อยู่มุมล่างขวา ===== */
+.mission-cover{position:relative!important;display:block!important;overflow:hidden;padding:0!important;background:var(--leaf)!important}
+.mission-cover-img{display:block!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;object-position:center!important;position:absolute!important;inset:0!important;margin:0!important}
+.mission-cover .sector-no{position:absolute!important;left:auto!important;top:auto!important;right:10px!important;bottom:10px!important;margin:0!important;z-index:2;transform:rotate(-3deg)}
+
+/* ===== ส่วนท้ายเว็บ: โครงเดียวกับ ป.1–6 (ข้อมูลผู้จัดทำ · ป้าย CC · ปุ่ม AI และติดต่อ) แต่งแบบคอมมิก ===== */
+footer.portal-site-footer{box-sizing:border-box;position:relative;overflow:hidden;max-width:1140px;width:calc(100% - 28px);margin:30px auto 24px!important;padding:22px 28px!important;background:radial-gradient(ellipse at 0% 0%,rgba(163,242,132,.22),transparent 55%),linear-gradient(135deg,#14553a,#072a1b)!important;background-image:radial-gradient(rgba(255,255,255,.12) 1.4px,transparent 1.7px),linear-gradient(135deg,#14553a,#072a1b)!important;background-size:12px 12px,auto!important;border:5px solid var(--ink)!important;border-radius:6px!important;box-shadow:8px 8px 0 var(--leaf)!important;color:#eef7ea!important;text-align:center}
+footer.portal-site-footer::before{content:"";position:absolute;inset:0 0 auto;height:6px;background:repeating-linear-gradient(-45deg,var(--g-yellow) 0 12px,var(--ink) 12px 24px)}
+footer.portal-site-footer .portal-foot-stack{display:grid;justify-items:center;gap:14px;padding-top:6px}
+footer.portal-site-footer .portal-foot-info{display:grid;gap:3px;color:#cdeccb!important;font-size:18px;line-height:1.5}
+footer.portal-site-footer .portal-foot-school{font:800 22px var(--display);color:#fff!important}
+footer.portal-site-footer .portal-foot-line{color:#cdeccb!important}
+footer.portal-site-footer .portal-foot-side{display:grid;justify-items:center;gap:14px}
+footer.portal-site-footer .portal-foot-license img{display:block;width:110px;height:auto;border-radius:3px;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);background:#fff}
+footer.portal-site-footer .portal-foot-license:hover img{box-shadow:6px 6px 0 var(--g-yellow)}
+footer.portal-site-footer .portal-foot-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+footer.portal-site-footer .portal-ai-btn,footer.portal-site-footer .portal-contact-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:6px 20px;background:var(--g-yellow);color:var(--ink)!important;border:4px solid var(--ink);border-radius:6px;box-shadow:4px 4px 0 var(--ink);font:800 18px/1.2 var(--display);text-decoration:none;cursor:pointer;transition:transform .1s,box-shadow .1s}
+footer.portal-site-footer .portal-contact-btn{background:var(--g-cyan)}
+footer.portal-site-footer .portal-ai-btn:hover,footer.portal-site-footer .portal-contact-btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+footer.portal-site-footer .portal-ai-btn:active,footer.portal-site-footer .portal-contact-btn:active{transform:translate(4px,4px);box-shadow:1px 1px 0 var(--ink)}
+footer.portal-site-footer *{text-shadow:none}
+@media(max-width:700px){footer.portal-site-footer{padding:18px 14px!important;box-shadow:5px 5px 0 var(--leaf)!important}footer.portal-site-footer .portal-foot-actions{flex-direction:column;align-items:stretch;width:100%}footer.portal-site-footer .portal-foot-info{font-size:16px}}
+/* กล่องข้อความ (dialog) แบบคอมมิก */
+#modal{border:5px solid var(--ink)!important;border-radius:6px!important;box-shadow:10px 10px 0 var(--ink);background:#fff!important;color:var(--ink)!important;padding:20px 24px!important;max-width:min(640px,92vw)}
+#modal h2{color:var(--ink)!important;margin:0 0 10px!important}
+#modal h3{color:var(--ink)!important;margin:14px 0 4px!important;font-size:21px!important}
+#modal p,#modal li{color:var(--ink)!important;font-size:19px;line-height:1.55;margin:0 0 8px}
+#modal::backdrop{background:rgba(14,21,48,.6)}
+.portal-banner h1 br{display:block!important;content:""}
+
+/* ===== ทดสอบก่อน–หลังเรียน ===== */
+.pp{display:grid;gap:16px}
+.pp-steps{list-style:none;margin:10px 0 0!important;padding:0!important;display:grid;gap:8px}
+.pp-steps li{display:flex;gap:10px;align-items:center;padding:8px 12px;background:#fff;border:3px solid var(--ink);border-radius:6px;font:700 19px/1.3 var(--display);color:var(--ink)!important;opacity:.6}
+.pp-steps li b{display:grid;place-items:center;width:32px;height:32px;background:#d9dee8;border:3px solid var(--ink);border-radius:50%}
+.pp-steps li.now{opacity:1;background:var(--g-yellow);box-shadow:4px 4px 0 var(--ink)}
+.pp-steps li.done{opacity:1;background:#d9fbe4}.pp-steps li.done b{background:#2fd37a}
+.pp-steps li.now b{background:var(--g-pink);color:#fff}
+.pp-card.locked{opacity:.8;background:#eef1f4!important}
+.pp-card.done{background:#f1fff6!important}
+.pp-q{margin:0 0 16px;padding:12px 14px;background:#fff8dc;border:3px solid var(--ink);border-radius:6px;min-width:0}
+.pp-q legend{display:flex;gap:10px;align-items:center;padding:0 6px;font:700 18px/1.35 var(--display);color:var(--ink)}
+.pp-no{display:grid;place-items:center;min-width:32px;height:32px;background:var(--g-pink);color:#fff;border:3px solid var(--ink);border-radius:50%;font:800 18px var(--display)}
+.pp-qt{margin:8px 0 10px!important;font:700 22px/1.4 var(--font);color:var(--ink)!important}
+.pp-opts,.pp-lv{display:grid;gap:8px}
+.pp-opt{display:block;cursor:pointer}
+.pp-opt input{position:absolute;opacity:0}
+.pp-opt span{display:flex;gap:10px;align-items:center;padding:10px 12px;background:#fff;border:3px solid var(--ink);border-radius:6px;box-shadow:3px 3px 0 var(--ink);font-size:20px;line-height:1.35;color:var(--ink);transition:transform .1s}
+.pp-opt span b{display:grid;place-items:center;flex:none;width:30px;height:30px;background:var(--g-yellow);border:3px solid var(--ink);border-radius:50%;font:800 17px var(--display)}
+.pp-opt:hover span{background:#fff1a8}
+.pp-opt input:checked+span{background:var(--g-cyan);transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.pp-opt input:checked+span b{background:var(--ink);color:#fff}
+.pp-opt input:focus-visible+span{outline:4px solid var(--c-blue);outline-offset:2px}
+.pp-err{min-height:26px;color:#c4115f;font-weight:700;font-size:20px;margin:4px 0}
+.pp-compare{display:grid;gap:8px;margin:10px 0}
+.pp-bar{display:grid;grid-template-columns:110px 1fr 56px;gap:10px;align-items:center;font:700 19px var(--display);color:var(--ink)}
+.pp-bar i{display:block;height:26px;border:3px solid var(--ink);border-radius:99px;background:var(--g-yellow)}
+.pp-bar.b i{background:var(--g-pink)}
+.pp-gain{font:800 21px/1.4 var(--display);padding:8px 14px;border:3px solid var(--ink);border-radius:6px;background:#fff;color:var(--ink)!important}
+.pp-gain.up{background:#d9fbe4}.pp-gain.down{background:#ffe3e3}
+.pp-fb{margin:8px 0;padding:10px 14px;border:3px solid var(--ink);border-radius:6px;background:#fff;color:var(--ink)}
+.pp-fb.ok{background:#e9fff1}.pp-fb.no{background:#fff0f0}
+.pp-fb p{margin:6px 0 0!important;font-size:19px}
+.pp-yours{color:#7a2a3a!important}
+.pp-act{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px}
+.pp-ta{display:grid;gap:4px;margin:0 0 12px;font:700 21px/1.35 var(--display);color:var(--ink)}
+.pp-ta small{font:500 18px var(--font);color:#3f4a66}
+.pp-ta textarea{min-height:84px;font-size:20px}
+.pp-lv{border:3px solid var(--ink);border-radius:6px;padding:10px 12px;margin:0 0 10px;background:#fff8dc}
+.pp-lv legend{font:700 19px/1.3 var(--display);padding:0 6px}
+@media(max-width:700px){.pp-qt{font-size:20px}.pp-opt span{font-size:18px}.pp-bar{grid-template-columns:84px 1fr 48px;font-size:16px}.pp-q legend{font-size:16px}}
+
+/* กล่องให้ AI ร่างข้อเสนอแนะ (หน้าตรวจงานของครู) */
+.ai-box{display:grid;gap:6px;margin:10px 0 14px;padding:10px 14px;background:#fff8dc;border:3px dashed var(--ink);border-radius:6px}
+.ai-box small{font-size:17px;line-height:1.45;color:#3f4a66}
+.ai-box .btn{justify-self:start}
+.ai-status{font:700 19px/1.4 var(--font);color:var(--ink)}
+.ai-status.ok{color:#0b7a3b}.ai-status.err{color:#b3122e}
+
+/* ร่างจาก AI หลายคน รอครูยืนยัน */
+.ai-progress{background:#fff8dc!important;border-style:dashed!important}
+.ai-progress .pf-bar{margin:8px 0}
+.ai-note{margin:0 0 10px!important;padding:6px 12px;background:#fff1a8;border:3px solid var(--ink);border-radius:6px;font-weight:700;font-size:18px}
+.draft-list{display:grid;gap:14px;margin-top:10px}
+.draft-card{padding:12px 14px;background:#fff;border:4px solid var(--ink);border-radius:6px;box-shadow:5px 5px 0 var(--ink);display:grid;gap:10px}
+.draft-card.sel{background:#f1fff6;box-shadow:5px 5px 0 #2fd37a}
+.d-pick{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:21px;cursor:pointer}
+.d-pick input{width:26px;height:26px}
+.d-scores{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.d-scores label,.d-cm{display:grid;gap:4px;font:700 18px/1.3 var(--display)}
+.d-scores input{font-size:20px;padding:6px 8px}
+.d-cm textarea{min-height:110px;font-size:19px}
+
+.d-total{margin-left:auto;padding:2px 12px;background:var(--g-yellow);border:3px solid var(--ink);border-radius:99px;font:800 18px var(--display)}
+
+/* ===== รอบเก็บงาน UI: ลดกรอบซ้อน + ภาพปกใหญ่เด่น ===== */
+/* กรอบในกรอบ: กล่องที่อยู่ในกระดาษใช้เส้นบางและเงาสั้นลง เพื่อไม่ให้กรอบหนาซ้อนกันหลายชั้น */
+.paper .card,.paper .callout,.paper .pf-chap,.paper .pf-quest,.paper .draft-card,.paper .portfolio-item,.paper .glossary>div,.paper .pp-q,.paper .pp-fb,.paper .lab-widget{border-width:3px!important;box-shadow:3px 3px 0 var(--ink)!important}
+.paper .card .callout,.paper .card .btn,.paper .pf-chap .btn,.paper .draft-card .btn{box-shadow:3px 3px 0 var(--ink)!important}
+.paper table,.paper .table-wrap table{border-width:3px!important;box-shadow:none!important}
+.paper .table-wrap{border:0;box-shadow:none}
+.draft-card input,.draft-card textarea,.pp-q input{box-shadow:none!important}
+.paper .card .badge-status{box-shadow:none!important}
+/* ภาพในบทเรียน: กรอบเดียวที่ figure */
+.lesson-fig{overflow:hidden;padding:0!important;background:#fff!important}
+.lesson-fig img{border:0!important;box-shadow:none!important;border-radius:0!important;display:block;width:100%;height:auto}
+/* ภาพปกหน้าแรก: ใหญ่ เอียงแบบภาพแปะ กรอบเดียว */
+.hero{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)!important;align-items:center!important}
+.hero .cosmos,.cosmos-cover{border:0!important;box-shadow:none!important;background:none!important;padding:0!important;transform:rotate(1.5deg)!important;margin:0!important;width:100%!important;max-width:none!important}
+.home-cover-img{display:block;width:100%!important;height:auto!important;max-height:none!important;aspect-ratio:4/3;object-fit:cover;border:5px solid var(--ink)!important;border-radius:6px!important;box-shadow:10px 10px 0 var(--g-pink)!important}
+.cosmos .cover-tag{position:absolute;left:14px;top:14px;z-index:2}
+.cosmos{position:relative}
+/* ปกหัวบท: ภาพใหญ่ทางขวา (หน้าภารกิจใหญ่สุด หน้าอื่นขนาดกลาง) */
+.chapter-hero{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(240px,42%);grid-template-rows:auto auto 1fr;column-gap:26px!important;row-gap:6px!important;align-items:start}
+.chapter-hero>*:not(.chapter-cover-img){grid-column:1}
+.chapter-hero .chapter-cover-img{grid-column:2;grid-row:1/-1;align-self:center;display:block;width:100%!important;height:auto!important;aspect-ratio:16/10;object-fit:cover;transform:rotate(1.5deg);border:5px solid var(--ink)!important;border-radius:6px!important;box-shadow:8px 8px 0 var(--g-pink)!important;position:static!important;max-width:none!important;margin:0!important}
+.chapter-hero.compact{grid-template-columns:minmax(0,1fr) minmax(180px,26%)}
+.chapter-hero.compact .chapter-cover-img{aspect-ratio:16/9;box-shadow:6px 6px 0 var(--g-pink)!important}
+/* ปกการ์ดภารกิจใหญ่ขึ้น */
+.mission-cover,.mission-cover-img{height:230px!important}
+@media(max-width:700px){
+.hero{grid-template-columns:1fr!important}
+.hero .cosmos{transform:none!important}
+.home-cover-img{aspect-ratio:16/10;box-shadow:6px 6px 0 var(--g-pink)!important}
+.chapter-hero,.chapter-hero.compact{grid-template-columns:1fr!important}
+.chapter-hero .chapter-cover-img{grid-column:1;grid-row:1;width:100%!important;height:auto!important;aspect-ratio:16/9;transform:none;margin-bottom:8px!important;box-shadow:5px 5px 0 var(--g-pink)!important}
+.chapter-hero.compact .chapter-cover-img{aspect-ratio:21/9}
+.mission-cover,.mission-cover-img{height:190px!important}
+}
+.chapter-hero .eyebrow{justify-self:start;width:auto!important;max-width:100%}
+@media(min-width:701px){.tabs{display:flex!important;flex-wrap:wrap!important;overflow:visible!important;gap:8px!important}.tabs a,.tabs button{flex:none}}
+.hero .subject{font-size:clamp(18px,1.6vw,22px)!important;text-wrap:balance}
+.hero h1{text-wrap:balance}
+@media(max-width:900px){.portal-world{order:-1;margin-top:8px!important}.portal-chips{display:flex!important;flex-wrap:wrap}.portal-chips span{flex:none}}
+
+/* ===== คำถามประตูเกราะในสนามบอส: กระชับ ไม่ต้องเลื่อน ===== */
+#bg-gate .gate-card{padding:12px 16px!important;max-height:none!important;overflow:visible!important}
+#bg-gate .gate-card .eyebrow{font-size:14px!important;padding:1px 10px!important;margin-bottom:4px!important}
+#bg-gate .prac-ctx{font-size:15px!important;padding:6px 10px!important;margin:4px 0!important;line-height:1.4!important}
+#bg-gate .prac-q{font-size:clamp(19px,2vw,23px)!important;margin:4px 0 8px!important;border-left-width:8px!important;padding-left:10px!important;line-height:1.3!important}
+#bg-gate .battle-opts{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important}
+#bg-gate .opt{padding:6px 10px!important;font-size:17px!important;line-height:1.3!important;box-shadow:3px 3px 0 var(--ink)!important;min-height:0!important}
+#bg-gate .opt b{width:28px!important;height:28px!important;font-size:15px!important;flex:none}
+#bg-gate .prac-fb{margin-top:8px!important;padding:8px 12px!important;font-size:16px!important}
+#bg-gate .prac-fb strong{font-size:18px!important}
+#bg-gate .prac-fb p{margin:2px 0 6px!important;font-size:16px!important}
+#bg-gate .prac-fb .btn{min-height:38px!important;padding:4px 14px!important;font-size:16px!important}
+@media(max-width:700px){#bg-gate .battle-opts{grid-template-columns:1fr!important;gap:6px!important}#bg-gate .opt{font-size:15px!important}}
+/* ตอนประตูคำถามเปิด: ให้สนามยืดสูงตามการ์ดคำถาม แทนการเลื่อนในกรอบเล็ก (จอแคบ) */
+.bg-wrap:has(> #bg-gate:not([hidden])){overflow:visible!important}
+.bg-wrap:has(> #bg-gate:not([hidden])) > canvas{position:absolute!important;inset:0;width:100%!important;height:100%!important}
+.bg-wrap > #bg-gate:not([hidden]){position:relative!important;inset:auto!important;overflow:visible!important;min-height:100%}
+/* ผลตอบถูก/ผิด: ป๊อปอัปกลางจอ แยกจากกล่องคำถาม */
+#bg-gate #bg-fb:not([hidden]){position:fixed!important;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2000;width:min(520px,92vw);max-height:86vh;overflow:auto;margin:0!important;padding:22px 24px 20px!important;text-align:center;border:5px solid var(--ink)!important;border-radius:8px!important;box-shadow:10px 10px 0 var(--ink),0 0 0 100vmax rgba(14,21,48,.55)!important;animation:fbpop .22s cubic-bezier(.3,1.6,.5,1)}
+#bg-gate #bg-fb.ok{background:#d9fbe4!important}
+#bg-gate #bg-fb.no{background:#ffe3e3!important}
+#bg-gate #bg-fb .fb-badge{display:grid;place-items:center;width:72px;height:72px;margin:-58px auto 6px;border:5px solid var(--ink);border-radius:50%;font:900 40px/1 var(--display);box-shadow:4px 4px 0 var(--ink);background:#2fd37a;color:#fff}
+#bg-gate #bg-fb.no .fb-badge{background:#ff4d6d}
+#bg-gate #bg-fb strong{display:block;font:900 clamp(24px,3vw,30px)/1.2 var(--display)!important;color:var(--ink)}
+#bg-gate #bg-fb p{font-size:19px!important;line-height:1.5;margin:8px 0 14px!important;color:var(--ink)}
+#bg-gate #bg-fb .prac-actions{justify-content:center;display:flex}
+#bg-gate #bg-fb .btn{min-height:48px!important;font-size:20px!important;padding:6px 28px!important}
+@keyframes fbpop{from{transform:translate(-50%,-50%) scale(.6);opacity:0}to{transform:translate(-50%,-50%) scale(1);opacity:1}}
+#bg-gate #bg-fb .fb-badge{margin:0 auto 8px!important;width:64px;height:64px;font-size:36px}
+
+/* ===== หน้าผลการต่อสู้ ===== */
+.rs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:0;margin:-6px;border:5px solid var(--ink);border-radius:6px;overflow:hidden;box-shadow:8px 8px 0 var(--g-pink);background:#fff}
+.rs.win{box-shadow:8px 8px 0 var(--leaf)}
+.rs-stage{position:relative;min-height:300px;background:var(--rs-bg) center/cover;border-right:5px solid var(--ink);overflow:hidden}
+.rs-stage::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,21,48,.05),rgba(14,21,48,.45))}
+.rs-rays{position:absolute;inset:-50%;background:repeating-conic-gradient(from 0deg at 50% 50%,rgba(255,232,102,.35) 0 8deg,transparent 8deg 20deg);animation:rsspin 18s linear infinite;z-index:0}
+.rs.lose .rs-rays{background:repeating-conic-gradient(from 0deg at 50% 50%,rgba(120,140,170,.3) 0 8deg,transparent 8deg 20deg)}
+@keyframes rsspin{to{transform:rotate(360deg)}}
+.rs-hero{position:absolute;left:4%;bottom:0;width:58%;aspect-ratio:1;background-size:300% 300%;background-repeat:no-repeat;z-index:2;filter:drop-shadow(4px 4px 0 rgba(14,21,48,.6))}
+.rs-boss{position:absolute;right:2%;bottom:4%;width:44%;z-index:1;transform:rotate(14deg);filter:grayscale(.6) brightness(.8) drop-shadow(4px 4px 0 rgba(14,21,48,.6))}
+.rs.lose .rs-boss{transform:none;filter:drop-shadow(4px 4px 0 rgba(14,21,48,.6))}
+.rs.lose .rs-hero{filter:grayscale(.5)}
+.rs-ko{position:absolute;right:6%;top:8%;z-index:3;display:grid;place-items:center;width:120px;height:120px;background:var(--g-yellow);color:var(--g-pink);font:900 32px/1 var(--display);-webkit-text-stroke:1.5px var(--ink);transform:rotate(-10deg);clip-path:polygon(50% 0,61% 20%,82% 10%,80% 32%,100% 38%,86% 54%,100% 70%,78% 74%,80% 96%,60% 86%,50% 100%,40% 86%,20% 96%,22% 74%,0 70%,14% 54%,0 38%,20% 32%,18% 10%,39% 20%);animation:rspop .5s cubic-bezier(.3,1.7,.5,1)}
+.rs-ko.lose{background:#cfe6ff;color:var(--ink);font-size:24px}
+@keyframes rspop{from{transform:rotate(-10deg) scale(0)}to{transform:rotate(-10deg) scale(1)}}
+.rs-body{padding:20px 24px;display:grid;gap:10px;align-content:center;background:#fff;background-image:radial-gradient(rgba(14,21,48,.07) 1.2px,transparent 1.5px);background-size:12px 12px}
+.rs-body h2{margin:0!important;font-size:clamp(26px,3vw,36px)!important;line-height:1.2}
+.rs-body h2 span{color:var(--g-pink)}
+.rs-stars{display:flex;gap:6px}
+.rs-stars span{font-size:46px;line-height:1;color:#d7dde6;-webkit-text-stroke:2px var(--ink);text-shadow:3px 3px 0 var(--ink)}
+.rs-stars span.on{color:var(--g-yellow);animation:rspop .4s both}
+.rs-stars span.on:nth-child(2){animation-delay:.12s}.rs-stars span.on:nth-child(3){animation-delay:.24s}
+.rs-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.rs-tile{display:grid;justify-items:center;padding:8px 4px;background:#fff8dc;border:3px solid var(--ink);border-radius:6px;box-shadow:3px 3px 0 var(--ink);text-align:center}
+.rs-tile span{font-size:22px}.rs-tile b{font:900 26px/1.1 var(--display)}.rs-tile small{font-size:14px;color:#3f4a66}
+.rs-note{margin:0!important;font-weight:700;font-size:18px}
+.rs .prac-actions{display:flex;flex-wrap:wrap;gap:10px}
+@media(max-width:800px){.rs{grid-template-columns:1fr}.rs-stage{min-height:220px;border-right:0;border-bottom:5px solid var(--ink)}.rs-tiles{grid-template-columns:repeat(2,1fr)}.rs-ko{width:90px;height:90px;font-size:24px}}
+/* ป้ายสถิติในแบนเนอร์ไม่ให้ล้น: ยืดหยุ่นตามความกว้าง */
+.hero-meta{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))!important}
+.hero-meta .hm{min-width:0;overflow:hidden}
+.hero-meta .hm b{font-size:clamp(24px,2.4vw,34px)!important}
+.hero-meta .hm em{font-size:clamp(15px,1.3vw,18px)!important;white-space:normal!important}
+.hero-meta .hm small{font-size:13px!important;white-space:normal!important;line-height:1.2}
+.rs-body .eyebrow{justify-self:start;width:auto!important}
+.rs-tile{padding:6px 4px!important}.rs-tile b{font-size:24px}
+/* ป้ายผลการต่อสู้: แถวเดียวเสมอ กระชับ */
+.rs-tiles,.rs .rs-tiles{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:6px!important}
+.rs-tile{grid-template-columns:auto auto;justify-content:center;align-items:center;column-gap:4px;padding:4px 2px!important}
+.rs-tile span{font-size:16px!important}.rs-tile b{font-size:20px!important}
+.rs-tile small{grid-column:1/-1;font-size:12px!important;line-height:1.2;white-space:nowrap}
+/* ===== โปสเตอร์ก่อนสู้บอส: เห็นบอสเต็มตัว คำพูดชี้ไปที่บอส ===== */
+.bg-poster{height:auto!important;aspect-ratio:16/8;min-height:300px;max-height:460px;border-radius:6px!important;display:block!important}
+.bg-poster::after{background:linear-gradient(90deg,rgba(14,21,48,.55),rgba(14,21,48,.1) 50%,transparent)!important}
+.bg-poster .bg-pbossimg{position:absolute!important;right:4%;bottom:0;height:96%!important;width:auto!important;max-width:55%;object-fit:contain;object-position:bottom;margin:0!important;z-index:1;filter:drop-shadow(6px 6px 0 rgba(14,21,48,.7))!important;animation:pbob 2.4s ease-in-out infinite}
+@keyframes pbob{50%{transform:translateY(-6px)}}
+.bg-poster .bg-say{left:4%!important;top:auto!important;bottom:18%;max-width:46%!important;font-size:clamp(17px,1.8vw,22px)!important;border-radius:16px!important;z-index:2}
+.bg-poster .bg-say::after{content:"";position:absolute;right:-22px;top:50%;width:26px;height:22px;margin-top:-11px;background:#fff;border:4px solid var(--ink);border-left:0;border-bottom:0;clip-path:polygon(0 0,100% 50%,0 100%);transform:none}
+.bg-poster .bg-say::before{content:"บอสท้าดวล!";position:absolute;left:12px;top:-18px;padding:1px 10px;background:var(--g-pink);color:#fff;border:3px solid var(--ink);border-radius:4px;font:800 14px/1.3 var(--display);transform:rotate(-3deg)}
+@media(max-width:700px){.bg-poster{aspect-ratio:4/3;min-height:0}.bg-poster .bg-pbossimg{height:78%!important;right:2%;max-width:60%}.bg-poster .bg-say{left:3%!important;bottom:auto;top:10%;max-width:60%!important;font-size:15px!important}.bg-poster .bg-say::after{right:auto;left:40%;top:auto;bottom:-20px;margin:0;width:20px;height:20px;border:4px solid var(--ink);border-top:0;border-left:0;clip-path:polygon(0 0,100% 0,50% 100%)}}
+@media(max-width:700px){.bg-poster .bg-say{top:30px!important}}
+@media(max-width:900px){.bg-poster .bg-say{max-width:58%!important}}
+
+/* ===== เลือกอาวุธ: แยกเป็นแผงของตัวเอง ===== */
+.wsel{margin:16px 0;padding:14px 16px 16px;background:#fff8dc;background-image:radial-gradient(rgba(14,21,48,.08) 1.2px,transparent 1.5px);background-size:12px 12px;border:4px solid var(--ink);border-radius:6px;box-shadow:6px 6px 0 var(--g-pink)}
+.wsel-h h3{margin:4px 0 2px!important;font-size:clamp(22px,2.4vw,28px)!important;border:0!important;padding:0!important}
+.wsel-h p{margin:0 0 10px!important;font-size:17px!important;color:#3f4a66!important}
+.wsel-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.wcard{position:relative;display:grid;justify-items:center;gap:4px;padding:10px 8px 12px;background:#fff;color:var(--ink);border:4px solid var(--ink);border-radius:6px;box-shadow:4px 4px 0 var(--ink);cursor:pointer;text-align:center;font-family:var(--font);transition:transform .12s cubic-bezier(.3,1.6,.5,1),box-shadow .12s}
+.wcard:hover{transform:translate(-2px,-3px);box-shadow:6px 7px 0 var(--ink)}
+.wcard.sel{background:var(--g-yellow);box-shadow:4px 4px 0 var(--ink),0 0 0 4px var(--g-pink);transform:translateY(-3px)}
+.wimg{display:block;width:100%;max-width:150px;aspect-ratio:1;background-size:300% 300%;background-position:0 0;background-repeat:no-repeat;background-color:#e8f4ff;border:3px solid var(--ink);border-radius:50%}
+.wcard.sel .wimg{background-color:#fff}
+.wcard b{font:900 22px/1.2 var(--display)}
+.wcard small{font-size:14px;line-height:1.35;color:#3f4a66;min-height:2.7em}
+.wcard.sel small{color:var(--ink)}
+.wstat{display:grid;gap:2px;font:700 13px/1.2 var(--display);justify-items:start;width:100%;padding:0 4px}
+.wstat i{font-style:normal;color:var(--g-pink);letter-spacing:-1px;margin-left:4px}.wstat u{text-decoration:none;color:#c9d1d6}
+.wtag{position:absolute;top:-12px;right:-8px;padding:1px 10px;background:var(--g-pink);color:#fff;border:3px solid var(--ink);border-radius:4px;font:800 13px/1.3 var(--display);font-style:normal;transform:rotate(6deg)}
+.wstart{margin:6px 0 12px!important}.wstart .btn{font-size:22px!important;min-height:56px;padding:0 30px!important}
+.b-howto{margin:8px 0;border:3px solid var(--ink);border-radius:6px;background:#fff;box-shadow:3px 3px 0 var(--ink)}
+.b-howto>summary{cursor:pointer;padding:10px 14px;font:800 19px var(--display);list-style:none}
+.b-howto>summary::-webkit-details-marker{display:none}
+.b-howto[open]>summary{border-bottom:3px dashed var(--ink)}
+.b-howto .b-rules{margin:0!important;padding:10px 14px!important}
+@media(max-width:700px){.wsel-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.wcard small{font-size:13px}}
+@media(max-width:900px){.wimg{max-width:96px}.wcard{padding:8px 6px 10px}.wcard b{font-size:19px}}
+/* การ์ดอาวุธแบบกะทัดรัด: รูปซ้าย ข้อมูลขวา */
+.wsel{padding:12px 14px!important}
+.wsel-h h3{font-size:22px!important}.wsel-h p{font-size:15px!important;margin-bottom:8px!important}
+.wsel-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:10px!important}
+.wcard{grid-template-columns:64px 1fr;grid-template-areas:"img tx" "st st";justify-items:start;align-items:center;column-gap:10px;row-gap:6px;padding:8px 10px!important;text-align:left;box-shadow:3px 3px 0 var(--ink)!important;background:linear-gradient(135deg,#fff 60%,color-mix(in srgb,var(--wc) 35%,#fff))}
+.wcard:hover{transform:translate(-1px,-2px)}
+.wcard.sel{background:var(--g-yellow)!important;box-shadow:3px 3px 0 var(--ink),0 0 0 3px var(--g-pink)!important;transform:none}
+.wimg{grid-area:img;width:64px!important;max-width:none!important;border-width:3px;background-color:color-mix(in srgb,var(--wc) 30%,#fff)!important;background-size:330% 330%!important;background-position:2% 4%!important}
+.wtx{grid-area:tx;display:grid;gap:1px;min-width:0}
+.wcard b{font-size:20px!important;line-height:1.1}
+.wcard small{font-size:12.5px!important;line-height:1.3;min-height:0!important}
+.wstat{grid-area:st;grid-template-columns:1fr 1fr;gap:8px!important;padding:0!important}
+.wstat>span{display:flex;align-items:center;gap:5px}
+.wstat em{font:800 12px var(--display);font-style:normal;color:var(--ink)}
+.wb{display:flex!important;gap:2px;margin:0!important}
+.wb s{display:block;width:9px;height:9px;border:2px solid var(--ink);border-radius:2px;background:#fff;text-decoration:none}
+.wb s.on{background:var(--g-pink)}
+.wtag{top:-10px!important;right:-6px!important;font-size:12px!important}
+@media(max-width:900px){.wsel-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.wimg{width:56px!important}.wcard{grid-template-columns:56px 1fr}}
+/* ===== ความกว้างสอดคล้องกัน: ทุกกล่องหลักกว้างเท่าพื้นที่เนื้อหา (1140) และแถบบนจัดแนวเดียวกัน ===== */
+.bg-poster{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}
+.topbar{padding-left:max(14px,calc((100% - 1140px) / 2))!important;padding-right:max(14px,calc((100% - 1140px) / 2))!important}
+#bgame>*{max-width:none}
+
+/* ===== แท็บย่อยในหน้า + ทำข้อสอบทีละข้อ + อ่านทีละหัวข้อ ===== */
+.sub-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 14px;padding:8px;background:var(--ink);border-radius:6px;box-shadow:4px 4px 0 var(--g-pink)}
+.sub-tabs button{flex:1 1 auto;min-height:42px;padding:6px 14px;background:#fff;color:var(--ink);border:3px solid var(--ink);border-radius:6px;font:800 18px/1.2 var(--display);cursor:pointer}
+.sub-tabs button:hover{background:#fff1a8}
+.sub-tabs button.on{background:var(--g-yellow);box-shadow:inset 0 -4px 0 var(--g-pink)}
+.pp-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:6px 0 10px}
+.pp-dots{display:flex;gap:8px}
+.pp-dots i{width:16px;height:16px;border:3px solid var(--ink);border-radius:50%;background:#fff;cursor:pointer}
+.pp-dots i.ok{background:#2fd37a}.pp-dots i.now{background:var(--g-yellow);transform:scale(1.25)}.pp-dots i.now.ok{background:var(--g-cyan)}
+.pp-q[hidden]{display:none!important}
+.mod-step{display:inline-block;margin:0 0 10px;padding:2px 12px;background:var(--ink);color:#fff;border-radius:99px;font:800 16px var(--display)}
+.mod-nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:6px 0 10px}
+.mod-nav .btn.green{margin-left:auto}
+.study-index a.current{background:var(--g-yellow)!important;box-shadow:4px 4px 0 var(--g-pink)!important}
+.study-index a.done:not(.current){background:#d9fbe4!important}
+@media(max-width:700px){.sub-tabs button{font-size:15px;padding:4px 8px;min-height:38px}.mod-nav .btn{flex:1 1 100%;justify-content:center}}
+#main [hidden]{display:none!important}
+
+/* ===== แถบแท็บของบท: แถบเดียวกระชับ แบ่งช่องเท่ากัน มือถือเลื่อนข้าง ===== */
+.tabs{display:flex!important;flex-wrap:nowrap!important;gap:0!important;margin:10px 0 16px!important;padding:0!important;background:#fff;border:4px solid var(--ink)!important;border-radius:8px!important;box-shadow:5px 5px 0 var(--ink);overflow-x:auto!important;overflow-y:hidden;scrollbar-width:none;scroll-snap-type:x proximity}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a,.tabs button{flex:1 0 auto!important;display:flex!important;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:6px 10px!important;margin:0!important;background:#fff!important;color:var(--ink)!important;border:0!important;border-right:3px solid var(--ink)!important;border-radius:0!important;box-shadow:none!important;transform:none!important;font:800 16px/1.15 var(--display)!important;white-space:nowrap;scroll-snap-align:start}
+.tabs a:last-child{border-right:0!important}
+.tabs a b{display:grid;place-items:center;flex:none;width:24px;height:24px;background:var(--g-yellow);border:2px solid var(--ink);border-radius:50%;font:900 13px/1 var(--display)}
+.tabs a:hover{background:#fff1a8!important}
+.tabs a.current,.tabs a.current:hover{background:var(--ink)!important;color:#fff!important;box-shadow:inset 0 -5px 0 var(--g-pink)!important}
+.tabs a.current b{background:var(--g-pink);color:#fff;border-color:#fff}
+.tabs a.boss{background:#ffe3ec!important}
+.tabs a.boss b{background:var(--g-pink);color:#fff}
+.tabs a.boss.current{background:var(--g-pink)!important;box-shadow:inset 0 -5px 0 var(--ink)!important}
+@media(max-width:1100px){.tabs a span{font-size:15px}}
+@media(max-width:700px){.tabs{margin:8px 0 12px!important;box-shadow:3px 3px 0 var(--ink)}.tabs a{flex:0 0 auto!important;padding:6px 10px!important;min-height:42px;font-size:15px!important}}
+/* ป้ายหัวเรื่องของโจทย์ แยกสีจากเนื้อคำถาม */
+.q-topic{display:inline-block;margin:0 8px 4px 0;padding:1px 10px;background:var(--g-pink);color:#fff!important;border:2px solid var(--ink);border-radius:4px;font:800 .72em/1.4 var(--display);vertical-align:middle;letter-spacing:.01em;-webkit-text-stroke:0;text-shadow:none}
+.q-topic.ctx{background:var(--ink)}
+.q-topic.pre{background:var(--g-cyan);color:var(--ink)!important}
+.prac-ctx .q-topic,.pp-ctx .q-topic{font-size:.85em}
+/* ===== เมนูกิจกรรมในหน้าทดลอง: รายการกระชับ ไม่มีแถบเลื่อนในกรอบ ===== */
+.lab-menu{max-height:none!important;overflow:visible!important;gap:0!important;padding:0!important;box-shadow:4px 4px 0 var(--ink)!important;align-self:start}
+.lab-menu button{display:flex!important;align-items:center;gap:8px!important;min-height:0!important;padding:7px 10px!important;margin:0!important;border:0!important;border-bottom:2px solid var(--ink)!important;border-radius:0!important;box-shadow:none!important;background:#fff!important;font:700 16px/1.25 var(--display)!important;text-align:left}
+.lab-menu button:last-child{border-bottom:0!important}
+.lab-menu button span{flex:none;display:grid;place-items:center;width:26px;height:22px;padding:0!important;font-size:13px!important;border-radius:4px}
+.lab-menu button:hover{background:#fff1a8!important}
+.lab-menu button.active{background:var(--ink)!important;color:#fff!important;box-shadow:inset 5px 0 0 var(--g-pink)!important}
+@media(max-width:900px){.lab-menu{display:flex!important;overflow-x:auto!important;scrollbar-width:none}.lab-menu::-webkit-scrollbar{display:none}.lab-menu button{flex:0 0 auto!important;border-bottom:0!important;border-right:2px solid var(--ink)!important;white-space:nowrap}.lab-menu button:last-child{border-right:0!important}.lab-menu button.active{box-shadow:inset 0 -4px 0 var(--g-pink)!important}}
+/* ป้ายสถานะการบันทึก (มุมล่าง) ไม่บังปุ่มที่กดได้: ไม่รับการแตะ และเล็กลงบนมือถือ */
+#cloud-chip{pointer-events:none!important}
+@media(max-width:700px){#cloud-chip{font-size:11px!important;padding:2px 8px!important;left:6px!important;bottom:6px!important;opacity:.85}}
+/* ปุ่มบทบาทนักเรียน: แบบเดียวกับปุ่มอื่น แต่เด่นกว่าด้วยสีชมพู ขนาดใหญ่ขึ้น และป้าย "เริ่มที่นี่" */
+.portal-role-card.student .portal-role-cta{background:var(--g-pink)!important;color:#fff!important;min-height:56px;padding:0 30px!important;font-size:23px!important;box-shadow:5px 5px 0 var(--ink)!important;animation:ctapulse 1.8s ease-in-out infinite}
+.portal-role-card.student .portal-role-cta::before{content:"เริ่มที่นี่";position:absolute;margin-top:-58px;padding:0 8px;background:var(--g-yellow);color:var(--ink);border:2px solid var(--ink);border-radius:4px;font:800 13px/1.4 var(--display);transform:rotate(-4deg)}
+.portal-role-card.student .portal-role-cta{position:relative}
+@keyframes ctapulse{50%{transform:scale(1.05)}}
+@media(prefers-reduced-motion:reduce){.portal-role-card.student .portal-role-cta{animation:none}}
+
+/* ---------- ภาพประกอบโจทย์ (question-figs.js) ---------- */
+.q-fig{margin:8px 0 12px!important;padding:0!important;max-width:620px}
+.q-fig-btn{position:relative;display:block;width:100%;padding:0!important;margin:0;background:#fff8dc!important;border:3px solid var(--ink)!important;border-radius:6px!important;box-shadow:4px 4px 0 var(--ink)!important;cursor:zoom-in;overflow:hidden;min-height:0!important}
+.q-fig-btn img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:contain}
+.q-fig-zoom{position:absolute;right:6px;bottom:6px;padding:2px 8px;background:var(--ink);color:#fff;border-radius:99px;font-size:13px;font-weight:700;opacity:.85}
+.q-fig figcaption{margin-top:6px;font-size:15px!important;line-height:1.45;color:var(--ink)!important;font-weight:600}
+.pp-q .q-fig{max-width:520px}
+#bg-gate .q-fig{float:right;width:min(40%,300px);margin:0 0 6px 14px!important}
+#bg-gate .q-fig figcaption{font-size:13px!important;line-height:1.35}
+#bg-gate .battle-opts{clear:both}
+@media(max-width:700px){#bg-gate .q-fig{float:none;width:100%;margin:4px 0 8px!important}#bg-gate .q-fig-btn img{max-height:150px}#bg-gate .q-fig figcaption{display:none}}
+.q-fig-full{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;align-content:center;gap:10px;padding:16px;background:rgba(14,21,48,.92);cursor:zoom-out}
+.q-fig-full img{max-width:min(1200px,100%);max-height:calc(100vh - 140px);background:#fff8dc;border:4px solid #fff;border-radius:8px}
+.q-fig-full p{margin:0;max-width:900px;color:#fff;font-size:17px;line-height:1.5;text-align:center}
+/* ===== แถบเมนูเลื่อนข้าง (hscroll.js): ปุ่ม ‹ › และขอบจาง ===== */
+.hs-wrap{position:relative;min-width:0;max-width:100%;align-self:start}
+.topbar .hs-wrap{flex:1 1 auto}
+.hs-wrap>*{cursor:grab}
+.hs-wrap>.hs-drag{cursor:grabbing;scroll-behavior:auto;user-select:none}
+.hs-arrow{position:absolute;top:50%;z-index:3;display:grid;place-items:center;width:34px;height:34px;margin-top:-17px;padding:0;background:var(--g-yellow);color:var(--ink);border:3px solid var(--ink);border-radius:50%;box-shadow:2px 2px 0 var(--ink);font:900 24px/1 var(--display);cursor:pointer}
+.hs-arrow[hidden]{display:none!important}
+.hs-arrow:active{transform:translate(2px,2px);box-shadow:none}
+.hs-al{left:-4px}.hs-ar{right:-4px}
+.hs-wrap.hs-l>:first-child{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 44px);mask-image:linear-gradient(90deg,transparent 0,#000 44px)}
+.hs-wrap.hs-r>:first-child{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 44px),transparent)}
+.hs-wrap.hs-l.hs-r>:first-child{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 44px,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(90deg,transparent 0,#000 44px,#000 calc(100% - 44px),transparent)}
+/* ลานบอส: รอภาพตัวละครโหลด (เฉพาะบน GAS) */
+.sprite-wait{display:flex!important;align-items:center;gap:16px}
+.sprite-wait img{width:110px;height:110px;object-fit:contain;animation:sw-bob .7s ease-in-out infinite}
+.sprite-wait h2{margin:0 0 4px}
+.sw-bar{display:block;height:14px;margin-top:10px;border:3px solid var(--ink);border-radius:99px;background:repeating-linear-gradient(-45deg,var(--g-pink) 0 10px,#ff8fbd 10px 20px);background-size:28px 28px;animation:sw-st .6s linear infinite}
+@keyframes sw-bob{50%{transform:translateY(-6px)}}
+@keyframes sw-st{to{background-position:28px 0}}
+
+/* AI ร่างอัตโนมัติ (teacher-queue.js) */
+.auto-ai h3{margin:2px 0}
+.auto-ai.on{background:#e9fff6!important;box-shadow:6px 6px 0 var(--g-green,#00b386)!important}
+
+/* คำถามชิ้นงานแบบแยกข้อ (work-guidance.js) */
+.work-form label.wq{display:block}
+.wq-q{display:block;font:800 19px/1.35 var(--display);color:var(--ink)}
+.wq-p{margin:6px 0 4px;padding-left:22px;font-weight:500;font-size:16px;line-height:1.5}
+.wq-p li{margin:2px 0}
+.wq-ev{display:block;margin:2px 0 6px;padding:4px 10px;background:#fff1a8;border-left:5px solid var(--ink);border-radius:4px;font-size:14px!important;font-weight:500}
+.wq-ex{margin:0 0 8px;font-weight:500;font-size:15px}
+.wq-ex summary{cursor:pointer;font-weight:700;color:var(--ink)}
+.wq-ex p{margin:4px 0}
+.d-note{margin:6px 0;padding:6px 10px;background:#fff1a8;border:2px solid var(--ink);border-radius:6px;font-size:14px}
+
+/* ===== ระบบใบงานสร้างสรรค์แบบเต็มความกว้าง สะอาดตา ไม่ซ้อนทับ (DTWorksheet v3) ===== */
+.ws-full-page{width:100%;max-width:100%;min-width:0}
+.ws-main-paper{width:100%;max-width:100%;min-width:0;overflow:hidden}
+.ws-sheet-banner{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;padding-bottom:14px;margin-bottom:14px;border-bottom:4px solid var(--ink)}
+.ws-sheet-banner h2{margin:6px 0 4px!important;font-size:clamp(24px,2.4vw,30px)!important}
+.ws-subtitle{margin:0!important;font-size:18px!important;color:var(--muted)!important}
+.ws-banner-right{display:flex;align-items:center;gap:8px}
+
+/* แถบพับตัวช่วยและเกณฑ์คะแนน (แยกอยู่นอกส่วนที่นักเรียนพิมพ์ตอบ ไม่กินพื้นที่) */
+.ws-top-drawers{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-bottom:18px;align-items:start}
+.ws-drawer{background:#fff8dc;border:3px solid var(--ink);border-radius:8px;box-shadow:4px 4px 0 var(--ink);overflow:hidden}
+.ws-drawer.ws-rubric-drawer{background:#f0fdf4}
+.ws-drawer summary{padding:10px 14px;font:800 17px/1.3 var(--display);color:var(--ink);cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;user-select:none}
+.ws-drawer summary::-webkit-details-marker{display:none}
+.ws-drawer summary::after{content:"▼ เปิดดู";font-size:13px;padding:2px 8px;background:#fff;border:2px solid var(--ink);border-radius:99px}
+.ws-drawer[open] summary{border-bottom:2px dashed rgba(14,21,48,.25);background:rgba(255,255,255,.55)}
+.ws-drawer[open] summary::after{content:"▲ ซ่อน"}
+.ws-drawer-body{padding:12px 16px;font-size:16px}
+.ws-idea-list{margin:6px 0 12px;padding-left:22px}
+.ws-idea-list li{margin:4px 0;font-size:16px!important;line-height:1.45!important}
+.ws-helper-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-top:8px;border-top:2px dashed rgba(14,21,48,.18)}
+
+/* การ์ดแต่ละส่วนของใบงาน */
+.ws-sections-container{display:grid;gap:18px;min-width:0}
+.ws-section-card{background:#fff;border:3px solid var(--ink);border-radius:8px;padding:16px 18px;box-shadow:5px 5px 0 var(--ink);min-width:0;max-width:100%}
+.ws-sec-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;padding-bottom:8px;border-bottom:2px dashed rgba(14,21,48,.18)}
+.ws-sec-header h3{margin:0 0 2px!important;font-size:20px!important}
+.ws-sec-hint{margin:0!important;font-size:16px!important;color:var(--muted)!important}
+.ws-step-pill{flex:none;display:inline-block;background:var(--g-cyan);color:var(--ink);border:2.5px solid var(--ink);border-radius:6px;padding:3px 10px;font:800 15px/1.2 var(--display);box-shadow:2px 2px 0 var(--ink)}
+.ws-step-pill.gold{background:var(--g-yellow)}
+
+/* ตารางใบงาน: กว้างเต็ม ไม่ล้นกรอบ พิมพ์ได้หลายบรรทัด */
+.ws-table-wrap{width:100%;max-width:100%;overflow-x:auto;margin:6px 0}
+.ws-table{width:100%;table-layout:fixed;border-collapse:collapse;border:3px solid var(--ink)!important;box-shadow:none!important}
+.ws-table th,.ws-table td{border:2px solid var(--ink)!important;padding:8px 10px!important;vertical-align:top;word-wrap:break-word}
+.ws-table thead th{background:var(--ink)!important;color:#fff!important;font-size:16px;text-align:left}
+.ws-th-row{width:95px!important}
+.ws-row-head{background:#fff8dc!important;color:var(--ink)!important;font-weight:800;font-size:16px;width:95px}
+.ws-cell-input{width:100%;min-width:0;padding:7px 10px!important;font-size:17px!important;line-height:1.4!important;border:2px solid #94a3b8!important;border-radius:6px!important;box-shadow:none!important;background:#fff!important;resize:vertical;font-family:var(--font)}
+.ws-cell-input:focus{border-color:var(--ink)!important;background:#fffef5!important}
+.ws-select{width:100%;min-width:0;padding:7px 8px!important;font-size:17px!important;border:2px solid #94a3b8!important;border-radius:6px!important;box-shadow:none!important;background:#fff!important}
+
+/* รายการคำถามย่อยแบบบูลเล็ท (Bullets) สะอาดตา */
+.ws-bullet-list{list-style:disc;margin:4px 0;padding-left:24px;display:grid;gap:12px}
+.ws-top-bullet{margin-bottom:12px}
+.ws-bottom-bullet{margin-top:12px}
+.ws-bullet-item{padding:2px 0}
+.ws-bullet-item::marker{color:var(--g-pink);font-size:1.2em}
+.ws-bullet-label{display:block;font-weight:700;font-size:18px;margin-bottom:4px;color:var(--ink)}
+.ws-clean-input{width:100%;max-width:100%;padding:8px 12px!important;font-size:18px!important;border:2.5px solid var(--ink)!important;border-radius:6px!important;box-shadow:2px 2px 0 rgba(14,21,48,.18)!important;background:#fff!important}
+.ws-clean-input:focus{background:#fffef5!important}
+
+/* กระดานออกแบบสร้างสรรค์ (Creative Design Studio) */
+.ws-studio-card{background:#fffef8}
+.ws-studio-toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px;padding:8px 10px;background:#edf2f7;border:2.5px solid var(--ink);border-radius:6px}
+.ws-tool-group{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.ws-tool-btn,.ws-mini-btn{background:#fff!important;color:var(--ink)!important;border:2px solid var(--ink)!important;border-radius:6px!important;padding:5px 11px!important;font:700 15px/1.2 var(--display)!important;box-shadow:2px 2px 0 var(--ink)!important;cursor:pointer}
+.ws-tool-btn.active{background:var(--g-yellow)!important;box-shadow:3px 3px 0 var(--g-pink)!important;transform:translate(-1px,-1px)}
+.ws-tool-btn.danger,.ws-mini-btn.danger{background:#ffe3ec!important}
+.ws-color-picker{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:15px;padding:2px 8px;background:#fff;border:2px solid var(--ink);border-radius:6px}
+.ws-color-picker input[type=color]{width:28px;height:26px;padding:0;border:0!important;box-shadow:none!important;cursor:pointer}
+.ws-selected-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:8px 12px;margin-bottom:10px;background:#fff1a8;border:2.5px solid var(--ink);border-radius:6px}
+.ws-selected-bar[hidden]{display:none!important}
+.ws-sel-controls{display:flex;flex-wrap:wrap;gap:6px}
+.ws-canvas-stage{border:3px solid var(--ink);border-radius:8px;overflow:hidden;background:#fffdf9;box-shadow:inset 0 0 0 2px rgba(14,21,48,.05);margin-bottom:12px}
+.ws-creative-canvas{display:block;width:100%;height:340px;touch-action:none;cursor:crosshair}
+.ws-palette-box{background:#f8fafc;border:2.5px solid var(--ink);border-radius:8px;padding:10px 12px;margin-bottom:12px}
+.ws-palette-tabs{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid rgba(14,21,48,.12)}
+.ws-cat-tab{background:#fff!important;color:var(--ink)!important;border:2px solid var(--ink)!important;border-radius:99px!important;padding:4px 12px!important;font:700 15px/1.2 var(--display)!important;cursor:pointer}
+.ws-cat-tab.active{background:var(--ink)!important;color:#fff!important}
+.ws-custom-emoji{display:flex;align-items:center;gap:6px;margin-left:auto}
+.ws-custom-emoji input{width:160px;padding:4px 8px!important;font-size:15px!important;border:2px solid var(--ink)!important;box-shadow:none!important}
+.ws-stamp-grid{display:none;grid-template-columns:repeat(auto-fill,minmax(44px,1fr));gap:6px}
+.ws-stamp-grid.active{display:grid}
+.ws-stamp-btn{height:44px;font-size:25px!important;line-height:1;background:#fff!important;border:2px solid var(--ink)!important;border-radius:6px!important;box-shadow:2px 2px 0 var(--ink)!important;cursor:pointer;display:grid;place-items:center;padding:0!important;transition:transform .08s}
+.ws-stamp-btn:hover{background:var(--g-yellow)!important;transform:scale(1.08)}
+.ws-photo-box{background:#fff8dc;border:2.5px dashed var(--ink);border-radius:8px;padding:10px 14px}
+.ws-photo-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.ws-upload-label{cursor:pointer;margin:0}
+.ws-photo-preview-area{margin-top:10px;display:grid;grid-template-columns:160px 1fr;gap:12px;align-items:center;background:#fff;padding:10px;border:2px solid var(--ink);border-radius:6px}
+.ws-photo-preview-area[hidden]{display:none!important}
+.ws-photo-preview-area img{width:100%;max-height:130px;object-fit:contain;border:2px solid var(--ink);border-radius:4px}
+.ws-bottom-actions{margin-top:18px}
+
+/* มุมมองอ่านอย่างเดียวสำหรับครูตรวจงานและข้อเสนอแนะ */
+.ws-readonly-view{display:grid;gap:14px;margin:10px 0}
+.ws-ro-block{background:#f8fafc;border:3px solid var(--ink);border-radius:6px;padding:12px 14px}
+.ws-ro-block h4{margin:0 0 8px!important;font-size:18px!important}
+.ws-ro-list{margin:0;padding-left:20px}
+.ws-ro-list li{margin:4px 0}
+.ws-ro-media-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.ws-ro-fig{margin:0;background:#fff;border:2px solid var(--ink);border-radius:6px;padding:8px;text-align:center}
+.ws-ro-fig img{max-width:100%;max-height:240px;object-fit:contain}
+.ws-ro-fig figcaption{margin-top:6px;font-size:14px;font-weight:700;color:var(--muted)}
+
+@media(max-width:700px){
+  .ws-table{table-layout:auto}
+  .ws-creative-canvas{height:270px}
+  .ws-photo-preview-area{grid-template-columns:1fr}
+  .ws-custom-emoji{width:100%;margin-left:0;margin-top:4px}
+  .ws-custom-emoji input{flex:1}
+}
+
+/* ===== แถบเมนูด้านบนใหม่ (Topbar HUD: รองรับทั้ง PC แถวเดียวไม่ตกบรรทัด และมือถือ 2 แถวสะอาดตา) ===== */
+body::after{display:none!important;content:none!important}
+.callout::before{display:none!important;content:none!important}
+.callout{position:relative;padding:12px 16px!important;border-left:8px solid var(--g-cyan)!important}
+.callout.gold{border-left-color:var(--g-pink)!important}
+
+header .topbar,.topbar{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px 14px!important;flex-wrap:nowrap!important;padding:8px max(16px,calc((100% - 1340px) / 2))!important;min-height:66px!important;box-sizing:border-box}
+.topbar-left{display:flex;align-items:center;gap:10px;flex-wrap:nowrap;min-width:0;flex:1 1 auto}
+.topbar-right{display:flex;align-items:center;gap:8px;flex-wrap:nowrap;flex:0 0 auto;margin-left:auto}
+.brand{display:inline-flex;align-items:center;gap:8px;padding-right:10px;border-right:3px solid rgba(14,21,48,.16);flex:0 0 auto;text-decoration:none}
+.brand-mark{width:38px!important;height:38px!important;flex:0 0 38px}
+.brand strong{font-size:17px!important;line-height:1.1;display:block;white-space:nowrap}
+.brand small{font-size:11.5px!important;color:var(--muted)!important;margin-top:1px!important;letter-spacing:.01em!important;white-space:nowrap;display:block}
+.top-nav{display:flex;align-items:center;gap:5px;flex-wrap:nowrap;min-width:0}
+.top-nav a{display:inline-flex;align-items:center;gap:4px;padding:6px 10px!important;font:800 14.5px/1.2 var(--display)!important;border:2px solid rgba(14,21,48,.22)!important;border-radius:8px!important;background:#f8fafc!important;color:var(--ink)!important;white-space:nowrap;text-decoration:none;min-height:36px}
+.top-nav a:hover{background:var(--g-yellow)!important;border-color:var(--ink)!important;box-shadow:2px 2px 0 var(--ink)!important;transform:translate(-1px,-1px)}
+.top-nav a.active{background:var(--g-yellow)!important;border-color:var(--ink)!important;box-shadow:2.5px 2.5px 0 var(--ink)!important}
+.top-nav a.top-teacher-link{background:#f3e8ff!important}
+.top-chap-jump{display:inline-flex;align-items:center;flex:0 1 200px;min-width:135px}
+.top-chap-jump select{width:100%!important;max-width:205px;min-height:36px!important;padding:5px 8px!important;font:800 14px/1.2 var(--display)!important;background:#fff8dc!important;color:var(--ink)!important;border:2px solid var(--ink)!important;border-radius:8px!important;box-shadow:2px 2px 0 var(--ink)!important;cursor:pointer;margin:0!important}
+.top-chap-jump select:hover{background:var(--g-yellow)!important}
+
+/* กล่องสถานะผู้เรียน / ผู้ชม / ครู + ปุ่มเปลี่ยนคนและออกจากระบบ */
+.top-user-box{display:inline-flex;align-items:center;gap:5px;background:#f8fafc;border:2.5px solid var(--ink);border-radius:10px;padding:3px 6px;box-shadow:3px 3px 0 var(--ink);flex:0 0 auto}
+.top-user-box.student-mode{background:#e3fbf5}
+.top-user-box.guest-mode{background:#fff8dc}
+.top-user-box.teacher-mode{background:#ffe6f2}
+.tu-badge{display:inline-flex;align-items:center;gap:6px;padding:2px 6px 2px 3px;border-radius:6px;color:var(--ink)!important;text-decoration:none}
+a.tu-badge:hover{background:rgba(255,255,255,.7)}
+.tu-no{display:inline-block;background:var(--ink);color:var(--g-yellow);font:800 12.5px/1.2 var(--display);padding:3px 7px;border-radius:6px;white-space:nowrap}
+.tu-role-dot{width:28px;height:28px;display:grid;place-items:center;background:#fff;border:2px solid var(--ink);border-radius:50%;font-size:15px}
+.tu-info{display:flex;flex-direction:column;line-height:1.15}
+.tu-info strong{font:800 14px/1.2 var(--display);color:var(--ink);max-width:145px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tu-info small{font-size:11.5px!important;font-weight:700;color:var(--muted);white-space:nowrap}
+.tu-btn{background:#fff!important;color:var(--ink)!important;border:2px solid var(--ink)!important;border-radius:6px!important;padding:4px 8px!important;min-height:32px!important;font:800 13px/1.2 var(--display)!important;box-shadow:2px 2px 0 var(--ink)!important;cursor:pointer;white-space:nowrap;transition:transform .08s}
+.tu-btn:hover{background:var(--g-yellow)!important;transform:translate(-1px,-1px)}
+.tu-btn:active{transform:translate(1px,1px);box-shadow:none!important}
+.tu-btn.primary{background:var(--g-cyan)!important}
+.tu-btn.danger{background:#ffd9e4!important;color:#7d1414!important}
+.tu-btn.danger:hover{background:var(--g-pink)!important;color:#fff!important}
+header .save-state{display:inline-flex;align-items:center;padding:4px 8px;background:#f0fdf4;border:2px solid var(--ink);border-radius:99px;font:700 12px/1.2 var(--display)!important;color:#166534!important;min-width:0!important;white-space:nowrap;flex:0 0 auto}
+header .save-state.error{background:#fef2f2;color:#991b1b!important}
+
+@media(max-width:1220px){
+  .brand small{display:none!important}
+  header .save-state{display:none!important}
+  .top-chap-jump select{max-width:170px}
+}
+@media(max-width:1023px){
+  header .topbar,.topbar{flex-wrap:wrap!important;padding:8px 12px!important;gap:8px!important}
+  .topbar-left{width:100%;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  .brand{border-right:0;padding-right:0}
+  .top-nav{order:3;width:100%;overflow-x:auto;padding-bottom:2px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .top-nav::-webkit-scrollbar{display:none}
+  .topbar-right{width:100%;justify-content:space-between;padding-top:6px;border-top:2px dashed rgba(14,21,48,.14);margin-left:0}
+  .top-user-box{width:100%;justify-content:space-between;flex-wrap:wrap}
+}
+@media(max-width:600px){
+  .brand strong{font-size:16px!important}
+  .brand-mark{width:32px!important;height:32px!important;flex:0 0 32px;font-size:18px!important}
+  .top-nav a{padding:5px 9px!important;font-size:13.5px!important;min-height:34px}
+  .top-chap-jump{flex:0 0 auto}
+  .top-chap-jump select{max-width:155px;font-size:13px!important;min-height:34px!important}
+  .tu-info strong{max-width:120px;font-size:13.5px}
+  .tu-info small{font-size:11px!important}
+  .tu-btn{padding:4px 7px!important;font-size:12.5px!important}
+}
+
+/* ===== กล่องสถานะการส่งงานและผลตรวจจากครู (แสดงทั้งในหน้าชิ้นงาน แฟ้มงาน และข้อเสนอแนะ) ===== */
+.ws-sub-status-box{margin:0 0 18px;padding:16px 18px;border:3.5px solid var(--ink);border-radius:10px;box-shadow:5px 5px 0 var(--ink);background:#f0f9ff}
+.ws-sub-status-box.graded{background:#ecfdf5;border-color:#065f46;box-shadow:5px 5px 0 #10b981}
+.ws-sub-status-box.revision{background:#fffbeb;border-color:#92400e;box-shadow:5px 5px 0 #f59e0b}
+.ws-sub-status-box.waiting{background:#eff6ff;border-color:var(--ink);box-shadow:5px 5px 0 var(--g-cyan)}
+.ws-sub-status-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.ws-sub-status-head strong{display:block;font:800 20px/1.3 var(--display);color:var(--ink)}
+.ws-sub-status-head span{display:block;font-size:15px;color:#334155;margin-top:2px}
+.ws-sub-score-pill{display:inline-flex;align-items:baseline;gap:6px;background:var(--ink);color:var(--g-yellow);padding:6px 16px;border-radius:99px;border:3px solid var(--ink);box-shadow:3px 3px 0 #10b981}
+.ws-sub-score-pill b{font:900 28px/1 var(--display);color:var(--g-yellow)}
+.ws-sub-score-pill small{font:800 15px/1 var(--display);color:#fff}
+.ws-sub-rubric-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ws-sub-crit{background:#fff;border:2px solid var(--ink);border-radius:6px;padding:4px 10px;font-size:15px;display:inline-flex;align-items:center;gap:6px}
+.ws-sub-crit b{color:#047857;font-family:var(--display)}
+.ws-sub-comment{margin-top:10px;padding:10px 14px;background:#fff;border:2.5px solid var(--ink);border-radius:8px;font-size:17px;line-height:1.45;color:var(--ink)}
+
+/* ===== หน้าแฟ้มงานของฉัน (#portfolio) และหน้าผลตรวจ (#feedback) โฉมใหม่ ===== */
+.pf-summary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:14px 0 18px}
+.pf-sum-box{background:#fff8dc;border:3px solid var(--ink);border-radius:8px;padding:12px 14px;box-shadow:4px 4px 0 var(--ink);display:flex;flex-direction:column;gap:4px}
+.pf-sum-box.graded{background:#dcfce7}
+.pf-sum-box.score{background:#fae8ff}
+.pf-sum-box span{font:700 15px/1.2 var(--display);color:#334155}
+.pf-sum-box strong{font:900 clamp(24px,2.5vw,32px)/1.1 var(--display);color:var(--ink)}
+.pf-sum-box strong small{font-size:15px;font-weight:700;color:#475569}
+
+.pf-work-card{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;gap:16px!important;align-items:center!important;padding:16px 18px!important;background:#fff!important;border:3.5px solid var(--ink)!important;border-radius:10px!important;box-shadow:5px 5px 0 var(--ink)!important}
+.pf-work-card.is-submitted{background:#f8fafc!important;border-left:10px solid var(--g-cyan)!important}
+.pf-work-card.is-graded{background:#f0fdf4!important;border-left:10px solid #16a34a!important}
+.pf-wc-main{display:flex;align-items:flex-start;gap:14px;min-width:0}
+.pf-wc-main .chapter-number{flex:0 0 48px;width:48px;height:48px;display:grid;place-items:center;font:900 22px/1 var(--display);background:var(--g-yellow);border:3px solid var(--ink);border-radius:10px;box-shadow:3px 3px 0 var(--ink)}
+.pf-wc-info{min-width:0;flex:1}
+.pf-wc-title-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.pf-wc-title-row h3{margin:0!important;font-size:21px!important;line-height:1.25}
+.pf-wc-meta{margin:0 0 6px!important;font-size:16px!important;color:#475569!important}
+.pf-wc-feedback{margin-top:8px;padding:10px 14px;border:2.5px solid var(--ink);border-radius:8px;background:#fff}
+.pf-wc-feedback.graded{background:#ecfdf5;border-color:#059669}
+.pf-wc-feedback.revision{background:#fffbeb;border-color:#d97706}
+.pf-wc-feedback.waiting{background:#eff6ff;border-style:dashed;font-size:16px;color:#1e40af}
+.pf-wc-fb-top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.pf-wc-fb-top strong{font:800 18px/1.25 var(--display);color:var(--ink)}
+.pf-wc-criteria{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.pf-wc-criteria span{background:#fff;border:1.5px solid var(--ink);border-radius:6px;padding:2px 8px;font-size:14px}
+.pf-wc-comment{margin:0!important;font-size:16px!important;color:var(--ink)!important}
+.pf-wc-actions{display:flex;flex-direction:column;gap:8px;min-width:175px}
+.pf-wc-actions .btn{width:100%;justify-content:center;margin:0!important}
+
+/* กล่องรายละเอียดผลตรวจในแท็บ #chapter/N/feedback */
+.pf-sub-detail-card{padding:18px!important;border:3.5px solid var(--ink)!important;border-radius:10px!important}
+.pf-review-panel{margin:14px 0;padding:16px;border:3px solid var(--ink);border-radius:8px;background:#f8fafc}
+.pf-review-panel.graded{background:#ecfdf5;box-shadow:4px 4px 0 #10b981}
+.pf-review-panel.revision{background:#fffbeb;box-shadow:4px 4px 0 #f59e0b}
+.pf-review-panel.waiting{background:#eff6ff;border-style:dashed}
+.pf-review-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.pf-review-head strong{font:800 20px/1.3 var(--display);color:var(--ink)}
+.pf-score-badge{background:var(--ink);color:var(--g-yellow);padding:6px 16px;border-radius:99px;display:inline-flex;align-items:baseline;gap:6px}
+.pf-score-badge b{font:900 28px/1 var(--display)}
+.pf-score-badge span{font:700 15px/1 var(--display);color:#fff}
+.pf-rubric-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;margin-bottom:12px!important}
+.pf-rubric-grid .rubric-item,.pf-rubric-grid .rubric-item:first-of-type{display:flex!important;justify-content:space-between!important;align-items:center!important;gap:12px!important;background:#fff!important;border:2.5px solid var(--ink)!important;border-radius:8px!important;padding:10px 14px!important;margin:0!important;box-shadow:3px 3px 0 rgba(14,21,48,.18)!important;font-size:17px!important;line-height:1.35!important}
+.pf-rubric-grid .rubric-item span{flex:1 1 auto;min-width:0;font-weight:700;color:var(--ink);word-break:break-word}
+.pf-rubric-grid .rubric-item b{flex:0 0 auto;padding:3px 12px!important;font-size:16px!important;border:2.5px solid var(--ink)!important;border-radius:99px!important;background:var(--g-yellow)!important;color:var(--ink)!important;white-space:nowrap!important;box-shadow:2px 2px 0 var(--ink)!important}
+.rubric-item{font-size:18px!important}
+.rubric-item b{font-size:16px!important;padding:2px 10px!important}
+.pf-comment-box{background:#fff;border:2.5px solid var(--ink);border-radius:8px;padding:12px 14px}
+.pf-comment-box p{margin:4px 0 0!important;font-size:18px!important;color:var(--ink)!important}
+
+@media(max-width:820px){
+  .pf-summary-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .pf-work-card{grid-template-columns:1fr!important;padding:14px!important}
+  .pf-wc-actions{flex-direction:row;flex-wrap:wrap;min-width:0;width:100%}
+  .pf-wc-actions .btn{flex:1 1 140px}
+  .pf-rubric-grid{grid-template-columns:1fr!important}
+}
+@media(max-width:520px){
+  .pf-wc-main{flex-direction:column;gap:8px}
+  .pf-wc-main .chapter-number{width:40px;height:40px;flex:0 0 40px;font-size:18px}
+  .ws-sub-status-box{padding:12px 14px}
+  .ws-sub-score-pill b,.pf-score-badge b{font-size:22px}
+  .pf-rubric-grid .rubric-item,.pf-rubric-grid .rubric-item:first-of-type{padding:8px 12px!important;font-size:15.5px!important;gap:8px!important}
+  .pf-rubric-grid .rubric-item b{font-size:14.5px!important;padding:2px 10px!important}
+  .btn{min-height:42px;padding:8px 14px;font-size:16px}
+}

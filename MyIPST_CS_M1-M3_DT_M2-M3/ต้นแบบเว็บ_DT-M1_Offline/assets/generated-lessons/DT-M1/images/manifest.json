@@ -1,0 +1,49 @@
+{
+  "course": "ออกแบบและเทคโนโลยี ม.1",
+  "generatedAt": "2026-10-18",
+  "generationMode": "built-in image generation; references inspected before generation; resized and encoded as WebP only",
+  "referenceAsset": "../../../../แผนพัฒนาบทเรียนเว็บ_ม1-ม3_6วิชา/assets/techno-secondary-4weapons/sword/frames/00-ready.png",
+  "driveFolderId": "1BaK1eEBmtb3dX33r_sBPgr5JayzGVuiX",
+  "driveFolderUrl": "https://drive.google.com/drive/folders/1BaK1eEBmtb3dX33r_sBPgr5JayzGVuiX",
+  "integratedIntoWebsite": false,
+  "items": [
+    {
+      "id": "DT-M1-C05-M02-FIG1",
+      "filename": "DT-M1-C05-M02-FIG1.webp",
+      "chapter": 5,
+      "moduleId": "DT-M1-C05-M02",
+      "title": "วงจรไฟเตือนฝาเปิด",
+      "assetPath": "assets/generated-lessons/DT-M1/images/DT-M1-C05-M02-FIG1.webp",
+      "dimensionsPx": [
+        1024,
+        1024
+      ],
+      "format": "webp",
+      "bytes": 109102,
+      "caption": "ขายาวของ LED คือขาบวก ต่อไปทางขั้วบวกของแบตเตอรี่ และมีตัวต้านทานคั่นไว้เสมอ",
+      "driveFileId": "1fCGuZFiwVTo2kOlYDDpeoHNjBChGOtNr",
+      "driveUrl": "https://drive.google.com/file/d/1fCGuZFiwVTo2kOlYDDpeoHNjBChGOtNr/view?usp=drivesdk",
+      "shareStatus": "anyone_with_link_reader_verified",
+      "visualQa": "วงจรปิดครบจากขั้วบวก ผ่านสวิตช์และตัวต้านทานไปขา LED ยาว แล้วกลับจากขาสั้นสู่ขั้วลบ; ไม่มีไฟบ้านหรือปลั๊ก"
+    },
+    {
+      "id": "DT-M1-C06-M03-FIG1",
+      "filename": "DT-M1-C06-M03-FIG1.webp",
+      "chapter": 6,
+      "moduleId": "DT-M1-C06-M03",
+      "title": "ภาพฉาย 3 ด้านของถาด",
+      "assetPath": "assets/generated-lessons/DT-M1/images/DT-M1-C06-M03-FIG1.webp",
+      "dimensionsPx": [
+        1024,
+        1024
+      ],
+      "format": "webp",
+      "bytes": 110352,
+      "caption": "ภาพด้านบนเห็นกว้างกับยาว ภาพด้านหน้าเห็นกว้างกับสูง ภาพด้านข้างเห็นยาวกับสูง ขนาดเดียวกันต้องเท่ากันทุกภาพ",
+      "driveFileId": "1gHSmqVmtWgKeZ7TDuK3vFAaKwHKZNh2w",
+      "driveUrl": "https://drive.google.com/file/d/1gHSmqVmtWgKeZ7TDuK3vFAaKwHKZNh2w/view?usp=drivesdk",
+      "shareStatus": "anyone_with_link_reader_verified",
+      "visualQa": "ข้อความและค่ามิติ 20/15/5 ซม. อ่านได้และตำแหน่งภาพฉายถูกต้อง; สัดส่วนรูปด้านหน้าและด้านข้างที่ AI วาดยังคลาดจากสเกล 4:1 และ 3:1 จึงห้ามใช้เทียบขนาดจากสัดส่วนรูป ให้ยึดค่ามิติที่ระบุ"
+    }
+  ]
+}

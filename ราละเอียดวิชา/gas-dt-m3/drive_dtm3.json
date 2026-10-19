@@ -1,0 +1,869 @@
+[
+ {
+  "mimeType": "application/vnd.google-apps.folder",
+  "parents": [
+   "1wg-P-o5Q6d6jpAI_K-4wIHpSHFTyewi6"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1pS8rD4OIMAb0UB6JNEsCxtSp-8dboKKw",
+  "name": "DT-M3-Course-Assets"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1pS8rD4OIMAb0UB6JNEsCxtSp-8dboKKw"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1PgHLMMvdQs4OJeZsOmDITjxz2tNiA5Hv",
+  "name": "DT-M3-C02-M05-IDEA.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1pS8rD4OIMAb0UB6JNEsCxtSp-8dboKKw"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1IpvoUfQdi6_nJxb3pjUGHbmkwZ9pan2Q",
+  "name": "DT-M3-C02-M04-MISTAKE.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1pS8rD4OIMAb0UB6JNEsCxtSp-8dboKKw"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1SPlclaL5pTRr9SdFdbFymIiQqrkPumjc",
+  "name": "DT-M3-C02-M04-IDEA.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1pS8rD4OIMAb0UB6JNEsCxtSp-8dboKKw"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1ZjinErf9vsO0C99m7-npwtzOu8OkOHU8",
+  "name": "DT-M3-C01-M02-MISTAKE.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1pS8rD4OIMAb0UB6JNEsCxtSp-8dboKKw"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1cSi1UqCawtEjQkC9PsvwZhrqZsMLF2r7",
+  "name": "DT-M3-C03-M02-MISTAKE.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1pS8rD4OIMAb0UB6JNEsCxtSp-8dboKKw"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1VUDY4NuAf4txbvyb0dXL5-vHZr8vci9t",
+  "name": "DT-M3-C03-M02-IDEA.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1pS8rD4OIMAb0UB6JNEsCxtSp-8dboKKw"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "18racpLVjj-7r1zyL2iFswRNoP8p4D4G8",
+  "name": "DT-M3-C03-M01-MISTAKE.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1pS8rD4OIMAb0UB6JNEsCxtSp-8dboKKw"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1C88iwSTzVTNwskOgzgf_L7qoeYWykv8w",
+  "name": "DT-M3-C03-M01-IDEA.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1pS8rD4OIMAb0UB6JNEsCxtSp-8dboKKw"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1SWH-xEtm0XTYqN_s4y0fj6rCoFVdH-dm",
+  "name": "DT-M3-C02-M05-MISTAKE.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1pS8rD4OIMAb0UB6JNEsCxtSp-8dboKKw"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1qeQV8Y042fcOAgtKRrlhwfIgir1kYuxl",
+  "name": "DT-M3-C02-M03-MISTAKE.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1pS8rD4OIMAb0UB6JNEsCxtSp-8dboKKw"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1wkB8hfBICJhKqq0w7e9pXqwb5I1uX2z-",
+  "name": "DT-M3-C02-M03-IDEA.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1pS8rD4OIMAb0UB6JNEsCxtSp-8dboKKw"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "12AjKtXlI88duV1zK0dgFapzlm2FkGbya",
+  "name": "DT-M3-C02-M02-MISTAKE.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1pS8rD4OIMAb0UB6JNEsCxtSp-8dboKKw"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1bzGWPLtCMnc5gtFj45U3cjikTUFDe5dR",
+  "name": "DT-M3-C02-M02-IDEA.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1pS8rD4OIMAb0UB6JNEsCxtSp-8dboKKw"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1Smdec0dK-MbY2JGZ7wGqfwM58reoE8-j",
+  "name": "DT-M3-C02-M01-MISTAKE.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1pS8rD4OIMAb0UB6JNEsCxtSp-8dboKKw"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1eELlbPmaPO5439yOGCJ5ikT_Qzk3H9Xg",
+  "name": "DT-M3-C02-M01-IDEA.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1pS8rD4OIMAb0UB6JNEsCxtSp-8dboKKw"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1w1NJf_GyQzvm5Yx64Yy6q-7yrCuiqBGB",
+  "name": "DT-M3-C01-M03-MISTAKE.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1pS8rD4OIMAb0UB6JNEsCxtSp-8dboKKw"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1gR12lPRDLGrGpXy6AR964zAPmZeM-B9i",
+  "name": "DT-M3-C01-M03-IDEA.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1pS8rD4OIMAb0UB6JNEsCxtSp-8dboKKw"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1E-i6ntHSSrDX81qfkZQMog_23OMFfYzq",
+  "name": "DT-M3-C01-M02-IDEA.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1pS8rD4OIMAb0UB6JNEsCxtSp-8dboKKw"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1Q3Lc_uuIUyFhBHF0lWPNw2s81yKaTojI",
+  "name": "DT-M3-C01-M01-MISTAKE.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1pS8rD4OIMAb0UB6JNEsCxtSp-8dboKKw"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1oEb2g-kM0BObWcjewZqEz6oZvhT6NUrN",
+  "name": "DT-M3-C01-M01-IDEA.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1VIfB1_mrk0aluL2TQ7ui7mT2bajVjO5b"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1mGn-eu-j1x9tce8xq5po62BxJO8VCsn4",
+  "name": "DT-M3-C03-M02-EXAMPLE.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1VIfB1_mrk0aluL2TQ7ui7mT2bajVjO5b"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1l2ocbjxv5-tj6syUwwH6j7S73elqBN2T",
+  "name": "DT-M3-C03-M01-EXAMPLE.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1VIfB1_mrk0aluL2TQ7ui7mT2bajVjO5b"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1cuT-Fs_oJv8KEBt82OSSd8MVN66N1Exr",
+  "name": "DT-M3-C02-M05-EXAMPLE.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1VIfB1_mrk0aluL2TQ7ui7mT2bajVjO5b"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1-aJgBUbhiTHs5xctX5ux44XqzLGPkm2p",
+  "name": "DT-M3-C02-M04-EXAMPLE.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1VIfB1_mrk0aluL2TQ7ui7mT2bajVjO5b"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1x7sn9KvzG16DGnRTbj0jUefEJQMT71oc",
+  "name": "DT-M3-C02-M03-EXAMPLE.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1VIfB1_mrk0aluL2TQ7ui7mT2bajVjO5b"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1aAujcnXVLurSbTaYj9xodwSGh7GUo0i_",
+  "name": "DT-M3-C02-M02-EXAMPLE.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1VIfB1_mrk0aluL2TQ7ui7mT2bajVjO5b"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1_RaC9owEnsG2sD9oJxrtRYw8GSzAWezO",
+  "name": "DT-M3-C02-M01-EXAMPLE.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1VIfB1_mrk0aluL2TQ7ui7mT2bajVjO5b"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "17ZdJwWm0FN2Ro6KZ9BKw-2eOYuH2fVqd",
+  "name": "DT-M3-C01-M03-EXAMPLE.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1VIfB1_mrk0aluL2TQ7ui7mT2bajVjO5b"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1juA-eyoQOk1fOLxLtPR_fTkXqhgix_ZE",
+  "name": "DT-M3-C01-M02-EXAMPLE.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1VIfB1_mrk0aluL2TQ7ui7mT2bajVjO5b"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1pUfQbocM2SZWqgqYUYCHdeHaHD3OXwFd",
+  "name": "DT-M3-C01-M01-EXAMPLE.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1l7V6aa176RoJtlyHcDb0z5-jDGHU5CWj"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1cBBh29RtpEW0Mae3eKwHpv-QVw7a01bI",
+  "name": "DT-M3-CLASS-COVER.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1l7V6aa176RoJtlyHcDb0z5-jDGHU5CWj"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "18r5PjMgTBysaLoGA22RNj8ef1g85Nyz0",
+  "name": "DT-M3-C03-COVER.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1l7V6aa176RoJtlyHcDb0z5-jDGHU5CWj"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1TyjP39c_gvDGnh6wND8mGjNnTO1NLj0-",
+  "name": "DT-M3-C02-COVER.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1l7V6aa176RoJtlyHcDb0z5-jDGHU5CWj"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1MMocRt6_8IIO7AGCsVGvwjvGxiJyvPuP",
+  "name": "DT-M3-C01-COVER.webp"
+ },
+ {
+  "mimeType": "application/vnd.google-apps.folder",
+  "parents": [
+   "1DM1Mo9uBmE6g8vG5J7GAP-mrke6P9UBX"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "12d87243Ns61tde0713tYRYqDNRhJqutH",
+  "name": "DT-M3"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1BaK1eEBmtb3dX33r_sBPgr5JayzGVuiX"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1p5FKct5E5EHuGkDmXPxkimlhTDw-_ypk",
+  "name": "DT-M1-C07-M03-FIG3.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1BaK1eEBmtb3dX33r_sBPgr5JayzGVuiX"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1tjM-OZLtU4M0Tv6ytmuXtAt1OT9aBWGk",
+  "name": "DT-M1-C07-M02-FIG3.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1BaK1eEBmtb3dX33r_sBPgr5JayzGVuiX"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1cdPut4vd_uNM2wFe9p5h6B9CJy0XMiI-",
+  "name": "DT-M1-C07-M01-FIG3.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1BaK1eEBmtb3dX33r_sBPgr5JayzGVuiX"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1aBPPJVo1zCmAkvu2tIDI2OkVWG47b4Mc",
+  "name": "DT-M1-C06-M02-FIG3.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1BaK1eEBmtb3dX33r_sBPgr5JayzGVuiX"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1ueK-pGbhVZRGZOCmjie7HnGNURiXi6GW",
+  "name": "DT-M1-C06-M01-FIG3.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1BaK1eEBmtb3dX33r_sBPgr5JayzGVuiX"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1zxd2p7e7N7WTos5qN-2HKaTdtE5hleNp",
+  "name": "DT-M1-C05-M01-FIG3.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1BaK1eEBmtb3dX33r_sBPgr5JayzGVuiX"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1WZfHiQCwaDdc43ebXXqkMzR2msyWhPk4",
+  "name": "DT-M1-C04-M01-FIG3.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1BaK1eEBmtb3dX33r_sBPgr5JayzGVuiX"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1L8oxZ4xOuNjrqAOoTiPBpG009EL5gEJ6",
+  "name": "DT-M1-C03-M01-FIG3.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1BaK1eEBmtb3dX33r_sBPgr5JayzGVuiX"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1WuptDcibMtKpPR9J9wo0vEGw6WStArGo",
+  "name": "DT-M1-C02-M01-FIG3.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [
+   "1BaK1eEBmtb3dX33r_sBPgr5JayzGVuiX"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1YwNW4VGGfMOlxRZt2zNrOsc6fva6afbB",
+  "name": "DT-M1-C01-M01-FIG3.webp"
+ },
+ {
+  "mimeType": "text/markdown",
+  "parents": [
+   "1Mu8L3EggiQvnsgP3KxCqlZUyQbq8UYbK"
+  ],
+  "permissions": [
+   {
+    "type": "anyone",
+    "role": "reader"
+   },
+   {
+    "type": "user",
+    "role": "owner"
+   }
+  ],
+  "id": "1Px3F3l2hfOlUWpzlHF6RKv9zu83HNijJ",
+  "name": "DT-M3-บอสรายบท.md"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [],
+  "permissions": [],
+  "id": "1BccDoa4mx1faBRfU3RIbG-w1gKZHMxFo",
+  "name": "DT-M3-C02-M06-IDEA.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [],
+  "permissions": [],
+  "id": "1E3WNhmbsyenIm0TYfgErd0YtXb8HtJea",
+  "name": "DT-M3-C02-M06-EXAMPLE.webp"
+ },
+ {
+  "mimeType": "image/webp",
+  "parents": [],
+  "permissions": [],
+  "id": "1WsEvfyGWMPpHat5UX-ecNihnc2jly5NR",
+  "name": "DT-M3-C02-M06-MISTAKE.webp"
+ }
+]

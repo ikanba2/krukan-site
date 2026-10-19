@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "rolePortalFirst": true,
+  "roleGateOnReloadAndDeepLink": true,
+  "roleCards": 3,
+  "chapters": 7,
+  "modules": 10,
+  "labs": 20,
+  "viewsVisited": 55,
+  "desktop": [
+    1440,
+    1050
+  ],
+  "mobile": [
+    390,
+    844
+  ],
+  "localSaveReload": true,
+  "submitAndGrade": true,
+  "workTransferBetweenBrowsers": true,
+  "feedbackTransferBetweenBrowsers": true,
+  "resubmissionKeepsOldVersion": true,
+  "classBackupRestore": true,
+  "rosterPaste": true,
+  "groups": true,
+  "raffle": true,
+  "networkRequests": 0,
+  "errors": []
+}

@@ -1,0 +1,239 @@
+{
+  "courseId": "DT-M1",
+  "generatedAt": "2026-10-18",
+  "generator": "built-in image_gen",
+  "style": "colored comic",
+  "canvas": [
+    960,
+    540
+  ],
+  "groundY": 462,
+  "spriteFeetY": 474,
+  "normalization": "Crop 5% from each horizontal edge and 10% from bottom. Moves deck front below standing sprites. No characters/UI baked into background.",
+  "scenes": [
+    {
+      "chapter": 1,
+      "bossNumber": 47,
+      "bossName": "โกเลมพฤกษา",
+      "arena": "สวนพฤกษากล",
+      "climate": "nature",
+      "fileName": "arena-dt-m1-c01.webp",
+      "localPath": "C:\\Users\\ikan\\OneDrive\\0วัดท่าชุมนุม\\00Programer\\KruKan\\MyIPST_CS_M1-M3_DT_M2-M3\\ต้นแบบเว็บ_DT-M1_Offline\\assets\\arena-dt-m1-c01.webp",
+      "sourceSheet": "arena-source-sheet-01.png",
+      "sourceCell": [
+        0,
+        0,
+        836,
+        470
+      ],
+      "panelCrop": [
+        42,
+        0,
+        794,
+        423
+      ],
+      "width": 1280,
+      "height": 720,
+      "bytes": 243250,
+      "sha256": "f3abe08b62dbe839b7b0e8c490857c20c68ba8455361c91f0ee26881f5ea36cf",
+      "driveFileId": "1RB2oazN8vmIyF7mWV8OtqK5-Sa_b-ruU",
+      "status": "uploaded_and_integrated_offline",
+      "driveViewUrl": "https://drive.google.com/file/d/1RB2oazN8vmIyF7mWV8OtqK5-Sa_b-ruU/view?usp=drivesdk",
+      "runtimeUrl": "https://lh3.googleusercontent.com/d/1RB2oazN8vmIyF7mWV8OtqK5-Sa_b-ruU=w1280",
+      "driveAnyoneReaderVerified": true
+    },
+    {
+      "chapter": 2,
+      "bossNumber": 65,
+      "bossName": "แรดมอส",
+      "arena": "ทุ่งมอสเปลี่ยนผ่าน",
+      "climate": "nature",
+      "fileName": "arena-dt-m1-c02.webp",
+      "localPath": "C:\\Users\\ikan\\OneDrive\\0วัดท่าชุมนุม\\00Programer\\KruKan\\MyIPST_CS_M1-M3_DT_M2-M3\\ต้นแบบเว็บ_DT-M1_Offline\\assets\\arena-dt-m1-c02.webp",
+      "sourceSheet": "arena-source-sheet-01.png",
+      "sourceCell": [
+        836,
+        0,
+        1672,
+        470
+      ],
+      "panelCrop": [
+        42,
+        0,
+        794,
+        423
+      ],
+      "width": 1280,
+      "height": 720,
+      "bytes": 161472,
+      "sha256": "538706e9f0ec89d0584d4625e1df23d7f3f3ef98995c16a98df6c771a1095a4c",
+      "driveFileId": "1dl_ZBKYednzxOkZI2by9s3blHMNRsay_",
+      "status": "uploaded_and_integrated_offline",
+      "driveViewUrl": "https://drive.google.com/file/d/1dl_ZBKYednzxOkZI2by9s3blHMNRsay_/view?usp=drivesdk",
+      "runtimeUrl": "https://lh3.googleusercontent.com/d/1dl_ZBKYednzxOkZI2by9s3blHMNRsay_=w1280",
+      "driveAnyoneReaderVerified": true
+    },
+    {
+      "chapter": 3,
+      "bossNumber": 78,
+      "bossName": "กระทิงปฐพี",
+      "arena": "วงแหวนระบบปฐพี",
+      "climate": "rock",
+      "fileName": "arena-dt-m1-c03.webp",
+      "localPath": "C:\\Users\\ikan\\OneDrive\\0วัดท่าชุมนุม\\00Programer\\KruKan\\MyIPST_CS_M1-M3_DT_M2-M3\\ต้นแบบเว็บ_DT-M1_Offline\\assets\\arena-dt-m1-c03.webp",
+      "sourceSheet": "arena-source-sheet-01.png",
+      "sourceCell": [
+        0,
+        470,
+        836,
+        941
+      ],
+      "panelCrop": [
+        42,
+        0,
+        794,
+        424
+      ],
+      "width": 1280,
+      "height": 720,
+      "bytes": 198580,
+      "sha256": "95be4d96e9d81f5e2f13fef8489731110061eea897675614ba6699c2a952a016",
+      "driveFileId": "1VTt49jqO-3Ko9IZO5WdwQq3EfQx373NC",
+      "status": "uploaded_and_integrated_offline",
+      "driveViewUrl": "https://drive.google.com/file/d/1VTt49jqO-3Ko9IZO5WdwQq3EfQx373NC/view?usp=drivesdk",
+      "runtimeUrl": "https://lh3.googleusercontent.com/d/1VTt49jqO-3Ko9IZO5WdwQq3EfQx373NC=w1280",
+      "driveAnyoneReaderVerified": true
+    },
+    {
+      "chapter": 4,
+      "bossNumber": 69,
+      "bossName": "ด้วงศิลาทอง",
+      "arena": "เหมืองวัสดุทอง",
+      "climate": "rock",
+      "fileName": "arena-dt-m1-c04.webp",
+      "localPath": "C:\\Users\\ikan\\OneDrive\\0วัดท่าชุมนุม\\00Programer\\KruKan\\MyIPST_CS_M1-M3_DT_M2-M3\\ต้นแบบเว็บ_DT-M1_Offline\\assets\\arena-dt-m1-c04.webp",
+      "sourceSheet": "arena-source-sheet-01.png",
+      "sourceCell": [
+        836,
+        470,
+        1672,
+        941
+      ],
+      "panelCrop": [
+        42,
+        0,
+        794,
+        424
+      ],
+      "width": 1280,
+      "height": 720,
+      "bytes": 183040,
+      "sha256": "e312a0d3d316ed15111fb398c1f8dd7de3467eb7a4a5e05f1da6be9bcd78f236",
+      "driveFileId": "130l4LFhuSC3pk2iujpx3oeOXLxfmikm0",
+      "status": "uploaded_and_integrated_offline",
+      "driveViewUrl": "https://drive.google.com/file/d/130l4LFhuSC3pk2iujpx3oeOXLxfmikm0/view?usp=drivesdk",
+      "runtimeUrl": "https://lh3.googleusercontent.com/d/130l4LFhuSC3pk2iujpx3oeOXLxfmikm0=w1280",
+      "driveAnyoneReaderVerified": true
+    },
+    {
+      "chapter": 5,
+      "bossNumber": 50,
+      "bossName": "เต่าพลาสมา",
+      "arena": "อู่เต่าพลาสมา",
+      "climate": "thunder",
+      "fileName": "arena-dt-m1-c05.webp",
+      "localPath": "C:\\Users\\ikan\\OneDrive\\0วัดท่าชุมนุม\\00Programer\\KruKan\\MyIPST_CS_M1-M3_DT_M2-M3\\ต้นแบบเว็บ_DT-M1_Offline\\assets\\arena-dt-m1-c05.webp",
+      "sourceSheet": "arena-source-sheet-02.png",
+      "sourceCell": [
+        0,
+        0,
+        836,
+        470
+      ],
+      "panelCrop": [
+        42,
+        0,
+        794,
+        423
+      ],
+      "width": 1280,
+      "height": 720,
+      "bytes": 207560,
+      "sha256": "4fb39bc3ca6ee634eb229c5f4adc257475f0482fff3993822a8221be19fad195",
+      "driveFileId": "1CnhbAruWlHTYw488wTZn1YFUnuWetd4v",
+      "status": "uploaded_and_integrated_offline",
+      "driveViewUrl": "https://drive.google.com/file/d/1CnhbAruWlHTYw488wTZn1YFUnuWetd4v/view?usp=drivesdk",
+      "runtimeUrl": "https://lh3.googleusercontent.com/d/1CnhbAruWlHTYw488wTZn1YFUnuWetd4v=w1280",
+      "driveAnyoneReaderVerified": true
+    },
+    {
+      "chapter": 6,
+      "bossNumber": 55,
+      "bossName": "เลียงผาสายฟ้า",
+      "arena": "ผาสายฟ้าออกแบบ",
+      "climate": "thunder",
+      "fileName": "arena-dt-m1-c06.webp",
+      "localPath": "C:\\Users\\ikan\\OneDrive\\0วัดท่าชุมนุม\\00Programer\\KruKan\\MyIPST_CS_M1-M3_DT_M2-M3\\ต้นแบบเว็บ_DT-M1_Offline\\assets\\arena-dt-m1-c06.webp",
+      "sourceSheet": "arena-source-sheet-02.png",
+      "sourceCell": [
+        836,
+        0,
+        1672,
+        470
+      ],
+      "panelCrop": [
+        42,
+        0,
+        794,
+        423
+      ],
+      "width": 1280,
+      "height": 720,
+      "bytes": 169774,
+      "sha256": "27ba74798fc898d215b73c6cf78e4d1150006d84d8583e0e7275adcf4a395736",
+      "driveFileId": "1mCGIncxaHMxjJLNT2B7Uh_m_Z56HuK_F",
+      "status": "uploaded_and_integrated_offline",
+      "driveViewUrl": "https://drive.google.com/file/d/1mCGIncxaHMxjJLNT2B7Uh_m_Z56HuK_F/view?usp=drivesdk",
+      "runtimeUrl": "https://lh3.googleusercontent.com/d/1mCGIncxaHMxjJLNT2B7Uh_m_Z56HuK_F=w1280",
+      "driveAnyoneReaderVerified": true
+    },
+    {
+      "chapter": 7,
+      "bossNumber": 63,
+      "bossName": "ยักษ์ตาเพลิง",
+      "arena": "ลานทดสอบตาเพลิง",
+      "climate": "fire",
+      "fileName": "arena-dt-m1-c07.webp",
+      "localPath": "C:\\Users\\ikan\\OneDrive\\0วัดท่าชุมนุม\\00Programer\\KruKan\\MyIPST_CS_M1-M3_DT_M2-M3\\ต้นแบบเว็บ_DT-M1_Offline\\assets\\arena-dt-m1-c07.webp",
+      "sourceSheet": "arena-source-sheet-02.png",
+      "sourceCell": [
+        0,
+        470,
+        836,
+        941
+      ],
+      "panelCrop": [
+        42,
+        0,
+        794,
+        424
+      ],
+      "width": 1280,
+      "height": 720,
+      "bytes": 160832,
+      "sha256": "8f01476610775ae6172dd477f04bce0ea2d6684cd95b75abab948da0b2bdba4d",
+      "driveFileId": "1A2b_72JMCtH25GM0Np5TJ1yQfiu_EHjU",
+      "status": "uploaded_and_integrated_offline",
+      "driveViewUrl": "https://drive.google.com/file/d/1A2b_72JMCtH25GM0Np5TJ1yQfiu_EHjU/view?usp=drivesdk",
+      "runtimeUrl": "https://lh3.googleusercontent.com/d/1A2b_72JMCtH25GM0Np5TJ1yQfiu_EHjU=w1280",
+      "driveAnyoneReaderVerified": true
+    }
+  ],
+  "qa": {
+    "uniqueScenes": 7,
+    "localBossIntroBinding": "passed Node VM render for 7 chapters",
+    "compiledGasSyntax": "passed",
+    "spriteComposition": "visually checked all 7 scenes at actual canvas coordinates",
+    "browserPlaytest": "not run; file:// navigation blocked by browser tool policy"
+  }
+}

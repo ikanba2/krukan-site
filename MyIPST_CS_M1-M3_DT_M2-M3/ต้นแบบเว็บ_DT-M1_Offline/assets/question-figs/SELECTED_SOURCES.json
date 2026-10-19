@@ -1,0 +1,42 @@
+[
+  {
+    "batch": "02-desk-only",
+    "files": [
+      "qfig-c06-desk-area.webp"
+    ],
+    "cols": 1,
+    "rows": 1,
+    "sourcePath": "C:\\Users\\ikan\\.codex\\generated_images\\01a12445-4c30-7700-9012-ea66bb6215c8\\exec-8399fdb2-b32c-4144-a210-895647e11c58.png"
+  },
+  {
+    "batch": "02-views-only",
+    "files": [
+      "qfig-c06-views.webp"
+    ],
+    "cols": 1,
+    "rows": 1,
+    "sourcePath": "C:\\Users\\ikan\\.codex\\generated_images\\01a12445-4c30-7700-9012-ea66bb6215c8\\exec-4cbe41c5-a946-42c2-b230-681179951866.png"
+  },
+  {
+    "batch": "03-circuits",
+    "files": [
+      "qfig-c05-circuit-cut.webp",
+      "qfig-c05-circuit-nobattery.webp",
+      "qfig-c05-circuit-resistor.webp",
+      "qfig-c05-circuit-parts.webp"
+    ],
+    "cols": 2,
+    "rows": 2,
+    "sourcePath": "C:\\Users\\ikan\\.codex\\generated_images\\01a12445-4c30-7700-9012-ea66bb6215c8\\exec-29affb16-5a92-45e5-9da5-6b7ccf43ebb6.png"
+  },
+  {
+    "batch": "05-irrigation",
+    "files": [
+      "qfig-c03-irrigation.webp",
+      "qfig-c03-pipe-leak.webp"
+    ],
+    "cols": 1,
+    "rows": 2,
+    "sourcePath": "C:\\Users\\ikan\\.codex\\generated_images\\01a12445-4c30-7700-9012-ea66bb6215c8\\exec-8bf0ffd0-c553-4137-98ac-466760f55ffc.png"
+  }
+]

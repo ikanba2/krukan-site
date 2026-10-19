@@ -1,0 +1,42 @@
+/* ธีมดาวประจำวิชา ม.3 · ดาวสุริยคราส (โทนทองส้มแดง · ทรายและความร้อนอ่อนหลังฉาก)
+   โหลดต่อจาก dt-m1.css เพื่อทับเฉพาะสีและพื้นหลังที่เป็นของดาวพฤกษากลไก (ม.1) · ไฟล์เฉพาะวิชา ไม่ถูกคัดลอกทับ
+   หลักการ: สดใสแบบคอมมิกเกมมิ่ง แต่ลายจาง ตัวหนังสือยังอ่านง่าย สีเขียวยังใช้บอกว่าถูกหรือผ่าน */
+:root{--leaf:#e85d04;--planet-deep:#5a1a04;--planet-mid:#ff7a1a;--planet-sky:#ffd27a;--planet-soft:#fff3d6;--planet-silver:#f6e2c0;--planet-accent:#ffc53d}
+
+/* พื้นหลัง: ฟ้าทองยามสุริยคราส + ลายเนินทราย เส้นทางขนส่ง เฟืองโรงงาน ป้ายราคาตลาด และไอร้อนจาง ๆ */
+html body{background-color:#ffd27a!important;
+ background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22420%22%20height%3D%22420%22%20viewBox%3D%220%200%20420%20420%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%237a2e0a%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.28%22%3E%3Ccircle%20cx%3D%22320%22%20cy%3D%2286%22%20r%3D%2226%22%2F%3E%3Ccircle%20cx%3D%22320%22%20cy%3D%2286%22%20r%3D%2236%22%20stroke-dasharray%3D%226%208%22%2F%3E%3Cpath%20d%3D%22M0%20360q60-40%20120%200t120%200t120%200t60-10%22%2F%3E%3Cpath%20d%3D%22M0%20390q50-26%20100%200t100%200%22%2F%3E%3Cpath%20d%3D%22M40%20250h120%22%2F%3E%3Cpath%20d%3D%22M60%20250l-10%2040M140%20250l10%2040%22%2F%3E%3Cpath%20d%3D%22M70%20210h44v22h-44zM114%20218h16l8%2014h-24z%22%2F%3E%3Ccircle%20cx%3D%2282%22%20cy%3D%22236%22%20r%3D%226%22%2F%3E%3Ccircle%20cx%3D%22124%22%20cy%3D%22236%22%20r%3D%226%22%2F%3E%3Ccircle%20cx%3D%22250%22%20cy%3D%22250%22%20r%3D%2218%22%2F%3E%3Ccircle%20cx%3D%22250%22%20cy%3D%22250%22%20r%3D%226%22%2F%3E%3Cpath%20d%3D%22M250%20226v-8M250%20274v8M226%20250h-8M274%20250h8%22%2F%3E%3Cpath%20d%3D%22M190%20120c-8-10%208-16%200-26M210%20124c-8-10%208-16%200-26M60%20110c-6-8%206-12%200-20%22%2F%3E%3Cpath%20d%3D%22M330%20300l30%200%2012%2014-12%2014h-30z%22%2F%3E%3Ccircle%20cx%3D%22338%22%20cy%3D%22314%22%20r%3D%223%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%23fff6d8%22%20opacity%3D%22.75%22%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%2240%22%20r%3D%222.5%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22170%22%20r%3D%222%22%2F%3E%3Ccircle%20cx%3D%22390%22%20cy%3D%22210%22%20r%3D%222.5%22%2F%3E%3Ccircle%20cx%3D%22150%22%20cy%3D%22330%22%20r%3D%222%22%2F%3E%3Ccircle%20cx%3D%22370%22%20cy%3D%22390%22%20r%3D%222%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%23ffd23f%22%20stroke%3D%22%233a1206%22%20stroke-width%3D%222.5%22%20opacity%3D%22.9%22%3E%3Cpath%20d%3D%22M210%2040l7%2016%2017%202-13%2011%204%2017-15-9-15%209%204-17-13-11%2017-2z%22%2F%3E%3Cpath%20d%3D%22M30%20300l5%2011%2012%201-9%208%203%2012-11-6-11%206%203-12-9-8%2012-1z%22%2F%3E%3Cpath%20d%3D%22M390%20150l5%2011%2012%201-9%208%203%2012-11-6-11%206%203-12-9-8%2012-1z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"),linear-gradient(180deg,#ffb347 0%,#ffd27a 45%,#fff0c9 100%)!important;
+ background-attachment:fixed,fixed!important;background-size:420px 420px,auto!important}
+@media(max-width:700px){html body{background-size:300px 300px,auto!important}}
+html body::before{background-image:radial-gradient(rgba(255,255,255,.55) 1.6px,transparent 1.9px)!important;background-size:16px 16px!important;opacity:.6!important}
+
+/* ส่วนที่เคยเป็นเขียวดาวพฤกษา */
+html body .hero,html body .pf-hero{background-color:var(--planet-mid)!important}
+html body .chapter-hero{background-color:#ffb347!important}
+html body #cloud-chip{background-color:#ffe9bf!important}
+html body .lp-panel,html body .w5-tag{background-color:var(--planet-soft)!important}
+html body .lp-no,html body .lp-panel b{background-color:#e85d04!important}
+html body .chip-t{background-color:#ffd23f!important}
+html body footer.portal-site-footer{background-image:linear-gradient(160deg,#6b2208,#2b0d03)!important;box-shadow:0 -6px 0 var(--planet-accent)!important}
+html body .portal-foot-info,html body .portal-foot-line{color:#ffe3c2!important}
+html body footer.portal-site-footer .portal-foot-info,html body footer.portal-site-footer .portal-foot-line{color:#ffe3c2!important}
+
+/* หน้าโหลด: ฟ้ามืดยามสุริยคราสของดาวสุริยคราส (คงแถบเหลืองประจำแบรนด์) */
+html body #kb{background:linear-gradient(160deg,#2b0d03 0%,#6b2208 55%,#b8420c 100%)!important}
+html body #kb .kb-bg .s2{background:#e85d04!important;box-shadow:0 -9px 0 #f6c989!important}
+html body #kb .kb-st{color:#ffd27a!important}
+html body #kb .kb-tip{color:#ffe9cf!important}
+
+/* ข้อความที่วางบนพื้นหลังโดยตรง ต้องอ่านง่ายบนฟ้าทอง */
+html body .crumbs a{color:#3a1206!important;font-weight:800}
+
+/* ห้องจำลอง: จากเขียวป่าของดาวพฤกษา เป็นน้ำตาลทรายเข้มของดาวสุริยคราส */
+html body section.sim{background-color:#2b1608!important}
+html body .sim .sim-head{background-image:linear-gradient(100deg,#3a1206,#b8420c)!important}
+html body .sim .sim-body{background-image:linear-gradient(#2b1608,#1f0f05)!important}
+html body .sim .sim-stage{background-color:#1f0f05!important}
+html body .sim .sim-meter{background:#1f0f05!important}
+html body .sim .sim-meter b{color:#ffc53d!important}
+
+/* ข้อความหัวข้อย่อยในแผงควบคุมห้องจำลอง (พื้นเข้ม) ต้องเป็นสีอ่อน */
+html body .sim .sim-side > p,html body .sim .sim-side > p b,html body .sim .sim-side > div > p,html body .sim .sim-side > div > p b{color:#fff3dc!important}

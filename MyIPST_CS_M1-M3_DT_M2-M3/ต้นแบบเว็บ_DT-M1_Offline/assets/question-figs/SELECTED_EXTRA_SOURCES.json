@@ -1,0 +1,20 @@
+[
+  {
+    "batch": "tray20-single",
+    "files": [
+      "qfig-c06-tray-20.webp"
+    ],
+    "cols": 1,
+    "rows": 1,
+    "sourcePath": "C:\\Users\\ikan\\.codex\\generated_images\\01a12445-4c30-7700-9012-ea66bb6215c8\\exec-77ba1bce-f6d3-4cb7-9fff-67e23ac75415.png"
+  },
+  {
+    "batch": "wheel-align",
+    "files": [
+      "qfig-c05-wheel-axle.webp"
+    ],
+    "cols": 1,
+    "rows": 1,
+    "sourcePath": "C:\\Users\\ikan\\.codex\\generated_images\\01a12445-4c30-7700-9012-ea66bb6215c8\\exec-63761009-585b-49d0-aa80-09559fbb2fb1.png"
+  }
+]

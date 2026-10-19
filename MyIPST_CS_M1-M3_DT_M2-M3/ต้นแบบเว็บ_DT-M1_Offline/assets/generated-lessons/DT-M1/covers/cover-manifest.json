@@ -1,0 +1,162 @@
+[
+  {
+    "id": "DT-M1-COURSE-COVER",
+    "filename": "DT-M1-Course-Cover.webp",
+    "title": "ปกชั้นเรียน ม.1 · ออกแบบและเทคโนโลยี",
+    "boss": "ยักษ์ตาเพลิง (#63)",
+    "scene": "มาสไรเดอร์เทคโนปะทะยักษ์ตาเพลิงในดาวพฤกษากลไก",
+    "assetPath": "assets/generated-lessons/DT-M1/covers/DT-M1-Course-Cover.webp",
+    "dimensionsPx": [
+      737,
+      473
+    ],
+    "format": "webp",
+    "bytes": 145398,
+    "status": "generated_on_drive_staged",
+    "storage": "Google Drive (staged; not integrated into website)",
+    "runtimeUrl": null,
+    "driveFileId": "1ftN0OIfMovS4RHFxkGUCfFssAIRj-vPa",
+    "driveUrl": "https://drive.google.com/file/d/1ftN0OIfMovS4RHFxkGUCfFssAIRj-vPa/view?usp=drivesdk",
+    "embedUrl": "https://drive.google.com/uc?export=view&id=1ftN0OIfMovS4RHFxkGUCfFssAIRj-vPa"
+  },
+  {
+    "id": "DT-M1-C01-COVER",
+    "filename": "DT-M1-C01-Cover.webp",
+    "title": "บทที่ 1 · เทคโนโลยีรอบตัว",
+    "boss": "โกเลมพฤกษา (#47)",
+    "scene": "ป่ากลไกมีชีวิตและเครื่องมือจากธรรมชาติ",
+    "assetPath": "assets/generated-lessons/DT-M1/covers/DT-M1-C01-Cover.webp",
+    "dimensionsPx": [
+      737,
+      473
+    ],
+    "format": "webp",
+    "bytes": 149744,
+    "status": "generated_on_drive_staged",
+    "storage": "Google Drive (staged; not integrated into website)",
+    "runtimeUrl": null,
+    "driveFileId": "1HsmIeP9B3m1uZthjlpPcDdbnWPArrGgP",
+    "driveUrl": "https://drive.google.com/file/d/1HsmIeP9B3m1uZthjlpPcDdbnWPArrGgP/view?usp=drivesdk",
+    "embedUrl": "https://drive.google.com/uc?export=view&id=1HsmIeP9B3m1uZthjlpPcDdbnWPArrGgP"
+  },
+  {
+    "id": "DT-M1-C02-COVER",
+    "filename": "DT-M1-C02-Cover.webp",
+    "title": "บทที่ 2 · การเปลี่ยนแปลงของเทคโนโลยี",
+    "boss": "แรดมอส (#65)",
+    "scene": "ชุมชนช่างเก่าพบสถานีวิจัยเทคโนโลยีสีเขียว",
+    "assetPath": "assets/generated-lessons/DT-M1/covers/DT-M1-C02-Cover.webp",
+    "dimensionsPx": [
+      737,
+      489
+    ],
+    "format": "webp",
+    "bytes": 162926,
+    "status": "generated_on_drive_staged",
+    "storage": "Google Drive (staged; not integrated into website)",
+    "runtimeUrl": null,
+    "driveFileId": "13CDeiTGEWOJsUWDv2V864DgjZxIAGGtD",
+    "driveUrl": "https://drive.google.com/file/d/13CDeiTGEWOJsUWDv2V864DgjZxIAGGtD/view?usp=drivesdk",
+    "embedUrl": "https://drive.google.com/uc?export=view&id=13CDeiTGEWOJsUWDv2V864DgjZxIAGGtD"
+  },
+  {
+    "id": "DT-M1-C03-COVER",
+    "filename": "DT-M1-C03-Cover.webp",
+    "title": "บทที่ 3 · ระบบทางเทคโนโลยี",
+    "boss": "กระทิงปฐพี (#78)",
+    "scene": "สวนดาวเคราะห์กับระบบชลประทานและเซนเซอร์",
+    "assetPath": "assets/generated-lessons/DT-M1/covers/DT-M1-C03-Cover.webp",
+    "dimensionsPx": [
+      737,
+      489
+    ],
+    "format": "webp",
+    "bytes": 157072,
+    "status": "generated_on_drive_staged",
+    "storage": "Google Drive (staged; not integrated into website)",
+    "runtimeUrl": null,
+    "driveFileId": "1rsSShmi6pTE122ywwLnjOOmwZoGrLpiK",
+    "driveUrl": "https://drive.google.com/file/d/1rsSShmi6pTE122ywwLnjOOmwZoGrLpiK/view?usp=drivesdk",
+    "embedUrl": "https://drive.google.com/uc?export=view&id=1rsSShmi6pTE122ywwLnjOOmwZoGrLpiK"
+  },
+  {
+    "id": "DT-M1-C04-COVER",
+    "filename": "DT-M1-C04-Cover.webp",
+    "title": "บทที่ 4 · วัสดุและเครื่องมือช่างพื้นฐาน",
+    "boss": "ด้วงศิลาทอง (#69)",
+    "scene": "เหมืองแร่สีอำพันเชื่อมโรงงานวัสดุและเครื่องมือ",
+    "assetPath": "assets/generated-lessons/DT-M1/covers/DT-M1-C04-Cover.webp",
+    "dimensionsPx": [
+      737,
+      473
+    ],
+    "format": "webp",
+    "bytes": 161182,
+    "status": "generated_on_drive_staged",
+    "storage": "Google Drive (staged; not integrated into website)",
+    "runtimeUrl": null,
+    "driveFileId": "17t8I9QjXCuDBfLb2b11XxnVtcmmGpTjM",
+    "driveUrl": "https://drive.google.com/file/d/17t8I9QjXCuDBfLb2b11XxnVtcmmGpTjM/view?usp=drivesdk",
+    "embedUrl": "https://drive.google.com/uc?export=view&id=17t8I9QjXCuDBfLb2b11XxnVtcmmGpTjM"
+  },
+  {
+    "id": "DT-M1-C05-COVER",
+    "filename": "DT-M1-C05-Cover.webp",
+    "title": "บทที่ 5 · กลไก ไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น",
+    "boss": "เต่าพลาสมา (#50)",
+    "scene": "ห้องปฏิบัติการวงจรไฟฟ้าและเครื่องกำเนิดพลังงาน",
+    "assetPath": "assets/generated-lessons/DT-M1/covers/DT-M1-C05-Cover.webp",
+    "dimensionsPx": [
+      1280,
+      720
+    ],
+    "format": "webp",
+    "bytes": 349696,
+    "status": "generated_on_drive_staged",
+    "storage": "Google Drive (staged; not integrated into website)",
+    "runtimeUrl": null,
+    "driveFileId": "1P1Mg3mg7x6CkdB0XVgWRLRHXTwc6SA_k",
+    "driveUrl": "https://drive.google.com/file/d/1P1Mg3mg7x6CkdB0XVgWRLRHXTwc6SA_k/view?usp=drivesdk",
+    "embedUrl": "https://drive.google.com/uc?export=view&id=1P1Mg3mg7x6CkdB0XVgWRLRHXTwc6SA_k"
+  },
+  {
+    "id": "DT-M1-C06-COVER",
+    "filename": "DT-M1-C06-Cover.webp",
+    "title": "บทที่ 6 · กระบวนการออกแบบเชิงวิศวกรรม",
+    "boss": "เลียงผาสายฟ้า (#55)",
+    "scene": "แท่นทดสอบสิ่งประดิษฐ์บนหน้าผาพายุ",
+    "assetPath": "assets/generated-lessons/DT-M1/covers/DT-M1-C06-Cover.webp",
+    "dimensionsPx": [
+      737,
+      489
+    ],
+    "format": "webp",
+    "bytes": 137064,
+    "status": "generated_on_drive_staged",
+    "storage": "Google Drive (staged; not integrated into website)",
+    "runtimeUrl": null,
+    "driveFileId": "1SfMoRDRvBnzaj2mcZhhiXwjaAzv2eQBo",
+    "driveUrl": "https://drive.google.com/file/d/1SfMoRDRvBnzaj2mcZhhiXwjaAzv2eQBo/view?usp=drivesdk",
+    "embedUrl": "https://drive.google.com/uc?export=view&id=1SfMoRDRvBnzaj2mcZhhiXwjaAzv2eQBo"
+  },
+  {
+    "id": "DT-M1-C07-COVER",
+    "filename": "DT-M1-C07-Cover.webp",
+    "title": "บทที่ 7 · กรณีศึกษาการทำงานตามกระบวนการออกแบบเชิงวิศวกรรม",
+    "boss": "ยักษ์ตาเพลิง (#63) และนักพรตเหมันต์ (#42)",
+    "scene": "สนามทดสอบต้นแบบระหว่างภูเขาไฟกับธารน้ำแข็ง",
+    "assetPath": "assets/generated-lessons/DT-M1/covers/DT-M1-C07-Cover.webp",
+    "dimensionsPx": [
+      737,
+      489
+    ],
+    "format": "webp",
+    "bytes": 160152,
+    "status": "generated_on_drive_staged",
+    "storage": "Google Drive (staged; not integrated into website)",
+    "runtimeUrl": null,
+    "driveFileId": "19Z07PcQ4mff2FMZcMyNNLABsztKFE-MR",
+    "driveUrl": "https://drive.google.com/file/d/19Z07PcQ4mff2FMZcMyNNLABsztKFE-MR/view?usp=drivesdk",
+    "embedUrl": "https://drive.google.com/uc?export=view&id=19Z07PcQ4mff2FMZcMyNNLABsztKFE-MR"
+  }
+]

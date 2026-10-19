@@ -1,0 +1,367 @@
+/* ui-clean.css · ชั้นสุดท้าย (โหลดหลัง comic.css)
+   จัดหน้าใหม่ให้เข้าใจง่าย: แถบบนแถวเดียว · หน้าเลือกบทบาท 2 ทาง · หน้าหลักการ์ด 7 บท · หัวบทแบบสั้น
+   หน้าชิ้นงาน (worksheet.js) · หน้าต่างรอโหลด · แถบโหลดบนสุดจอ */
+:root{--ui-ink:#0e1530;--ui-y:#ffd400;--ui-p:#ff2e88;--ui-c:#00cdb8;--ui-g:#18a058;--ui-bg:#ffffff;--ui-soft:#f4f7ff}
+
+/* ---------- แถบโหลดบนสุดจอ (ทุกครั้งที่คุยกับเซิร์ฟเวอร์) ---------- */
+html.net-busy::before{content:"";position:fixed;left:0;top:0;z-index:100001;height:4px;width:40%;background:linear-gradient(90deg,var(--ui-p),var(--ui-y),var(--ui-c));animation:net-run 1s ease-in-out infinite;pointer-events:none}
+@keyframes net-run{0%{left:-40%}100%{left:100%}}
+
+/* ---------- หน้าต่างรอโหลด ---------- */
+#busy{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;background:rgba(14,21,48,.55);backdrop-filter:blur(2px)}
+#busy[hidden]{display:none}
+.busy-card{display:grid;justify-items:center;gap:10px;width:min(340px,calc(100% - 40px));padding:20px 22px;background:#fff;border:4px solid var(--ui-ink);border-radius:12px;box-shadow:8px 8px 0 var(--ui-p);text-align:center}
+.busy-card img{width:84px;height:84px;object-fit:contain;animation:busy-bob .7s ease-in-out infinite}
+.busy-card b{font:700 18px/1.4 var(--display,Kanit,sans-serif);color:var(--ui-ink)}
+.busy-bar{display:block;width:100%;height:12px;border:3px solid var(--ui-ink);border-radius:99px;background:repeating-linear-gradient(-45deg,var(--ui-p) 0 10px,#ff8fbd 10px 20px);background-size:28px 28px;animation:busy-st .6s linear infinite}
+@keyframes busy-bob{50%{transform:translateY(-6px)}}
+@keyframes busy-st{to{background-position:28px 0}}
+@media(prefers-reduced-motion:reduce){.busy-card img,.busy-bar,html.net-busy::before{animation:none}}
+
+/* ---------- แถบบน: แถวเดียว ---------- */
+#header{position:sticky!important;top:0;z-index:50;display:block!important;margin:0!important;padding:0!important;border:0!important;background:#fff!important;box-shadow:0 3px 0 var(--ui-ink)}
+#header .tb{display:flex;align-items:center;gap:14px;max-width:1240px;margin:0 auto;padding:8px 16px}
+#header .tb-brand{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ui-ink);flex:none}
+#header .tb-brand .brand-mark{width:34px;height:34px;flex:none}
+#header .tb-name{display:grid;line-height:1.1}
+#header .tb-name strong{font:800 17px/1.1 var(--display,Kanit,sans-serif);letter-spacing:.02em}
+#header .tb-name small{font-size:12px;color:#4a5578}
+#header .tb-nav{display:flex;gap:4px;margin:0 auto;overflow:visible;padding:0!important;background:none!important;border:0!important;box-shadow:none!important}
+#header .tb-nav a{display:inline-flex!important;align-items:center;gap:6px;min-height:38px;padding:4px 12px!important;border:2px solid transparent!important;border-radius:99px!important;background:none!important;box-shadow:none!important;color:var(--ui-ink)!important;font:700 15px/1 var(--display,Kanit,sans-serif)!important;text-decoration:none;white-space:nowrap;transform:none!important}
+#header .tb-nav a:hover{background:#fff4b8!important}
+#header .tb-nav a.on{background:var(--ui-ink)!important;color:#fff!important}
+#header .tb-user{display:flex;align-items:center;gap:6px;flex:none}
+#header .tb-chip{display:grid;line-height:1.15;padding:4px 10px;border:2px solid var(--ui-ink);border-radius:8px;background:#e9fff6;color:var(--ui-ink);text-decoration:none}
+#header .tb-chip b{font:700 14px/1.2 var(--display,Kanit,sans-serif)}
+#header .tb-chip small{font-size:11.5px;color:#4a5578;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#header .tb-chip.teacher{background:#fff1a8}
+#header .tb-chip.guest{background:#eef1f8}
+#header .tb-out{min-height:36px;padding:4px 12px;border:2px solid var(--ui-ink);border-radius:8px;background:#fff;color:var(--ui-ink);font:700 14px var(--display,Kanit,sans-serif);cursor:pointer}
+#header .tb-out:hover{background:#ffe3ec}
+#header .tb-out.in{background:var(--ui-y)}
+#header .tb.is-teacher{background:#fffbe0}
+@media(max-width:820px){
+  #header .tb{display:grid;grid-template-columns:1fr auto;gap:6px 8px;padding:6px 10px}
+  #header .tb-nav{grid-column:1/-1;grid-row:2;margin:0;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px}
+  #header .tb-nav a{justify-content:center;flex-direction:column;gap:0;min-height:44px;padding:3px 2px!important;border-radius:8px!important;font-size:12.5px!important}
+  #header .tb-nav a span{font-size:17px;line-height:1.2}
+  #header .tb-nav a{line-height:1.25!important}
+  #header .tb-name small{display:none}
+  #header .tb-chip small{max-width:96px}
+}
+@media(max-width:380px){#header .tb-name strong{font-size:14px}#header .tb-chip{padding:3px 7px}}
+
+/* ---------- หน้าเลือกบทบาท ---------- */
+.rp{max-width:980px;margin:0 auto}
+.rp-hero{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:18px;padding:18px;background:#fff;border:4px solid var(--ui-ink);border-radius:12px;box-shadow:8px 8px 0 var(--ui-ink)}
+.rp-hero h1{margin:6px 0;font:800 clamp(26px,4vw,40px)/1.15 var(--display,Kanit,sans-serif);color:var(--ui-ink)}
+.rp-hero p{margin:0;font-size:17px}
+.rp-img img{width:100%;max-height:300px;object-fit:cover;border:3px solid var(--ui-ink);border-radius:8px;display:block}
+.rp-q{margin:24px 0 10px;text-align:center;font:800 24px var(--display,Kanit,sans-serif)}
+.rp-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.rp-card{display:flex;align-items:center;gap:14px;padding:16px;text-align:left;background:#fff;border:4px solid var(--ui-ink);border-radius:12px;box-shadow:6px 6px 0 var(--ui-ink);cursor:pointer;font:inherit;color:var(--ui-ink);transition:transform .12s}
+.rp-card:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ui-ink)}
+.rp-card.student{background:#ffe3ef;box-shadow:6px 6px 0 var(--ui-p)}
+.rp-card.teacher{background:#fff7c2}
+.rp-card img{width:92px;height:92px;flex:none;object-fit:cover;border:3px solid var(--ui-ink);border-radius:50%;background:#fff}
+.rp-card b{display:block;font:800 26px/1.1 var(--display,Kanit,sans-serif)}
+.rp-card small{display:block;margin:4px 0 8px;font-size:15px}
+.rp-card em{display:inline-block;padding:4px 14px;border:3px solid var(--ui-ink);border-radius:99px;background:var(--ui-y);font:700 16px var(--display,Kanit,sans-serif);font-style:normal}
+.rp-card.student em{background:var(--ui-p);color:#fff}
+.rp-guest{text-align:center;margin:16px 0 0}
+.rp-guest button{background:none;border:0;color:var(--ui-ink);font:600 15px var(--font,Sarabun,sans-serif);text-decoration:underline;cursor:pointer;padding:8px}
+.rp-q{margin-top:18px}
+@media(max-width:700px){.rp-hero{grid-template-columns:1fr;padding:12px}.rp-img{order:-1}.rp-hero h1{font-size:24px}.rp-hero p{font-size:15px}.rp-q{margin:16px 0 8px;font-size:20px}.rp-cards{grid-template-columns:1fr}.rp-card img{width:72px;height:72px}.rp-card b{font-size:22px}}
+
+/* ---------- หน้าหลัก ---------- */
+.hm-hero{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center;padding:18px;background:#fff;border:4px solid var(--ui-ink);border-radius:12px;box-shadow:8px 8px 0 var(--ui-ink)}
+.hm-hero h1{margin:6px 0 8px;font:800 clamp(26px,3.6vw,38px)/1.2 var(--display,Kanit,sans-serif);color:var(--ui-ink)}
+.hm-hero p{margin:0 0 14px;font-size:17px;line-height:1.55}
+.hm-img img,.rp-img img{width:100%!important;height:auto!important;max-height:280px!important;aspect-ratio:auto!important;object-fit:cover;display:block;border:3px solid var(--ui-ink)!important;border-radius:8px!important;box-shadow:none!important}
+.hm-h{margin:26px 0 12px;font:800 24px var(--display,Kanit,sans-serif)}
+.hm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.hm-card{display:flex;gap:12px;padding:10px;background:#fff;border:3px solid var(--ui-ink);border-radius:10px;box-shadow:4px 4px 0 var(--ui-ink);color:var(--ui-ink);text-decoration:none;transition:transform .12s}
+.hm-card:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ui-ink)}
+.hm-card.next{box-shadow:5px 5px 0 var(--ui-p);border-color:var(--ui-p)}
+.hm-thumb{position:relative;flex:none;width:96px;height:96px;border:2px solid var(--ui-ink);border-radius:8px;overflow:hidden;background:#dfe7ff}
+.hm-thumb img,.ch-thumb img{position:static!important;width:100%!important;height:100%!important;max-height:none!important;object-fit:cover;display:block;border:0!important;box-shadow:none!important;transform:none!important}
+.hm-thumb b{position:absolute;left:4px;top:4px;display:grid;place-items:center;width:28px;height:28px;background:var(--ui-y);border:2px solid var(--ui-ink);border-radius:50%;font:800 15px var(--display,Kanit,sans-serif)}
+.hm-body{display:flex;flex-direction:column;gap:4px;min-width:0;flex:1}
+.hm-body small{font-size:13px;color:#4a5578}
+.hm-body strong{font:700 17px/1.3 var(--display,Kanit,sans-serif)}
+.hm-bar{display:block;height:8px;margin-top:auto;border:2px solid var(--ui-ink);border-radius:99px;background:#eef1f8;overflow:hidden}
+.hm-bar u{display:block;height:100%;background:var(--ui-g)}
+.hm-foot{display:flex;justify-content:space-between;gap:6px;flex-wrap:wrap;font-size:13px}
+.hm-st{padding:0 8px;border-radius:99px;background:#eef1f8;font-weight:600}
+.hm-st.ok{background:#d9f7e6}.hm-st.wait{background:#fff1a8}.hm-st.fix{background:#ffe3ec}
+@media(max-width:700px){.hm-hero{grid-template-columns:1fr;padding:12px}.hm-img{order:-1}.hm-img img,.rp-img img{max-height:150px!important}.hm-grid{grid-template-columns:1fr}.hm-thumb{width:78px;height:78px}}
+
+/* ---------- หัวบทแบบสั้น (แท็บอื่นนอกจาก "ภารกิจ") ---------- */
+#main .crumbs{margin:0 0 8px!important}
+#main .crumbs a{font-weight:700}
+.ch-strip{display:flex;align-items:center;gap:12px;padding:8px 12px;background:#fff;border:3px solid var(--ui-ink);border-radius:10px;box-shadow:4px 4px 0 var(--ui-ink)}
+.ch-thumb{flex:none;width:58px;height:42px;border:2px solid var(--ui-ink);border-radius:6px;overflow:hidden}
+.ch-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.ch-title{display:grid;line-height:1.25}
+.ch-title small{font-size:13px;color:#4a5578}
+.ch-title b{font:700 18px/1.25 var(--display,Kanit,sans-serif)}
+
+/* ---------- หน้าชิ้นงาน ---------- */
+.ws{display:grid;gap:14px;max-width:900px;margin:0 auto;padding-bottom:84px}
+.ws-status{padding:12px 16px;border:3px solid var(--ui-ink);border-radius:10px;background:#fff;box-shadow:4px 4px 0 var(--ui-ink)}
+.ws-status>b,.ws-st-body>b{font:700 18px var(--display,Kanit,sans-serif)}
+.ws-status p{margin:4px 0}
+.ws-status.draft{background:#f4f7ff}
+.ws-status.waiting{background:#fff8d6}
+.ws-status.revision{background:#ffe9f1;box-shadow:4px 4px 0 var(--ui-p)}
+.ws-status.guest{background:#eef1f8}
+.ws-status.graded{display:flex;gap:16px;align-items:flex-start;background:#e5fbef;box-shadow:4px 4px 0 var(--ui-g)}
+.ws-score{flex:none;display:grid;place-items:center;width:96px;height:96px;border:4px solid var(--ui-ink);border-radius:50%;background:#fff;line-height:1}
+.ws-score b{font:800 34px var(--display,Kanit,sans-serif)}
+.ws-score span{font-size:13px}
+.ws-st-body{flex:1;min-width:0}
+.ws-crit{list-style:none;margin:6px 0;padding:0;display:grid;gap:3px}
+.ws-crit li{display:flex;justify-content:space-between;gap:10px;padding:2px 8px;background:#fff;border-radius:6px;font-size:15px}
+.ws-comment{padding:8px 10px;background:#fff;border-left:5px solid var(--ui-ink);border-radius:6px;white-space:pre-wrap}
+.ws-task,.ws-q{padding:14px 16px;background:#fff;border:3px solid var(--ui-ink);border-radius:10px;box-shadow:4px 4px 0 var(--ui-ink)}
+.ws-task-head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.ws-task h2{margin:6px 0;font:700 21px/1.35 var(--display,Kanit,sans-serif)}
+.ws-starter{margin:0 0 8px;color:#333}
+.ws-req{padding:8px 12px;background:#fff8d6;border-radius:8px}
+.ws-req ul{margin:4px 0 0;padding-left:20px}
+.ws-rubric{margin-top:8px}
+.ws-rubric summary,.ws-help summary,.ws-hist summary{cursor:pointer;font-weight:700}
+.ws-rubric ul{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:3px}
+.ws-rubric li{display:flex;justify-content:space-between;gap:10px;padding:3px 8px;background:#f4f7ff;border-radius:6px}
+.ws-q-head{display:flex;align-items:flex-start;gap:10px}
+.ws-no{flex:none;display:grid;place-items:center;width:34px;height:34px;background:var(--ui-y);border:3px solid var(--ui-ink);border-radius:50%;font:800 17px var(--display,Kanit,sans-serif)}
+.ws-q h3{margin:2px 0 0;font:700 19px/1.35 var(--display,Kanit,sans-serif)}
+.ws-prompts{margin:8px 0 6px;padding-left:24px;line-height:1.55}
+.ws-prompts li{margin:1px 0}
+.ws-help{margin:4px 0 8px;padding:6px 10px;background:#f4f7ff;border-radius:8px;font-size:15px}
+.ws-help p{margin:5px 0}
+.ws-ans{display:block;width:100%;min-height:110px;padding:10px 12px;border:3px solid var(--ui-ink);border-radius:8px;font:500 17px/1.55 var(--font,Sarabun,sans-serif);resize:vertical;background:#fff}
+.ws-ans:focus{outline:3px solid var(--ui-c);outline-offset:1px}
+.ws-ans:disabled{background:#f2f3f7}
+.ws-extra{display:grid;gap:12px}
+.ws-ev select{display:block;margin-top:4px;width:100%;max-width:420px;min-height:42px;padding:6px 10px;border:3px solid var(--ui-ink);border-radius:8px;font:500 16px var(--font,Sarabun,sans-serif)}
+.ws-photo figure{margin:8px 0;display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
+.ws-photo img{max-width:min(320px,100%);max-height:240px;border:3px solid var(--ui-ink);border-radius:8px}
+.ws-file{margin-top:6px;cursor:pointer}
+.ws-file.is-off{opacity:.5;pointer-events:none}
+.ws-labs ul{margin:4px 0 0;padding-left:20px}
+.ws-hist{padding:10px 14px;background:#fff;border:2px dashed var(--ui-ink);border-radius:10px}
+.ws-hist ul{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:4px}
+.ws-hist li{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.ws-bar{position:sticky;bottom:8px;z-index:20;display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap;padding:10px 12px;background:#fff;border:3px solid var(--ui-ink);border-radius:12px;box-shadow:0 -2px 0 rgba(0,0,0,.05),4px 4px 0 var(--ui-ink)}
+.ws-count{margin-right:auto;font-size:15px}
+.ws-bar .btn{min-height:44px}
+@media(max-width:700px){.ws-task,.ws-q{padding:12px}.ws-status.graded{flex-direction:column}.ws-score{width:80px;height:80px}.ws-bar{bottom:4px;gap:6px;padding:6px 8px}.ws-count{width:100%;margin:0;font-size:13px;text-align:center}.ws-bar .btn{flex:1;min-height:40px!important;padding:4px 8px!important;font-size:15px!important}}
+
+/* คำตอบที่ส่งแล้ว (หน้าครู) */
+.ws-read{display:grid;gap:8px}
+.ws-read-q{padding:8px 12px;background:#f8faff;border:2px solid #cfd6ea;border-radius:8px}
+.ws-read-q b{display:block;font:700 16px var(--display,Kanit,sans-serif)}
+.ws-read-q p{margin:4px 0 0;white-space:pre-wrap;line-height:1.55}
+.ws-read-photo img{max-width:min(420px,100%);border:3px solid var(--ui-ink);border-radius:8px}
+
+/* ---------- หน้าครู: ตัดเมนูข้าง (ย้ายขึ้นแถบบนแล้ว) ---------- */
+.teacher-shell{display:block!important}
+.teacher-shell>.teacher-side{display:none!important}
+.teacher-title h1{margin:0 0 4px}
+.teacher-title p{margin:0}
+
+/* ซ่อนส่วนที่ไม่ใช้แล้ว */
+.offline-badge,.top-user-box,.top-chap-jump{display:none!important}
+
+/* ---------- หน้าตรวจงาน: ตัวกรองแถวเดียว ส่วนพับได้ ---------- */
+.teacher-shell .field-grid{grid-template-columns:1fr 1fr!important;gap:10px!important}
+.teacher-shell .field-grid select,.teacher-shell .field-grid input{min-height:40px!important;padding:4px 10px!important}
+.teacher-shell .paper h3{margin-top:0}
+.q-bulk>summary{cursor:pointer;padding:2px 0}
+.q-bulk[open]>summary{margin-bottom:10px}
+@media(max-width:700px){#cloud-chip.ok{display:none!important}}
+/* ตรวจต่อเนื่อง: ใช้ปุ่มของโหมดต่อเนื่องอย่างเดียว */
+.queue-seq~#review-form .work-actions{display:none!important}
+/* ภาพจาก Drive: พื้นหลังกระพริบเบาๆ ระหว่างโหลด */
+.chapter-cover-img,.home-cover-img,.portal-cover-img,.thumb-img,.q-fig img,.lesson img,.study-layout img{background:linear-gradient(100deg,#e6ebf6 30%,#f5f7fc 50%,#e6ebf6 70%) 0 0/300% 100%;animation:img-wait 1.4s linear infinite}
+@keyframes img-wait{to{background-position:-300% 0}}
+@media(prefers-reduced-motion:reduce){.chapter-cover-img,.home-cover-img,.portal-cover-img,.thumb-img,.q-fig img{animation:none}}
+.is-ld{animation:none!important;background:none!important}
+
+/* ===================== รอบปรับเลเอาท์ 2 ===================== */
+/* ---------- หน้าเลือกบทบาท: Techno พูด + เอฟเฟกต์ ---------- */
+.rp{position:relative}
+.rp-hero{animation:rp-up .5s ease-out both}
+.rp-img{overflow:hidden;border-radius:8px}
+.rp-img img{animation:rp-zoom 14s ease-in-out infinite alternate}
+.rp-guide{display:flex;align-items:flex-end;justify-content:center;gap:4px;margin:18px auto 6px;max-width:640px;animation:rp-up .5s .15s ease-out both}
+.rp-techno{width:120px;height:120px;object-fit:contain;flex:none;filter:drop-shadow(4px 5px 0 rgba(14,21,48,.35));animation:rp-bob 1.6s ease-in-out infinite}
+.rp-bubble{position:relative;display:grid;gap:2px;margin-bottom:26px;padding:12px 18px;background:#fff;border:4px solid var(--ui-ink);border-radius:18px;box-shadow:5px 5px 0 var(--ui-ink);animation:rp-pop .45s .35s cubic-bezier(.3,1.6,.5,1) both}
+.rp-bubble::after{content:"";position:absolute;left:-19px;bottom:16px;width:22px;height:20px;background:#fff;border:4px solid var(--ui-ink);border-right:0;border-top:0;clip-path:polygon(0 100%,100% 0,100% 100%)}
+.rp-bubble b{font:800 clamp(18px,2.4vw,22px)/1.3 var(--display,Kanit,sans-serif);color:var(--ui-ink)}
+.rp-bubble small{font-size:14px;color:#4a5578}
+.rp-name{position:absolute;left:14px;top:-15px;padding:0 10px;background:var(--ui-p);color:#fff;border:3px solid var(--ui-ink);border-radius:4px;font:800 13px/1.5 var(--display,Kanit,sans-serif);transform:rotate(-3deg)}
+.rp-cards .rp-card{animation:rp-up .5s ease-out both;position:relative;overflow:hidden}
+.rp-cards .rp-card:nth-child(1){animation-delay:.3s}
+.rp-cards .rp-card:nth-child(2){animation-delay:.42s}
+.rp-card::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-18deg);transition:left .6s}
+.rp-card:hover::after{left:120%}
+.rp-card img{transition:transform .25s}
+.rp-card:hover img{transform:scale(1.06) rotate(-3deg)}
+.rp-card.student em{animation:rp-pulse 1.8s ease-in-out infinite}
+.rp-spark{position:absolute;z-index:3;color:var(--ui-y);font-size:28px;text-shadow:2px 2px 0 var(--ui-ink);pointer-events:none;animation:rp-twinkle 2.4s ease-in-out infinite}
+.rp-spark.s1{left:-6px;top:-10px}
+.rp-spark.s2{right:6px;top:36%;animation-delay:.8s;color:var(--ui-c)}
+.rp-spark.s3{left:46%;top:-16px;animation-delay:1.5s;color:var(--ui-p);font-size:22px}
+@keyframes rp-up{from{opacity:0;transform:translateY(18px)}}
+@keyframes rp-pop{from{opacity:0;transform:scale(.6)}}
+@keyframes rp-bob{50%{transform:translateY(-7px)}}
+@keyframes rp-zoom{to{transform:scale(1.08)}}
+@keyframes rp-pulse{50%{box-shadow:0 0 0 6px rgba(255,46,136,.25)}}
+@keyframes rp-twinkle{0%,100%{opacity:.25;transform:scale(.7) rotate(0)}50%{opacity:1;transform:scale(1.15) rotate(20deg)}}
+@media(max-width:700px){.rp-techno{width:84px;height:84px}.rp-bubble{margin-bottom:16px;padding:10px 12px}.rp-bubble small{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.rp *,.rp-hero,.rp-guide{animation:none!important}}
+
+/* ---------- ภารกิจ: คอลัมน์เดียว ---------- */
+.ov{display:grid;gap:14px;max-width:900px;margin:0 auto}
+.ov-mission,.ov-path,.ov-more{padding:14px 18px;background:#fff;border:3px solid var(--ui-ink);border-radius:10px;box-shadow:4px 4px 0 var(--ui-ink)}
+.ov-mission h2{margin:6px 0 10px;font:700 clamp(19px,2.2vw,23px)/1.4 var(--display,Kanit,sans-serif)}
+.ov-start{padding:8px 12px;background:#fff8d6;border-left:5px solid var(--ui-ink);border-radius:6px}
+.ov-start p{margin:2px 0 0}
+.ov-path h3{margin:0 0 10px;font:800 20px var(--display,Kanit,sans-serif)}
+.ov-path ol{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.ov-path li a{display:flex;align-items:center;gap:10px;padding:8px 12px;border:2px solid #cfd6ea;border-radius:10px;background:#f8faff;color:var(--ui-ink);text-decoration:none;transition:transform .12s,border-color .12s}
+.ov-path li a:hover{transform:translateX(3px);border-color:var(--ui-ink)}
+.ov-no{flex:none;display:grid;place-items:center;width:30px;height:30px;border:3px solid var(--ui-ink);border-radius:50%;background:#fff;font:800 15px var(--display,Kanit,sans-serif)}
+.ov-ic{font-size:22px;flex:none}
+.ov-tx{display:grid;flex:1;min-width:0;line-height:1.3}
+.ov-tx b{font:700 16.5px/1.3 var(--display,Kanit,sans-serif)}
+.ov-tx small{font-size:13.5px;color:#4a5578}
+.ov-st{flex:none;padding:1px 10px;border-radius:99px;background:#e9edf8;font-size:13px;font-weight:600}
+.ov-path li.ok a{background:#ecfbf2;border-color:#9fe0bb}
+.ov-path li.ok .ov-no{background:var(--ui-g);color:#fff}
+.ov-path li.ok .ov-st{background:#c9f2da}
+.ov-path li.next a{background:#fff6c7;border:3px solid var(--ui-ink);box-shadow:4px 4px 0 var(--ui-p)}
+.ov-path li.next .ov-no{background:var(--ui-y)}
+.ov-go{flex:none;padding:4px 12px;border:3px solid var(--ui-ink);border-radius:99px;background:var(--ui-p);color:#fff;font:700 14px var(--display,Kanit,sans-serif)}
+.ov-more summary{cursor:pointer;font:700 16px var(--display,Kanit,sans-serif)}
+.ov-more ul{margin:8px 0;padding-left:22px}
+@media(max-width:600px){.ov-path li a{flex-wrap:wrap;gap:6px 8px}.ov-ic{display:none}.ov-tx{flex-basis:calc(100% - 44px)}.ov-st,.ov-go{margin-left:38px}.ov-st+.ov-go{margin-left:0}}
+
+/* ---------- เรียนรู้: หัวข้อเป็นแถบด้านบน เนื้อหาเต็มความกว้าง ---------- */
+.study-flow{max-width:980px;margin:0 auto}
+.mod-chips{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 12px;padding:8px 10px;background:#fff;border:3px solid var(--ui-ink);border-radius:10px;box-shadow:4px 4px 0 var(--ui-ink)}
+.mod-chips-h{font:700 14px var(--display,Kanit,sans-serif);color:#4a5578;margin-right:2px}
+.mod-chips a{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border:2px solid var(--ui-ink);border-radius:99px;background:#f4f7ff;color:var(--ui-ink);font:600 15px/1.3 var(--display,Kanit,sans-serif);text-decoration:none}
+.mod-chips a b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ui-y);border:2px solid var(--ui-ink);font-size:12px}
+.mod-chips a.done b{background:var(--ui-g);color:#fff}
+.mod-chips a.current{background:var(--ui-ink);color:#fff}
+.study-flow .mod-step{display:none}
+.study-flow .lesson{display:flow-root}
+.study-flow .lesson .glossary{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))!important;gap:10px!important;clear:both}
+.study-flow .lesson .glossary>div{margin:0!important}
+.study-flow .lesson-fig{float:right;width:min(42%,360px)!important;max-width:360px!important;margin:4px 0 14px 20px!important;clear:right}
+.study-flow .lesson-fig img{width:100%!important;height:auto!important;max-height:none!important;aspect-ratio:1/1;object-fit:contain;background:#fff;border:3px solid var(--ui-ink)!important;border-radius:8px!important}
+.study-flow .lesson-fig figcaption{font-size:14px;line-height:1.45;margin-top:4px}
+.study-flow .lesson .callout,.study-flow .lesson .steps{display:flow-root}
+.study-flow .lesson .self-check,.study-flow .lesson .module-bottom{clear:both}
+@media(max-width:760px){.study-flow .lesson-fig{float:none;width:100%!important;max-width:340px!important;margin:12px auto!important}.mod-chips a{font-size:14px;padding:4px 10px}}
+
+/* ---------- แบบทดสอบ: ตัวเลือกชิดกันพอดี ---------- */
+.pp-opts{gap:8px!important;margin-top:8px}
+label.pp-opt{margin:0!important;min-height:0!important}
+.pp-opt span{padding:8px 12px!important}
+.battle-opts{gap:8px!important}
+.battle-opts .opt{margin:0!important}
+
+/* ---------- ลานบอส: Techno ปะทะบอส ---------- */
+#main .bg-poster.vs{position:relative;display:block!important;aspect-ratio:16/8;min-height:280px;max-height:470px;height:auto!important}
+#main .bg-poster.vs::after{background:linear-gradient(180deg,rgba(14,21,48,.25),transparent 40%,rgba(14,21,48,.35))!important}
+#main .bg-poster.vs .bg-phero{position:absolute;z-index:1;left:2%;bottom:-2%;height:84%;width:auto;max-width:36%;object-fit:contain;object-position:bottom;filter:drop-shadow(5px 5px 0 rgba(14,21,48,.6));animation:rp-bob 1.8s ease-in-out infinite}
+#main .bg-poster.vs .bg-pbossimg{right:3%!important;height:94%!important;max-width:48%!important}
+#main .bg-poster.vs .bg-vs{position:absolute;z-index:2;left:40%;top:52%;transform:translate(-50%,-50%) rotate(-8deg);padding:2px 14px;background:var(--ui-y);border:4px solid var(--ui-ink);border-radius:8px;box-shadow:4px 4px 0 var(--ui-p);font:900 clamp(26px,4vw,44px)/1 var(--display,Kanit,sans-serif);color:var(--ui-ink);animation:vs-pulse 1.2s ease-in-out infinite}
+#main .bg-poster.vs .bg-say{position:absolute!important;z-index:3;padding:12px 14px 8px!important;background:#fff;border:4px solid var(--ui-ink);border-radius:14px!important;box-shadow:4px 4px 0 var(--ui-ink);font:700 clamp(15px,1.6vw,19px)/1.4 var(--display,Kanit,sans-serif)!important;color:var(--ui-ink)}
+#main .bg-poster.vs .bg-say::before{display:none!important}
+#main .bg-poster.vs .bg-who{position:absolute;left:12px;top:-15px;padding:0 9px;border:3px solid var(--ui-ink);border-radius:4px;font:800 12.5px/1.45 var(--display,Kanit,sans-serif);color:#fff;transform:rotate(-3deg)}
+#main .bg-poster.vs .bg-say.boss{right:30%!important;left:auto!important;top:9%!important;bottom:auto!important;max-width:36%!important}
+#main .bg-poster.vs .bg-say.boss .bg-who{background:var(--ui-ink)}
+#main .bg-poster.vs .bg-say.boss::after{content:"";position:absolute;right:-21px;left:auto;top:auto;bottom:14px;width:22px;height:20px;margin:0;background:#fff;border:4px solid var(--ui-ink);border-left:0;border-top:0;clip-path:polygon(0 0,100% 100%,0 100%);transform:none}
+#main .bg-poster.vs .bg-say.tech{left:3%!important;right:auto!important;top:9%!important;bottom:auto!important;max-width:26%!important;font-size:clamp(14px,1.4vw,17px)!important}
+#main .bg-poster.vs .bg-say.tech .bg-who{background:var(--ui-p)}
+#main .bg-poster.vs .bg-say.tech::after{content:"";position:absolute;left:26px;right:auto;top:auto;bottom:-21px;width:20px;height:20px;margin:0;background:#fff;border:4px solid var(--ui-ink);border-top:0;border-left:0;clip-path:polygon(0 0,100% 0,0 100%);transform:none}
+@keyframes vs-pulse{50%{transform:translate(-50%,-50%) rotate(-8deg) scale(1.1)}}
+@media(max-width:700px){
+  #main .bg-poster.vs{aspect-ratio:4/3.4;min-height:0}
+  #main .bg-poster.vs .bg-phero{height:52%;max-width:40%}
+  #main .bg-poster.vs .bg-pbossimg{height:70%!important;max-width:58%!important}
+  #main .bg-poster.vs .bg-vs{left:42%;top:64%;font-size:26px}
+  #main .bg-poster.vs .bg-say.boss{right:4%!important;top:7%!important;max-width:72%!important;font-size:14.5px!important}
+  #main .bg-poster.vs .bg-say.boss::after{right:22%;bottom:-21px;clip-path:polygon(0 0,100% 0,100% 100%)}
+  #main .bg-poster.vs .bg-say.tech{display:none}
+}
+@media(prefers-reduced-motion:reduce){#main .bg-poster.vs .bg-phero,#main .bg-poster.vs .bg-vs{animation:none}}
+
+/* เลือกอาวุธบนมือถือ: แถวละ 1 ใบ */
+@media(max-width:560px){#main .wsel-grid{grid-template-columns:1fr!important}#main .wcard{min-height:0!important}}
+
+/* ปุ่มเลื่อนข้อในแบบทดสอบ: บรรทัดเดียว */
+.pp-nav{gap:8px!important}.pp-nav .btn{white-space:nowrap;min-height:40px!important}
+@media(max-width:560px){.pp-nav .btn{font-size:14px!important;padding:6px 10px!important}.pp-dots i{width:14px!important;height:14px!important}}
+
+/* ===================== รอบ 3: ตารางติดตาม กราฟพัฒนาการ หน้าวิธีใช้ ===================== */
+/* ตารางติดตามชิ้นงานรายคน (ครู) */
+.tk-key{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:6px 0 10px;font-size:14px}
+.tk-key .tk{display:inline-grid;place-items:center;min-width:34px;padding:1px 6px;border-radius:6px;font-weight:700}
+.tk-table{width:100%;border-collapse:separate;border-spacing:3px;font-size:14px}
+.tk-table th{position:sticky;top:0;background:var(--ui-ink);color:#fff;padding:5px 6px;border-radius:6px;font:700 13px var(--display,Kanit,sans-serif);white-space:nowrap}
+.tk-table td{padding:0;text-align:center;border:0!important}
+.tk-table td.tk-name{text-align:left;padding:4px 8px;white-space:nowrap;font-weight:600;background:#f4f7ff;border-radius:6px}
+.tk-table td.tk{height:32px;min-width:38px;border-radius:6px;font-weight:800;vertical-align:middle}
+.tk-table td.tk a{display:flex;align-items:center;justify-content:center;height:100%;min-height:32px;border-radius:6px;text-decoration:none;color:var(--ui-ink)}
+.tk.ok,.tk.ok a{background:#c9f2da}
+.tk.wait,.tk.wait a{background:#ffe680}
+.tk.fix,.tk.fix a{background:#ffc9dc}
+.tk.none{background:#eef1f8;color:#8a93ad}
+.tk-table td.tk a:hover{outline:3px solid var(--ui-ink)}
+
+/* กราฟก่อน–หลังเรียน */
+.gr-chart{display:grid;gap:6px;margin:10px 0 14px}
+.gr-row{display:grid;grid-template-columns:52px 1fr 46px;align-items:center;gap:8px}
+.gr-lab{font:700 14px var(--display,Kanit,sans-serif)}
+.gr-bars{display:grid;gap:3px;padding:4px 6px;background:#f4f7ff;border:2px solid #cfd6ea;border-radius:8px}
+.gr-bars i{position:relative;display:block;height:13px;border-radius:4px;min-width:0;transition:width .6s ease}
+.gr-bars em{position:absolute;right:-30px;top:-3px;width:28px;font:700 12px/18px var(--display,Kanit,sans-serif);font-style:normal;color:var(--ui-ink)}
+.gr-pre{background:#9aa6c4}
+.gr-post{background:var(--ui-g)}
+.gr-bars{padding-right:34px}
+.gr-gain{font:800 14px var(--display,Kanit,sans-serif);text-align:right}
+.gr-gain.up{color:#11804a}.gr-gain.down{color:#c0264f}
+.gr-key{display:flex;align-items:center;gap:6px;margin:4px 0 0;font-size:13px;color:#4a5578}
+.gr-key i{display:inline-block;width:16px;height:10px;border-radius:3px}
+
+/* หน้าวิธีใช้ */
+.hp{display:grid;gap:14px;max-width:880px;margin:0 auto}
+.hp-head{display:flex;align-items:flex-end;justify-content:center;gap:6px}
+.hp-head img{width:110px;height:110px;object-fit:contain;animation:rp-bob 1.6s ease-in-out infinite}
+.hp-head .rp-bubble{animation:none}
+.hp-sec{padding:14px 18px;background:#fff;border:3px solid var(--ui-ink);border-radius:10px;box-shadow:4px 4px 0 var(--ui-ink)}
+.hp-sec.teacher{background:#fffbe0}
+.hp-sec h2{margin:0 0 10px;font:800 22px var(--display,Kanit,sans-serif)}
+.hp-steps{list-style:none;counter-reset:hp;margin:0;padding:0;display:grid;gap:8px}
+.hp-steps li{counter-increment:hp;display:flex;align-items:flex-start;gap:10px;padding:8px 10px;background:#f8faff;border:2px solid #cfd6ea;border-radius:10px}
+.hp-sec.teacher .hp-steps li{background:#fff}
+.hp-steps li::before{content:counter(hp);flex:none;display:grid;place-items:center;width:28px;height:28px;border:3px solid var(--ui-ink);border-radius:50%;background:var(--ui-y);font:800 14px var(--display,Kanit,sans-serif)}
+.hp-ic{font-size:24px;line-height:1.2;flex:none}
+.hp-steps b{display:block;font:700 17px/1.3 var(--display,Kanit,sans-serif)}
+.hp-steps small{display:block;font-size:15px;line-height:1.5;color:#2c3555}
+.hp-faq summary{cursor:pointer;font:700 18px var(--display,Kanit,sans-serif)}
+.hp-faq dt{margin-top:10px;font-weight:700}
+.hp-faq dd{margin:2px 0 0 0;color:#2c3555}
+@media(max-width:600px){.hp-head img{width:80px;height:80px}.hp-ic{display:none}}
+
+/* สถิติบนหน้าครู: กะทัดรัด */
+.teacher-shell .stats{gap:10px!important;margin-bottom:12px!important}
+.teacher-shell .stat{padding:8px 12px!important}
+.teacher-shell .stat small{font-size:14px!important}
+.teacher-shell .stat strong{font-size:30px!important;line-height:1.1!important}

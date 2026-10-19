@@ -1,0 +1,256 @@
+{
+  "generator": "built-in image_gen",
+  "specification": "QUESTION_FIGURE_PROMPTS.md",
+  "initial": [
+    {
+      "batch": "01-trays",
+      "files": [
+        "qfig-c06-tray-20.webp",
+        "qfig-c06-tray-24.webp"
+      ],
+      "cols": 1,
+      "rows": 2,
+      "prompt": "Generate educational question illustrations for Thai Grade 7 Design and Technology. Follow these requirements strictly: colored COMIC illustration, thick confident black outlines, simple flat colored fills, plain pale cream #FFF8DC background, bright green/yellow/pink accents, no decorative scene. Accurate engineering/scientific quantities matter more than beauty. All numeric labels large, clear Arabic digits. Text and labels must be generated in the image itself. NO added digital text overlay afterwards. Thai short unit labels must be spelled exactly; if unable, use numbers and circled-number callouts only, never gibberish. No characters, logos, watermarks, answers, written calculations, answer ticks or crosses except explicitly requested broken-wire red X. No English prose. Each FINAL panel is landscape 1200x750 ratio 8:5; draw generous 60-pixel equivalent inner safe margins around every panel. Dimension lines black straight double arrowheads with perpendicular extension lines. ALL question-mark labels must remain question marks, NEVER solve the unknown. In contact sheets, panels are equal size, exact grid positions, zero gutters or frames BETWEEN panels; each panel has its own cream background and internal safe margins. Highest available resolution.\nCreate a contact sheet ONE COLUMN, TWO ROWS, overall 1200x1500 aspect 4:5, two separate 1200x750 landscape panels.\nTOP: strictly orthographic TOP VIEW of a shallow rectangular pale wood tray, darker wood border on all four sides. Outside width exactly 20 relative units. Each left and right wall exactly 1 relative unit wide (5% of total width each); top/bottom walls same physical thickness. Huge external width dimension ABOVE entire tray reads \"20 ซม.\". Separate short left-wall and right-wall dimensions each read \"1 ซม.\" with extension lines landing on outer and inner wall boundaries. A distinct double-arrow dimension spanning ONLY the open inner width, between inside left and inside right boundaries, reads \"? ซม.\" in prominent pink. Place border labels away from inside-width label; no overlapping dimension lines. Do NOT put 18 anywhere. No height number.\nBOTTOM: same top-view diagram but light BLUE tray, outside width 24 relative units and each wall 1.5 relative units (6.25% of outside width). External width label \"24 ซม.\"; left and right wall labels each \"1.5 ซม.\"; inner dimension label \"? ซม.\" pink. Do NOT put 21 anywhere. No answer arithmetic. Clearly separate the three horizontal dimension concepts: outside width, wall thicknesses, inside unknown width."
+    },
+    {
+      "batch": "02-desk-views",
+      "files": [
+        "qfig-c06-desk-area.webp",
+        "qfig-c06-views.webp"
+      ],
+      "cols": 1,
+      "rows": 2,
+      "prompt": "Generate educational question illustrations for Thai Grade 7 Design and Technology. Follow these requirements strictly: colored COMIC illustration, thick confident black outlines, simple flat colored fills, plain pale cream #FFF8DC background, bright green/yellow/pink accents, no decorative scene. Accurate engineering/scientific quantities matter more than beauty. All numeric labels large, clear Arabic digits. Text and labels must be generated in the image itself. NO added digital text overlay afterwards. Thai short unit labels must be spelled exactly; if unable, use numbers and circled-number callouts only, never gibberish. No characters, logos, watermarks, answers, written calculations, answer ticks or crosses except explicitly requested broken-wire red X. No English prose. Each FINAL panel is landscape 1200x750 ratio 8:5; draw generous 60-pixel equivalent inner safe margins around every panel. Dimension lines black straight double arrowheads with perpendicular extension lines. ALL question-mark labels must remain question marks, NEVER solve the unknown. In contact sheets, panels are equal size, exact grid positions, zero gutters or frames BETWEEN panels; each panel has its own cream background and internal safe margins. Highest available resolution.\nCreate a contact sheet ONE COLUMN, TWO ROWS, overall 1200x1500 aspect 4:5.\nTOP PANEL: straight overhead view of a school desk. In the middle is a large PINK DASHED RECTANGLE with exact length:width aspect 20:15 = 4:3. An outer black double-arrow horizontal dimension above it reads \"20 ซม.\" and a vertical dimension beside it reads \"15 ซม.\". A shallow pencil-organizing tray sits fitting exactly within this dashed rectangular allowed area. Pencils inside tray. A notebook and pencil case are OUTSIDE the dashed allowed area, on the surrounding desk; neither overlaps inside area. No other dimensions or numbers.\nBOTTOM PANEL: two equal side-by-side subpanels separated by one thin vertical line. LEFT: true top view of one shallow rectangular light wood tray, showing matching length and width and thin walls; circled numeral ① in top corner. RIGHT: true orthographic SIDE VIEW of exactly the same wooden tray, showing shallow height and wall thickness, same long horizontal length and color/material as left tray, NO perspective. circled numeral ② in top corner. NO numeric measurements and no words. The tray is shallow, not a deep box. Both are visibly the same object from different viewpoints."
+    },
+    {
+      "batch": "03-circuits",
+      "files": [
+        "qfig-c05-circuit-cut.webp",
+        "qfig-c05-circuit-nobattery.webp",
+        "qfig-c05-circuit-resistor.webp",
+        "qfig-c05-circuit-parts.webp"
+      ],
+      "cols": 2,
+      "rows": 2,
+      "prompt": "Generate educational question illustrations for Thai Grade 7 Design and Technology. Follow these requirements strictly: colored COMIC illustration, thick confident black outlines, simple flat colored fills, plain pale cream #FFF8DC background, bright green/yellow/pink accents, no decorative scene. Accurate engineering/scientific quantities matter more than beauty. All numeric labels large, clear Arabic digits. Text and labels must be generated in the image itself. NO added digital text overlay afterwards. Thai short unit labels must be spelled exactly; if unable, use numbers and circled-number callouts only, never gibberish. No characters, logos, watermarks, answers, written calculations, answer ticks or crosses except explicitly requested broken-wire red X. No English prose. Each FINAL panel is landscape 1200x750 ratio 8:5; draw generous 60-pixel equivalent inner safe margins around every panel. Dimension lines black straight double arrowheads with perpendicular extension lines. ALL question-mark labels must remain question marks, NEVER solve the unknown. In contact sheets, panels are equal size, exact grid positions, zero gutters or frames BETWEEN panels; each panel has its own cream background and internal safe margins. Highest available resolution.\nCreate a 2x2 contact sheet, overall aspect 8:5, each of four panels aspect 8:5. Every panel is SAME STANDARD simple RECTANGULAR electrical circuit layout and identical callout positions: light-blue SINGLE CELL battery on LEFT vertical segment, a large lever switch TOP at x45%, a round bulb on RIGHT vertical segment, orange-brown insulated wire returning along BOTTOM. Battery labeled + at upper terminal and − at lower terminal. Switch lever CLOSED means metal lever physically bridges and TOUCHES BOTH terminal contacts, absolutely no gap. All terminal wires electrically connect correctly. Number callouts: ① upper-left arrow to battery (except absent battery panel), ② above-middle arrow to switch, ③ right-side arrow to bulb, ④ bottom-left arrow to intact wire. All arrows precise, short, no ambiguous overlap. These four callouts must remain in same relative positions in all four panels.\nTOP LEFT: closed switch but a clear BREAK in bottom wire near center-right, two separated wire ends and big red X at the break. Add ⑤ arrow pointing exactly to the bottom-wire gap. The bulb is neutral gray with NO glow, NO rays, NO blackened/dead symbol. No written answer. Battery present.\nTOP RIGHT: SAME layout, closed switch, all ordinary wires intact, but battery is MISSING. In battery location on LEFT, show a dashed outline placeholder containing a large ? and retain ① pointing at placeholder. Upper and lower wire terminals stop at absent battery slot. Neutral gray bulb without glow or rays. No resistor, no break anywhere else, NO written answer.\nBOTTOM LEFT: SAME complete circuit, closed switch, battery present, add beige cylindrical resistor with EXACTLY THREE colored bands in series BETWEEN the switch and bulb on top-right horizontal wire. Callout ⑥ arrow points precisely to this resistor. Keep standard ①②③④ positions. Neutral gray bulb NO glow or rays. No wire gap, no written answer.\nBOTTOM RIGHT: SAME as bottom-left full circuit with battery, CLOSED switch, THREE-band resistor, and a LIT yellow bulb with soft yellow rays. Numbered arrows ① battery ② switch ③ bulb ④ wire ⑥ resistor. Every arrow lands on correct actual part. NO part names or statements. This image is a component identification task."
+    },
+    {
+      "batch": "04-wheel",
+      "files": [
+        "qfig-c05-wheel-axle.webp"
+      ],
+      "cols": 1,
+      "rows": 1,
+      "prompt": "Generate educational question illustrations for Thai Grade 7 Design and Technology. Follow these requirements strictly: colored COMIC illustration, thick confident black outlines, simple flat colored fills, plain pale cream #FFF8DC background, bright green/yellow/pink accents, no decorative scene. Accurate engineering/scientific quantities matter more than beauty. All numeric labels large, clear Arabic digits. Text and labels must be generated in the image itself. NO added digital text overlay afterwards. Thai short unit labels must be spelled exactly; if unable, use numbers and circled-number callouts only, never gibberish. No characters, logos, watermarks, answers, written calculations, answer ticks or crosses except explicitly requested broken-wire red X. No English prose. Each FINAL panel is landscape 1200x750 ratio 8:5; draw generous 60-pixel equivalent inner safe margins around every panel. Dimension lines black straight double arrowheads with perpendicular extension lines. ALL question-mark labels must remain question marks, NEVER solve the unknown. In contact sheets, panels are equal size, exact grid positions, zero gutters or frames BETWEEN panels; each panel has its own cream background and internal safe margins. Highest available resolution.\nONE landscape 1200x750 image. Divide into equal left/right comparison panels with a thin vertical separator. Show two wheel-and-axle mechanisms with SAME-SIZED central axles, SAME rope thickness, identical hanging load boxes. Both wheels viewed front-on as true circles, shafts subtly extend sideways to show axle. A rope winds around each axle and hangs down to the identical plain load box.\nAbsolute proportional requirement: SMALL LEFT WHEEL radius 40 relative pixels, LARGE RIGHT WHEEL radius 160 relative pixels. Large diameter 320, small diameter 80, both circular, radius ratio EXACTLY 4:1. Axle radius 14 in BOTH. Keep both wheel centers at same vertical height. Do not enlarge small wheel for composition. Label left \"รัศมี 2\" and right \"รัศมี 8\" in large clear type, with radial dimension arrows from each center to its wheel rim. A small diagrammatic gloved HAND touches the RIM of each wheel (not a whole character); hands same size, and left hand must not obscure its small wheel. A dashed curved arrow traces ONE full rotation around each rim; right arc circumference visibly four times left. NO force arrows, no force values, no statement revealing which needs less force, no advantage equation. It is essential the large wheel really is FOUR TIMES the radius, not merely slightly larger."
+    },
+    {
+      "batch": "05-irrigation",
+      "files": [
+        "qfig-c03-irrigation.webp",
+        "qfig-c03-pipe-leak.webp"
+      ],
+      "cols": 1,
+      "rows": 2,
+      "prompt": "Generate educational question illustrations for Thai Grade 7 Design and Technology. Follow these requirements strictly: colored COMIC illustration, thick confident black outlines, simple flat colored fills, plain pale cream #FFF8DC background, bright green/yellow/pink accents, no decorative scene. Accurate engineering/scientific quantities matter more than beauty. All numeric labels large, clear Arabic digits. Text and labels must be generated in the image itself. NO added digital text overlay afterwards. Thai short unit labels must be spelled exactly; if unable, use numbers and circled-number callouts only, never gibberish. No characters, logos, watermarks, answers, written calculations, answer ticks or crosses except explicitly requested broken-wire red X. No English prose. Each FINAL panel is landscape 1200x750 ratio 8:5; draw generous 60-pixel equivalent inner safe margins around every panel. Dimension lines black straight double arrowheads with perpendicular extension lines. ALL question-mark labels must remain question marks, NEVER solve the unknown. In contact sheets, panels are equal size, exact grid positions, zero gutters or frames BETWEEN panels; each panel has its own cream background and internal safe margins. Highest available resolution.\nCreate a contact sheet ONE COLUMN TWO ROWS overall 1200x1500 ratio 4:5.\nBoth landscape panels depict SAME left-to-right automatic irrigation system with consistent item shapes/positions. Water TANK far left, compact PUMP middle-left, curved water PIPE toward a plant POT on right. Soil and plant visible in pot. A thin moisture SENSOR probe inserted into soil. A CONTROL BOX sits above middle. One pink dashed signal path runs FROM moisture sensor BACK TO control box, arrowhead clearly points at CONTROLLER (feedback direction). A separate thin control wire connects controller to pump. Water moves left-to-right through blue arrows inside pipe.\nPrecise numbered leader arrows: ① tank; ② pump body; ③ actual water pipe; ④ soil-and-plant area; ⑤ slim sensor probe inserted in soil (NOT plant stem); ⑥ control box. Arrows do not cross other parts ambiguously. NO words Input/Output/Process/Feedback or Thai equivalents, no labels of system roles, NO answer prose.\nTOP: normal connected system, blue water arrow from pump through connected pipe ending over pot, droplets going into soil. Pump operational. All six callouts.\nBOTTOM: same system but pipe pulled APART between pump and pot; wide visible disconnected pipe gap, water visibly sprays out at break OUTSIDE pot, NO droplets reach pot. Add ⑦ precise arrow to disconnected pipe joint. Pump housing includes visible impeller with curved motion strokes showing still spinning; do not imply pump stops. Dry tan cracked soil in pot. Keep ①②③④⑤⑥ consistent with top; pink dashed feedback line still goes from sensor to controller. No answer text."
+    },
+    {
+      "batch": "06-materials",
+      "files": [
+        "qfig-c04-materials.webp"
+      ],
+      "cols": 1,
+      "rows": 1,
+      "prompt": "Generate educational question illustrations for Thai Grade 7 Design and Technology. Follow these requirements strictly: colored COMIC illustration, thick confident black outlines, simple flat colored fills, plain pale cream #FFF8DC background, bright green/yellow/pink accents, no decorative scene. Accurate engineering/scientific quantities matter more than beauty. All numeric labels large, clear Arabic digits. Text and labels must be generated in the image itself. NO added digital text overlay afterwards. Thai short unit labels must be spelled exactly; if unable, use numbers and circled-number callouts only, never gibberish. No characters, logos, watermarks, answers, written calculations, answer ticks or crosses except explicitly requested broken-wire red X. No English prose. Each FINAL panel is landscape 1200x750 ratio 8:5; draw generous 60-pixel equivalent inner safe margins around every panel. Dimension lines black straight double arrowheads with perpendicular extension lines. ALL question-mark labels must remain question marks, NEVER solve the unknown. In contact sheets, panels are equal size, exact grid positions, zero gutters or frames BETWEEN panels; each panel has its own cream background and internal safe margins. Highest available resolution.\nONE landscape image 1200x750 aspect 8:5. A clean 3-column by 2-row grid of SIX LARGE material cards, A B C on top, D E F below. All six equal-size cards, cream margins, thick black outlines, modest green/yellow/pink accents. Each card has ONE small visibly different textured sheet-material sample, its huge uppercase Latin letter, then TWO very large clear data lines. Text accuracy is mandatory. Do not omit or duplicate a card. Do not add numbers or statistics.\nTop criteria strip, two clear spacious phrases EXACTLY: \"ต้องรับ 0.5 กก. ขึ้นไป\" and \"งบไม่เกิน 60 บาท\".\nCard A: \"20 บาท\" then \"รับ 0.3 กก.\"\nCard B: \"50 บาท\" then \"รับ 1 กก.\"\nCard C: \"80 บาท\" then \"รับ 2 กก.\"\nCard D: \"40 บาท\" then \"รับ 0.4 กก.\"\nCard E: \"55 บาท\" then \"รับ 0.8 กก.\"\nCard F: \"70 บาท\" then \"รับ 1.5 กก.\"\nDo NOT mark any material passed/failed, no ticks, no crosses, no highlight identifying a correct selection. All cards receive equal visual emphasis. Make every numerical decimal precisely correct and large enough to read when image shown 360px wide. Keep samples small so text is prioritized. Short Thai text only exactly supplied. No character."
+    },
+    {
+      "batch": "07-graphs",
+      "files": [
+        "qfig-c07-times.webp",
+        "qfig-c07-times-new.webp"
+      ],
+      "cols": 1,
+      "rows": 2,
+      "prompt": "Generate educational question illustrations for Thai Grade 7 Design and Technology. Follow these requirements strictly: colored COMIC illustration, thick confident black outlines, simple flat colored fills, plain pale cream #FFF8DC background, bright green/yellow/pink accents, no decorative scene. Accurate engineering/scientific quantities matter more than beauty. All numeric labels large, clear Arabic digits. Text and labels must be generated in the image itself. NO added digital text overlay afterwards. Thai short unit labels must be spelled exactly; if unable, use numbers and circled-number callouts only, never gibberish. No characters, logos, watermarks, answers, written calculations, answer ticks or crosses except explicitly requested broken-wire red X. No English prose. Each FINAL panel is landscape 1200x750 ratio 8:5; draw generous 60-pixel equivalent inner safe margins around every panel. Dimension lines black straight double arrowheads with perpendicular extension lines. ALL question-mark labels must remain question marks, NEVER solve the unknown. In contact sheets, panels are equal size, exact grid positions, zero gutters or frames BETWEEN panels; each panel has its own cream background and internal safe margins. Highest available resolution.\nCreate a contact sheet ONE COLUMN TWO ROWS, overall1200x1500 ratio4:5. Each panel contains ONE large accurate vertical BAR CHART on same LINEAR Y-axis 0 to20 seconds with ticks0,5,10,15,20, clearly matching equally spaced faint grid lines; baseline0, fixed maximum20. Use large readable numbers and clean flat comic style.\nTOP: THREE bars labeled bottom \"รอบ 1\", \"รอบ 2\", \"รอบ 3\". Values labeled at bar tops EXACTLY18,16,17 respectively. Heights must be mathematically proportional to y-axis: 18 is90% full range,16 is80%,17 is85%. Pink dashed horizontal threshold line EXACTLY at15 =75% full range, below ALL THREE bar tops, label \"เกณฑ์ 15 วินาที\". The18 bar is highest,17 slightly lower,16 lowest; top differences each exactly ONE tick unit. All bars equal width, green yellow cyan fills, no answer symbols.\nBOTTOM: TWO equal-width bars labeled \"รุ่นเก่า\" and \"รุ่นใหม่\". Top numeric labels EXACTLY18 and14. Old bar18 =90% axis height; new14 =70%. Pink dashed threshold at15=75%, crosses ABOVE top of14 bar and BELOW top of18 bar. Large threshold label \"เกณฑ์ 15 วินาที\". Old green bar, new cyan bar. No pass/fail symbols, no improvement calculation or conclusion.\nY-axis title short \"วินาที\". Ensure labels18/16/17/14 and threshold15 precisely align with heights; do NOT write correct values over visually incorrect bar heights. All labels inside safe margins. Do not use 3D bars, perspective or decorative distortion."
+    }
+  ],
+  "retries": [
+    {
+      "batch": "01-trays",
+      "prompt": "Generate educational question illustrations for Thai Grade 7 Design and Technology. Follow these requirements strictly: colored COMIC illustration, thick confident black outlines, simple flat colored fills, plain pale cream #FFF8DC background, bright green/yellow/pink accents, no decorative scene. Accurate engineering/scientific quantities matter more than beauty. All numeric labels large, clear Arabic digits. Text and labels must be generated in the image itself. NO added digital text overlay afterwards. Thai short unit labels must be spelled exactly; if unable, use numbers and circled-number callouts only, never gibberish. No characters, logos, watermarks, answers, written calculations, answer ticks or crosses except explicitly requested broken-wire red X. No English prose. Each FINAL panel is landscape 1200x750 ratio 8:5; draw generous 60-pixel equivalent inner safe margins around every panel. Dimension lines black straight double arrowheads with perpendicular extension lines. ALL question-mark labels must remain question marks, NEVER solve the unknown. In contact sheets, panels are equal size, exact grid positions, zero gutters or frames BETWEEN panels; each panel has its own cream background and internal safe margins. Highest available resolution.\nCRITICAL PRECISION DIAGRAM. Create ONE COLUMN TWO equal ROWS contact sheet total portrait 1200x1500, each panel1200x750, separation at exactly half canvas height. Flat solid-color 2D rectangles, NO bevel, NO miters, NO inset shadows, NO perspective, NO wood rim decorative bands. Tray border must be a SINGLE unambiguous flat band.\nTOP PANEL coordinate design on its1200x750 area: outside tray rectangle left x180 right x1020 top y270 bottom y650. Outer width840. EXACT wall thickness42 on each side: inner left222 right978 top312 bottom608. Pale wood border and lighter cream interior. Overall horizontal double-arrow at y110 from x180 to1020 label \"20 ซม.\". Two short double-arrows at y220 from180to222 and978to1020 respectively, each label \"1 ซม.\" placed above with short leader if needed; their perpendicular extension lines must coincide EXACTLY with the OUTER and INNER wall vertical edges x180/222 and978/1020. Interior unknown-width double-arrow at y440 ONLY from innerx222 toinnerx978, label \"? ซม.\" pink above arrow, absolutely do not terminate at decorative lines. NO 18 or 21 anywhere.\nBOTTOM PANEL same flat geometry on its own1200x750 area, blue border. Outer left180 right1020 top270 bottom650. Wall thickness52.5 (6.25% total width), inner left232.5 right967.5 top322.5 bottom597.5. Overall width label \"24 ซม.\". Each short wall dimension \"1.5 ซม.\", arrow spans exact wall band boundaries. Interior dimension \"? ซม.\" from232.5to967.5. Labels large. Plain cream background. These coordinates are layout specifications ONLY, do not print coordinate numbers."
+    },
+    {
+      "batch": "02-desk-only",
+      "files": [
+        "qfig-c06-desk-area.webp"
+      ],
+      "cols": 1,
+      "rows": 1,
+      "prompt": "Generate educational question illustrations for Thai Grade 7 Design and Technology. Follow these requirements strictly: colored COMIC illustration, thick confident black outlines, simple flat colored fills, plain pale cream #FFF8DC background, bright green/yellow/pink accents, no decorative scene. Accurate engineering/scientific quantities matter more than beauty. All numeric labels large, clear Arabic digits. Text and labels must be generated in the image itself. NO added digital text overlay afterwards. Thai short unit labels must be spelled exactly; if unable, use numbers and circled-number callouts only, never gibberish. No characters, logos, watermarks, answers, written calculations, answer ticks or crosses except explicitly requested broken-wire red X. No English prose. Each FINAL panel is landscape 1200x750 ratio 8:5; draw generous 60-pixel equivalent inner safe margins around every panel. Dimension lines black straight double arrowheads with perpendicular extension lines. ALL question-mark labels must remain question marks, NEVER solve the unknown. In contact sheets, panels are equal size, exact grid positions, zero gutters or frames BETWEEN panels; each panel has its own cream background and internal safe margins. Highest available resolution.\nONE landscape1200x750 diagram, NOT a sheet. Strict overhead orthographic plan. Simplified school desk top with a thin plain wood outline, NO perspective legs. Center PINK dashed rectangle EXACTLY width600 andheight450 (ratio4:3), for example x300to900,y170to620 in1200x750canvas. This rectangle represents20x15 cm so aspect MUST be4:3, not16:10 and notwider. Horizontal black dimension spans exact dashed width and reads \"20 ซม.\". Vertical black dimension spans exact dashed height and reads \"15 ซม.\". Place dimension labels large clear and avoid furniture. A shallow yellow wooden organizer tray fits within dashed rectangle and contains pencils. A PINK notebook lies toLEFT outside area and a GREEN pencilcase toRIGHT outside area, neither crosses dashed boundary. Safe60pixel margins; no othertextnumbers. Visible exact4:3 rectangle essential."
+    },
+    {
+      "batch": "02-views-only",
+      "files": [
+        "qfig-c06-views.webp"
+      ],
+      "cols": 1,
+      "rows": 1,
+      "prompt": "Generate educational question illustrations for Thai Grade 7 Design and Technology. Follow these requirements strictly: colored COMIC illustration, thick confident black outlines, simple flat colored fills, plain pale cream #FFF8DC background, bright green/yellow/pink accents, no decorative scene. Accurate engineering/scientific quantities matter more than beauty. All numeric labels large, clear Arabic digits. Text and labels must be generated in the image itself. NO added digital text overlay afterwards. Thai short unit labels must be spelled exactly; if unable, use numbers and circled-number callouts only, never gibberish. No characters, logos, watermarks, answers, written calculations, answer ticks or crosses except explicitly requested broken-wire red X. No English prose. Each FINAL panel is landscape 1200x750 ratio 8:5; draw generous 60-pixel equivalent inner safe margins around every panel. Dimension lines black straight double arrowheads with perpendicular extension lines. ALL question-mark labels must remain question marks, NEVER solve the unknown. In contact sheets, panels are equal size, exact grid positions, zero gutters or frames BETWEEN panels; each panel has its own cream background and internal safe margins. Highest available resolution.\nONE landscape1200x750 technical projection diagram. Two equal panels side-by-side, thin vertical dividing line atcenter. ONLY two views of SAME shallow rectangular wooden tray. No perspective, NO vanishing lines, NO angled edges, NO visible interior in side elevation. LEFT true TOP plan: flat tan rectangle480wide x300high, single brown border20thick, lightcream innerfloor, no bevel. Circled① near top-left withinmargin. RIGHT true SIDE elevation: plain horizontal tan outerrectangle EXACTLY same480width, height80, frontwall hides the inside floor entirely. Show wall thickness as20-wide thin darker bands at left and right ends, no open box seen fromabove. Circled② near top-left. Center each diagram initscolumn; both align tosamehorizontalcenterline; outerwidths equal. No dimensionsnumbersotherthan①②. Comicflatcoloredblackoutlines. Make the difference between top view and side elevation unmistakable."
+    },
+    {
+      "batch": "03-circuits",
+      "prompt": "Generate educational question illustrations for Thai Grade 7 Design and Technology. Follow these requirements strictly: colored COMIC illustration, thick confident black outlines, simple flat colored fills, plain pale cream #FFF8DC background, bright green/yellow/pink accents, no decorative scene. Accurate engineering/scientific quantities matter more than beauty. All numeric labels large, clear Arabic digits. Text and labels must be generated in the image itself. NO added digital text overlay afterwards. Thai short unit labels must be spelled exactly; if unable, use numbers and circled-number callouts only, never gibberish. No characters, logos, watermarks, answers, written calculations, answer ticks or crosses except explicitly requested broken-wire red X. No English prose. Each FINAL panel is landscape 1200x750 ratio 8:5; draw generous 60-pixel equivalent inner safe margins around every panel. Dimension lines black straight double arrowheads with perpendicular extension lines. ALL question-mark labels must remain question marks, NEVER solve the unknown. In contact sheets, panels are equal size, exact grid positions, zero gutters or frames BETWEEN panels; each panel has its own cream background and internal safe margins. Highest available resolution.\nCreate2x2 contact sheet overall1200x750 aspect8:5, each panel8:5. ALL FOUR LEVER SWITCHES MUST BE ELECTRICALLY CLOSED: draw two equal-height gold contact posts and a SILVER CONDUCTING BAR PERFECTLY HORIZONTAL lying ON TOP OF BOTH CONTACT POSTS, touching both with ZERO white gap. Red insulating grip is horizontal on that bar. Never slant or lift the bar. Closed bars must actually visibly connect both terminals. This is the most important requirement; previous tilted lever looked open and is unacceptable.\nSame rectangular circuit in all panels: singlebluebattery LEFTvertical, +upper −lower; switchTOPmiddle; roundbulbRIGHTvertical; orangebrownwireBOTTOMreturn. Precise consistent circledleaderarrows①battery,②switch,③bulb,④wire. Avoid crossing arrows.\nTOPLEFT: battery present, CLOSED HORIZONTAL BRIDGE switch, neutral graybulb no glow/rays, BROKEN bottomwire with two visiblyseparated ends, bigredX in gap and⑤leaderarrow to gap.\nTOPRIGHT: battery absent inleftslot, dashedbatteryplaceholdercontaining?,①leaderarrowtoslot. CLOSED HORIZONTAL switch. Other wiresintact. Neutralgraybulb,no glow. Noresistor.\nBOTTOMLEFT: battery present, CLOSED HORIZONTAL switch. Beige cylindricalresistor with EXACTLY3bands red black yellow onTOPRIGHT inseries between switchandbulb;⑥leaderarrowtoresistor. Neutralgraybulb no rays. Nootherwiregap.\nBOTTOMRIGHT: same fullcircuit asbottomleft butbulblit brightyellowwithrays;closedhorizontalbarstilltouchesBOTHposts. All①②③④⑥pointatcorrectcomponents.\nNo prose, labels, answer text or extraneous numbers. Keep all standard numberedmarkers in samepositions. Creambackground. Make accurate complete electrical topology."
+    },
+    {
+      "batch": "04-wheel",
+      "prompt": "Generate educational question illustrations for Thai Grade 7 Design and Technology. Follow these requirements strictly: colored COMIC illustration, thick confident black outlines, simple flat colored fills, plain pale cream #FFF8DC background, bright green/yellow/pink accents, no decorative scene. Accurate engineering/scientific quantities matter more than beauty. All numeric labels large, clear Arabic digits. Text and labels must be generated in the image itself. NO added digital text overlay afterwards. Thai short unit labels must be spelled exactly; if unable, use numbers and circled-number callouts only, never gibberish. No characters, logos, watermarks, answers, written calculations, answer ticks or crosses except explicitly requested broken-wire red X. No English prose. Each FINAL panel is landscape 1200x750 ratio 8:5; draw generous 60-pixel equivalent inner safe margins around every panel. Dimension lines black straight double arrowheads with perpendicular extension lines. ALL question-mark labels must remain question marks, NEVER solve the unknown. In contact sheets, panels are equal size, exact grid positions, zero gutters or frames BETWEEN panels; each panel has its own cream background and internal safe margins. Highest available resolution.\nONE landscape1200x750 diagram. Two comparison mechanisms FRONT ORTHOGRAPHIC circles on cream. STRICT NUMERIC GEOMETRY, do not visually balance wheel sizes:\nLEFT wheel center(300,330), OUTER RADIUS55, DIAMETER110.\nRIGHT wheel center(850,330), OUTER RADIUS220, DIAMETER440.\nBoth AXLES radius14 andsame shaftwidth. The right wheel radius MUST be exactly FOUR TIMES left. The smallwheel must look TINY relative tobigwheel; do not enlarge it to fill leftpanel. Keep wheelcenterssameheight. Both plain green wheels withthinblackoutlines; no concentric extra circlesconfusing perimeter.\nSame-sized ropes wrap aroundsame-sized axles, hang identicalgrayloadboxes down tobaseliney650. Same-sized small diagram hand touches RIGHT outerrim ofeachwheel: left rimx355, right rimx1070. Hand width<=65, nevercropped. Curved dashed fullrotationarrowaroundeachactualcircle, rightcirclefourtimesradiusleft. Thin paneldivideratx580.\nLarge text\"รัศมี 2\" aboveleftwheel withleaderarrowtolinefromhubtorim, \"รัศมี 8\" withinupperrightwheelzonewithradiallinehubtorim. No othernumbers, no force arrows or advantageanswer. 60pixsafe margins. Maintaintruecirclesand4:1 ratio; layoutcoordinatesnotprinted."
+    },
+    {
+      "batch": "05-irrigation",
+      "prompt": "Generate educational question illustrations for Thai Grade 7 Design and Technology. Follow these requirements strictly: colored COMIC illustration, thick confident black outlines, simple flat colored fills, plain pale cream #FFF8DC background, bright green/yellow/pink accents, no decorative scene. Accurate engineering/scientific quantities matter more than beauty. All numeric labels large, clear Arabic digits. Text and labels must be generated in the image itself. NO added digital text overlay afterwards. Thai short unit labels must be spelled exactly; if unable, use numbers and circled-number callouts only, never gibberish. No characters, logos, watermarks, answers, written calculations, answer ticks or crosses except explicitly requested broken-wire red X. No English prose. Each FINAL panel is landscape 1200x750 ratio 8:5; draw generous 60-pixel equivalent inner safe margins around every panel. Dimension lines black straight double arrowheads with perpendicular extension lines. ALL question-mark labels must remain question marks, NEVER solve the unknown. In contact sheets, panels are equal size, exact grid positions, zero gutters or frames BETWEEN panels; each panel has its own cream background and internal safe margins. Highest available resolution.\nEdit this existing contact sheet preserving both panels, every number, correct arrow and component layout. ONLY make pump operation visibly explicit: add TWO short curved WHITE rotation-arrow strokes around the visible YELLOW impeller inside the GREEN PUMP window, in BOTH upper andlowerpanels. Especially lowerpanel pump MUST visibly stillspin although pipe is disconnected. Whitecurvedarrows may beoutlinedblack forcontrast and mustnotobscure②marker. Preserve lower⑦arrowatpipebreak, drysoil, escapingwateroutsidepot, controllerfeedbackarrow, probe⑤, soil④, pipe③,tank①,pump②,controller⑥. Do not change dimensions or addtext. No characters. Same overallcontactsheet andstyle.",
+      "refs": [
+        "C:\\Users\\ikan\\.codex\\generated_images\\01a12445-4c30-7700-9012-ea66bb6215c8\\exec-38d4c67d-7e2a-4586-b7f8-c423050d74a8.png"
+      ]
+    }
+  ],
+  "edits": [
+    {
+      "batch": "01-trays",
+      "ref": "C:\\Users\\ikan\\.codex\\generated_images\\01a12445-4c30-7700-9012-ea66bb6215c8\\exec-311967d6-b138-460a-bf22-71d76bd8c0dc.png",
+      "prompt": "Edit these TWO tray question diagrams, preserve exact existing labels and two-row layout. All text must remain exactly 20 ซม., 1 ซม., 1 ซม., ? ซม. in top; 24 ซม., 1.5 ซม., 1.5 ซม., ? ซม. in bottom. Do NOT add answers or any other numbers. Main corrections: LEFT AND RIGHT SIDE WALLS ARE TOO THICK and small wall-dimension arrows end in the wrong places. In TOP tray, make left and right side bands as thin in pixel thickness as its current TOP horizontal wall band (about45px versus current62px). Enlarge inner opening horizontally, preserving overall outside width and vertical positions. True side thickness must be5% of outsidewidth, innerwidth90%. In BOTTOM tray, side bands must likewise equal its TOP wall pixel thickness (about54px versuscurrent72px), true wall6.25% outerwidth, inner87.5%. Keep flat orthographic rectangles. Crucially each short 1 or1.5 dimension doublearrow MUST start at OUTER edge and end at ACTUAL INNER edge of that side band, with perpendicular extension lines on both matching edges. Move short arrow endpoints inward/outward as needed to match newthinbands. Interior ? doublearrow MUST run from actual innerleft edge toactualinnerrightedge. No bevels or extra frame lines. Creambackground, clear flatcoloredcomic. Do not move widthlabels or change colors."
+    },
+    {
+      "batch": "04-wheel",
+      "ref": "C:\\Users\\ikan\\.codex\\generated_images\\01a12445-4c30-7700-9012-ea66bb6215c8\\exec-08e08ba4-c9a3-4a39-b803-bbc1d6caeda4.png",
+      "prompt": "Edit this wheel-and-axle teaching comparison. Preserve exact text รัศมี 2 and รัศมี 8, pink identical loads, green wheels, creambackground, coloredcomic style. The smallwheel is STILL TOO LARGE: SHRINK ONLY LEFT GREEN WHEEL DISK to80% of its current diameter, keep right wheel unchanged. Result large/small diameter ratio must be4:1 (approximatelyrightdiameter600pixels andleftdiameter150pixels inthisreference). Keep wheels circles, not ellipses. Move LEFT wheelcenter UP so it is on same horizontal centerline as right wheelcenter. Both gray axle hubs MUST be SAME DIAMETER as existing rightgrayhub. Do not shrinkhand/axle/rope/load with leftdisk; move hand to touch its newly smaller rim. Both loadboxes remain equal and alignedatbottom; lefthangingrope may thereforebe longer. Update left dashedcircle rotationarrow toitsnewsmallerwheel. Keep rightwheel unchanged. Both radialblackarrows fromhubtowheelrim. All diagram inside safe margins, no forcearrows/noanswertext."
+    },
+    {
+      "batch": "03-circuits",
+      "ref": "C:\\Users\\ikan\\.codex\\generated_images\\01a12445-4c30-7700-9012-ea66bb6215c8\\exec-03af4890-38bd-47b2-bce6-8d2480bf3d46.png",
+      "prompt": "Edit this2x2closed-switchcircuitcontactsheet. ONLY correct the missing wire callout in TOPLEFT panel: ADD circled numeral④ in cyanblue atbottom of TOPLEFT panel, matching relativeposition andstyle of④ in otherpanels. Draw short black leader from④ to intact ORANGE bottom wire LEFT of the redX/break. Callout④ must not pointto redX orwiregap. Keep⑤ pointing exactlyatbreak. Allfourpanels must contain①②③④; top-left additionally⑤; lowerpanels additionally⑥. Preserve ALL existing components, text, positions, horizontalclosedmetalbar touchingbothposts, battery±,3-bandresistors and bulbneutral/brightstates. Do not changeanythingelse. No writtenanswers."
+    },
+    {
+      "batch": "02-desk-only",
+      "ref": "C:\\Users\\ikan\\.codex\\generated_images\\01a12445-4c30-7700-9012-ea66bb6215c8\\exec-191ef802-6ab4-4ffe-8be7-40d2390acc5c.png",
+      "prompt": "Edit this overhead20x15deskdiagram, preserve comiccolors, exact labels20 ซม. and15 ซม., pinknotebookoutsideleft andgreenpencilcaseoutsideright. Correct pinkdashedallowedrectangle to true4:3 aspect ratio. Keep current rectangle WIDTH fixed; INCREASE its HEIGHT about5.5% while keeping topedgeatcurrentlocation, movebottomedge lower. Extend the tray to fit newtallerrectangle; adjustinternalpencilcompartmentsnaturally. Updatevertical15dimension tospanexactnewtopandbottomdashededges. Donotextendwidth. Noothertextnumbers. No perspective, no cropping. Desired dashedrectangle width/height precisely1.3333. Do not print ratio orcoordinates. Creambackground."
+    }
+  ],
+  "extra": [
+    {
+      "batch": "tray20-single",
+      "files": [
+        "qfig-c06-tray-20.webp"
+      ],
+      "cols": 1,
+      "rows": 1,
+      "prompt": "Create ONE landscape1200x750 Thai technical question illustration, coloredcomicflatstyle blackoutlines plaincream#FFF8DC. Trueorthographic TOPVIEW of a shallow tan wooden rectangular tray. Outerrectangle900pixelswide350high, singleuniform45pixelthicktanrim, allfoursides SAME thickness. Interiorcreamopening810pixelswide260high. Flat solidfill NO bevel NO perspective. This proportionalrim is exactly1/20outsidewidth. Only four labels in entireimage: outsidewidth \"20 ซม.\" ABOVEwholetray withblackdoublearrow andextensionlines onouterleft/right. Insideopeningwidth \"? ซม.\" pink aboveblackdoublearrow spanningactualINNERlefttoINNERright boundaries. Wallthicknesslabels \"1 ซม.\" leftandright. IMPORTANT shortwallmeasurementarrows must be drawn DIRECTLY ACROSS the actualthin LEFT andRIGHT rim bands AT THE MIDDLE ofthetrayheight, touching outerandinnerboundaries, never extendintotheopening. Put each1ซม.text OUTSIDEthetray witha bentleader pointingto its shortwallarrow; doNOTenlargearrow tofittext. Use large readabletype and60pixelsafemargins. NO18, no equation,noanswer, no extraunits ornumbers. Use actualrimboundariesformeasurement, nofakeextensionlineelsewhere."
+    },
+    {
+      "batch": "tray24-single",
+      "files": [
+        "qfig-c06-tray-24.webp"
+      ],
+      "cols": 1,
+      "rows": 1,
+      "prompt": "Create ONE landscape1200x750 Thai technical question illustration, coloredcomicflatstyle blackoutlines plaincream#FFF8DC. Trueorthographic TOPVIEW of shallow LIGHTBLUErectangulartray. Outsidewidth896pixels andheight352pixels. Singleuniform56pixelthickBLUErim, allfoursides SAME thickness (exactly1/16outsidewidth,6.25%). Interiorcreamopening784pixelswide240high. Flat solidfill NO bevel NO perspective. Only four labels: outsidewidth \"24 ซม.\" ABOVEwholetray withblackdoublearrow andextensionlinesonouterleft/right. Inneropeningwidth \"? ซม.\" pink aboveblackdoublearrow spanningactualINNERlefttoINNERrightboundaries. Wallthicknesslabels \"1.5 ซม.\" leftandright. Shortwallmeasurementarrows drawn DIRECTLY ACROSS actualthinLEFTandRIGHT rim bands AT MIDDLEoftrayheight, touchingouterandinnerboundaries, neverextendintointerior. Place1.5ซม.text OUTSIDEtraywithbentleaderpointingtoeachshortwallarrow; doNOTenlargearrowtofittext. Large readabletype and60pixelsafemargins. NO21, noanswers,equations,othernumbers. Eachshortwallarrow must coincidewithactualwallthickness."
+    },
+    {
+      "batch": "wheel-align",
+      "files": [
+        "qfig-c05-wheel-axle.webp"
+      ],
+      "cols": 1,
+      "rows": 1,
+      "prompt": "Edit this teachingwheelcomparison usingreference. KEEP rightgreendisk exactlyunchanged. Keeptextรัศมี2,รัศมี8identicalandnoothertext. Leftdisk isapproximatelyquarterdiameteralready; increaseitsdiameteronly3% so ratioisexactly4:1 relativebigdisk. Crucially BOTH metallicGRAYAXLEHUBS musthaveSAMEdiameter asRIGHTgrayhub: enlargeleftgrayhubabout30%, preserveitsmetallicgrayappearance. ALIGN WHEEL CENTERS HORIZONTALLY: moveentireleftwheelandhubUPuntilcenteratSAMEheightasrightwheelcenter. AddoneveryfaintthinGRAYDASHEDhorizontalcenterlinepassingthroughBOTHexacthubcenters to makealignmentclear, behindmechanisms. Movelefthandandradialarrowwithleftwheel; dashedrotationcurvefollowsleftnewrim. Leftropeextendsdownfromnewcenter tosameunchangedleftpinkload; bothloadsremainsamephysicalsize andsamebottomheight. Smallleftwheelmuststayonequarterrightdiameter. No otherchanges. Coloredcomicplaincream, no forceoranswertext.",
+      "ref": "C:\\Users\\ikan\\.codex\\generated_images\\01a12445-4c30-7700-9012-ea66bb6215c8\\exec-035e917d-13e8-4a2a-a99b-c420540ebeb8.png"
+    }
+  ],
+  "lastEdit": "Precisely edit this blue tray diagram preserving ALL labels, colors, outer tray rectangle and overall layout. Text24ซม.,1.5ซม.,1.5ซม.,?ซม. remains unchanged, noanswers. ONLY ENLARGE THE INNER CREAM OPENING HORIZONTALLY BY 2% of its CURRENT width (approximately20pixels total atthisreference size,10pixelstoLEFTand10pixelstoRIGHT). Outerleft/rightBLUEboundariesmustnotmove. This makesleft/rightbluewalls SLIGHTLY thinner, desired6.25% outsidewidth each. Keep insideTOPandBOTTOMedgesunchanged. The left innerverticalblackedge shiftsleftbyabout10px; rightinneredge shiftsrightabout10px. Move central?doublearrowends totheseexactnewinsideedges, and SHORT1.5wallarrowstoeachnewouter/innerboundary. No other changes; do not shrinkwallsdrastically. Flattechnicalcomic, no newnumbers or text. The outerwidthandoutside24dimensionarrowstayunchanged.",
+  "selected": [
+    {
+      "batch": "02-desk-only",
+      "files": [
+        "qfig-c06-desk-area.webp"
+      ],
+      "cols": 1,
+      "rows": 1,
+      "sourcePath": "C:\\Users\\ikan\\.codex\\generated_images\\01a12445-4c30-7700-9012-ea66bb6215c8\\exec-8399fdb2-b32c-4144-a210-895647e11c58.png"
+    },
+    {
+      "batch": "02-views-only",
+      "files": [
+        "qfig-c06-views.webp"
+      ],
+      "cols": 1,
+      "rows": 1,
+      "sourcePath": "C:\\Users\\ikan\\.codex\\generated_images\\01a12445-4c30-7700-9012-ea66bb6215c8\\exec-4cbe41c5-a946-42c2-b230-681179951866.png"
+    },
+    {
+      "batch": "03-circuits",
+      "files": [
+        "qfig-c05-circuit-cut.webp",
+        "qfig-c05-circuit-nobattery.webp",
+        "qfig-c05-circuit-resistor.webp",
+        "qfig-c05-circuit-parts.webp"
+      ],
+      "cols": 2,
+      "rows": 2,
+      "sourcePath": "C:\\Users\\ikan\\.codex\\generated_images\\01a12445-4c30-7700-9012-ea66bb6215c8\\exec-29affb16-5a92-45e5-9da5-6b7ccf43ebb6.png"
+    },
+    {
+      "batch": "05-irrigation",
+      "files": [
+        "qfig-c03-irrigation.webp",
+        "qfig-c03-pipe-leak.webp"
+      ],
+      "cols": 1,
+      "rows": 2,
+      "sourcePath": "C:\\Users\\ikan\\.codex\\generated_images\\01a12445-4c30-7700-9012-ea66bb6215c8\\exec-8bf0ffd0-c553-4137-98ac-466760f55ffc.png"
+    },
+    {
+      "batch": "06-materials",
+      "files": [
+        "qfig-c04-materials.webp"
+      ],
+      "cols": 1,
+      "rows": 1,
+      "sourcePath": "C:\\Users\\ikan\\.codex\\generated_images\\01a12445-4c30-7700-9012-ea66bb6215c8\\exec-db8fb0bf-2d67-4d8b-a9d8-af47702a20bb.png"
+    },
+    {
+      "batch": "07-graphs",
+      "files": [
+        "qfig-c07-times.webp",
+        "qfig-c07-times-new.webp"
+      ],
+      "cols": 1,
+      "rows": 2,
+      "sourcePath": "C:\\Users\\ikan\\.codex\\generated_images\\01a12445-4c30-7700-9012-ea66bb6215c8\\exec-6e2ce164-435c-46c1-8f2d-1838ba65b868.png"
+    },
+    {
+      "batch": "tray20-single",
+      "files": [
+        "qfig-c06-tray-20.webp"
+      ],
+      "cols": 1,
+      "rows": 1,
+      "sourcePath": "C:\\Users\\ikan\\.codex\\generated_images\\01a12445-4c30-7700-9012-ea66bb6215c8\\exec-77ba1bce-f6d3-4cb7-9fff-67e23ac75415.png"
+    },
+    {
+      "batch": "wheel-align",
+      "files": [
+        "qfig-c05-wheel-axle.webp"
+      ],
+      "cols": 1,
+      "rows": 1,
+      "sourcePath": "C:\\Users\\ikan\\.codex\\generated_images\\01a12445-4c30-7700-9012-ea66bb6215c8\\exec-63761009-585b-49d0-aa80-09559fbb2fb1.png"
+    },
+    {
+      "batch": "tray24-final",
+      "files": [
+        "qfig-c06-tray-24.webp"
+      ],
+      "cols": 1,
+      "rows": 1,
+      "sourcePath": "C:\\Users\\ikan\\.codex\\generated_images\\01a12445-4c30-7700-9012-ea66bb6215c8\\exec-8724d228-1e70-4383-a4d1-c0770dedbc04.png"
+    }
+  ]
+}

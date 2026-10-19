@@ -1,0 +1,42 @@
+/* ธีมดาวประจำวิชา ม.2 · ดาวอุตสาหกรรมวารี (โทนฟ้าครามเงิน · ฝนเบาหลังฉากและไอน้ำขอบโรงงาน)
+   โหลดต่อจาก dt-m1.css เพื่อทับเฉพาะสีและพื้นหลังที่เป็นของดาวพฤกษากลไก (ม.1) · ไฟล์เฉพาะวิชา ไม่ถูกคัดลอกทับ
+   หลักการ: ลายจาง ไม่มีแสงพุ่ง ไม่แสบตา ตัวหนังสือยังอ่านง่ายเหมือนเดิม */
+:root{--leaf:#1663e8;--planet-deep:#0b2a66;--planet-mid:#1f7bff;--planet-sky:#8fdcff;--planet-soft:#e6f7ff;--planet-silver:#d7e6f3;--planet-accent:#00b7ff}
+
+/* พื้นหลัง: ท้องฟ้าเงินอมฟ้า + ลายโรงงานริมน้ำ (เฟือง ท่อและวาล์ว โรงงานมีไอน้ำ หยดน้ำ เส้นฝนจาง ๆ) */
+html body{background-color:#8fdcff!important;
+ background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22420%22%20height%3D%22420%22%20viewBox%3D%220%200%20420%20420%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%230b3a8f%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.30%22%3E%3Ccircle%20cx%3D%22320%22%20cy%3D%2290%22%20r%3D%2222%22/%3E%3Ccircle%20cx%3D%22320%22%20cy%3D%2290%22%20r%3D%228%22/%3E%3Cpath%20d%3D%22M320%2062v-12M320%20118v12M292%2090h-12M348%2090h12M300%2070l-8-8M340%20110l8%208M340%2070l8-8M300%20110l-8%208%22/%3E%3Cpath%20d%3D%22M20%2070h70v40h60%22/%3E%3Cpath%20d%3D%22M20%2084h56v40h74%22/%3E%3Ccircle%20cx%3D%2290%22%20cy%3D%2296%22%20r%3D%2210%22/%3E%3Cpath%20d%3D%22M84%2090l12%2012M96%2090l-12%2012%22/%3E%3Cpath%20d%3D%22M250%20360v-60h28v-24h22v24h30v60z%22/%3E%3Cpath%20d%3D%22M262%20330h12M288%20330h12M314%20330h10%22/%3E%3Cpath%20d%3D%22M289%20268c-8-10%206-14-2-24M296%20266c8-9-4-14%204-22%22/%3E%3Cpath%20d%3D%22M60%20300c-12%2018-12%2030%200%2030s12-12%200-30z%22/%3E%3Cpath%20d%3D%22M150%20250c-8%2012-8%2020%200%2020s8-8%200-20z%22/%3E%3Cpath%20d%3D%22M40%20380q20-12%2040%200t40%200t40%200%22/%3E%3C/g%3E%3Cg%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.75%22%3E%3Cpath%20d%3D%22M200%20150l-8%2018M236%20120l-8%2018M372%20190l-8%2018M120%20200l-8%2018M392%20330l-8%2018M190%20400l-6%2014%22/%3E%3C/g%3E%3Cg%20fill%3D%22%23ffe14d%22%20stroke%3D%22%230e1530%22%20stroke-width%3D%222.5%22%20opacity%3D%22.9%22%3E%3Cpath%20d%3D%22M210%2040l7%2016%2017%202-13%2011%204%2017-15-9-15%209%204-17-13-11%2017-2z%22/%3E%3Cpath%20d%3D%22M30%20230l5%2011%2012%201-9%208%203%2012-11-6-11%206%203-12-9-8%2012-1z%22/%3E%3Cpath%20d%3D%22M390%20250l5%2011%2012%201-9%208%203%2012-11-6-11%206%203-12-9-8%2012-1z%22/%3E%3C/g%3E%3C/svg%3E"),linear-gradient(180deg,#5cc8ff 0%,#8fdcff 45%,#c9f2ff 100%)!important;
+ background-attachment:fixed,fixed!important;background-size:420px 420px,auto!important}
+@media(max-width:700px){html body{background-size:300px 300px,auto!important}}
+html body::before{background-image:radial-gradient(rgba(255,255,255,.55) 1.6px,transparent 1.9px)!important;background-size:16px 16px!important;opacity:.7!important}
+
+/* ส่วนที่เคยเป็นเขียวดาวพฤกษา */
+html body .hero,html body .pf-hero{background-color:var(--planet-mid)!important}
+html body .chapter-hero{background-color:#5cc8ff!important}
+html body #cloud-chip{background-color:#d6e8fb!important}
+html body .lp-panel,html body .w5-tag{background-color:var(--planet-soft)!important}
+html body .lp-no,html body .lp-panel b{background-color:var(--planet-mid)!important}
+html body .chip-t{background-color:#7fe0ff!important}
+html body footer.portal-site-footer{background-image:linear-gradient(160deg,#173d6e,#0b1f3d)!important;box-shadow:0 -6px 0 var(--planet-accent)!important}
+html body .portal-foot-info,html body .portal-foot-line{color:#d3e2f3!important}
+html body footer.portal-site-footer .portal-foot-info,html body footer.portal-site-footer .portal-foot-line{color:#d3e2f3!important}
+
+/* หน้าโหลด: ทะเลครามของดาววารี (คงแถบเหลืองประจำแบรนด์) */
+html body #kb{background:linear-gradient(160deg,#0b1f3d 0%,#123f78 55%,#1d5f9f 100%)!important}
+html body #kb .kb-bg .s2{background:#3a8fd9!important;box-shadow:0 -9px 0 #c9d6e3!important}
+html body #kb .kb-st{color:#9fd4ff!important}
+html body #kb .kb-tip{color:#d6e6f7!important}
+
+/* ข้อความที่วางบนพื้นหลังโดยตรง ต้องอ่านง่ายบนฟ้าสด */
+html body .crumbs a{color:#0b1d3f!important;font-weight:800}
+
+/* ห้องจำลอง: จากเขียวป่าของดาวพฤกษา เป็นน้ำเงินครามของดาววารี */
+html body section.sim{background-color:#0f2747!important}
+html body .sim .sim-head{background-image:linear-gradient(100deg,#0b1d3f,#1d5fb0)!important}
+html body .sim .sim-body{background-image:linear-gradient(#0f2747,#0b1f3d)!important}
+html body .sim .sim-stage{background-color:#081a33!important}
+html body .sim .sim-meter{background:#0b1f3d!important}
+html body .sim .sim-meter b{color:#7fe0ff!important}
+
+/* ข้อความหัวข้อย่อยในแผงควบคุมห้องจำลอง (พื้นเข้ม) ต้องเป็นสีอ่อน */
+html body .sim .sim-side > p,html body .sim .sim-side > p b,html body .sim .sim-side > div > p,html body .sim .sim-side > div > p b{color:#eaf6ff!important}
