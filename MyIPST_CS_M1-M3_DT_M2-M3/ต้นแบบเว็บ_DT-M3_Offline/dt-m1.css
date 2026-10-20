@@ -3465,7 +3465,7 @@ html body .sim .sim-goals{grid-template-columns:repeat(auto-fit,minmax(280px,1fr
 .lp .k5{--bg:var(--k5);--hd:var(--k5h)}
 .lp strong.hl{font-weight:800;color:var(--ui-ink,#0e1530);background:linear-gradient(transparent 52%,#ffe14d 52%,#ffe14d 94%,transparent 94%);padding:0 2px;border-radius:0}
 .lp-panel.tagged{padding-top:40px}
-.lp-panel .lp-cat{position:absolute;left:58px;top:-3px;padding:2px 12px;background:var(--hd);color:#fff;border:3px solid var(--ui-ink);border-top-width:0;font:800 15px/1.5 var(--display,Kanit,sans-serif);text-shadow:1px 1px 0 var(--ui-ink)}
+.lp-panel .lp-cat{position:absolute;left:58px;top:-3px;padding:2px 12px;background:color-mix(in srgb,var(--hd) 64%,#000);color:#fff;border:3px solid var(--ui-ink);border-top-width:0;font:800 15px/1.5 var(--display,Kanit,sans-serif);text-shadow:1px 1px 0 var(--ui-ink)}
 .lp-types{margin:26px 0 6px}
 .lp-tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
 .lp-type{--bg:var(--k0);--hd:var(--k0h);position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:0 0 12px;text-align:left;background:var(--bg);border:3px solid var(--ui-ink);border-top:10px solid var(--hd);border-radius:0;box-shadow:5px 5px 0 var(--ui-ink);cursor:pointer;font:inherit;color:var(--ui-ink,#0e1530);transition:transform .12s,box-shadow .12s}
@@ -3495,6 +3495,7 @@ html body #main .hs-wrap.hs-on>:first-child{-webkit-mask-image:none!important;ma
  html body #main .mod-chips a{flex:1 1 100%!important;min-width:0!important;white-space:normal!important;justify-content:flex-start}
  html body #main .mod-chips a small{margin-left:auto}
 }
+.lp-panel.tagged .lp-no{background:color-mix(in srgb,var(--hd) 64%,#000)!important;color:#fff!important}
 
 /* แผงบอกปุ่มควบคุมในด่านบอส (สไตล์เกม: ปุ่มคีย์แคปเหลี่ยมเอียง) */
 .bg-ctl{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;margin:12px 0 0;padding:12px 16px;background:linear-gradient(135deg,#101a3a,#1b2b5c);border:3px solid var(--ink,#111);clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px));color:#fff}
@@ -3508,3 +3509,92 @@ html body #main .hs-wrap.hs-on>:first-child{-webkit-mask-image:none!important;ma
 .bg-ctl-note{flex:1 1 100%;margin:2px 0 0;font-size:15px;color:#bcd0ff}
 @media(max-width:640px){.bg-ctl{gap:8px 14px;padding:10px 12px}.bg-key{min-width:32px;height:32px;font-size:16px}.bg-key.wide{min-width:74px}}
 #bgame .bg-ctl .bg-ctl-note{color:#cfe0ff!important;opacity:1}#bgame .bg-ctl i{color:#fff!important}
+
+/* ผู้เข้าชม: ช่องใส่ชื่อสำหรับพิมพ์ใบงาน */
+.ws-gname{display:grid;gap:6px;margin:10px 0 12px;max-width:460px;font:600 15px/1.5 var(--body,Kanit,sans-serif);color:var(--ui-ink,#1b2440)}
+.ws-gname input{min-height:46px;padding:0 12px;border:3px solid var(--ui-ink,#1b2440);border-radius:8px;background:#fff;color:#111;font:600 17px var(--body,Kanit,sans-serif)}
+.ws-gname input:focus-visible{outline:4px solid #3b5bff;outline-offset:2px}
+
+/* ข้อแนบรูปถ่ายชิ้นงานจริง */
+.w5-file{display:grid;gap:10px}
+.w5-file-pv{display:grid;place-items:center;min-height:130px;padding:10px;border:3px dashed var(--ui-ink,#1b2440);border-radius:12px;background:#f8faff;color:#44506f;font-weight:700}
+.w5-file-pv img{max-width:100%;max-height:360px;border:2px solid var(--ui-ink,#1b2440);border-radius:8px}
+.w5-file-act{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.w5-file-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px!important;font-size:16px;font-weight:700;cursor:pointer}
+.w5-file-del{padding:8px 14px;border:2px solid var(--ui-ink,#1b2440);border-radius:8px;background:#fff;color:#a01b3f;font:700 15px var(--body,Kanit,sans-serif);cursor:pointer}
+.w5-file-note{color:#4b5878;font-size:14px}
+
+.ws-whynot{flex:1 1 100%;margin-top:2px;color:#3d4866;font:600 14px/1.5 var(--body,Kanit,sans-serif)}
+
+/* ===== บอสประจำบทโผล่กวนระหว่างเรียน (boss-taunt.js) ===== */
+.bt{position:fixed;left:max(10px,env(safe-area-inset-left));bottom:max(10px,env(safe-area-inset-bottom));z-index:8000;display:flex;align-items:flex-end;max-width:min(520px,calc(100vw - 20px));pointer-events:none;transform:translateX(-130%);opacity:0;transition:transform .4s cubic-bezier(.3,1.5,.5,1),opacity .2s}
+.bt.in{transform:none;opacity:1}
+.bt.out{transform:translateX(-130%);opacity:0;transition:transform .3s ease-in,opacity .3s}
+.bt-boss{flex:none;width:132px;height:132px;object-fit:contain;margin-right:-14px;filter:drop-shadow(4px 4px 0 rgba(14,21,48,.55));transform-origin:50% 100%;animation:btBob 1.6s ease-in-out infinite}
+@keyframes btBob{50%{transform:translateY(-5px) rotate(-3deg)}}
+.bt-bub{position:relative;pointer-events:auto;cursor:pointer;margin-bottom:28px;filter:drop-shadow(3px 0 0 var(--ui-ink)) drop-shadow(-3px 0 0 var(--ui-ink)) drop-shadow(0 3px 0 var(--ui-ink)) drop-shadow(0 -3px 0 var(--ui-ink)) drop-shadow(6px 6px 0 var(--ui-ink))}
+.bt-bub::before{content:"";position:absolute;left:-15px;bottom:12px;width:20px;height:18px;background:#fff;clip-path:polygon(0 100%,100% 0,100% 100%)}
+.bt-in{background:#fff;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);padding:10px 28px 12px 24px;min-width:180px;max-width:300px;color:var(--ui-ink)}
+.bt-name{display:inline-flex;align-items:center;gap:6px;font:900 14px/1 var(--display);color:var(--ui-p)}
+.bt-name i{font-style:normal;background:var(--ui-ink);color:var(--ui-y);padding:3px 9px;clip-path:polygon(5px 0,100% 0,calc(100% - 5px) 100%,0 100%);letter-spacing:.08em;font-size:11px}
+.bt-in p{margin:6px 0 4px;font-size:16px;font-weight:700;line-height:1.55;color:var(--ui-ink)}
+.bt-off{display:block;margin-top:2px;padding:2px 0;background:none;border:0;font:600 12px/1.4 inherit;color:#5b6684;text-decoration:underline;cursor:pointer}
+@media (max-width:600px){.bt-boss{width:92px;height:92px;margin-right:-10px}.bt-in{max-width:calc(100vw - 128px);min-width:0;padding:8px 22px 10px 20px}.bt-in p{font-size:15px}.bt-bub{margin-bottom:20px}}
+@media (prefers-reduced-motion:reduce){.bt,.bt.out{transform:none;transition:opacity .2s}.bt-boss{animation:none}}
+@media print{.bt{display:none!important}}
+
+/* ภาพประกอบบทเรียน: กรอบพอดีกับภาพ ใช้สัดส่วนจริงของภาพ ไม่มีที่ว่างบนล่างหรือขอบขาวรอบภาพ (เดิมบังคับเป็นจัตุรัสทำให้ภาพกว้างมีแถบว่าง) */
+.study-flow .lesson-fig img,.study-flow .lp .lesson-fig img{aspect-ratio:auto!important;height:auto!important;object-fit:contain;background:transparent!important}
+.study-flow .lp .lesson-fig{padding:0!important;overflow:hidden}
+.study-flow .lp .lesson-fig img{border:0!important;border-radius:0!important}
+.study-flow .lp .lesson-fig figcaption{margin:0;border:0;border-top:3px solid var(--ui-ink);border-radius:0;padding:8px 12px}
+
+/* ===== การ์ดด่านสุดท้าย (SECTOR สรุปและสอบปลายภาค) ในหน้าแรก =====
+   ภาพอยู่ด้านบน (เลข SECTOR + ป้ายสถานะ + Techno) ข้อความน้อยอยู่ด้านล่าง เหมือนการ์ดบทเรียน อ่านง่ายทั้งมือถือ แท็บเล็ต และจอใหญ่ */
+html body .hm-grid>.hm-card.s8-card .hm-in{display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;gap:0!important;min-height:0!important;padding:0!important;overflow:hidden;background:#0e1530!important;color:#fff}
+html body .hm-grid>.hm-card.s8-card .hm-in::after{display:none!important}
+html body .s8-card .s8-art{position:relative;display:block;flex:1 1 auto;min-height:230px;overflow:hidden;background:#0e1530}
+html body .s8-card .s8-bg{position:absolute;inset:0;z-index:0}
+html body .s8-card .s8-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block}
+html body .s8-card .s8-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0e153099 0%,#0e153000 34%,#0e153000 52%,#0e1530 100%)!important}
+html body .s8-card.is-lock .s8-bg img{filter:saturate(.65) brightness(.85)}
+html body .s8-card .s8-techno{position:absolute!important;right:3%!important;bottom:-3%!important;z-index:2;width:auto!important;height:82%!important;max-width:50%;object-fit:contain;transform:scaleX(-1)!important;filter:drop-shadow(-5px 5px 0 var(--gk-ink)) drop-shadow(0 0 2px #fff);pointer-events:none;transition:transform .25s}
+html body .hm-grid>.s8-card:hover .s8-techno{transform:scaleX(-1) translateY(-5px) scale(1.04)!important}
+html body .s8-card .s8-no{position:absolute;left:14px;top:12px;z-index:3;display:grid;width:auto!important;padding:0!important;border:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;place-items:start;align-content:start;transform:none!important;color:var(--gk-y)}
+html body .s8-card .s8-no small{padding:1px 8px;background:var(--gk-p);color:#fff;font:900 12px/1.4 var(--display,Kanit,sans-serif);letter-spacing:.2em;box-shadow:2px 2px 0 var(--gk-ink)}
+html body .s8-card .s8-no b{margin-top:2px;color:var(--gk-y);font:italic 900 58px/.95 var(--display,Kanit,sans-serif)!important;-webkit-text-stroke:2.5px var(--gk-ink);text-shadow:4px 4px 0 var(--gk-ink),6px 6px 0 var(--gk-p);transform:skewX(-10deg)}
+html body .s8-card .s8-badge{position:absolute;right:12px;top:14px;z-index:3;max-width:60%;padding:3px 12px;border:2px solid #fff;border-radius:0;background:#0e1530e6;color:#fff;font:800 13.5px/1.4 var(--display,Kanit,sans-serif);transform:skewX(-8deg);box-shadow:2px 2px 0 var(--gk-ink)}
+html body .s8-card .s8-badge.go{background:var(--gk-c);color:var(--gk-ink)}
+html body .s8-card .s8-badge.ok{background:var(--gk-g);color:#fff}
+html body .s8-card .s8-body{position:relative;z-index:4;min-width:0;display:grid;gap:8px;align-content:start;max-width:none!important;padding:0 18px 18px;margin-top:-6px;background:#0e1530}
+html body .s8-card .s8-body>small{justify-self:start;padding:1px 12px;border:2px solid var(--gk-ink);background:var(--gk-y);color:var(--gk-ink);font:italic 900 13px/1.5 var(--display,Kanit,sans-serif);transform:rotate(-3deg) skewX(-8deg);box-shadow:3px 3px 0 var(--gk-p)}
+html body .s8-card .s8-body>strong{font:italic 900 27px/1.2 var(--display,Kanit,sans-serif);color:#fff;text-shadow:3px 3px 0 var(--gk-p);transform:skewX(-5deg);transform-origin:left}
+html body .s8-card .s8-desc{font-size:15px;line-height:1.45;color:#e4e9ff;text-shadow:none}
+html body .s8-card .s8-acts{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:10px;margin-top:2px}
+html body .s8-card .s8-acts .btn{display:flex;align-items:center;justify-content:center;min-width:0;white-space:nowrap;padding:8px 8px;font-size:15px}
+@media(min-width:980px){html body .s8-card .s8-art{min-height:270px}html body .s8-card .s8-body>strong{font-size:31px}html body .s8-card .s8-no b{font-size:68px!important}html body .s8-card .s8-acts{grid-template-columns:auto auto;justify-content:start}html body .s8-card .s8-acts .btn{padding:9px 22px;font-size:17px}}
+@media(max-width:760px){html body .s8-card .s8-desc{display:none}html body .hm-grid>.hm-card:not(.s8-card) .hm-desc{display:none}}
+@media(max-width:620px){html body .s8-card .s8-art{min-height:200px}html body .s8-card .s8-body{gap:7px;padding-bottom:16px}html body .s8-card .s8-body>strong{font-size:24px}html body .s8-card .s8-no b{font-size:50px!important}html body .s8-card .s8-techno{height:78%!important}}
+@media(prefers-reduced-motion:reduce){html body .s8-card .s8-techno{transition:none}}
+
+/* ===== ตรา CLEAR บนการ์ดบทที่ผ่านครบ 100% (app.js › cardOpen) =====
+   กรอบทอง + ตราหมึกเอียงทับภาพปก (ตอกลงมาครั้งแรกต่อรอบการใช้งาน) + ป้าย "เล่นซ้ำได้" มุมขวาบน · กดการ์ดเข้าไปทำใหม่ได้ทุกส่วน */
+/* การ์ดที่ผ่านแล้วเปลี่ยนเป็นโทนสีจืด (ภาพซีด กรอบเทาอมครีม สีเน้นหม่น) เพื่อให้ตรา CLEAR กับป้าย "เล่นซ้ำได้" เด่นขึ้น · เอาเมาส์ชี้แล้วสีคืนมาบางส่วน */
+html body .hm-grid>.hm-card.clear{--gk-y:#d4cb9d;--gk-p:#8f5f7b;--gk-c:#7fa3a8;filter:drop-shadow(7px 7px 0 #4f5670)}
+html body .hm-grid>.hm-card.clear .hm-panel{background:#c9c3a8}
+html body .hm-grid>.hm-card.clear .hm-in{background:#2c3350!important}
+html body .hm-grid>.hm-card.clear .hm-thumb img{filter:saturate(.28) brightness(.93);transition:filter .3s,transform .4s}
+html body .hm-grid>.hm-card.clear .hm-thumb::after{background:linear-gradient(180deg,#2c335000 60%,#2c3350 100%)!important}
+html body .hm-grid>.hm-card.clear:not(.locked):hover{filter:drop-shadow(10px 10px 0 #4f5670)}
+html body .hm-grid>.hm-card.clear:not(.locked):hover .hm-thumb img{filter:saturate(.75) brightness(1)}
+html body .hm-grid>.hm-card.clear .hm-body strong{color:#e6e8f1!important}
+html body .hm-grid>.hm-card.clear .hm-bar u{background-color:var(--gk-y)!important}
+html body .hm-grid>.hm-card.clear .hm-foot>span:first-child{color:var(--gk-y);font-weight:900}
+html body .hm-grid .hm-clear{position:absolute;right:12px;bottom:30%;z-index:4;display:grid;justify-items:center;gap:3px;padding:2px 16px 5px;background:#0e1530;border:3px solid #ffd400;box-shadow:4px 4px 0 #ff2e88;transform:rotate(-9deg);pointer-events:none}
+html body .hm-grid .hm-clear i{font:italic 900 40px/1.05 var(--display,Kanit,sans-serif);letter-spacing:.04em;color:#ffd400;text-shadow:3px 3px 0 #ff2e88}
+html body .hm-grid .hm-clear small{font:900 12px/1 var(--display,Kanit,sans-serif);letter-spacing:.3em;color:#fff}
+html body .hm-grid .hm-clear.fresh{animation:clearSlam .6s cubic-bezier(.2,1.5,.4,1) .3s both}
+@keyframes clearSlam{0%{transform:rotate(-26deg) scale(2.8);opacity:0}55%{transform:rotate(-7deg) scale(.9);opacity:1}100%{transform:rotate(-9deg) scale(1);opacity:1}}
+html body .hm-grid .hm-redo{position:absolute;right:-8px;top:14px;z-index:4;padding:4px 20px 4px 16px;clip-path:polygon(10px 0,100% 0,100% 100%,0 100%);background:#00cdb8;color:#0e1530;font:italic 900 14px/1.3 var(--display,Kanit,sans-serif)}
+@media(max-width:620px){html body .hm-grid .hm-clear i{font-size:34px}html body .hm-grid .hm-clear{right:10px;bottom:30%}}
+@media(prefers-reduced-motion:reduce){html body .hm-grid .hm-clear.fresh{animation:none}}

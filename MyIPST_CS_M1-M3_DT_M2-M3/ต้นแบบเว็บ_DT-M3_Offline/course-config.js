@@ -2,7 +2,7 @@
 window.DT_CFG = {
   code: 'DT-M3', slug: 'dt-m3', grade: 'ม.3', subject: 'การออกแบบและเทคโนโลยี',
   full: 'การออกแบบและเทคโนโลยี ม.3', short: 'ออกแบบและเทคโนโลยี ม.3', room: 'ม.3/1', key: 'krukan-dt-m3',
-  chapters: 3, finalNo: 4, appUrl: 'https://script.google.com/macros/s/AKfycbxVebb1WhGwJlE2H_zLHdWK_fK-ULCJebL0DR8-JshRIFAp-TW7ShNxYOjUSSo5jFGG/exec',
+  chapters: 3, finalNo: 4, guestWork: true, appUrl: 'https://script.google.com/macros/s/AKfycbxVebb1WhGwJlE2H_zLHdWK_fK-ULCJebL0DR8-JshRIFAp-TW7ShNxYOjUSSo5jFGG/exec',
   sectorNames: ['เส้นทางขนส่งสุริยัน', 'โรงงานรุ่งชาด', 'ตลาดเขี้ยวเหล็ก'],
   tones: ['#c2410c', '#b91c1c', '#a16207'],
   items: {

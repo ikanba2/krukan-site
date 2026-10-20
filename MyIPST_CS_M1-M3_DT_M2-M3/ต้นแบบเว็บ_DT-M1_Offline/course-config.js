@@ -11,5 +11,6 @@ window.DT_CFG = {
   key: 'krukan-dt-m1',              /* คำนำหน้าคีย์ localStorage */
   chapters: 7,
   finalNo: 8,                       /* เลข SECTOR ของสรุปและสอบปลายภาค = จำนวนบท + 1 */
+  guestWork: true,                  /* ผู้เข้าชมทำชิ้นงานได้ พิมพ์/บันทึก PDF ได้ แต่ส่งให้ครูไม่ได้ */
   appUrl: 'https://script.google.com/macros/s/AKfycbwskynQQMr-JI81FeUly0H4P_sw6sFRMyhH9rBEPWw7boOpq9UOznAR-DW3yRd76DxIvg/exec'
 };

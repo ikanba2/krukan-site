@@ -47,13 +47,15 @@
   /* ---------- การ์ด SECTOR 8 ในหน้าแรก (ใช้ 2 ช่องที่เหลือของตาราง) ---------- */
   function card() {
     const f = isStudent() && prof() ? prof().final : null, open = cfgOpen();
-    let badge = `<span class="s8-badge">📝 สอบ ${QS.length} ข้อ · ทำได้ครั้งเดียว</span>`;
-    if (isTeacher()) badge = `<span class="s8-badge ${open ? 'go' : ''}">${open ? '🟢 เปิดให้สอบอยู่' : '🔒 ยังปิดการสอบ'} · ครูดูตัวอย่างได้</span>`;
-    else if (f && f.status === 'done') badge = `<span class="s8-badge ok">✅ สอบแล้ว ได้ ${f.score}/${f.total}</span>`;
-    else if (f && f.status === 'started') badge = '<span class="s8-badge go">⏳ ทำค้างไว้ กดเพื่อทำต่อ</span>';
-    else if (isStudent() && !open) badge = '<span class="s8-badge">🔒 รอครูเปิดสอบ · อ่านสรุปได้เลย</span>';
-    else if (isStudent()) badge = '<span class="s8-badge go">🟢 ครูเปิดสอบแล้ว</span>';
-    return `<div class="hm-card s8-card ${!open && !(f && f.status === 'done') ? 'is-lock' : ''}"><span class="hm-panel"><span class="hm-in"><span class="s8-bg" aria-hidden="true">${window.DT_IMG && window.DT_IMG.cover ? `<img src="${window.DT_IMG.cover('course')}" alt="" loading="lazy" referrerpolicy="no-referrer">` : ''}</span><img class="s8-techno" src="assets/techno-sword.webp" alt="มาสไรเดอร์เทคโน" loading="lazy"><span class="s8-no" aria-hidden="true"><small>SECTOR</small><b>${window.DT_CFG.finalNo}</b>${!open ? '<em class="s8-padlock">🔒</em>' : ''}</span><span class="s8-body"><small>ด่านสุดท้าย · สรุปและสอบปลายภาค</small><strong>รวมพลังทั้ง ${CH.length} บท</strong><span class="s8-desc">ทบทวนสรุปทุกบท แล้วสอบปลายภาค ${QS.length} ข้อ แบบเลือกตอบ เน้นคิดวิเคราะห์ ระบบส่งคะแนนให้ครูอัตโนมัติ</span>${badge}<span class="s8-acts"><a class="btn secondary small" href="#final/summary">📚 อ่านสรุป</a><a class="btn small" href="#final/exam">📝 ไปที่ข้อสอบ ›</a></span></span></span></span></div>`;
+    /* ป้ายสถานะสั้น ๆ มุมขวาบนของภาพ (ข้อความน้อย อ่านเร็วบนมือถือ) */
+    let badge = `<span class="s8-badge">📝 สอบ ${QS.length} ข้อ · ครั้งเดียว</span>`;
+    if (isTeacher()) badge = `<span class="s8-badge ${open ? 'go' : ''}">${open ? '🟢 เปิดสอบอยู่' : '🔒 ยังปิดสอบ'}</span>`;
+    else if (f && f.status === 'done') badge = `<span class="s8-badge ok">✅ สอบแล้ว ${f.score}/${f.total}</span>`;
+    else if (f && f.status === 'started') badge = '<span class="s8-badge go">⏳ ทำค้างไว้</span>';
+    else if (isStudent() && !open) badge = '<span class="s8-badge">🔒 รอครูเปิดสอบ</span>';
+    else if (isStudent()) badge = '<span class="s8-badge go">🟢 เปิดสอบแล้ว</span>';
+    const cover = window.DT_IMG && window.DT_IMG.cover ? `<img src="${window.DT_IMG.cover('course')}" alt="" loading="lazy" referrerpolicy="no-referrer">` : '';
+    return `<div class="hm-card s8-card ${!open && !(f && f.status === 'done') ? 'is-lock' : ''}"><span class="hm-panel"><span class="hm-in"><span class="s8-art"><span class="s8-bg" aria-hidden="true">${cover}</span><span class="s8-no" aria-hidden="true"><small>SECTOR</small><b>${window.DT_CFG.finalNo}</b></span>${badge}</span><span class="s8-body"><small>ด่านสุดท้าย</small><strong>รวมพลังทั้ง ${CH.length} บท</strong><span class="s8-desc">สรุปทุกบท แล้วสอบปลายภาค ${QS.length} ข้อ</span><span class="s8-acts"><a class="btn secondary small" href="#final/summary">📚 อ่านสรุป</a><a class="btn small" href="#final/exam">📝 ทำข้อสอบ ›</a></span></span></span></span></div>`;
   }
 
   /* ---------- หน้า SECTOR 8 ---------- */

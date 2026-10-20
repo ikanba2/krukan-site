@@ -21,7 +21,7 @@ EXTRA_MODULES = ['DT-M2-C01-M03', 'DT-M2-C02-M04', 'DT-M2-C03-M04', 'DT-M2-C04-M
 
 SHARED = ['app.js', 'boss-game.js', 'chapter-review.js', 'cloud.js', 'combat-ui.js', 'dt-m1.css', 'final.js', 'fullscreen.js', 'fun-tools.js',
           'gaming.js', 'hscroll.js', 'practice.js', 'prepost.js', 'profile.js', 'report-export.js', 'sector-fx.js', 'teacher-dash.js',
-          'teacher-queue.js', 'ui-split.js', 'worksheet.js', 'labs.js', 'sims.js', 'question-figs.js']
+          'teacher-queue.js', 'ui-split.js', 'worksheet.js', 'labs.js', 'sims.js', 'question-figs.js', 'boss-taunt.js']
 
 def copy_shared():
     DST.mkdir(exist_ok=True)

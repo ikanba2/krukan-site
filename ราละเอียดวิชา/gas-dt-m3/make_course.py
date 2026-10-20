@@ -22,7 +22,7 @@ NEW_MODULES = ['DT-M3-C02-M06']  # หัวข้อใหม่ตามใบ
 
 SHARED = ['app.js', 'boss-game.js', 'chapter-review.js', 'cloud.js', 'combat-ui.js', 'dt-m1.css', 'final.js', 'fullscreen.js', 'fun-tools.js',
           'gaming.js', 'hscroll.js', 'practice.js', 'prepost.js', 'profile.js', 'report-export.js', 'sector-fx.js', 'teacher-dash.js',
-          'teacher-queue.js', 'ui-split.js', 'worksheet.js', 'labs.js', 'sims.js', 'question-figs.js']
+          'teacher-queue.js', 'ui-split.js', 'worksheet.js', 'labs.js', 'sims.js', 'question-figs.js', 'boss-taunt.js']
 
 def copy_shared():
     DST.mkdir(exist_ok=True)

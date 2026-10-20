@@ -10,7 +10,7 @@
   const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const sum = r => (r && r.scores || []).reduce((a, b) => a + (+b || 0), 0);
   const fmt = iso => { if (!iso) return '—'; try { return new Date(iso).toLocaleString('th-TH', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }); } catch (e) { return iso; } };
-  const TYPE = { choice: '◉ เลือก 1 ข้อ', multi: '☑ เลือกได้หลายข้อ', number: '# ตอบเป็นตัวเลข', order: '↕ เรียงลำดับ', match: '⇄ จับคู่', short: '✎ ตอบสั้น', long: '✎ อธิบาย', bullets: '• ตอบเป็นข้อ', table: '▦ ตาราง', draw: '✏️ วาดภาพ', scale: '★ ประเมินระดับ' };
+  const TYPE = { choice: '◉ เลือก 1 ข้อ', multi: '☑ เลือกได้หลายข้อ', number: '# ตอบเป็นตัวเลข', order: '↕ เรียงลำดับ', match: '⇄ จับคู่', short: '✎ ตอบสั้น', long: '✎ อธิบาย', bullets: '• ตอบเป็นข้อ', table: '▦ ตาราง', draw: '✏️ วาดภาพ', file: '📷 แนบรูป', scale: '★ ประเมินระดับ' };
   const AUTO = new Set(['choice', 'multi', 'number', 'order', 'match']);
   const TH = 'กขคงจฉชซ';
   const J = (s, d) => { try { const v = JSON.parse(s); return v == null ? d : v; } catch (e) { return d; } };
@@ -77,6 +77,7 @@
       if (it.options) t += ' · ตัวเลือก (เลขเริ่มที่ 0): ' + it.options.map((o, i) => i + '=' + o).join(', ');
       if (it.type === 'table') t += ' · คำตอบเป็น JSON แถวละรายการ คอลัมน์: ' + it.columns.map(c => c.label).join(' | ') + (Array.isArray(it.rows) ? ' · หัวแถว: ' + it.rows.join(' / ') : '');
       if (it.type === 'match') t += ' · ซ้าย: ' + it.pairs.map((p, i) => i + '=' + p[0]).join(', ') + ' · ขวา: ' + it.pairs.map((p, i) => i + '=' + p[1]).join(', ') + ' · คำตอบเป็น {ซ้าย: ขวา}';
+      if (it.type === 'file') t += ' · ข้อนี้แนบเป็นรูปถ่ายชิ้นงานจริง';
       if (it.type === 'draw') t += ' · ภาพต้องมี: ' + it.mustShow.join('; ') + ' · ภาพของข้อนี้แนบเป็นรูป';
       if (it.ai && it.ai.length) t += ' · ประเด็นที่ต้องมี: ' + it.ai.join('; ');
       if (AUTO.has(it.type) || (it.type === 'table' && Object.keys(it.auto || {}).length)) t += ' · ข้อนี้ระบบตรวจอัตโนมัติแล้ว ดูผลในหัวข้อผลตรวจอัตโนมัติ';
@@ -91,7 +92,7 @@
 
   /* ---------- กล่องสถานะ/ผลตรวจบนสุด ---------- */
   function statusBox(c, latest, guest) {
-    if (guest && (window.DT_CFG || {}).guestWork) return `<section class="ws-status guest"><b>👁️ โหมดผู้เข้าชม · ทำชิ้นงานได้ แต่ส่งให้ครูไม่ได้</b><p>ตอบในหน้านี้ได้เลย ระบบจำคำตอบไว้ในเครื่องนี้ ทำเสร็จแล้วกดพิมพ์ใบงาน A4 ไปใช้ต่อได้ ถ้าจะส่งให้ครูตรวจ ให้เข้าสู่ระบบเป็นนักเรียนก่อน</p><button type="button" class="btn small" data-action="student-role">เข้าสู่ระบบนักเรียน</button></section>`;
+    if (guest && (window.DT_CFG || {}).guestWork) return `<section class="ws-status guest"><b>👁️ โหมดผู้เข้าชม · ทำชิ้นงานได้ แต่ส่งให้ครูไม่ได้</b><p>ตอบในหน้านี้ได้เลย ระบบจำคำตอบไว้ในเครื่องนี้ ทำเสร็จแล้วกดพิมพ์ใบงาน A4 หรือบันทึกเป็น PDF เก็บไว้ได้</p><p><b>ทำไมส่งให้ครูไม่ได้?</b> เพราะครูต้องรู้ว่างานชิ้นนี้เป็นของนักเรียนคนไหน จึงจะตรวจและให้คะแนนได้ แต่ผู้เข้าชมยังไม่มีเลขที่และรหัสนักเรียน ถ้าเป็นนักเรียนของครู ให้เข้าสู่ระบบก่อนแล้วจึงส่งงานได้</p><label class="ws-gname">ชื่อที่จะพิมพ์บนใบงาน (ไม่บังคับ · ไม่ถูกบันทึกหรือส่งไปที่ไหน)<input id="ws-guest-name" type="text" maxlength="60" autocomplete="off" placeholder="เช่น ด.ช.สมชาย ใจดี"></label><button type="button" class="btn small" data-action="student-role">เข้าสู่ระบบนักเรียน</button></section>`;
     if (guest) return `<section class="ws-status guest"><b>👁️ โหมดผู้เข้าชม</b><p>อ่านโจทย์และลองดูช่องตอบได้ ถ้าจะทำและส่งงาน ให้เข้าสู่ระบบเป็นนักเรียนก่อน</p><button type="button" class="btn small" data-action="student-role">เข้าสู่ระบบนักเรียน</button></section>`;
     if (!latest) return `<section class="ws-status draft"><b>✏️ ยังไม่ได้ส่ง</b><p>ตอบทีละข้อได้เลย ระบบบันทึกร่างให้อัตโนมัติ ตอบครบทุกข้อแล้วกด "ส่งให้ครูตรวจ" ด้านล่าง</p></section>`;
     const r = latest.review;
@@ -128,6 +129,7 @@
       }
       case 'scale': { const s = J(v, {}); return `<div class="w5-opts row">${it.labels.map((o, i) => `<label class="w5-opt"><input type="radio" name="w5-${it.id}" value="${i}" ${String(s.level) === String(i) ? 'checked' : ''} data-w5-scale="1" ${a}><span>${esc(o)}</span></label>`).join('')}</div><input class="w5-why" type="text" maxlength="300" placeholder="เหตุผลสั้น ๆ" value="${esc(s.why || '')}" data-w5-why="1" ${a}>`; }
       case 'draw': return drawBox(n, it, v, dis);
+      case 'file': return photoBox(n, it, v, dis);
     }
     return '';
   }
@@ -156,7 +158,7 @@
       ${secs}
       ${hist}
       <div class="ws-bar" role="region" aria-label="บันทึกและส่งงาน"><span class="ws-count" id="ws-count">ตอบแล้ว <b>${d}/${t}</b> ข้อ</span>
-        ${gw ? `<button type="button" class="btn secondary" data-action="print-work-a4" data-c="${c.number}">🖨️ พิมพ์ใบงาน A4</button><button type="button" class="btn green" disabled aria-disabled="true" title="ผู้เข้าชมส่งงานให้ครูไม่ได้ ต้องเข้าสู่ระบบเป็นนักเรียนก่อน">🔒 ส่งให้ครูไม่ได้ (ผู้เข้าชม)</button>` : guest ? '' : `<button type="button" class="btn secondary" data-action="save-work">💾 บันทึกร่าง</button><button type="button" class="btn green" data-action="submit-work" data-c="${c.number}">🚀 ${latest ? 'ส่งฉบับใหม่' : 'ส่งให้ครูตรวจ'}</button>`}</div>
+        ${gw ? `<button type="button" class="btn secondary" data-action="print-work-a4" data-c="${c.number}">🖨️ พิมพ์ / บันทึกเป็น PDF</button><button type="button" class="btn green" disabled aria-disabled="true" title="ผู้เข้าชมส่งงานให้ครูไม่ได้ ต้องเข้าสู่ระบบเป็นนักเรียนก่อน">🔒 ส่งให้ครูไม่ได้ (ผู้เข้าชม)</button><span class="ws-whynot">ส่งไม่ได้เพราะครูต้องรู้ว่างานเป็นของนักเรียนคนไหน · ผู้เข้าชมพิมพ์เป็น PDF เก็บไว้ได้</span>` : guest ? '' : `<button type="button" class="btn secondary" data-action="save-work">💾 บันทึกร่าง</button><button type="button" class="btn green" data-action="submit-work" data-c="${c.number}">🚀 ${latest ? 'ส่งฉบับใหม่' : 'ส่งให้ครูตรวจ'}</button>`}</div>
     </div>`;
   }
 
@@ -182,6 +184,45 @@
     pollT = setTimeout(() => { pollT = 0; pollN++; if (!document.querySelector('.ws-status.queued')) return;
       window.DTCloud.pullStudent(false).then(() => { if (document.querySelector('.ws-status.queued') && window.DTApp && window.DTApp.render) window.DTApp.render(); }).catch(() => {}); }, 60000);
   }
+  /* ---------- ข้อแนบรูปถ่ายชิ้นงานจริง (type: file) ---------- */
+  function photoBox(n, it, v, dis) {
+    const has = typeof v === 'string' && v.startsWith('data:image/');
+    return `<div class="w5-file" data-w5-file="${it.id}" data-c="${n}">
+      <div class="w5-file-pv">${has ? `<img src="${v}" alt="รูปที่แนบ">` : '<span>📷 ยังไม่ได้แนบรูป</span>'}</div>
+      <div class="w5-file-act"><label class="w5-photo w5-file-btn">📷 ${has ? 'เปลี่ยนรูป' : 'เลือกรูป หรือถ่ายรูป'}<input type="file" accept="image/*" data-w5-file-in="${it.id}" data-c="${n}" hidden ${dis}></label>${has ? `<button type="button" class="w5-file-del" data-w5-file-del="${it.id}" data-c="${n}" ${dis}>ลบรูป</button>` : ''}</div>
+      <small class="w5-file-note">ถ่ายให้เห็นชิ้นงานและตัวเลขที่เขียนบนกระดาษได้ชัด ระบบจะย่อรูปให้เล็กลงก่อนเก็บ</small></div>`;
+  }
+  function setPhoto(n, id, url) {
+    const it = itemById(n, id), f = fieldsOf(n); if (!it) return;
+    f[id] = url; persist(true);
+    const w = document.querySelector('#ws-q-' + id + ' .w5-file'); if (w) w.outerHTML = photoBox(n, it, url, '');
+    refreshUi(n);
+  }
+  /* ย่อรูปให้ไม่เกิน ~150,000 ตัวอักษร (เซิร์ฟเวอร์รับรูปในช่องคำตอบได้ไม่เกิน 160,000) */
+  function shrinkPhoto(im) {
+    const tries = [[900, .74], [800, .66], [680, .6], [560, .55], [440, .5]];
+    for (const [max, q] of tries) {
+      const k = Math.min(1, max / Math.max(im.width, im.height)), cv = document.createElement('canvas');
+      cv.width = Math.max(1, Math.round(im.width * k)); cv.height = Math.max(1, Math.round(im.height * k));
+      const x = cv.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0, 0, cv.width, cv.height); x.drawImage(im, 0, 0, cv.width, cv.height);
+      const u = cv.toDataURL('image/jpeg', q); if (u.length <= 150000) return u;
+    }
+    return '';
+  }
+  document.addEventListener('change', e => {
+    const t = e.target; if (!t.dataset || !t.dataset.w5FileIn || !hooks) return;
+    const n = +t.dataset.c, id = t.dataset.w5FileIn, file = t.files && t.files[0]; if (!file) return;
+    if (!/^image\//.test(file.type)) { hooks.notify('เลือกไฟล์รูปภาพเท่านั้น'); t.value = ''; return; }
+    const rd = new FileReader();
+    rd.onload = () => {
+      const im = new Image();
+      im.onload = () => { const u = shrinkPhoto(im); if (!u) { hooks.notify('รูปนี้ใหญ่เกินไป ลองถ่ายใหม่ให้ไกลขึ้นเล็กน้อย'); return; } setPhoto(n, id, u); hooks.notify('แนบรูปแล้ว ✓'); };
+      im.onerror = () => hooks.notify('เปิดรูปนี้ไม่ได้ ลองเลือกรูปอื่น');
+      im.src = rd.result;
+    };
+    rd.readAsDataURL(file); t.value = '';
+  });
+  document.addEventListener('click', e => { const b = e.target.closest && e.target.closest('button[data-w5-file-del]'); if (b && hooks) setPhoto(+b.dataset.c, b.dataset.w5FileDel, ''); });
   function itemById(n, id) { return itemsOf(sheetOf(n)).find(x => x.id === id); }
   function readInput(t) {
     const n = +t.dataset.c, id = t.dataset.ws5, it = itemById(n, id); if (!it || !hooks) return;
@@ -462,6 +503,7 @@ body.w5-noscroll{overflow:hidden}body.w5-noscroll #header,body.w5-noscroll heade
       case 'bullets': return `<ul>${it.labels.map((l, i) => `<li><b>${esc(l)}:</b> ${esc(J(v, [])[i] || '')}</li>`).join('')}</ul>`;
       case 'table': { const g = J(v, []), fx = fixedFirst(it); return `<table class="w5-table ro"><tr>${it.columns.map(c => `<th>${esc(c.label)}</th>`).join('')}</tr>${Array.from({ length: tableRows(it) }, (_, r) => `<tr>${it.columns.map((c, ci) => { if (fx && ci === 0) return `<th>${esc(it.rows[r])}</th>`; const val = (g[r] || [])[ci] ?? '', key = r + ',' + ci, want = (it.auto || {})[key]; return `<td>${esc(val)}${want != null ? (String(val).trim() === String(want) ? ' ✅' : ` ❌ <small>(${esc(want)})</small>`) : ''}</td>`; }).join('')}</tr>`).join('')}</table>`; }
       case 'scale': { const s = J(v, {}); return `<p>${esc(it.labels[s.level])} · ${esc(s.why)}</p>`; }
+      case 'file':
       case 'draw': return typeof v === 'string' && v.startsWith('data:image/') ? `<img class="w5-ro-img" src="${v}" alt="ภาพที่นักเรียนวาดหรือแนบ">` : '<p class="muted">— ไม่ได้วาดหรือแนบภาพ —</p>';
       default: return `<p class="w5-ro-text">${esc(v)}</p>`;
     }
@@ -476,7 +518,7 @@ body.w5-noscroll{overflow:hidden}body.w5-noscroll #header,body.w5-noscroll heade
 
   /* ---------- พิมพ์ A4 ---------- */
   function printAnswer(it, v) {
-    const has = answered(it, v) || (it.type === 'draw' && v);
+    const has = answered(it, v) || ((it.type === 'draw' || it.type === 'file') && v);
     switch (it.type) {
       case 'choice': case 'scale': { const s = it.type === 'scale' ? J(v, {}).level : v; const opts = it.type === 'scale' ? it.labels : it.options; return `<div class="opts">${opts.map((o, i) => `<span>${String(s) === String(i) ? '●' : '○'} ${it.type === 'choice' ? TH[i] + '. ' : ''}${esc(o)}</span>`).join('')}</div>${it.type === 'scale' ? `<div class="line">${esc(J(v, {}).why || '')}</div>` : ''}`; }
       case 'multi': { const s = J(v, []); return `<div class="opts">${it.options.map((o, i) => `<span>${s.includes(i) ? '☑' : '☐'} ${TH[i]}. ${esc(o)}</span>`).join('')}</div>`; }
@@ -485,6 +527,7 @@ body.w5-noscroll{overflow:hidden}body.w5-noscroll #header,body.w5-noscroll heade
       case 'match': { const m = J(v, {}), right = it.pairs.map((p, i) => [i, p[1]]).sort((a, b) => a[1].localeCompare(b[1], 'th')); return `<table><tr><th>ซ้าย</th><th>คู่ (ใส่ตัวอักษร)</th><th>ขวา</th></tr>${it.pairs.map((p, i) => `<tr><td>${esc(p[0])}</td><td class="n">${m[i] != null ? TH[right.findIndex(r => r[0] === Number(m[i]))] : ''}</td><td>${TH[i]}. ${esc(right[i][1])}</td></tr>`).join('')}</table>`; }
       case 'bullets': return it.labels.map((l, i) => `<div class="line"><b>• ${esc(l)}:</b> ${esc(J(v, [])[i] || '')}</div>`).join('');
       case 'table': { const g = J(v, []), fx = fixedFirst(it); return `<table><tr>${it.columns.map(c => `<th>${esc(c.label)}${c.type === 'select' ? `<br><small>(${c.options.map(esc).join(' / ')})</small>` : ''}</th>`).join('')}</tr>${Array.from({ length: tableRows(it) }, (_, r) => `<tr>${it.columns.map((c, ci) => fx && ci === 0 ? `<td>${esc(it.rows[r])}</td>` : `<td class="cell">${esc((g[r] || [])[ci] ?? '')}</td>`).join('')}</tr>`).join('')}</table>`; }
+      case 'file': return typeof v === 'string' && v.startsWith('data:image/') ? `<div class="pic"><img src="${v}" alt=""></div>` : '<div class="drawbox"></div><small>แปะหรือวางรูปถ่ายชิ้นงานในกรอบนี้</small>';
       case 'draw': return typeof v === 'string' && v.startsWith('data:image/') ? `<div class="pic"><img src="${v}" alt=""></div>` : `<div class="drawbox ${it.canvas === 'grid' ? 'grid' : ''}"></div><small>ในภาพต้องมี: ${it.mustShow.map(esc).join(' · ')}</small>`;
       case 'long': return has ? `<div class="ans">${esc(v)}</div>` : '<div class="ans blank tall"></div>';
       default: return has ? `<div class="ans">${esc(v)}</div>` : '<div class="ans blank"></div>';
@@ -493,13 +536,13 @@ body.w5-noscroll{overflow:hidden}body.w5-noscroll #header,body.w5-noscroll heade
   function print(c, fields, student, review, workFields, labs) {
     const sh = sheetOf(c.number), f = fields || {};
     if (!sh || !isV5(c.number, f)) return legacyPrint(c, fields, student, review, workFields, labs);
-    const st = student || {}, r = review, blank = !itemsOf(sh).some(it => f[it.id]);
+    const st = student || {}, r = review, gst = !!st.guest, blank = !itemsOf(sh).some(it => f[it.id]);
     let k = 0;
     const body = sh.sections.map(s => `<h2>${esc(s.title)}</h2>${s.intro ? `<p class="intro">${esc(s.intro)}</p>` : ''}${s.items.map(it => { if (!blank && !shown(it, f)) return ''; k++; return `<div class="q"><div class="qh"><b>${k}. ${esc(it.prompt)}</b><span>${TYPE[it.type] || ''} · ${it.points} คะแนน${it.showIf ? ' · ทำเฉพาะทางที่ ' + (it.showIf.answer === 0 ? 'ก' : 'ข') : ''}</span></div>${printAnswer(it, f[it.id])}</div>`; }).join('')}`).join('');
     const css = `@page{size:A4;margin:13mm 13mm 15mm}*{box-sizing:border-box}body{margin:0;font-family:"Sarabun","TH Sarabun New","Leelawadee UI",Tahoma,sans-serif;font-size:14.5px;line-height:1.5;color:#111}
 h1{font-size:19px;margin:0}h2{font-size:15px;margin:12px 0 4px;padding:3px 8px;background:#eee;border-left:5px solid #111;break-after:avoid}.intro{margin:0 0 4px;font-size:13px;color:#333}
 .top{display:flex;justify-content:space-between;gap:12px;border-bottom:2px solid #111;padding-bottom:6px}.top small{display:block;color:#444}
-.who{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:6px 14px;margin:8px 0;font-size:13.5px}.who span{border-bottom:1px dotted #555;padding-bottom:1px}
+.who{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:6px 14px;margin:8px 0;font-size:13.5px}.who span{border-bottom:1px dotted #555;padding-bottom:1px}.who.g{grid-template-columns:2fr 1fr}
 .ctx{border:1.5px solid #111;border-radius:6px;padding:6px 10px;font-size:13.5px;background:#fafafa}.ctx b{display:block}
 .q{break-inside:avoid;margin:9px 0 10px}.qh{display:flex;justify-content:space-between;gap:10px;align-items:baseline}.qh span{flex:none;font-size:11.5px;color:#555}
 .opts{display:flex;flex-wrap:wrap;gap:4px 18px;margin:3px 0 0 14px}.opts.col{flex-direction:column}.ans{border:1px solid #999;border-radius:4px;padding:6px 9px;min-height:12mm;white-space:pre-wrap;margin-top:3px}
@@ -508,14 +551,17 @@ h1{font-size:19px;margin:0}h2{font-size:15px;margin:12px 0 4px;padding:3px 8px;b
 table{width:100%;border-collapse:collapse;font-size:13px;margin-top:3px}td,th{border:1px solid #888;padding:4px 7px;text-align:left;vertical-align:top}th{background:#f3f3f3}td.cell{height:10mm}td.n{width:24mm;text-align:center}
 .drawbox{height:78mm;border:1.5px solid #111;border-radius:4px;margin-top:3px}.drawbox.grid{background-image:linear-gradient(#ccc 1px,transparent 1px),linear-gradient(90deg,#ccc 1px,transparent 1px);background-size:10mm 10mm}
 .pic{text-align:center}.pic img{max-width:100%;max-height:95mm;border:1px solid #999}.sign{display:flex;justify-content:space-between;margin-top:14px;font-size:13px}.foot{margin-top:6px;font-size:11px;color:#666;text-align:right}`;
-    const html = `<!doctype html><html lang="th"><head><meta charset="utf-8"><title>ชิ้นงานบทที่ ${c.number} · เลขที่ ${esc(st.number || '')}</title><style>${css}</style></head><body>
-<div class="top"><div><h1>ใบงานบทที่ ${c.number} · ${esc(sh.title)}</h1><small>วิชา${window.DT_CFG.full} · ${esc(c.title)} · เวลาประมาณ ${sh.minutes} นาที</small></div><div style="text-align:right;font-size:12px">${r ? (r.status === 'graded' ? 'ตรวจแล้ว ' + sum(r) + '/100' : 'ครูขอให้ปรับปรุง') : (blank ? 'ใบงานเปล่า' : 'ยังไม่ได้ตรวจ')}</div></div>
-<div class="who"><span>ชื่อ ${esc(st.name && !/^เลขที่/.test(st.name) ? st.name : '')}</span><span>เลขที่ ${esc(st.number || '')}</span><span>ห้อง ${esc(st.classroom || '')}</span><span>ปี ${esc(st.year || '')}</span></div>
-<div class="ctx"><b>สถานการณ์</b>${esc(sh.context)}</div>
-${body}
-<h2>การประเมินโดยครู</h2><table><tr><th>เกณฑ์</th><th style="text-align:center">คะแนนเต็ม</th><th style="text-align:center">ได้</th></tr>${c.rubric.map((x, i) => `<tr><td>${esc(x.criterion)}</td><td class="n">${x.points}</td><td class="n">${r && r.status === 'graded' ? (r.scores[i] ?? '') : ''}</td></tr>`).join('')}<tr><th>รวม</th><th class="n">100</th><th class="n">${r && r.status === 'graded' ? sum(r) : ''}</th></tr></table>
+    const teacherBlock = gst ? '' : `<h2>การประเมินโดยครู</h2><table><tr><th>เกณฑ์</th><th style="text-align:center">คะแนนเต็ม</th><th style="text-align:center">ได้</th></tr>${c.rubric.map((x, i) => `<tr><td>${esc(x.criterion)}</td><td class="n">${x.points}</td><td class="n">${r && r.status === 'graded' ? (r.scores[i] ?? '') : ''}</td></tr>`).join('')}<tr><th>รวม</th><th class="n">100</th><th class="n">${r && r.status === 'graded' ? sum(r) : ''}</th></tr></table>
 <p><b>ข้อเสนอแนะจากครู:</b> ${r ? esc(r.comment) : '<br>.............................................................................................................................................<br>.............................................................................................................................................'}</p>
 <div class="sign"><span>ลงชื่อนักเรียน ..................................................</span><span>ลงชื่อครูผู้สอน ..................................................</span></div>
+`;
+    const html = `<!doctype html><html lang="th"><head><meta charset="utf-8"><title>${gst ? `ใบงานบทที่ ${c.number} ${esc(sh.title)}` : `ชิ้นงานบทที่ ${c.number} · เลขที่ ${esc(st.number || '')}`}</title><style>${css}</style></head><body>
+<div class="top"><div><h1>ใบงานบทที่ ${c.number} · ${esc(sh.title)}</h1><small>วิชา${window.DT_CFG.full} · ${esc(c.title)} · เวลาประมาณ ${sh.minutes} นาที</small></div><div style="text-align:right;font-size:12px">${gst ? (blank ? 'ใบงานเปล่า' : 'ใบงานผู้เข้าชม') : r ? (r.status === 'graded' ? 'ตรวจแล้ว ' + sum(r) + '/100' : 'ครูขอให้ปรับปรุง') : (blank ? 'ใบงานเปล่า' : 'ยังไม่ได้ตรวจ')}</div></div>
+<div class="who${gst ? ' g' : ''}"><span>ชื่อ ${esc(st.name && !/^เลขที่/.test(st.name) ? st.name : '')}</span>${gst ? `<span>วันที่ ${esc(new Date().toLocaleDateString('th-TH', { day: 'numeric', month: 'long', year: 'numeric' }))}</span>` : `<span>เลขที่ ${esc(st.number || '')}</span><span>ห้อง ${esc(st.classroom || '')}</span><span>ปี ${esc(st.year || '')}</span>`}</div>
+<div class="ctx"><b>สถานการณ์</b>${esc(sh.context)}</div>
+${body}
+${teacherBlock}
+
 <div class="foot">พิมพ์เมื่อ ${new Date().toLocaleString('th-TH')}</div></body></html>`;
     printHtml(html);
   }

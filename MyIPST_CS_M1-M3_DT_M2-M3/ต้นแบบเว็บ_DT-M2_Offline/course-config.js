@@ -2,7 +2,7 @@
 window.DT_CFG = {
   code: 'DT-M2', slug: 'dt-m2', grade: 'ม.2', subject: 'การออกแบบและเทคโนโลยี',
   full: 'การออกแบบและเทคโนโลยี ม.2', short: 'ออกแบบและเทคโนโลยี ม.2', room: 'ม.2/1', key: 'krukan-dt-m2',
-  chapters: 4, finalNo: 5, appUrl: 'https://script.google.com/macros/s/AKfycbyCWLAxM99jpYUfdCFH0vQOqwCXnOWKofbzKMDQDn8xshp4qQVw9m9zXYUHWdRlgEKQFg/exec',
+  chapters: 4, finalNo: 5, guestWork: true, appUrl: 'https://script.google.com/macros/s/AKfycbyCWLAxM99jpYUfdCFH0vQOqwCXnOWKofbzKMDQDn8xshp4qQVw9m9zXYUHWdRlgEKQFg/exec',
   sectorNames: ['หุบผีเสื้อเงา', 'เหมืองแบบร่าง', 'อู่ประกอบไพลิน', 'หอดูอนาคตโอปอล'],
   tones: ['#3a6fb0', '#2f7f9a', '#3d5fa8', '#5a5fb0'],
   items: {
