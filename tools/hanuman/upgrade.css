@@ -1,0 +1,92 @@
+/* ===== ชั้นตกแต่ง UI อัปเกรด (27 ต.ค. 2569): ธีมพลับพลาทองยามเย็น ม่วงคราม + ทอง + ชมพู ===== */
+/* หลักการ: ไม่แตะขนาด/ตำแหน่ง/ระยะห่างของกล่องใดเลย (เลย์เอาต์ 1920x1080 ปรับละเอียดไว้แล้ว) เปลี่ยนเฉพาะสี พื้นหลัง เงา เส้นขอบ และฟอนต์หัวข้อ */
+:root{
+  --nav:#1d1050;--panel:#2a1a6ee8;--line:#ffd98a40;--ink:#fffaf0;--muted:#dcd0f7;
+  --cyan:#4fe6d2;--gold:#ffd25e;--pink:#ff72b6;--green:#4be3a8;--red:#ff6b7a;--purple:#a183ff;--shadow:0 22px 56px #0e0530aa;
+  --gold-grad:linear-gradient(135deg,#ffe28a,#ffb92e 55%,#ff9a2a);
+}
+html,body{background:#160a3d}
+.app{background:#1d1050}
+
+/* ----- แถบบน ----- */
+.topbar{background:linear-gradient(90deg,#2b1070,#4b1f8f 46%,#2b1070);border-bottom:0;box-shadow:0 8px 24px #0a0224aa;position:relative}
+.topbar::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:repeating-linear-gradient(90deg,#ffd25e 0 16px,#ff72b6 16px 26px,#4be3a8 26px 36px,#a183ff 36px 46px)}
+.brand-mark{background:radial-gradient(circle at 50% 32%,#fffbe8,#ffe39a 36%,#ffb42a 40%,#a14a00 80%);box-shadow:0 0 0 3px #fff0b8,0 0 0 5px #b8661c,0 8px 18px #0008;color:#5a2400;font-family:Kanit,Tahoma,sans-serif;font-weight:800}
+.brand strong{font-family:Kanit,Tahoma,sans-serif;font-weight:800;letter-spacing:.01em;text-shadow:0 2px 0 #3a1260}
+.brand small{color:#ffe7a8}
+.nav-btn,.top-btn{background:#ffffff16;border:1px solid #ffffff36;color:#fff6e6;transition:transform .16s,box-shadow .2s,background .2s}
+.nav-btn:hover,.top-btn:hover{transform:translateY(-2px)}
+.nav-btn.active,.nav-btn:hover{background:var(--gold-grad);color:#4a1f00;border-color:#fff4c4;box-shadow:0 8px 20px #ff9a2a66}
+.nav-btn.active small,.nav-btn:hover small{color:#7a3a08}
+.nav-btn small{color:#d9cdf5}
+
+/* ----- พื้นหลังฉาก ----- */
+.scene{background:
+  radial-gradient(ellipse at 12% 8%,#8a4de0a0,transparent 46%),
+  radial-gradient(ellipse at 92% 92%,#ff8a3a66,transparent 44%),
+  radial-gradient(ellipse at 88% 10%,#ff72b655,transparent 36%),
+  linear-gradient(165deg,#2a1470,#1b0d52 58%,#2f1470)}
+.home{background:
+  radial-gradient(circle at 74% 46%,#7a5af0 0,#40228f 34%,#1b0d52 78%)}
+.home::before{background:radial-gradient(circle,#ffd45c88,transparent 66%)}
+.s1::before,.s2::after,.s3::before,.s4::before,.s5::before,.challenge::before{opacity:.8}
+
+/* ----- แผ่นแก้ว/การ์ด ----- */
+.glass{background:linear-gradient(150deg,#3a2490f0,#22126aef);border:1.5px solid #ffd98a55;box-shadow:var(--shadow),inset 0 1px 0 #ffffff26,inset 0 0 0 1px #ffffff0a}
+.map-panel,.code-panel,.command-wall,.code-lab,.summary .glass{border-color:#ffd98a55}
+.curriculum-card{background:linear-gradient(135deg,#4a2a9ecc,#2a1672e8);border:1px solid #ffd98a77;box-shadow:inset 4px 0 #ffcf5a}
+.kicker{color:#ffe39a}
+.hero-copy h1{font-family:Kanit,Tahoma,sans-serif;font-weight:800;text-shadow:0 4px 0 #3a1260,0 10px 26px #0008}
+.hero-copy h1 span{background:linear-gradient(180deg,#fff2b8,#ffc22e 60%,#ff9a2a);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 4px 0 #6a2c00)}
+.scene h1,.scene h2{font-family:Kanit,Tahoma,sans-serif;font-weight:800}
+.eyebrow{color:#ffe39a}
+.hero-meta span{background:#ffffff18;border-color:#ffffff36;color:#fff2d6}
+.pill{background:#ffffff18;border-color:#ffffff30;color:#fff2d6}
+.time{border-color:#ffd98a66;background:#1b0d5299}
+
+/* ----- ปุ่ม ----- */
+.primary{background:linear-gradient(135deg,#ffcf4e,#ff9a2a);color:#4a1f00;text-shadow:0 1px 0 #fff3;box-shadow:0 8px 20px #ff9a2a55,inset 0 2px 0 #fff6}
+.soft{background:#ffffff18;border-color:#ffffff3a;color:#fff6e6}
+.danger{background:linear-gradient(135deg,#ff6b8a,#e02a5a)}
+button:hover{filter:brightness(1.08)}
+.primary:hover,.soft:hover,.danger:hover{transform:translateY(-2px)}
+.primary,.soft,.danger{transition:transform .16s,filter .2s}
+
+/* ----- ช่องแสดง 3D ----- */
+.three-card,.three-viewport{border:3px solid #ffd25e;border-radius:22px;box-shadow:0 0 0 5px #8a4de0aa,0 22px 50px #0009,inset 0 0 0 2px #fff3;background:#cfeaff}
+.three-viewport{border-radius:20px}
+.viewport-badge,.orbit-note{background:#2a1470d9;border:1px solid #ffd98a66;color:#fff0c8}
+.mini3d,.concept-stage{border-color:#ffd98a66}
+
+/* ----- แท็บภารกิจ ----- */
+.mission-tab{background:#ffffff16;border-color:#ffffff36;color:#fff6e6;transition:transform .16s,box-shadow .2s}
+.mission-tab:hover{transform:translateY(-2px)}
+.mission-tab.active{background:var(--gold-grad);color:#4a1f00;border-color:#fff4c4;box-shadow:0 8px 20px #ff9a2a66}
+.mission-tab.active small{color:#7a3a08}
+
+/* ----- ตัวนับ ข้อความ แถบล่าง ----- */
+.budget{border-color:#ffd98a77}
+.message{border-color:#ffffff30}
+.slot{border-color:#ffffff45;background:#ffffff10;color:#c9b8f5}
+.slot.filled{border-color:#ffd25e99}
+.presenter{background:linear-gradient(90deg,#2b1070,#4b1f8f 55%,#2b1070);border-top:3px solid #ffd25e;box-shadow:0 -8px 24px #0a022488}
+.presenter button{background:#ffffff1a;border-color:#ffffff3a;color:#fff6e6}
+.presenter button.go{background:var(--gold-grad);color:#4a1f00;border-color:#fff4c4}
+.presenter .bar{background:#ffffff22}
+.presenter .bar i{background:var(--gold-grad)}
+.toast{background:#2a1470;border:1.5px solid #ffd25e;color:#fff6e6}
+
+/* ----- บล็อกคำสั่ง ให้ฉ่ำและสดขึ้น (ไม่เปลี่ยนรูปทรง) ----- */
+.sblock{box-shadow:inset 0 3px #ffffff66,inset 0 -3px #0003,0 6px 12px #0006;text-shadow:0 2px 0 #0005}
+.sblock.start{--b:#ffae1a}.sblock.motion{--b:#3d8bff}.sblock.turn{--b:#18c4d8}.sblock.repeat{--b:#ff5ea8}.sblock.warp{--b:#8a5cf0}
+.palette-btn:hover .sblock{filter:brightness(1.12) saturate(1.1)}
+
+/* ----- แผงครู/กล่องโต้ตอบ ----- */
+.teacher,.modal .glass{border-color:#ffd98a66}
+.teacher-head{border-bottom:1px solid #ffd98a55}
+.answers th{background:#4b1f8f;color:#fff0c8}
+
+/* ----- ลื่นไหล ----- */
+@keyframes hxFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.brand-mark{animation:hxFloat 3.2s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.brand-mark{animation:none}.nav-btn,.top-btn,.primary,.soft,.danger,.mission-tab{transition:none}}

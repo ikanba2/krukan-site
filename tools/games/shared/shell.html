@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#070a1f">
+<title>/*__TITLE__*/</title>
+<meta name="kg-build" content="/*__BUILD__*/">
+<style>
+/* ฟอนต์ Kanit (SIL Open Font License) ตัดเหลือภาษาไทยและอักขระพื้นฐาน ฝังเป็น base64 เพื่อให้แสดงผลเหมือนกันทุกเครื่องและใช้ออฟไลน์ได้ */
+/*__FONTS__*/
+html,body{margin:0;height:100%;background:#070a1f;overflow:hidden;overscroll-behavior:none;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
+#game{position:fixed;inset:0}
+#game canvas{display:block;touch-action:none;outline:none}
+#load{position:fixed;inset:0;z-index:5;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;background:#070a1f;color:#cdd7f2;font:600 20px Kanit,Tahoma,sans-serif;letter-spacing:.04em;text-align:center;padding:20px;transition:opacity .45s}
+#load.done{opacity:0;pointer-events:none}
+#load .bar{width:260px;height:6px;background:#18235a;position:relative;overflow:hidden;clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%)}
+#load .bar i{position:absolute;top:0;bottom:0;width:38%;background:#4ef4d2;animation:ld 1.05s infinite linear}
+@keyframes ld{from{transform:translateX(-110%)}to{transform:translateX(280%)}}
+#rotate{position:fixed;inset:0;z-index:9;display:none;align-items:center;justify-content:center;flex-direction:column;gap:18px;background:#070a1fee;color:#f4f7ff;font:600 20px/1.5 Kanit,Tahoma,sans-serif;text-align:center;padding:24px}
+#rotate .ph{width:64px;height:104px;border:5px solid #4ef4d2;position:relative;animation:rot 2.4s ease-in-out infinite;clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
+#rotate .ph::after{content:'';position:absolute;left:50%;bottom:8px;width:16px;height:4px;margin-left:-8px;background:#4ef4d2}
+@keyframes rot{0%,20%{transform:rotate(0)}55%,80%{transform:rotate(-90deg)}100%{transform:rotate(0)}}
+#rotate button{font:600 17px Kanit,Tahoma,sans-serif;color:#9fb0d8;background:none;border:0;text-decoration:underline;padding:8px;cursor:pointer}
+@media (orientation:portrait) and (max-width:820px){#rotate:not(.off){display:flex}}
+#player{position:fixed;inset:0;z-index:12;display:none;align-items:center;justify-content:center;background:#03040fd9;padding:16px;font-family:Kanit,Tahoma,sans-serif;color:#f4f7ff}
+#player.on{display:flex}
+@media (pointer:coarse){#player{align-items:flex-start;padding-top:max(10px,3.5vh);overflow-y:auto;-webkit-overflow-scrolling:touch}}
+#kg-anchor{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;visibility:hidden}
+#player .box{width:min(460px,100%);padding:26px 24px 22px;background:linear-gradient(180deg,#1c2a78,#0a1132);box-shadow:inset 0 0 0 3px #4ef4d2;clip-path:polygon(22px 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%,0 22px)}
+#player h2{margin:0 0 4px;font:600 28px/1.25 Kanit,Tahoma,sans-serif;text-align:center}
+#player p{margin:0 0 14px;color:#cdd7f2;font:400 16px/1.5 Kanit,Tahoma,sans-serif;text-align:center}
+#player label{display:block;margin:10px 0 0;font:600 16px Kanit,Tahoma,sans-serif;color:#9fb0d8}
+#player input{display:block;width:100%;box-sizing:border-box;margin-top:4px;padding:12px 14px;border:0;outline:0;font:400 22px Kanit,Tahoma,sans-serif;color:#fff;background:#050a26;box-shadow:inset 0 0 0 2px #2f3d84;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);-webkit-user-select:text;user-select:text;touch-action:auto}
+#player input:focus{box-shadow:inset 0 0 0 3px #4ef4d2}
+#player .row{display:flex;gap:10px;margin-top:20px}
+#player button{flex:1;min-height:52px;border:0;cursor:pointer;font:600 20px Kanit,Tahoma,sans-serif;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+#player .ok{color:#fff;background:linear-gradient(180deg,#ff7ab2,#d81a6b)}
+#player .skip{color:#f4f7ff;background:linear-gradient(180deg,#3a4ca6,#1b2768)}
+#player .note{margin-top:12px;font:400 14px Kanit,Tahoma,sans-serif;color:#9fb0d8;text-align:center}
+/* แป้นพิมพ์ชื่อในเกม (จอสัมผัส): ใช้แทนคีย์บอร์ดของเครื่อง เพราะคีย์บอร์ดของ iPad/มือถือดันกรอบเกมที่ฝังในเว็บให้เลื่อนค้าง (KG.namePad) */
+#pl-pad{margin-top:8px}
+#pl-pad[hidden]{display:none}
+#pl-pad .kb{display:flex;flex-direction:column;gap:clamp(3px,.7vh,6px);-webkit-user-select:none;user-select:none;touch-action:manipulation}
+#pl-pad .r{display:flex;gap:clamp(3px,.55vw,6px)}
+#pl-pad button.k{position:relative;flex:1 1 0;min-width:0;height:clamp(34px,6.6vh,52px);margin:0;padding:0;min-height:0;font:600 clamp(16px,2.9vh,24px) Kanit,Tahoma,sans-serif;color:#f4f7ff;background:linear-gradient(180deg,#27358f,#121a52);box-shadow:inset 0 0 0 2px #5c70d8,0 3px 0 #050818;border:0;border-radius:8px;clip-path:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+#pl-pad button.k:active{transform:translateY(2px);box-shadow:inset 0 0 0 2px #fff,0 1px 0 #050818;background:#4ef4d2;color:#04221e}
+#pl-pad .k .m{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding-top:clamp(5px,1.1vh,10px);pointer-events:none;white-space:nowrap}
+#pl-pad .k .s{position:absolute;left:0;right:0;top:clamp(1px,.4vh,3px);font-size:clamp(9px,1.5vh,13px);line-height:1;color:#9fb0d8;pointer-events:none;display:flex;justify-content:center}
+#pl-pad .k.fn .m{padding-top:0;font-size:clamp(11px,2vh,16px)}
+#pl-pad .k.dim{opacity:.35}
+#pl-pad .k.on{background:linear-gradient(180deg,#86fde9,#17b79a);color:#04221e;box-shadow:inset 0 0 0 2px #e2fff9,0 3px 0 #0a4f46}
+#pl-pad .k.go{background:linear-gradient(180deg,#a0ffb8,#22b653);color:#03210e;box-shadow:inset 0 0 0 2px #e5ffee,0 3px 0 #0b4a20}
+#pl-pad .k.sp .m{color:#9fb0d8}
+#pl-pad .k .cur{color:#ffd34f}
+#pl-pad .mk{display:block;width:1.5em;height:1.9em;background:currentColor;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;margin-top:-.1em}
+#pl-pad .s .mk{margin-top:0}
+#player.padmode .box{width:min(900px,100%);padding:14px 14px 12px}
+#player.padmode h2{font-size:22px}
+#player.padmode p{margin-bottom:4px;font-size:13px;line-height:1.35}
+#player.padmode label{margin-top:4px}
+#player.padmode .note{display:none}
+#player.padmode .row{margin-top:8px}
+#player.padmode input{caret-color:transparent;padding:6px 14px}
+@media (max-height:560px){#player.padmode p{display:none}}
+[data-skin=bright] #pl-pad button.k{background:linear-gradient(180deg,#fff,#dce9ff);color:#1b2a6b;box-shadow:inset 0 0 0 2px #9db4e6,0 3px 0 #8da4d8}
+[data-skin=bright] #pl-pad .k .s{color:#5b6c9a}
+[data-skin=bright] #pl-pad .k.on{background:linear-gradient(180deg,#ffb347,#ff6a1a);color:#fff;box-shadow:inset 0 0 0 2px #fff1dc,0 3px 0 #9c3a08}
+[data-skin=bright] #pl-pad .k .cur{color:#e8452c}
+#popped,#tapgo{position:fixed;inset:0;z-index:14;display:none;align-items:center;justify-content:center;background:#03040ff5;padding:16px;font-family:Kanit,Tahoma,sans-serif;color:#f4f7ff;text-align:center}
+#popped.on,#tapgo.on{display:flex}
+#popped .box,#tapgo .box{width:min(540px,100%);padding:30px 24px 26px;background:linear-gradient(180deg,#1c2a78,#0a1132);box-shadow:inset 0 0 0 3px #4ef4d2;clip-path:polygon(22px 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%,0 22px)}
+#popped h2,#tapgo h2{margin:0 0 8px;font:600 30px/1.25 Kanit,Tahoma,sans-serif}
+#popped p,#tapgo p{margin:0 0 20px;color:#cdd7f2;font:400 18px/1.55 Kanit,Tahoma,sans-serif}
+#popped button{min-height:54px;padding:0 28px;border:0;cursor:pointer;color:#f4f7ff;font:600 21px Kanit,Tahoma,sans-serif;background:linear-gradient(180deg,#3a4ca6,#1b2768);clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+#tapgo{cursor:pointer;background:#070a1f}
+#tapgo .go{display:inline-block;padding:15px 38px;color:#fff;font:600 26px Kanit,Tahoma,sans-serif;background:linear-gradient(180deg,#ff7ab2,#d81a6b);clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);animation:tg 1.1s ease-in-out infinite}
+@keyframes tg{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+/* ===== ธีมสีสดใส (เกมที่ใช้ KG.useSkin('bright') ตั้ง data-skin บน html) ===== */
+html[data-skin=bright],html[data-skin=bright] body{background:#7fd3ff}
+[data-skin=bright] #load{background:linear-gradient(180deg,#7fd3ff,#dff4ff);color:#1b2a6b}
+[data-skin=bright] #load .bar{background:#ffffffaa}
+[data-skin=bright] #load .bar i{background:#ff7a1a}
+[data-skin=bright] #rotate{background:#e6f6ffee;color:#1b2a6b}
+[data-skin=bright] #rotate .ph{border-color:#ff7a1a}
+[data-skin=bright] #rotate .ph::after{background:#ff7a1a}
+[data-skin=bright] #rotate button{color:#2b3f9c}
+[data-skin=bright] #player,[data-skin=bright] #popped,[data-skin=bright] #tapgo{background:#10204fb8;color:#1b2a6b}
+[data-skin=bright] #tapgo{background:#7fd3ff}
+[data-skin=bright] #player .box,[data-skin=bright] #popped .box,[data-skin=bright] #tapgo .box{background:linear-gradient(180deg,#fff,#dff0ff);box-shadow:inset 0 0 0 3px #2b3f9c,0 9px 0 #18287855;color:#1b2a6b}
+[data-skin=bright] #player h2,[data-skin=bright] #popped h2,[data-skin=bright] #tapgo h2{color:#1b2a6b}
+[data-skin=bright] #player p,[data-skin=bright] #popped p,[data-skin=bright] #tapgo p{color:#33456f}
+[data-skin=bright] #player label{color:#5b6c9a}
+[data-skin=bright] #player input{background:#fff;color:#1b2a6b;box-shadow:inset 0 0 0 2px #9db4e6}
+[data-skin=bright] #player input:focus{box-shadow:inset 0 0 0 3px #ff7a1a}
+[data-skin=bright] #player .ok,[data-skin=bright] #tapgo .go{background:linear-gradient(180deg,#ffb347,#ff6a1a);color:#fff}
+[data-skin=bright] #player .skip,[data-skin=bright] #popped button{background:linear-gradient(180deg,#fff,#d9e9ff);color:#1b2a6b;box-shadow:inset 0 0 0 2px #9db4e6}
+[data-skin=bright] #player .note{color:#5b6c9a}
+/* ===== ทรงมน (ธีม candy): กล่องและปุ่มโค้งแทนมุมตัด ===== */
+html[data-shape=round] #player .box,html[data-shape=round] #popped .box,html[data-shape=round] #tapgo .box{clip-path:none;border-radius:30px}
+html[data-shape=round] #player input{clip-path:none;border-radius:16px}
+html[data-shape=round] #player button,html[data-shape=round] #popped button,html[data-shape=round] #tapgo .go{clip-path:none;border-radius:999px}
+html[data-shape=round] #rotate .ph{clip-path:none;border-radius:16px}
+/* ===== โทนอุ่น (ธีม pizza): พื้นหน้าโหลดและกล่องใส่ชื่อเป็นครีม แดง น้ำตาล ===== */
+html[data-tone=warm],html[data-tone=warm] body{background:#ffd9a8}
+[data-tone=warm] #load{background:linear-gradient(180deg,#ffd9a8,#fff3df);color:#4a2412}
+[data-tone=warm] #load .bar i{background:#e8452c}
+[data-tone=warm] #rotate{background:#fff3dfee;color:#4a2412}
+[data-tone=warm] #rotate .ph{border-color:#e8452c}
+[data-tone=warm] #rotate .ph::after{background:#e8452c}
+[data-tone=warm] #player,[data-tone=warm] #popped,[data-tone=warm] #tapgo{background:#3a1a0cb8;color:#4a2412}
+[data-tone=warm] #tapgo{background:#ffd9a8}
+[data-tone=warm] #player .box,[data-tone=warm] #popped .box,[data-tone=warm] #tapgo .box{background:linear-gradient(180deg,#fff,#ffefd8);box-shadow:inset 0 0 0 3px #7a3b1f,0 9px 0 #5a28104d;color:#4a2412}
+[data-tone=warm] #player h2,[data-tone=warm] #popped h2,[data-tone=warm] #tapgo h2{color:#4a2412}
+[data-tone=warm] #player p,[data-tone=warm] #popped p,[data-tone=warm] #tapgo p{color:#6b3b25}
+[data-tone=warm] #player label,[data-tone=warm] #player .note{color:#8a6a58}
+[data-tone=warm] #player input{background:#fff;color:#4a2412;box-shadow:inset 0 0 0 2px #e0b890}
+[data-tone=warm] #player input:focus{box-shadow:inset 0 0 0 3px #e8452c}
+[data-tone=warm] #player .ok,[data-tone=warm] #tapgo .go{background:linear-gradient(180deg,#ff9466,#e03a1a);color:#fff}
+[data-tone=warm] #player .skip,[data-tone=warm] #popped button{background:linear-gradient(180deg,#fff,#ffe8cc);color:#4a2412;box-shadow:inset 0 0 0 2px #e0b890}
+/* ===== โทนเด็ก (ธีม kids): กล่องใส่ชื่อและหน้าแตะเพื่อเล่นเป็นม่วงชมพู ===== */
+html[data-tone=kids],html[data-tone=kids] body{background:#cfc0ff}
+[data-tone=kids] #player,[data-tone=kids] #popped,[data-tone=kids] #tapgo{background:#1d1a4ab8;color:#2d2a5e}
+[data-tone=kids] #tapgo{background:#cfc0ff}
+[data-tone=kids] #player .box,[data-tone=kids] #popped .box,[data-tone=kids] #tapgo .box{background:linear-gradient(180deg,#fff,#f2e9ff);box-shadow:inset 0 0 0 3px #2d2a5e,0 9px 0 #2d2a5e44;color:#2d2a5e}
+[data-tone=kids] #player h2,[data-tone=kids] #popped h2,[data-tone=kids] #tapgo h2{color:#2d2a5e}
+[data-tone=kids] #player p,[data-tone=kids] #popped p,[data-tone=kids] #tapgo p{color:#4a4780}
+[data-tone=kids] #player label,[data-tone=kids] #player .note{color:#7a77a8}
+[data-tone=kids] #player input{background:#fff;color:#2d2a5e;box-shadow:inset 0 0 0 2px #c9b8f0}
+[data-tone=kids] #player input:focus{box-shadow:inset 0 0 0 3px #e83a8e}
+[data-tone=kids] #player .ok,[data-tone=kids] #tapgo .go{background:linear-gradient(180deg,#ff9ac6,#e83a8e);color:#fff}
+[data-tone=kids] #player .skip,[data-tone=kids] #popped button{background:linear-gradient(180deg,#fff,#ece4ff);color:#2d2a5e;box-shadow:inset 0 0 0 2px #c9b8f0}
+/*__LOADER_CSS__*/
+</style>
+</head>
+<body>
+<div id="game"></div>
+<div id="kg-anchor" aria-hidden="true"></div>
+<div id="load"><div id="load-msg">กำลังโหลดเกม</div><div class="bar"><i></i></div></div>
+<div id="rotate"><div class="ph"></div><div>หมุนหน้าจอเป็นแนวนอน<br>เพื่อเล่นเกมนี้ได้เต็มจอ</div><button id="rot-off">เล่นต่อในแนวตั้ง</button></div>
+<div id="player"><div class="box" role="dialog" aria-label="ใส่ชื่อเล่น">
+<h2>ใส่ชื่อเล่น</h2><p>ชื่อเล่นจะแสดงในหน้าสรุปผลเมื่อเล่นจบ ไม่ใส่ก็เล่นได้</p>
+<label for="pl-first">ชื่อเล่น</label><input id="pl-first" maxlength="16" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" placeholder="เช่น มะลิ">
+<div id="pl-pad" hidden></div>
+<div class="row"><button class="skip" id="pl-skip" type="button">ไม่ใส่ชื่อ</button><button class="ok" id="pl-ok" type="button">เริ่มเล่น</button></div>
+<div class="note">ชื่อเก็บไว้ในเครื่องนี้เท่านั้น ไม่ได้ส่งไปที่ไหน</div></div></div>
+<div id="popped"><div class="box" role="dialog" aria-label="เกมเปิดในแท็บใหม่แล้ว">
+<h2>เปิดเกมในแท็บใหม่แล้ว</h2><p>เล่นต่อที่แท็บใหม่ได้เลย หน้านี้หยุดเกมและปิดเสียงไว้ให้แล้ว</p>
+<button id="pop-back" type="button">กลับมาเล่นตรงนี้</button></div></div>
+<div id="tapgo"><div class="box" role="dialog" aria-label="แตะเพื่อเริ่มเล่น">
+<h2>พร้อมแล้ว</h2><p id="tapgo-sub">แตะที่ใดก็ได้บนจอ เกมจะขยายเต็มจอและเปิดเสียงให้พร้อมกัน</p>
+<span class="go">แตะเพื่อเล่น</span></div></div>
+<noscript>เกมนี้ต้องเปิดใช้งาน JavaScript</noscript>
+<script>
+/*__PHASER__*/
+</script>
+<script>
+/* เก็บโค้ดต้นฉบับของหน้านี้ไว้ก่อนเกมเริ่มทำงาน ใช้เปิดเกมเป็นแท็บใหม่เมื่อถูกฝังในกรอบที่เต็มจอไม่ได้ (KG.popOut) */
+try { window.__KG_SRC = '<!DOCTYPE html>\n' + document.documentElement.outerHTML; } catch (e) { window.__KG_SRC = ''; }
+window.__main = function () {
+/*__FRAMEWORK__*/
+/*__GAME__*/
+};
+(window.loadPhaser || function (cb) { cb(); })(window.__main);
+</script>
+</body>
+</html>

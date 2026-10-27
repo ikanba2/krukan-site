@@ -1,0 +1,26 @@
+# รหัสแอดมินเริ่มต้นของ GAS (ห้ามเผยแพร่/ห้าม commit)
+**/.admin-initial.txt
+
+# ไฟล์แพ็กที่ระบบสร้างเอง
+**/gas-p*/Chunk*.html
+**/gas-p*/Index.html
+**/Techno-P*-Offline.html
+**/Techno-P*-GAS-Preview.html
+
+# ไฟล์แพ็กที่สร้างอัตโนมัติของเซิร์ฟเวอร์วิชามัธยม (build_gas.py) ไม่ต้อง commit
+**/gas-dt-m*/Chunk*.html
+**/gas-dt-m*/Index.html
+**/gas-dt-m*/SpritePack*.html
+**/gas-dt-m*/_bundle-preview.html
+
+# ไฟล์แพ็กที่สร้างอัตโนมัติของวิชาเพิ่มเติม (build_gas.py) ไม่ต้อง commit
+**/gas-it-m*/Chunk*.html
+**/gas-it-m*/Index.html
+**/gas-it-m*/SpritePack*.html
+**/gas-it-m*/_bundle-preview.html
+
+# ชุดทดลองออฟไลน์ที่ pack_offline_trial.py สร้างเอง ไม่ต้อง commit
+Techno-IT-*-Offline-Trial.zip
+
+# ไฟล์เกมรุ่นฝัง Phaser ในตัว (สร้างใหม่ได้ด้วย tools/build-games.py ไฟล์ละ 2-3 MB) ไม่ต้อง commit
+Game-*-Offline.html

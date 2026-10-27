@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f3f5fb">
+<meta name="description" content="Krukan Online พื้นที่การเรียนรู้ดิจิทัล บทเรียน กิจกรรม การประเมิน และเครื่องมือสำหรับผู้เรียน">
+<title>Krukan Online | DATA CORE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Kanit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>try{var t=localStorage.getItem('kk-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
+<script>(function(){try{var d=document.documentElement,seen=false;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;try{seen=sessionStorage.getItem('kk-boot')==='1'}catch(e){}if(seen)return;d.classList.add('boot-on');setTimeout(function(){d.classList.remove('boot-on')},5200)}catch(e){}})();</script>
+<style>
+/*__STYLE__*/
+/*__BOOT_CSS__*/
+</style>
+</head>
+<body>
+<!--__BOOT_HTML__-->
+<div id="progress"></div>
+<div class="bg" aria-hidden="true"></div>
+
+<header class="wrap top">
+  <a class="brand" href="__SITE_BASE__" target="_blank" rel="noopener noreferrer" aria-label="Krukan Online หน้าแรก"><img id="logo" alt="" width="52" height="52"><span><b>KRUKAN ONLINE</b><small>PLAY TO LEARN</small></span></a>
+  <div class="tools-top"><span class="ver" id="ver"></span><button class="b3d ghost icon-btn" id="theme" type="button" aria-label="สลับธีมสว่าง/มืด" title="สลับธีม">🌙</button></div>
+</header>
+
+<section class="wrap hero" id="home">
+  <div class="banner">
+    <img class="art" id="hero-art" alt="" aria-hidden="true">
+    <div class="in">
+      <div class="season"><span class="pill hot"><i class="live"></i>SEASON 2026</span><span class="pill">NATIONAL STAGE · WEBSITE COMPETITION</span></div>
+      <p class="kicker">ศูนย์การเรียนรู้ดิจิทัล · PLAY TO LEARN</p>
+      <h1 class="logo" aria-label="DATA CORE"><span>DATA</span><span>CORE</span></h1>
+      <p class="lead">พื้นที่เรียนรู้ที่เชื่อม <strong>บทเรียน สื่อ กิจกรรม การประเมินผล และเครื่องมือดิจิทัล</strong> ไว้ในประสบการณ์เดียว เพื่อให้ผู้เรียนเข้าถึงสิ่งที่ต้องการได้รวดเร็วและสนุกขึ้น</p>
+      <div class="cta">
+        <button class="b3d big" type="button" data-go="learning"><span class="k">▶</span><span><small>PRESS START</small>เริ่มเรียนรู้</span></button>
+        <a class="b3d big gold" href="__SITE_BASE__/learning-transform" target="_blank" rel="noopener noreferrer"><span class="k">⚡</span><span><small>SPECIAL MISSION</small>แปลงร่างการเรียนรู้</span></a>
+      </div>
+      <div class="counters" id="counters"></div>
+    </div>
+  </div>
+  <aside class="player" aria-label="การ์ดผู้สอน">
+    <div class="hud"><span>PLAYER 01 · EDUCATOR</span><b>● ONLINE</b></div>
+    <article class="pcard" id="pcard" role="button" tabindex="0" aria-pressed="false" aria-label="พลิกการ์ดเพื่อดูภาพโปรไฟล์อีกด้าน">
+      <div class="flip">
+        <div class="face"><img class="ph" src="__PORTRAIT_FRONT__" alt="นายยุทธการ เจียตระกูล" width="480" height="600" decoding="async" onerror="this.remove()"><div class="info"><small>AUTHORIZED EDUCATOR</small><h2>นายยุทธการ เจียตระกูล</h2><p>ครูชำนาญการ · โรงเรียนวัดท่าชุมนุม</p></div></div>
+        <div class="face bk"><img class="ph" src="__PORTRAIT_BACK__" alt="ภาพโปรไฟล์อีกด้านของนายยุทธการ เจียตระกูล" width="480" height="600" loading="lazy" decoding="async" onerror="this.remove()"><div class="info"><small>ALT SKIN · CREATOR MODE</small><h2>TEACHER · DESIGNER · DEVELOPER</h2><p>★ LEGENDARY</p></div></div>
+      </div>
+      <span class="flipme">↻ FLIP</span><span class="rank">S+</span>
+    </article>
+    <img class="mascot" id="player-mascot" alt="" aria-hidden="true">
+    <div class="xp"><div><span>LEVEL UP · ปีการศึกษา 2569</span><span id="xp-txt"></span></div><i><b id="xp-bar"></b></i></div>
+    <div class="pa" aria-label="ข้อตกลงในการพัฒนางาน ว.PA"><a href="https://youtu.be/rkBovZawt1g" target="_blank" rel="noopener noreferrer">🏆 PA 2569<small>ON AIR</small></a><span>🔒 PA 2570<small>LOCKED</small></span><span>🔒 PA 2571<small>LOCKED</small></span></div>
+  </aside>
+</section>
+
+<nav class="wrap shortcuts" id="shortcuts" aria-label="ทางลัด"></nav>
+<div class="wrap ticker" aria-hidden="true"><b><i class="live"></i>LIVE</b><div class="vp"><div class="tr" id="ticker"></div></div></div>
+
+<main class="wrap" id="main-content">
+  <section class="sec" id="transform" style="--k:var(--c3)">
+    <header class="sh"><img class="masc" data-asset="poseTransform" alt="" aria-hidden="true"><div><span class="chap">★ SPECIAL MISSION</span><h2>แปลงร่าง<em>การเรียนรู้</em></h2><p>1 เว็บ 1 การเปลี่ยนแปลง · เส้นทาง 5 ขั้นจากก่อนเรียนถึงผลลัพธ์</p></div></header>
+    <div class="panel">
+      <div class="mission"><div><small>🎯 การเปลี่ยนแปลงที่ต้องการ</small><b id="tgoal"></b><p id="ttarget"></p></div><a class="b3d gold" href="__SITE_BASE__/learning-transform" target="_blank" rel="noopener noreferrer">⚡ เข้าสู่ภารกิจ</a></div>
+      <div class="chain" id="chain"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="learning" style="--k:var(--c4)">
+    <header class="sh"><img class="masc" data-asset="poseStage" alt="" aria-hidden="true"><div><span class="chap">CHAPTER 01 · STAGE SELECT</span><h2>เลือก<em>ด่านการเรียนรู้</em></h2><p>เลือกชั้นเรียน แล้วเข้าสู่บทเรียนได้ทันที · ป.1–ม.3</p></div></header>
+    <div class="seg" role="group" aria-label="กรองระดับชั้น" id="class-filter"></div>
+    <div class="stages" id="stages"></div><p class="sr-only" id="class-status" role="status" aria-live="polite"></p>
+  </section>
+
+  <section class="sec" id="play" style="--k:var(--c2)">
+    <header class="sh"><img class="masc" data-asset="poseGames" alt="" aria-hidden="true"><div><span class="chap">CHAPTER 02 · GAME LIBRARY</span><h2>คลัง<em>เกมการเรียนรู้</em></h2><p>กิจกรรมเสริมแบบ Game-based และ Interactive Learning</p></div></header>
+    <div class="seg" role="group" aria-label="กรองเกมตามทักษะ" id="game-filter"></div>
+    <div class="games" id="games"></div>
+    <div class="more"><button class="b3d ghost" id="game-more" type="button" hidden></button></div>
+  </section>
+
+  <section class="sec" id="watch" style="--k:#ff3151">
+    <header class="sh"><img class="masc" data-asset="poseCinema" alt="" aria-hidden="true"><div><span class="chap">CHAPTER 03 · CINEMATICS</span><h2>วิดีโอ<em>ความรู้</em></h2><p>ดูง่าย เข้าใจไว · เปิดรับชมบน YouTube</p></div></header>
+    <div class="cines" id="cines"></div>
+  </section>
+
+  <section class="sec" id="feedback" style="--k:var(--c1)">
+    <header class="sh"><img class="masc" data-asset="poseMission" alt="" aria-hidden="true"><div><span class="chap">CHAPTER 04 · DAILY MISSIONS</span><h2>ภารกิจ<em>พัฒนาการเรียนรู้</em></h2><p>คะแนน ความคิดเห็น และตัวชี้วัดรายวิชา · ตรวจสอบ → รับฟัง → พัฒนา</p></div></header>
+    <div class="missions" id="missions"></div>
+  </section>
+
+  <section class="sec" id="tools" style="--k:var(--c5)">
+    <header class="sh"><img class="masc" data-asset="poseTools" alt="" aria-hidden="true"><div><span class="chap">CHAPTER 05 · LOADOUT</span><h2>เครื่องมือ<em>ดิจิทัล</em></h2><p>สร้างสื่อ เขียนโปรแกรม จัดกิจกรรม และประเมินผลได้จากที่เดียว</p></div></header>
+    <div class="panel loadout" id="loadout"></div>
+  </section>
+
+  <section class="sec" id="domain" style="--k:var(--c4)">
+    <header class="sh"><img class="masc" data-asset="poseDomain" alt="" aria-hidden="true"><div><span class="chap">MISSION .TH</span><h2>รู้จัก<em>.th และ .ไทย</em></h2><p>ชื่อโดเมนของประเทศไทย น่าเชื่อถือ ตรวจสอบได้ และเว็บนี้ก็ใช้ .in.th</p></div></header>
+    <div class="domain"><div class="dom-art" aria-hidden="true"><b>.th</b><b class="th">.ไทย</b><small>KRUKAN.IN.TH</small><img data-asset="poseDomainArt" alt=""></div><div><ul class="dpts" id="dpts"></ul><a class="b3d blue" href="__SITE_BASE__/domain-th" target="_blank" rel="noopener noreferrer">🌐 รู้จัก .th และ .ไทย เพิ่มเติม</a></div></div>
+  </section>
+
+  <section class="sec" id="news" style="--k:var(--c1)">
+    <header class="sh"><img class="masc" data-asset="poseNews" alt="" aria-hidden="true"><div><span class="chap">PATCH NOTES · WORLD MAP</span><h2>อัปเดต<em>ล่าสุด</em></h2><p>บันทึกการพัฒนาเว็บไซต์ เรียงจากใหม่ไปเก่า และแผนที่ทุกหน้าของเว็บ</p></div></header>
+    <div class="updates"><article class="latest" id="latest"></article><div class="panel history" id="history" tabindex="0" aria-label="ประวัติการอัปเดตย้อนหลัง"></div></div>
+    <nav class="map" id="map" aria-label="แผนที่เว็บไซต์"></nav>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap fwrap">
+    <div class="fl"><img id="flogo" alt="โลโก้ Krukan Online" width="64" height="64"><span><b>KruKan.in.th</b><small>DESIGNED FOR LEARNING · BUILT FOR EXPERIENCE</small></span></div>
+    <p>© 2026 KruKan.in.th · โรงเรียนวัดท่าชุมนุม · สพป.อ่างทอง<br>ผู้จัดทำ: นายยุทธการ เจียตระกูล</p>
+    <div class="fr"><img class="fwave" data-asset="poseWave" alt="" aria-hidden="true"><a class="lic" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer"><img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png" alt="Creative Commons BY-NC-SA 4.0" width="88" height="31"></a><button class="b3d gold sm" id="ai-btn" type="button">🤖 การใช้ AI · AI Disclosure</button></div>
+  </div>
+</footer>
+
+<div class="fab"><button class="b3d ghost icon-btn" id="snd" type="button" aria-pressed="false" aria-label="เปิดหรือปิดเสียงเอฟเฟกต์" title="เสียงเอฟเฟกต์">🔇</button><button class="b3d ghost icon-btn" id="top" type="button" aria-label="กลับขึ้นด้านบน">↑</button></div>
+
+<dialog id="ai-dlg"><div class="db"><h3>🤖 การใช้ AI · AI Disclosure</h3><dl>
+<dt>เครื่องมือ AI ที่ใช้</dt><dd>Claude (Anthropic) · ChatGPT Images (OpenAI) · Nano Banana (Google Gemini)</dd>
+<dt>ขอบเขตการใช้</dt><dd><ul><li><b>Claude:</b> ช่วยเขียนและปรับแต่งโค้ด HTML/CSS/JavaScript ของหน้าแรก หน้าเลือกชั้นเรียน และหน้าเลือกวิชา รวมถึงโค้ดสร้างพื้นผิวดาวเคราะห์</li><li><b>ChatGPT Images และ Nano Banana:</b> ช่วยสร้างภาพตัวละคร Cyber Rider Techno มอนสเตอร์ และภาพประกอบต่าง ๆ</li></ul></dd>
+<dt>ระดับการช่วยเหลือ</dt><dd>ผู้จัดทำเป็นผู้กำหนดแนวคิด เนื้อหาบทเรียน การออกแบบการเรียนรู้ ธีม และทิศทางการออกแบบทั้งหมด ใช้ AI เป็นเครื่องมือช่วยสร้างโค้ดและภาพตามที่ผู้จัดทำกำหนด แล้วตรวจสอบ ทดสอบ และปรับแก้ผลลัพธ์ทุกขั้นตอนก่อนนำไปใช้จัดการเรียนรู้จริงกับนักเรียน</dd></dl>
+<button class="b3d" type="button" id="ai-close">เข้าใจแล้ว</button></div></dialog>
+
+<script>
+/*__DATA__*/
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=v=>String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const reduce=matchMedia('(prefers-reduced-motion: reduce)');
+const abs=u=>/^https?:/.test(u)?u:SITE_BASE+u;
+const ext='target="_blank" rel="noopener noreferrer"';
+const img=(src,cls,w,h)=>src?'<img class="'+cls+'" src="'+esc(src)+'" alt="" aria-hidden="true" width="'+w+'" height="'+h+'" loading="lazy" decoding="async" onerror="this.remove()">':'';
+
+/* ---------- เสียง (ปิดไว้ก่อน) ---------- */
+let sound=false,ac=null;
+function tone(f=620,d=.08,v=.05,t='sine'){if(!sound)return;try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain(),n=ac.currentTime;o.type=t;o.frequency.value=f;g.gain.setValueAtTime(.0001,n);g.gain.exponentialRampToValueAtTime(v,n+.01);g.gain.exponentialRampToValueAtTime(.0001,n+d);o.connect(g).connect(ac.destination);o.start(n);o.stop(n+d+.02)}catch(e){}}
+$('#snd').onclick=()=>{sound=!sound;$('#snd').textContent=sound?'🔊':'🔇';$('#snd').setAttribute('aria-pressed',String(sound));tone(880,.09,.06)};
+
+/* ---------- เอฟเฟกต์คลิก (เฉพาะตอนกด ไม่ตามเมาส์) ---------- */
+function burst(x,y,c){
+  if(reduce.matches)return;
+  const b=document.createElement('div');b.className='burst';b.style.cssText='transform:translate('+x+'px,'+y+'px);--c:'+c;
+  let h='<b></b>';for(let i=0;i<12;i++){const a=i/12*Math.PI*2+Math.random()*.4,r=34+Math.random()*44;h+='<i style="--dx:'+Math.cos(a)*r+'px;--dy:'+Math.sin(a)*r+'px"></i>'}
+  b.innerHTML=h;document.body.append(b);setTimeout(()=>b.remove(),850);
+}
+document.addEventListener('pointerdown',e=>{
+  const t=e.target.closest('.card,.b3d,.seg button,.pcard');if(!t)return;
+  const cs=getComputedStyle(t),c=(cs.getPropertyValue('--k').trim()||cs.getPropertyValue('--c').trim()||'#00b89f');
+  burst(e.clientX,e.clientY,c);tone(520+Math.random()*240,.09,.05,'triangle');
+},{passive:true});
+document.addEventListener('pointerover',e=>{if(e.pointerType==='touch'||!sound)return;const t=e.target.closest('.card,.b3d');if(t&&!t.contains(e.relatedTarget))tone(760,.035,.02)},{passive:true});
+
+/* ---------- ธีม ---------- */
+const root=document.documentElement,tb=$('#theme');
+function setTheme(t,save){root.dataset.theme=t;tb.textContent=t==='dark'?'☀️':'🌙';$('meta[name=theme-color]').content=t==='dark'?'#070a16':'#f3f5fb';if(save)try{localStorage.setItem('kk-theme',t)}catch(e){}}
+setTheme(root.dataset.theme||'light');tb.onclick=()=>setTheme(root.dataset.theme==='dark'?'light':'dark',true);
+
+/* ---------- ภาพ ---------- */
+$('#logo').src=ASSETS.logo;$('#flogo').src=ASSETS.logo;$('#hero-art').src=ASSETS.hero;$('#player-mascot').src=ASSETS.posePlayer;
+$$('[data-asset]').forEach(i=>{const s=ASSETS[i.dataset.asset];if(s){i.loading='lazy';i.src=s}else i.remove()});
+
+/* ---------- เรนเดอร์ ---------- */
+const LATEST=SITE_INFO.history[0];
+const fmt=(d,o={day:'numeric',month:'long',year:'numeric'})=>new Date(d+'T00:00:00').toLocaleDateString('th-TH',o);
+const MEMO={home:'🏠',class:'🏫',etc:'🎮',transform:'⚡',domain:'🌐',training:'🎤',score:'⭐',contact:'✉️'};
+const GEMO={computer:'🖱️',reading:'📖',math:'➗',digital:'🛡️',exam:'📝',adventure:'⚔️'};
+const WORLD=['ดาวสายฟ้า','ดาวธาตุน้ำ','ดาวพฤกษา','ดาวไฟ','ดาวน้ำแข็ง','ดาวหิน','COMPUTING','CODE · LOGIC','TECH MISSION'];
+$('#ver').innerHTML='BUILD <b>v'+esc(LATEST.version)+'</b> · '+esc(fmt(LATEST.date,{day:'numeric',month:'short',year:'2-digit'}));
+const COUNT=[['🏫',DATA.classes.length,'ด่าน ป.1–ม.3','var(--c4)'],['🎮',DATA.activities.length,'เกมการเรียนรู้','var(--c2)'],['🎬',VIDEOS.length,'วิดีโอความรู้','#ff3151'],['🧰',DATA.tools.length,'เครื่องมือ','var(--c5)']];
+$('#counters').innerHTML=COUNT.map(c=>'<div class="counter" style="--k:'+c[3]+'"><i>'+c[0]+'</i><span><b>'+c[1]+'</b><small>'+c[2]+'</small></span></div>').join('');
+const ready=TRANSFORM.steps.filter(s=>s.ready).length;$('#xp-txt').textContent='LV.'+(SITE_INFO.history.length+1);$('#xp-bar').style.setProperty('--v',Math.min(100,40+SITE_INFO.history.length*12+ready*6)+'%');
+$('#shortcuts').innerHTML=QUICK.map((q,i)=>'<a class="card sc" style="--c:'+q.c+'" href="'+esc(q.url)+'" '+ext+'><span class="key">'+(i+1)+'</span><span><small>'+esc(q.k)+'</small><b>'+q.e+' '+esc(q.t)+'</b></span><span class="ar">→</span></a>').join('');
+$('#ticker').innerHTML=(t=>t+t)(TICKER.map(x=>'<span>'+esc(x)+'</span>').join(''));
+
+$('#tgoal').textContent=TRANSFORM.goal||'อยู่ระหว่างกำหนด “การเปลี่ยนแปลง 1 เรื่อง”';
+$('#ttarget').textContent=TRANSFORM.target||'กลุ่มเป้าหมายและบริบทการเรียนรู้จะแสดงเมื่อกำหนดครบ';
+$('#chain').innerHTML=TRANSFORM.steps.map(s=>'<a class="card node'+(s.ready?' ready':'')+'" style="--c:'+s.c+'" href="'+abs(s.url)+'" '+ext+'><span class="n"><span>'+s.no+'</span></span><small>'+esc(s.key)+'</small><b>'+esc(s.title)+'</b><p>'+esc(s.desc)+'</p><span class="st">'+(s.ready?'✓ พร้อมแล้ว':'⏳ กำลังจัดทำ')+'</span></a>').join('');
+
+function renderStages(f='all'){
+  const list=f==='all'?DATA.classes:DATA.classes.filter(x=>x.level===f);
+  $('#stages').innerHTML=list.map(x=>{const i=DATA.classes.indexOf(x),n=String(i+1).padStart(2,'0'),lv=Math.max(1,Math.ceil((i+1)/9*5));
+    return '<a class="card stage" href="'+esc(x.url)+'" '+ext+' style="--a:'+x.a+';--b:'+x.b+'">'+img(ASSETS.worlds[i],'world',640,360)+img(ASSETS.chars[i],'char',320,320)+
+      '<span class="lvl"><b>STAGE '+n+'</b><em>'+esc(x.short)+'</em></span><span class="txt"><span class="wn">'+esc(WORLD[i]||'')+'</span><h3>'+esc(x.name)+'</h3><p>'+esc(x.desc)+'</p><span class="pips" aria-label="ระดับ '+lv+' จาก 5">'+Array.from({length:5},(_,k)=>'<i'+(k<lv?' class="on"':'')+'></i>').join('')+'</span><span class="b3d sm play">▶ เข้าสู่บทเรียน</span></span></a>'}).join('');
+  $('#class-status').textContent='แสดง '+list.length+' ชั้นเรียน';
+}
+function seg(el,items,cb){el.innerHTML=items.map((x,i)=>'<button type="button" data-f="'+x[0]+'" aria-pressed="'+(i===0)+'">'+x[1]+'</button>').join('');el.onclick=e=>{const b=e.target.closest('button');if(!b)return;$$('button',el).forEach(c=>c.setAttribute('aria-pressed',String(c===b)));cb(b.dataset.f)}}
+seg($('#class-filter'),[['all','ทั้งหมด'],['primary','ประถมศึกษา'],['secondary','มัธยมศึกษา']],renderStages);renderStages();
+
+const TONES=['#ff2e88','#ffb000','#00b89f','#3b5bff','#7c4dff','#ff6a3d'];let gAll=false,gF='all';
+function renderGames(){
+  const list=DATA.activities.filter(x=>gF==='all'||(ACTIVITY_INFO[x.title]||{}).group===gF),show=gAll||gF!=='all'?list:list.slice(0,8);
+  $('#games').innerHTML=show.map(x=>{const inf=ACTIVITY_INFO[x.title]||{},t=TONES[DATA.activities.indexOf(x)%TONES.length],cov=ASSETS.covers[x.url]||x.image||'';
+    return '<a class="card game" style="--t:'+t+'" href="'+esc(x.url)+'" '+ext+'><span class="cover"><span class="em" aria-hidden="true">'+(GEMO[inf.group]||'🎮')+'</span>'+img(cov,'',480,270)+'<span class="genre">'+(GEMO[inf.group]||'🎮')+' '+esc(GROUP_LABELS[inf.group]||'เกม')+'</span>'+(x.new?'<span class="rib">NEW</span>':'')+'</span><span class="body"><h3>'+esc(x.title.split(' · ')[0])+'</h3><p>'+esc(inf.desc||'')+'</p><span class="foot"><span class="aud">👥 '+esc(inf.audience||'ทุกระดับ')+'</span><span class="b3d sm go">เล่น ▶</span></span></span></a>'}).join('');
+  const m=$('#game-more');m.hidden=gF!=='all'||list.length<=8;m.textContent=gAll?'แสดงน้อยลง ▴':'ดูเกมทั้งหมด '+list.length+' เกม ▾';
+}
+const used=[...new Set(DATA.activities.map(x=>(ACTIVITY_INFO[x.title]||{}).group).filter(Boolean))];
+seg($('#game-filter'),[['all','🎮 ทั้งหมด'],...used.map(g=>[g,(GEMO[g]||'')+' '+(GROUP_LABELS[g]||g)])],f=>{gF=f;renderGames()});
+$('#game-more').onclick=()=>{gAll=!gAll;renderGames()};renderGames();
+
+$('#cines').innerHTML=VIDEOS.map((v,i)=>'<a class="card cine'+(i===0?' feat':'')+'" href="https://www.youtube.com/watch?v='+esc(v.id)+'" '+ext+' aria-label="เปิดวิดีโอ '+esc(v.title)+' บน YouTube"><span class="th"><img src="https://i.ytimg.com/vi/'+esc(v.id)+'/'+(i===0?'maxresdefault':'hqdefault')+'.jpg" alt="" width="480" height="270" loading="lazy" decoding="async"><span class="tp">'+esc(v.topic)+'</span><span class="pl"><i>▶</i></span></span><h3>'+esc(v.title)+'</h3></a>').join('');
+
+$('#missions').innerHTML=MISSIONS.map((m,i)=>'<a class="card ms" style="--c:'+m.c+'" href="'+m.url+'" '+ext+'><span class="pic">'+img(ASSETS.missions[i],'',640,360)+'<span class="xpb">'+esc(m.xp)+'</span></span><span class="body"><small>'+esc(m.k)+'</small><h3>'+esc(m.t)+'</h3><p>'+esc(m.d)+'</p><span class="b3d sm">'+esc(m.b)+' ▸</span></span></a>').join('');
+
+const tool=n=>DATA.tools.find(t=>t.name===n)||{};
+$('#loadout').innerHTML=TOOL_GROUPS.map(g=>'<div class="lg"><h3>'+esc(g.title)+' <small>'+esc(g.english)+'</small></h3><div class="slots">'+g.items.map(it=>{const t=tool(it[0]);return '<a class="card slot" style="--c:'+(t.c||'#3b5bff')+'" href="'+esc(t.url||'#')+'" '+ext+'><span class="ic">'+esc((it[0].replace(/^[เแโใไ]/,'')[0])||'★')+'</span><span><b>'+esc(it[0])+'</b><small>'+esc(it[1])+'</small></span></a>'}).join('')+'</div></div>').join('');
+
+$('#dpts').innerHTML=DOMAINS.map(d=>'<li style="--c:'+d.c+'"><i>'+d.e+'</i><div><b>'+esc(d.t)+'</b><small>'+esc(d.d)+'</small></div></li>').join('');
+
+$('#latest').innerHTML=(ASSETS.poseNewsBubble?'<img class="masc" src="'+ASSETS.poseNewsBubble+'" alt="" aria-hidden="true" loading="lazy">':'')+'<span class="vb">v'+esc(LATEST.version)+' · NEW</span><h3>อัปเดตวันที่ '+esc(fmt(LATEST.date))+'</h3><ul>'+LATEST.notes.map(n=>'<li>'+esc(n)+'</li>').join('')+'</ul>';
+$('#history').innerHTML='<h3>ประวัติการอัปเดต</h3>'+SITE_INFO.history.slice(1).map(h=>'<div class="hday"><h4><time datetime="'+h.date+'">'+esc(fmt(h.date))+'</time><em>v'+esc(h.version)+'</em></h4><ul>'+h.notes.map(n=>'<li>'+esc(n)+'</li>').join('')+'</ul></div>').join('');
+$('#map').innerHTML=SITE_MENU.map(m=>'<a class="card mp" style="--c:'+m.c+'" href="'+abs(m.url)+'" '+ext+'><span class="e">'+(MEMO[m.id]||'📄')+'</span><span><small>'+esc(m.en)+'</small><b>'+esc(m.title)+'</b></span>'+(m.isNew?'<em>NEW</em>':'')+'</a>').join('');
+
+/* ---------- นำทาง / เลื่อน ---------- */
+function go(id){const el=document.getElementById(id);if(el)window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-10,behavior:reduce.matches?'auto':'smooth'})}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b)go(b.dataset.go)});
+$('#top').onclick=()=>window.scrollTo({top:0,behavior:reduce.matches?'auto':'smooth'});
+const bar=$('#progress'),topb=$('#top');let st=0;
+addEventListener('scroll',()=>{if(st)return;st=requestAnimationFrame(()=>{st=0;const max=document.documentElement.scrollHeight-innerHeight;bar.style.transform='scaleX('+(max>0?scrollY/max:0)+')';topb.classList.toggle('on',scrollY>600)})},{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{rootMargin:'0px 0px -8% 0px'});$$('.sec').forEach(s=>io.observe(s));
+document.addEventListener('visibilitychange',()=>document.body.classList.toggle('paused',document.hidden));
+
+/* ---------- การ์ดผู้สอน: คลิก/Enter เพื่อพลิก ---------- */
+const pc=$('#pcard');function flip(){const b=pc.classList.toggle('back');pc.setAttribute('aria-pressed',String(b));tone(b?880:660,.14,.06,'triangle')}
+pc.addEventListener('click',flip);pc.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}});
+/* AI disclosure */
+const dlg=$('#ai-dlg');$('#ai-btn').onclick=()=>dlg.showModal?dlg.showModal():alert('การใช้ AI: Claude · ChatGPT Images · Nano Banana');$('#ai-close').onclick=()=>dlg.close();dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+
+/*__BOOT_JS__*/
+runBoot();
+</script>
+</body>
+</html>

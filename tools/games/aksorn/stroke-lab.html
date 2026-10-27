@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ห้องลองเขียน Aksorn</title>
+<style>
+/*__FONTS__*/
+:root{--ink:#2d2a5e;--ink2:#6a64a0;--bg:#f4effe;--card:#ffffff;--line:#d9d0f5;--pink:#ff5aa6;--blue:#3d8bff;--green:#2fae4a;--amber:#ffa21e;--bad:#e0262e}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'AkSarabun','Sarabun','Tahoma',sans-serif;font-size:16px}
+button{font:inherit;color:inherit;cursor:pointer}
+header{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;padding:12px 18px;background:var(--ink);color:#fff}
+header h1{margin:0;font-size:22px;font-weight:700;flex:1 1 220px}
+header h1 small{display:block;font-size:13px;font-weight:400;opacity:.8}
+.btn{border:2px solid var(--ink);background:#fff;color:var(--ink);border-radius:12px;padding:7px 14px;font-weight:700;box-shadow:0 3px 0 var(--ink);transition:transform .08s}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ink)}
+.btn.pri{background:var(--pink);color:#fff}.btn.ok{background:var(--green);color:#fff}.btn.blue{background:var(--blue);color:#fff}.btn.ghost{background:transparent;box-shadow:none;border-color:var(--line);color:var(--ink2)}
+header .btn{border-color:#fff;box-shadow:0 3px 0 rgba(255,255,255,.5)}
+.btn[disabled]{opacity:.4;pointer-events:none}
+#status{font-size:14px;opacity:.9}
+#status.dirty{color:#ffd34f;opacity:1;font-weight:700}
+main{display:grid;grid-template-columns:270px minmax(0,1fr) 320px;gap:14px;padding:14px 18px 40px;align-items:start}
+@media(max-width:1180px){main{grid-template-columns:230px minmax(0,1fr)}#side{grid-column:1/-1}}
+@media(max-width:760px){main{grid-template-columns:1fr}}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:12px 14px}
+.card h3{margin:0 0 8px;font-size:16px}
+#tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+#tabs button{border:2px solid var(--line);background:#fff;border-radius:999px;padding:4px 12px;font-size:14px;font-weight:700;color:var(--ink2)}
+#tabs button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+#chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(54px,1fr));gap:6px;max-height:62vh;overflow:auto;padding:2px}
+.chip{position:relative;border:2px solid var(--line);background:#fbf9ff;border-radius:12px;min-height:50px;padding:2px 2px;font-size:24px;line-height:1.5;text-align:center}
+.chip.v{font-family:'AkSarabun','Sarabun',sans-serif;font-size:21px}
+.chip.on{border-color:var(--pink);background:#fff0f7;box-shadow:0 0 0 2px var(--pink) inset}
+.chip.edited::after{content:'';position:absolute;right:4px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--green)}
+#gridAll{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}
+#gridAll button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:4px;text-align:center;font-size:14px;position:relative}
+#gridAll button canvas{width:100%;height:auto;display:block}
+#gridAll button.edited{border-color:var(--green)}
+#stage{min-width:0}
+#title{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;margin:0 2px 8px}
+#title b{font-size:26px}#title span{color:var(--ink2)}
+#pieces{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 8px}
+#pieces .lbl{font-size:14px;color:var(--ink2);margin-right:4px}
+.pc{border:2px solid var(--line);background:#fff;border-radius:10px;padding:3px 11px;font-weight:700;font-size:16px;position:relative}
+.pc.on{border-color:var(--pink);background:var(--pink);color:#fff}
+.pc.edited::after{content:'';position:absolute;right:3px;top:3px;width:8px;height:8px;border-radius:50%;background:var(--green)}
+#modes{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px;align-items:center}
+#modes .seg{display:flex;border:2px solid var(--ink);border-radius:12px;overflow:hidden}
+#modes .seg button{border:0;background:#fff;padding:7px 14px;font-weight:700}
+#modes .seg button.on{background:var(--ink);color:#fff}
+#cvwrap{position:relative;background:#fff;border:3px solid var(--ink);border-radius:20px;overflow:hidden;touch-action:none;box-shadow:0 5px 0 var(--ink)}
+canvas#cv{display:block;width:100%;touch-action:none;cursor:crosshair}
+#banner{margin:10px 0 0;padding:9px 12px;border-radius:12px;background:#fff7d6;border:2px solid #f3d56a;display:none;gap:8px;align-items:center;flex-wrap:wrap}
+#banner.show{display:flex}#banner span{flex:1 1 220px}
+#msg{margin:10px 2px 0;min-height:24px;font-weight:700;color:var(--ink2)}
+#msg.good{color:var(--green)}#msg.bad{color:var(--bad)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:6px 0}
+label.opt{display:flex;gap:8px;align-items:center;font-size:15px;margin:6px 0}
+input[type=range]{flex:1}
+#sample{font-family:'AkSarabun','Sarabun',sans-serif;font-size:58px;line-height:1.7;text-align:center;color:var(--bad);margin:0}
+#sample.mali{font-family:'AkMali','Mali',sans-serif;color:var(--ink)}
+#hint{font-size:14px;color:var(--ink2);margin:4px 0 0}
+#shared{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:6px}
+#shared button{border:2px solid var(--line);background:#fff;border-radius:10px;padding:3px;font-size:13px}
+#shared canvas{width:100%;display:block}
+ol.how{margin:0;padding-left:20px;font-size:15px;line-height:1.55}
+ol.how li{margin:2px 0}
+kbd{background:#eee9ff;border-radius:6px;padding:0 6px;font-size:13px}
+#toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:14px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw;z-index:9}
+#toast.show{opacity:1}#toast.bad{background:var(--bad)}
+</style>
+</head>
+<body>
+<header>
+  <h1>ห้องลองเขียน · ตะลุยเมืองอักษร<small>เขียนบอกเกมว่าแต่ละตัวเริ่มเขียนตรงไหน ลากทางไหน เขียนกี่ขีด รูปที่หน้าตาเหมือนกันจะใช้ลายเส้นเดียวกันเอง</small></h1>
+  <span id="status"></span>
+  <button class="btn" id="btnOpen">เปิดไฟล์ลายเส้น</button>
+  <button class="btn pri" id="btnSave">บันทึกไฟล์ลายเส้น</button>
+  <input type="file" id="fileIn" accept=".json,application/json" hidden>
+</header>
+<main>
+  <section class="card" id="side1">
+    <div id="tabs"></div>
+    <div id="chips"></div>
+  </section>
+  <section id="stage">
+    <div id="title"></div>
+    <div id="pieces"></div>
+    <div id="modes">
+      <div class="seg" id="seg"><button data-m="write" class="on">เขียนบอก</button><button data-m="play">ดูการเขียน</button><button data-m="test">ลองเป็นนักเรียน</button></div>
+      <span id="modeOpts"></span>
+    </div>
+    <div id="cvwrap"><canvas id="cv"></canvas></div>
+    <div id="banner"><span id="bannerTxt"></span><button class="btn ghost" id="bUndo">ย้อนขีดล่าสุด</button><button class="btn ghost" id="bCancel">ยกเลิก</button><button class="btn ok" id="bOk">บันทึกชิ้นนี้</button></div>
+    <div id="msg"></div>
+    <div id="allWrap" hidden><h3 style="margin:16px 2px 8px">ภาพรวมสระทั้งหมด (กดที่รูปเพื่อไปแก้ จุดเขียวคือจุดเริ่มเขียน เลขคือลำดับขีด)</h3><div id="gridAll"></div></div>
+  </section>
+  <aside id="side">
+    <div class="card" style="margin-bottom:12px"><h3>วิธีใช้</h3>
+      <ol class="how">
+        <li>เลือกตัวที่ต้องการทางซ้าย (จุดเขียว = ครูแก้แล้ว)</li>
+        <li>ใช้เมาส์ นิ้ว หรือปากกา <b>เขียนลงบนกระดาน</b> ทีละขีดตามลำดับที่ต้องการให้เด็กเขียน จุดเริ่มคือที่ปากกาแตะ ทิศทางคือที่ลาก</li>
+        <li>เขียนเสร็จกด <b>บันทึกชิ้นนี้</b> (หรือ <kbd>Enter</kbd>) ผิดตรงไหนกด <kbd>Z</kbd> ย้อนขีดล่าสุด หรือ <kbd>Esc</kbd> เริ่มใหม่</li>
+        <li>ลอง <b>ดูการเขียน</b> และ <b>ลองเป็นนักเรียน</b> ว่าเด็กลากตามได้ไหม</li>
+        <li>เสร็จแล้วกด <b>บันทึกไฟล์ลายเส้น</b> แล้วบอก Claude ในแชทว่าบันทึกแล้ว ไฟล์จะถูกนำเข้าเกมให้</li>
+      </ol></div>
+    <div class="card" style="margin-bottom:12px"><h3 id="sampleH">หน้าตาในคำ</h3><p id="sample"></p><p id="hint"></p></div>
+    <div class="card" style="margin-bottom:12px"><h3>ตัวช่วยบนกระดาน</h3>
+      <label class="opt"><input type="checkbox" id="oGhost" checked> เส้นเดิมก่อนแก้ (เส้นประเทา)</label>
+      <label class="opt" id="oFontRow"><input type="checkbox" id="oFont" checked> ตัวอักษรจากฟอนต์ (จาง ๆ) ไว้เทียบรูปร่าง</label>
+      <label class="opt"><input type="checkbox" id="oNums" checked> เลขลำดับขีดและลูกศรทิศทาง</label>
+      <label class="opt">เกลาเส้นให้เรียบ <input type="range" id="oSmooth" min="0" max="3" value="2"> <span id="oSmoothV">กลาง</span></label>
+    </div>
+    <div class="card" id="sharedCard" style="margin-bottom:12px"><h3 id="sharedH">ชิ้นนี้ใช้ร่วมกับ</h3><div id="shared"></div><p id="hint2" style="font-size:14px;color:var(--ink2);margin:6px 0 0"></p></div>
+    <div class="card"><h3>จัดการชิ้นนี้</h3>
+      <div class="row"><button class="btn ghost" id="bReset">คืนค่าเดิมของชิ้นนี้</button><button class="btn ghost" id="bOwn"></button></div>
+      <div class="row"><button class="btn ghost" id="bResetAll">ล้างการแก้ไขทั้งหมด</button></div>
+    </div>
+  </aside>
+</main>
+<div id="toast"></div>
+<script>
+/*__CORE__*/
+</script>
+<script>
+/*__DATA__*/
+</script>
+<script>
+'use strict';
+const F = SL.FRAME, COL = SL.STROKE_COL, $ = id => document.getElementById(id);
+const LSK = 'aksorn_stroke_lab_v1';
+let S = SL.emptyState(), cur = null, piece = null, pending = null, mode = 'write', tab = 'cons', dirty = false, rawStroke = null, testLv = 0;
+const opts = { ghost: true, font: true, nums: true, smooth: 2 };
+const cv = $('cv'), ctx = cv.getContext('2d');
+let PX = 1;                                              // พิกเซลจอต่อหน่วยพิกัดของกระดาน
+
+/* ---------- เก็บ/โหลด ---------- */
+function loadInitial() {
+  let ls = null; try { ls = JSON.parse(localStorage.getItem(LSK) || 'null'); } catch (e) { ls = null; }
+  const sv = SAVED && SAVED.state ? SAVED : null;
+  if (ls && ls.state && (!sv || (ls.savedAt || '') >= (sv.savedAt || ''))) { S = SL.importState(ls); if (ls.dirty) setDirty(true); }
+  else if (sv) S = SL.importState(sv);
+}
+function persist() { try { localStorage.setItem(LSK, JSON.stringify({ savedAt: new Date().toISOString(), dirty: dirty, state: S })); } catch (e) { /* ไม่เป็นไร ยังใช้งานต่อได้ */ } }
+function setDirty(v) { dirty = v; const el = $('status'); el.textContent = v ? 'มีการแก้ไขที่ยังไม่ได้บันทึกเป็นไฟล์ (เก็บในเบราว์เซอร์นี้ไว้ให้แล้ว)' : (SAVED && SAVED.savedAt ? 'ลายเส้นล่าสุดที่เกมใช้: ' + new Date(SAVED.savedAt).toLocaleString('th-TH') : ''); el.className = v ? 'dirty' : ''; }
+function toast(t, bad) { const el = $('toast'); el.textContent = t; el.className = 'show' + (bad ? ' bad' : ''); clearTimeout(toast.t); toast.t = setTimeout(() => el.className = bad ? 'bad' : '', 2800); }
+function say(t, k) { const el = $('msg'); el.textContent = t || ''; el.className = k || ''; }
+
+/* ---------- ข้อมูลของตัวที่เลือก ---------- */
+const isForm = k => SL.isForm(INIT, k);
+const anchor = k => isForm(k) ? { x: F.ox, y: F.oy } : { x: F.gx, y: F.gy };
+const labelOf = k => (LABELS[k] && LABELS[k].name) || k;
+// เส้นทั้งหมดของตัวนี้ (พิกัดอิงตัวเอง) แยกเป็นชิ้น; ถ้ากำลังเขียนชิ้นที่เลือกใหม่ ใช้เส้นที่เขียนค้างแทนเส้นเดิมของชิ้นนั้น
+function unitStrokes(k, usePending) {
+  let list;
+  if (isForm(k)) list = SL.assemble(INIT, S, k).strokes.map(s => ({ pts: s.pts, piece: s.piece }));
+  else list = SL.glyphStrokes(INIT, S, k).map(fl => ({ pts: SL.pairs(fl), piece: 'glyph' }));
+  if (usePending && pending) {
+    const ids = isForm(k) ? SL.pieces(INIT, S, k).map(p => p.id) : ['glyph'], at = list.findIndex(s => s.piece === piece);
+    const rest = list.filter(s => s.piece !== piece), out = []; let placed = false;
+    // รักษาลำดับของชิ้นอื่น แล้วแทรกเส้นที่เขียนค้างตรงตำแหน่งของชิ้นที่เลือก
+    ids.forEach(id => { if (id === piece) { pending.forEach(p => out.push({ pts: p.pts, piece: piece, pend: true })); placed = true; } else list.filter(s => s.piece === id).forEach(s => out.push(s)); });
+    if (!placed) pending.forEach(p => out.push({ pts: p.pts, piece: piece, pend: true }));
+    return out;
+  }
+  return list;
+}
+const defaultStrokes = k => isForm(k) ? SL.assemble(INIT, SL.emptyState(), k).strokes.map(s => ({ pts: s.pts })) : (INIT.glyphs[k] || []).map(fl => ({ pts: SL.pairs(fl) }));
+const toL = (pts, a) => pts.map(p => [p[0] + a.x, p[1] + a.y]);
+
+/* ---------- วาด ---------- */
+function path(c, pts) { c.beginPath(); pts.forEach((p, i) => i ? c.lineTo(p[0], p[1]) : c.moveTo(p[0], p[1])); }
+function arrows(c, pts, col, gap) {
+  let acc = gap * 0.6;
+  for (let i = 1; i < pts.length; i++) {
+    const a = pts[i - 1], b = pts[i], d = Math.hypot(b[0] - a[0], b[1] - a[1]); acc += d;
+    if (acc >= gap && i >= 2 && i < pts.length - 1) { acc = 0; const ang = Math.atan2(b[1] - pts[i - 2][1], b[0] - pts[i - 2][0]); c.save(); c.translate(b[0], b[1]); c.rotate(ang); c.fillStyle = col; c.beginPath(); c.moveTo(7, 0); c.lineTo(-5, -6); c.lineTo(-5, 6); c.closePath(); c.fill(); c.restore(); }
+  }
+}
+function shade(hex, f) { const n = parseInt(hex.slice(1), 16); return 'rgb(' + [n >> 16, (n >> 8) & 255, n & 255].map(v => Math.round(v * f)).join(',') + ')'; }
+function paper(c, k) {
+  c.fillStyle = '#fff'; c.fillRect(0, 0, F.W, F.H);
+  if (isForm(k)) {
+    const d = INIT.forms[k].dash; c.save(); c.strokeStyle = '#eee9ff'; c.lineWidth = 1.2; c.setLineDash([5, 6]); c.beginPath(); c.moveTo(F.ox + (d[0] + d[1]) / 2, 10); c.lineTo(F.ox + (d[0] + d[1]) / 2, F.H - 10); c.stroke(); c.restore();
+    c.save(); c.lineCap = 'round'; c.lineWidth = 6; c.strokeStyle = '#a9b0c6'; c.beginPath(); c.moveTo(F.ox + d[0], F.oy); c.lineTo(F.ox + d[1], F.oy); c.stroke(); c.restore();
+    c.fillStyle = '#8a84b0'; c.font = '13px AkSarabun,Sarabun,sans-serif'; c.textAlign = 'center'; c.fillText('ที่ของพยัญชนะ (ไม่ต้องเขียน)', F.ox + (d[0] + d[1]) / 2, F.oy + 22);
+  } else {
+    [['asc', true, '#7aa6ff', 1.6], ['x', true, '#ff9cc4', 1.6], ['base', false, '#ff5aa6', 2.2], ['desc', true, '#7aa6ff', 1.6]].forEach(l => { const y = F.gy + TMET[l[0]]; c.save(); c.setLineDash(l[1] ? [8, 6] : []); c.lineWidth = l[3]; c.strokeStyle = l[2]; c.globalAlpha = l[1] ? .65 : .85; c.beginPath(); c.moveTo(F.gx - 60, y); c.lineTo(F.gx + 420, y); c.stroke(); c.restore(); });
+    if (opts.font) {
+      c.save(); c.font = '250px AkMali,Mali,sans-serif'; c.textAlign = 'center'; c.textBaseline = 'alphabetic'; c.fillStyle = 'rgba(61,139,255,.13)';
+      const w = c.measureText(k).width; c.fillText(k, F.gx + Math.max(360, w + 70) / 2, F.gy + 250); c.restore();
+    }
+  }
+}
+function drawStrokes(c, list, a, o) {
+  o = o || {}; const piecesEdit = mode === 'write', sel = piece;
+  list.forEach((s, i) => {
+    const L = toL(s.pts, a), col = COL[i % COL.length], dim = piecesEdit && sel && s.piece !== sel && !o.flat;
+    c.save(); c.lineCap = 'round'; c.lineJoin = 'round'; c.globalAlpha = dim ? .5 : 1;
+    path(c, L); c.lineWidth = 17; c.strokeStyle = 'rgba(138,92,240,' + (s.pend ? .22 : .16) + ')'; c.stroke();
+    path(c, L); c.lineWidth = 7; c.strokeStyle = col; c.stroke();
+    if (opts.nums || o.nums) {
+      arrows(c, L, shade(col, .75), 34);
+      const p = L[0]; c.fillStyle = '#3fb54a'; c.strokeStyle = '#2d2a5e'; c.lineWidth = 2.5; c.beginPath(); c.arc(p[0], p[1], 10.5, 0, 7); c.fill(); c.stroke();
+      c.fillStyle = '#fff'; c.font = 'bold 13px AkSarabun,Sarabun,sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(String(i + 1), p[0], p[1] + 1);
+    }
+    c.restore();
+  });
+}
+function render() {
+  const k = cur; if (!k) return; const c = ctx; c.setTransform(PX, 0, 0, PX, 0, 0); c.clearRect(0, 0, F.W, F.H); const a = anchor(k);
+  paper(c, k);
+  if (mode === 'test') return renderTest(c, k, a);
+  if (mode === 'play') return renderPlay(c, k, a);
+  if (opts.ghost) {
+    const g = defaultStrokes(k); c.save(); c.setLineDash([7, 7]); c.lineWidth = 3; c.strokeStyle = 'rgba(120,120,150,.45)'; c.lineCap = 'round';
+    g.forEach(s => { path(c, toL(s.pts, a)); c.stroke(); }); c.restore();
+  }
+  if (pending) {   // เส้นเดิมของชิ้นที่กำลังเขียนใหม่ แสดงจาง ๆ ให้เห็นว่าอยู่ตรงไหน
+    const all = unitStrokes(k, false).filter(s => s.piece === piece); c.save(); c.setLineDash([3, 8]); c.lineWidth = 4; c.strokeStyle = 'rgba(255,162,30,.5)'; c.lineCap = 'round'; all.forEach(s => { path(c, toL(s.pts, a)); c.stroke(); }); c.restore();
+  }
+  drawStrokes(c, unitStrokes(k, true), a);
+  if (rawStroke && rawStroke.length > 1) { c.save(); c.lineCap = 'round'; c.lineJoin = 'round'; path(c, rawStroke); c.lineWidth = 6; c.strokeStyle = '#2d2a5e'; c.stroke(); c.restore(); }
+}
+
+/* ---------- เขียนบอก ---------- */
+function pt(e) { const r = cv.getBoundingClientRect(); return [(e.clientX - r.left) * F.W / r.width, (e.clientY - r.top) * F.H / r.height]; }
+function distSeg(p, a, b) { const dx = b[0] - a[0], dy = b[1] - a[1], l = dx * dx + dy * dy; let t = l ? ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / l : 0; t = Math.max(0, Math.min(1, t)); return Math.hypot(p[0] - a[0] - t * dx, p[1] - a[1] - t * dy); }
+function nearestPiece(p) {
+  const a = anchor(cur); let best = null, bd = 16;
+  unitStrokes(cur, false).forEach(s => { const L = toL(s.pts, a); for (let i = 1; i < L.length; i++) { const d = distSeg(p, L[i - 1], L[i]); if (d < bd) { bd = d; best = s.piece; } } });
+  return best;
+}
+cv.addEventListener('pointerdown', e => {
+  if (!cur) return; e.preventDefault(); try { cv.setPointerCapture(e.pointerId); } catch (x) { /* ไม่เป็นไร */ }
+  const p = pt(e);
+  if (mode === 'test') return testDown(p, e);
+  if (mode !== 'write') return;
+  rawStroke = [p]; rawStroke.id = e.pointerId; rawStroke.len = 0;
+});
+cv.addEventListener('pointermove', e => {
+  const p = pt(e);
+  if (mode === 'test') return testMove(p, e);
+  if (!rawStroke || e.pointerId !== rawStroke.id) return;
+  const evs = e.getCoalescedEvents ? e.getCoalescedEvents() : [e]; (evs.length ? evs : [e]).forEach(ev => { const q = pt(ev), l = rawStroke[rawStroke.length - 1]; rawStroke.len += Math.hypot(q[0] - l[0], q[1] - l[1]); rawStroke.push(q); });
+  render();
+});
+function endDraw(e) {
+  if (mode === 'test') return testUp(e);
+  if (!rawStroke || e.pointerId !== rawStroke.id) return;
+  const raw = rawStroke; rawStroke = null;
+  if (raw.len < 6) { // แตะเฉย ๆ = เลือกชิ้นที่แตะ
+    if (!pending) { const id = nearestPiece(raw[0]); if (id && id !== piece) { piece = id; buildPieces(); refreshSide(); } }
+    render(); return;
+  }
+  const a = anchor(cur), pts = SL.smooth(raw, opts.smooth).map(p => [p[0] - a.x, p[1] - a.y]);
+  if (pts.length < 2) { render(); return; }
+  if (!pending) pending = [];
+  pending.push({ pts }); updateBanner(); render(); say('ขีดที่ ' + pending.length + ' เขียนแล้ว เขียนขีดต่อไปได้เลย หรือกด “บันทึกชิ้นนี้” เมื่อครบ');
+}
+cv.addEventListener('pointerup', endDraw); cv.addEventListener('pointercancel', endDraw);
+function updateBanner() {
+  const el = $('banner'); el.className = pending && mode === 'write' ? 'show' : '';
+  if (!pending) return; const pc = pieceInfo();
+  let need = ''; if (pc && pc.idx) need = ' ชิ้นนี้ต้องเขียน ' + pc.idx.length + ' ขีด'; else if (pc && pc.part) need = ' (ตอนนี้ชิ้นนี้มี ' + SL.partStrokes(INIT, S, pc.part).length + ' ขีด)';
+  $('bannerTxt').textContent = 'กำลังเขียนชิ้น “' + (pc ? pc.label : labelOf(cur)) + '” ใหม่ · เขียนแล้ว ' + pending.length + ' ขีด.' + need;
+}
+
+function pieceInfo() { if (!isForm(cur)) return { id: 'glyph', label: cur }; return SL.pieces(INIT, S, cur).find(p => p.id === piece); }
+function commit() {
+  if (!pending || !pending.length) return; const res = SL.commitPiece(INIT, S, cur, piece, pending.map(p => p.pts));
+  if (!res.ok) { toast(res.msg, true); say(res.msg, 'bad'); return; }
+  pending = null; persist(); setDirty(true); persist(); updateBanner(); refreshAll(); toast(res.msg); say(res.msg, 'good');
+}
+function cancelPending() { pending = null; updateBanner(); render(); say(''); }
+function undoStroke() { if (!pending) return; pending.pop(); if (!pending.length) pending = null; updateBanner(); render(); }
+$('bOk').onclick = commit; $('bCancel').onclick = cancelPending; $('bUndo').onclick = undoStroke;
+document.addEventListener('keydown', e => {
+  if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+  if (e.key === 'Enter') commit(); else if (e.key === 'Escape') cancelPending(); else if ((e.key === 'z' || e.key === 'Z' || e.key === 'ผ') && !e.ctrlKey && !e.metaKey) undoStroke(); else if (e.key === 'z' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); undoStroke(); }
+  else if (e.key === ' ' && mode === 'play') { e.preventDefault(); startPlay(); }
+});
+
+/* ---------- ดูการเขียน (เล่นตามลำดับ) ---------- */
+let play = null;
+function startPlay() {
+  const a = anchor(cur), list = unitStrokes(cur, false).map((s, i) => ({ pts: SL.resamplePts(toL(s.pts, a), 3), col: COL[i % COL.length] }));
+  if (!list.length) return; play = { list, k: 0, t: 0, wait: 0, hold: 0, last: performance.now(), done: false }; say('ดูว่าปากกาเริ่มที่ไหนและลากไปทางไหน');
+  cancelAnimationFrame(play.raf); const tick = now => { if (!play || mode !== 'play') return; const dt = Math.min(60, now - play.last); play.last = now; stepPlay(dt); render(); if (!play.done || play.hold > 0) play.raf = requestAnimationFrame(tick); }; play.raf = requestAnimationFrame(tick);
+}
+function stepPlay(dt) {
+  const P = play; if (P.hold > 0) { P.hold -= dt; if (P.hold <= 0) P.done = true; return; } if (P.wait > 0) { P.wait -= dt; return; }
+  const it = P.list[P.k]; P.t = Math.min(it.pts.length - 1, P.t + dt / 1000 * 38);
+  if (P.t >= it.pts.length - 1) { P.k++; if (P.k >= P.list.length) { P.k = P.list.length; P.hold = 1000; } else { P.t = 0; P.wait = 420; } }
+}
+function renderPlay(c, k, a) {
+  const P = play, all = unitStrokes(k, false).map((s, i) => ({ pts: toL(s.pts, a), col: COL[i % COL.length] }));
+  c.save(); c.lineCap = 'round'; c.lineJoin = 'round';
+  all.forEach(s => { path(c, s.pts); c.lineWidth = 15; c.strokeStyle = 'rgba(138,92,240,.14)'; c.stroke(); });
+  if (P) P.list.forEach((s, i) => {
+    const full = i < P.k, now = i === P.k; if (!full && !now) return; const n = full ? s.pts.length - 1 : Math.floor(P.t); if (n < 1) return;
+    path(c, s.pts.slice(0, n + 1)); c.lineWidth = 9; c.strokeStyle = s.col; c.stroke();
+  });
+  all.forEach((s, i) => { const p = s.pts[0]; c.fillStyle = '#3fb54a'; c.strokeStyle = '#2d2a5e'; c.lineWidth = 2.5; c.beginPath(); c.arc(p[0], p[1], 10.5, 0, 7); c.fill(); c.stroke(); c.fillStyle = '#fff'; c.font = 'bold 13px AkSarabun,Sarabun,sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(String(i + 1), p[0], p[1] + 1); });
+  if (P && P.k < P.list.length) { const s = P.list[P.k], p = s.pts[Math.floor(P.t)]; c.fillStyle = '#ffa21e'; c.strokeStyle = '#2d2a5e'; c.lineWidth = 3; c.beginPath(); c.arc(p[0], p[1], 9, 0, 7); c.fill(); c.stroke(); }
+  c.restore();
+}
+
+/* ---------- ลองเป็นนักเรียน (จำลองกติกาเดียวกับเกม: ค่ายอมรับตามระดับ ต้องเริ่มที่จุดเขียว ลากไปตามลำดับ) ---------- */
+const TR_LV = [{ tol: 46, lane: .34, arrows: true, nums: true, all: true }, { tol: 38, lane: .28, arrows: true, nums: true, all: true }, { tol: 32, lane: .18, arrows: false, nums: false, all: false }, { tol: 28, lane: .10, arrows: false, nums: false, all: false }];
+const GS = 1.4;      // ในเกมกระดานขยายสูงสุด 1.4 เท่า: ค่ายอมรับจริงบนจอ = tol px ที่ขนาดนี้
+let T = null;
+function startTest() {
+  const a = anchor(cur), cfg = TR_LV[testLv];
+  const strokes = unitStrokes(cur, false).map((s, i) => { const pts = SL.resamplePts(toL(s.pts, a), 7 / GS).map(p => ({ x: p[0], y: p[1] })); return { pts, n: pts.length, col: COL[i % COL.length] }; });
+  if (!strokes.length) { T = null; return; }
+  T = { cfg, tol: cfg.tol / GS, strokes, si: 0, pi: 0, drawing: false, off: false, mistakes: 0, done: false, last: null, trail: [] };
+  say('เริ่มที่จุดสีเขียว แล้วลากตามรอยให้สุดขีด');
+}
+function tcur() { return T.strokes[T.si]; }
+function testDown(p) {
+  if (!T || T.done) return; const h = tcur().pts[T.pi], r = Math.max(T.cfg.tol * 1.5, 58) / GS;
+  if (Math.hypot(p[0] - h.x, p[1] - h.y) > r) { say(T.pi === 0 ? 'ต้องเริ่มที่จุดสีเขียวนะ' : 'ลากต่อจากจุดสีเหลืองนะ', 'bad'); return; }
+  T.drawing = true; T.last = { x: p[0], y: p[1] }; T.off = false; say(''); render();
+}
+function testMove(p, e) { if (!T || !T.drawing || T.done) return; if (e.buttons === 0 && e.pointerType === 'mouse') { T.drawing = false; return; } testFollow(p[0], p[1]); render(); }
+function testUp() { if (T) T.drawing = false; }
+function testFollow(x, y) {
+  const a = T.last, d = Math.hypot(x - a.x, y - a.y), n = Math.max(1, Math.ceil(d / (5 / GS)));
+  for (let i = 1; i <= n && T.drawing; i++) testStep(a.x + (x - a.x) * i / n, a.y + (y - a.y) * i / n);
+  T.last = { x: x, y: y };
+}
+function testStep(x, y) {
+  const st = tcur(), tol = T.tol; let best = T.pi;
+  for (let j = T.pi + 1; j <= Math.min(st.n - 1, T.pi + 4); j++) if (Math.hypot(x - st.pts[j].x, y - st.pts[j].y) <= tol) best = j;
+  if (best > T.pi || Math.hypot(x - st.pts[T.pi].x, y - st.pts[T.pi].y) <= tol) { T.off = false; if (best > T.pi) { T.pi = best; if (T.pi >= st.n - 1) strokeDoneT(); } }
+  else { const h = st.pts[T.pi], dh = Math.hypot(x - h.x, y - h.y); if (dh > tol * 2.2 && !T.off) { T.off = true; T.mistakes++; say('ออกนอกรอยแล้ว กลับมาที่จุดสีเหลือง แล้วลากต่อนะ', 'bad'); } else if (dh <= tol * 1.3) T.off = false; }
+}
+function strokeDoneT() {
+  T.drawing = false; T.si++; T.pi = 0; T.off = false;
+  if (T.si >= T.strokes.length) { T.done = true; const gs = T.mistakes <= 1 ? 3 : T.mistakes <= 3 ? 2 : 1; say('เขียนครบแล้ว! ได้ ' + gs + ' ดาว (พลาด ' + T.mistakes + ' ครั้ง) ถ้าเด็กลากตามยาก ลองเขียนบอกใหม่ให้ขีดต่อเนื่องขึ้น', 'good'); }
+  else say('เก่งมาก! เขียนต่อขีดที่ ' + (T.si + 1) + ' เริ่มที่จุดสีเขียว', 'good');
+}
+function renderTest(c, k, a) {
+  if (!T) return; const cfg = T.cfg; c.save(); c.lineCap = 'round'; c.lineJoin = 'round';
+  T.strokes.forEach((st, i) => {
+    const P = st.pts.map(p => [p.x, p.y]);
+    path(c, P); c.lineWidth = 38 / GS; c.strokeStyle = 'rgba(138,92,240,' + cfg.lane + ')'; c.stroke();
+    path(c, P); c.setLineDash([1, 12 / GS]); c.lineWidth = 5 / GS; c.strokeStyle = 'rgba(255,255,255,' + Math.min(1, cfg.lane * 3) + ')'; c.stroke(); c.setLineDash([]);
+    if (cfg.arrows) arrows(c, P, shade(st.col, .8), 9 * 7 / GS);
+    const reach = i < T.si ? st.n - 1 : i === T.si ? T.pi : -1;
+    if (reach > 0) { path(c, P.slice(0, reach + 1)); c.lineWidth = 32 / GS; c.strokeStyle = '#2d2a5e'; c.stroke(); path(c, P.slice(0, reach + 1)); c.lineWidth = 23 / GS; c.strokeStyle = st.col; c.stroke(); }
+  });
+  if (!T.done) T.strokes.forEach((st, i) => {
+    if (i < T.si) return; if (!cfg.all && i !== T.si) return; const p = st.pts[0]; c.fillStyle = i === T.si ? '#3fb54a' : '#9bd8a2'; c.strokeStyle = '#2d2a5e'; c.lineWidth = 3; c.beginPath(); c.arc(p.x, p.y, 13, 0, 7); c.fill(); c.stroke();
+    if (cfg.nums && T.strokes.length > 1) { c.fillStyle = '#fff'; c.font = 'bold 15px AkSarabun,Sarabun,sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(String(i + 1), p.x, p.y + 1); }
+  });
+  if (!T.done && T.pi > 0) { const h = tcur().pts[T.pi]; c.lineWidth = 4; c.strokeStyle = '#ffc82e'; c.beginPath(); c.arc(h.x, h.y, 14, 0, 7); c.stroke(); }
+  c.restore();
+}
+
+/* ---------- แถบซ้าย ---------- */
+function buildTabs() {
+  const el = $('tabs'); el.innerHTML = '';
+  GROUPS.concat([{ id: 'all', name: 'ภาพรวมสระ' }]).forEach(g => { const b = document.createElement('button'); b.textContent = g.name; b.className = g.id === tab ? 'on' : ''; b.onclick = () => { tab = g.id; buildTabs(); buildChips(); }; el.appendChild(b); });
+}
+function buildChips() {
+  const chips = $('chips'), grid = $('gridAll'); chips.innerHTML = ''; grid.innerHTML = ''; $('allWrap').hidden = tab !== 'all';
+  let keys;
+  if (tab === 'all') {
+    keys = [].concat.apply([], GROUPS.filter(g => g.id === 'vow' || g.id === 'chg').map(g => g.keys)).filter(isForm);
+    keys.forEach(k => {
+      const b = document.createElement('button'); b.className = SL.isEdited(INIT, S, k) ? 'edited' : ''; const cvs = document.createElement('canvas'); cvs.width = 300; cvs.height = 200; b.appendChild(cvs); b.appendChild(document.createTextNode(k + ' ' + labelOf(k)));
+      b.onclick = () => openKey(k); grid.appendChild(b); drawThumb(cvs, k, null);
+    });
+  } else { const g = GROUPS.find(x => x.id === tab); keys = g ? g.keys : []; }
+  keys.forEach(k => { const b = document.createElement('button'); b.className = 'chip' + (isForm(k) || tab === 'vow' || tab === 'all' ? ' v' : '') + (k === cur ? ' on' : '') + (SL.isEdited(INIT, S, k) ? ' edited' : ''); b.textContent = k; b.title = labelOf(k); b.onclick = () => openKey(k); chips.appendChild(b); });
+}
+// ภาพย่อของรูปสระ (ใช้ในภาพรวมและแผง 'ใช้ร่วมกับ'); hl = ชื่อชิ้นส่วนที่ต้องไฮไลต์
+function drawThumb(cvs, k, hl) {
+  const c = cvs.getContext('2d'), W = cvs.width, H = cvs.height; c.setTransform(1, 0, 0, 1, 0, 0); c.clearRect(0, 0, W, H); c.fillStyle = '#fff'; c.fillRect(0, 0, W, H);
+  const a = SL.assemble(INIT, S, k), pts = []; a.strokes.forEach(s => s.pts.forEach(p => pts.push(p))); const d = a.dash; pts.push([d[0], 0], [d[1], 0]);
+  const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]), x0 = Math.min.apply(null, xs), x1 = Math.max.apply(null, xs), y0 = Math.min.apply(null, ys), y1 = Math.max.apply(null, ys), m = 14, sc = Math.min((W - 2 * m) / Math.max(1, x1 - x0), (H - 2 * m) / Math.max(1, y1 - y0), 1.1), ox = (W - sc * (x1 - x0)) / 2 - sc * x0, oy = (H - sc * (y1 - y0)) / 2 - sc * y0;
+  c.lineCap = 'round'; c.lineJoin = 'round'; c.strokeStyle = '#b3b9cc'; c.lineWidth = 5; c.beginPath(); c.moveTo(ox + sc * d[0], oy); c.lineTo(ox + sc * d[1], oy); c.stroke();
+  a.strokes.forEach((s, i) => { const L = s.pts.map(p => [ox + sc * p[0], oy + sc * p[1]]); const hot = hl && s.part === hl; c.globalAlpha = hl && !hot ? .35 : 1; path(c, L); c.lineWidth = hot ? 6 : 4; c.strokeStyle = hot ? '#e0262e' : COL[i % COL.length]; c.stroke(); c.globalAlpha = 1; c.fillStyle = '#3fb54a'; c.beginPath(); c.arc(L[0][0], L[0][1], 5, 0, 7); c.fill(); c.fillStyle = '#2d2a5e'; c.font = 'bold 11px AkSarabun,Sarabun,sans-serif'; c.textAlign = 'left'; c.fillText(String(i + 1), L[0][0] + 6, L[0][1] - 4); });
+}
+
+/* ---------- ตัวที่เลือก ---------- */
+function openKey(k) {
+  if (pending && !confirm('ยังเขียนชิ้นนี้ไม่เสร็จ ทิ้งที่เขียนไว้แล้วไปตัวอื่นไหม?')) return;
+  pending = null; rawStroke = null; cur = k; const ps = isForm(k) ? SL.pieces(INIT, S, k) : [{ id: 'glyph' }]; piece = ps[0].id; play = null; T = null;
+  const g = GROUPS.find(x => x.keys.includes(k)); if (g && tab !== g.id && tab !== 'all') { tab = g.id; buildTabs(); }
+  if (tab === 'all' && g) { /* คงภาพรวมไว้ */ }
+  buildChips(); buildTitle(); buildPieces(); refreshSide(); updateBanner(); setMode(mode, true); say('');
+}
+function buildTitle() {
+  const L = LABELS[cur] || {}; $('title').innerHTML = ''; const b = document.createElement('b'); b.textContent = cur; b.style.fontFamily = isForm(cur) ? "'AkSarabun','Sarabun'" : "'AkMali','Mali','AkSarabun'"; const s = document.createElement('span'); s.textContent = L.name && L.name !== cur ? L.name : ''; $('title').append(b, s);
+}
+function buildPieces() {
+  const el = $('pieces'); el.innerHTML = '';
+  if (!isForm(cur)) { el.style.display = 'none'; return; } el.style.display = 'flex';
+  const lbl = document.createElement('span'); lbl.className = 'lbl'; lbl.textContent = INIT.forms[cur] && S.own[cur] ? 'เขียนเองทั้งรูป:' : 'ชิ้นที่จะเขียนใหม่ (เรียงตามลำดับเขียน):'; el.appendChild(lbl);
+  SL.pieces(INIT, S, cur).forEach(p => { const b = document.createElement('button'); b.className = 'pc' + (p.id === piece ? ' on' : '') + (p.part && S.parts[p.part] ? ' edited' : p.id === 'own' ? ' edited' : ''); b.textContent = p.label; b.onclick = () => { if (pending && !confirm('ยังเขียนชิ้นนี้ไม่เสร็จ ทิ้งที่เขียนไว้ไหม?')) return; pending = null; piece = p.id; buildPieces(); refreshSide(); updateBanner(); render(); }; el.appendChild(b); });
+}
+function refreshSide() {
+  const L = LABELS[cur] || {}, f = isForm(cur);
+  $('sample').textContent = L.sample || cur; $('sample').className = f ? '' : 'mali'; $('sampleH').textContent = f ? 'หน้าตาในคำ' : 'ตัวอย่าง'; $('hint').textContent = L.hint || '';
+  $('oFontRow').style.display = f ? 'none' : 'flex';
+  const sh = $('shared'); sh.innerHTML = ''; const pc = f ? SL.pieces(INIT, S, cur).find(p => p.id === piece) : null;
+  $('sharedCard').style.display = f ? 'block' : 'none';
+  if (f && pc && pc.part) {
+    const users = SL.usedBy(INIT, pc.part); $('sharedH').textContent = 'ชิ้น “' + SL.partLabel(pc.part) + '” ใช้ร่วมกับ ' + users.length + ' รูป';
+    users.forEach(k => { const b = document.createElement('button'); const cvs = document.createElement('canvas'); cvs.width = 176; cvs.height = 120; b.appendChild(cvs); b.appendChild(document.createTextNode(k)); b.onclick = () => openKey(k); sh.appendChild(b); drawThumb(cvs, k, pc.part); });
+    $('hint2').textContent = (INIT.partNames && INIT.partNames[pc.part] ? INIT.partNames[pc.part] + '. ' : '') + 'เขียนชิ้นนี้ใหม่ครั้งเดียว รูปทั้งหมดนี้จะเปลี่ยนตาม (เส้นสีแดงคือชิ้นนี้)';
+  } else if (f && S.own[cur]) { $('sharedH').textContent = 'รูปนี้เขียนเอง'; $('hint2').textContent = 'รูปนี้ไม่ได้ใช้ชิ้นส่วนร่วมกับรูปอื่น แก้ที่นี่ที่เดียว'; }
+  else $('sharedCard').style.display = 'none';
+  const own = f && S.own[cur]; $('bOwn').style.display = f ? '' : 'none'; $('bOwn').textContent = own ? 'กลับไปใช้ชิ้นส่วนร่วม' : 'เขียนรูปนี้เองทั้งรูป';
+}
+function refreshAll() { buildChips(); buildPieces(); refreshSide(); render(); if (mode === 'play') { play = null; } }
+
+$('bReset').onclick = () => { if (!cur) return; if (!confirm('คืนลายเส้นเดิมของชิ้นนี้ (รูปที่ใช้ชิ้นนี้ร่วมกันจะกลับเป็นเดิมด้วย) ใช่ไหม?')) return; pending = null; SL.resetPiece(INIT, S, cur, piece); persist(); setDirty(true); persist(); updateBanner(); refreshAll(); toast('คืนค่าเดิมแล้ว'); };
+$('bOwn').onclick = () => {
+  if (!cur) return; const own = !!S.own[cur];
+  if (own && !confirm('กลับไปใช้ชิ้นส่วนร่วม ลายเส้นที่เขียนเองทั้งรูปจะหายไป ใช่ไหม?')) return;
+  if (!own && !confirm('ให้ ' + cur + ' เขียนเองทั้งรูป (ไม่ใช้ชิ้นส่วนร่วมกับรูปอื่น) ใช่ไหม?')) return;
+  pending = null; SL.setOwn(INIT, S, cur, !own); piece = SL.pieces(INIT, S, cur)[0].id; persist(); setDirty(true); persist(); updateBanner(); refreshAll();
+};
+$('bResetAll').onclick = () => { if (!confirm('ล้างการแก้ไขทั้งหมด กลับเป็นค่าเริ่มต้นของเกม ใช่ไหม? (ไฟล์ที่เคยบันทึกไว้ไม่หาย)')) return; S = SL.emptyState(); pending = null; persist(); setDirty(true); persist(); updateBanner(); refreshAll(); buildChips(); toast('ล้างการแก้ไขแล้ว'); };
+
+/* ---------- โหมด ---------- */
+function setMode(m, keep) {
+  if (pending && m !== 'write' && !keep) { if (!confirm('ยังเขียนชิ้นนี้ไม่เสร็จ ทิ้งที่เขียนไว้ไหม?')) return; pending = null; }
+  mode = m; document.querySelectorAll('#seg button').forEach(b => b.className = b.dataset.m === m ? 'on' : '');
+  const o = $('modeOpts'); o.innerHTML = ''; cv.style.cursor = m === 'write' ? 'crosshair' : m === 'test' ? 'pointer' : 'default';
+  if (m === 'play') { const b = document.createElement('button'); b.className = 'btn blue'; b.textContent = 'เล่นอีกครั้ง'; b.onclick = startPlay; o.appendChild(b); startPlay(); }
+  if (m === 'test') {
+    const sel = document.createElement('select'); sel.style.cssText = 'font:inherit;padding:6px;border-radius:10px;border:2px solid var(--ink)'; ['ระดับอนุบาล (มีลูกศร ค่ายอมรับกว้าง)', 'ระดับ ป.1', 'ระดับ ป.2 (รอยจาง ไม่มีลูกศร)', 'ระดับ ป.3 (รอยจางมาก)'].forEach((t, i) => { const op = document.createElement('option'); op.value = i; op.textContent = t; sel.appendChild(op); }); sel.value = testLv; sel.onchange = () => { testLv = +sel.value; startTest(); render(); };
+    const b = document.createElement('button'); b.className = 'btn blue'; b.textContent = 'เริ่มใหม่'; b.onclick = () => { startTest(); render(); }; o.append(sel, b); startTest();
+  }
+  updateBanner(); if (m === 'write') say(''); render();
+}
+document.querySelectorAll('#seg button').forEach(b => b.onclick = () => setMode(b.dataset.m));
+
+/* ---------- ตัวเลือก ---------- */
+$('oGhost').onchange = e => { opts.ghost = e.target.checked; render(); }; $('oFont').onchange = e => { opts.font = e.target.checked; render(); }; $('oNums').onchange = e => { opts.nums = e.target.checked; render(); };
+$('oSmooth').oninput = e => { opts.smooth = +e.target.value; $('oSmoothV').textContent = ['ไม่เกลา', 'เบา', 'กลาง', 'แรง'][opts.smooth]; };
+
+/* ---------- ไฟล์ ---------- */
+$('btnSave').onclick = () => {
+  if (pending && !confirm('ยังเขียนชิ้นนี้ไม่เสร็จ (ที่เขียนค้างไว้จะยังไม่อยู่ในไฟล์) ดำเนินการต่อไหม?')) return;
+  const data = SL.exportFile(INIT, S), blob = new Blob([JSON.stringify(data)], { type: 'application/json' }), a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = 'stroke_overrides.json'; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+  afterExport(data); toast('บันทึกไฟล์ stroke_overrides.json แล้ว (ดูในโฟลเดอร์ดาวน์โหลด) แล้วบอก Claude ในแชทได้เลย');
+};
+function afterExport(d) { setDirty(false); persist(); $('status').textContent = 'บันทึกไฟล์เมื่อ ' + new Date(d.savedAt).toLocaleTimeString('th-TH') + ' (ยังไม่เข้าเกมจนกว่า Claude จะนำเข้า)'; }
+$('btnOpen').onclick = () => $('fileIn').click();
+$('fileIn').onchange = e => {
+  const f = e.target.files[0]; if (!f) return; const r = new FileReader();
+  r.onload = () => { try { const st = SL.importState(JSON.parse(r.result)); if (!st) throw 0; if (!confirm('เปิดไฟล์นี้แทนที่สิ่งที่แก้อยู่ตอนนี้ใช่ไหม?')) return; S = st; pending = null; persist(); setDirty(true); persist(); updateBanner(); buildChips(); if (cur) { buildPieces(); refreshSide(); } render(); toast('เปิดไฟล์แล้ว'); } catch (x) { toast('ไฟล์นี้อ่านไม่ได้', true); } };
+  r.readAsText(f); e.target.value = '';
+};
+window.addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+
+/* ---------- เริ่มทำงาน ---------- */
+function fit() { const w = Math.min($('cvwrap').clientWidth, 1100), dpr = window.devicePixelRatio || 1; cv.style.height = (w * F.H / F.W) + 'px'; cv.width = Math.round(w * dpr); cv.height = Math.round(w * F.H / F.W * dpr); PX = cv.width / F.W; render(); }
+window.addEventListener('resize', fit);
+loadInitial(); setDirty(dirty); buildTabs(); buildChips();
+(document.fonts && document.fonts.load ? Promise.all([document.fonts.load('24px AkSarabun'), document.fonts.load('250px AkMali')]) : Promise.resolve()).catch(() => 0).then(() => { fit(); openKey(GROUPS[1].keys[0]); });
+</script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+{
+  "site": "https://sites.google.com/d/1Ycv4VCi6tTv9N2_1C3T_UZZiTkB7rspU",
+  "live": "https://www.krukan.in.th",
+  "pages": {
+    "home": {
+      "id": "1-Wt3emrTqPaMYSwvdASKTjXw9yW3SbTf",
+      "kind": "home",
+      "file": "Home-Play-Learn-Lite.html",
+      "live": "/home",
+      "marker": "techno-mouse-adventure",
+      "note": "หน้าแรก (ฉบับ Lite + ภาพปก manga ตัวสด)"
+    },
+    "etc": {
+      "id": "1Hu1MwGfhMC-peKXCRWskd_QEqdgupo5y",
+      "kind": "page",
+      "file": "Etc-Side-Quests.html",
+      "live": "/etc",
+      "marker": "techno-mouse-adventure",
+      "note": "หน้าบทเรียนอื่นๆ (รายการภารกิจ)"
+    },
+    "net-patrol": {
+      "id": "1rS9_nc6ME-JilX6K5pLWjmtoH3mgJ2y3",
+      "kind": "game",
+      "file": "Game-Net-Patrol.html",
+      "live": "/etc/net-patrol",
+      "build": "phish"
+    },
+    "packet-express": {
+      "id": "1P457_Ga-Ne8aZx63FFlpyMYU7tS8qSri",
+      "kind": "game",
+      "file": "Game-Packet-Express.html",
+      "live": "/etc/packet-express",
+      "build": "packet"
+    },
+    "bug-buster": {
+      "id": "1AIdo21CA98DL9VDa-Y8eZpHGbjU2h2bI",
+      "kind": "game",
+      "file": "Game-Bug-Buster.html",
+      "live": "/etc/bug-buster",
+      "build": "debug"
+    },
+    "code-runner": {
+      "id": "16k2v9TCsvZU06Tv-UcyH1aSSJPKZmOj5",
+      "kind": "game",
+      "file": "Game-Code-Runner.html",
+      "live": "/etc/code-runner",
+      "build": "code-runner"
+    },
+    "techno-grid": {
+      "id": "1QnQmWNRn3ouh067-7R_MoUz3MrJWjK0M",
+      "kind": "game",
+      "file": "Game-Techno-Grid.html",
+      "live": "/etc/techno-grid",
+      "build": "grid"
+    },
+    "type-hero": {
+      "id": "1M12mT9ycUz1FyHViHPofsUk-uPsRHIsB",
+      "kind": "game",
+      "file": "Game-Type-Hero.html",
+      "live": "/etc/type-hero",
+      "build": "typing"
+    },
+    "cipher-breaker": {
+      "id": "1exvQlzASes7hRo2IEotAIM2HHBDXIoQy",
+      "kind": "game",
+      "file": "Game-Caesar-Cipher.html",
+      "live": "/etc/cipher-breaker",
+      "build": "caesar"
+    },
+    "techno-steps": {
+      "id": "1TUPFN4Gdtabinyjc_wSgMlpLC1lWFYgt",
+      "kind": "game",
+      "file": "Game-Techno-Steps.html",
+      "live": "/etc/techno-steps",
+      "build": "steps"
+    },
+    "techno-folder": {
+      "id": "1HNc_GFd4iEdiB2Ycu447xgOhVkA0QhPV",
+      "kind": "game",
+      "file": "Game-Techno-Folder.html",
+      "live": "/etc/techno-folder",
+      "build": "folder"
+    },
+    "techno-parts": {
+      "id": "1aw2klA_86JhnmXLo-DBOUyzBsUysIN_o",
+      "kind": "game",
+      "file": "Game-Techno-Parts.html",
+      "live": "/etc/techno-parts",
+      "build": "parts"
+    },
+    "techno-slice": {
+      "id": "1gbUjEP69EhVWuIfIx_o9H83NjcghQ23k",
+      "kind": "game",
+      "file": "Game-Techno-Slice.html",
+      "live": "/etc/techno-slice",
+      "build": "slice"
+    },
+    "techno-talk": {
+      "id": "1_gLbC1bF1KPLlcqnqS2J1b6Dkn4dwptf",
+      "kind": "game",
+      "file": "Game-Techno-Talk.html",
+      "live": "/etc/techno-talk",
+      "build": "talk"
+    },
+    "techno-aksorn": {
+      "id": "18LNQapWQTLhPlj9R7yQPlgOHqVL9Ix7Y",
+      "kind": "game",
+      "file": "Game-Techno-Aksorn.html",
+      "live": "/etc/techno-aksorn",
+      "build": "aksorn"
+    },
+    "techno-math": {
+      "id": "1BHRlbjkbJ7vD_QBQLZ1vsmJ4r_P-sbiv",
+      "kind": "game",
+      "file": "Game-Techno-Math.html",
+      "live": "/etc/techno-math",
+      "build": "math"
+    },
+    "rainbow-city": {
+      "id": "1FNvCmBHERSunNpTc4R1sI7id-PclZq4u",
+      "kind": "game",
+      "file": "Game-Rainbow-City-Offline.html",
+      "live": "/etc/rainbow-city-techno",
+      "build": "rainbow",
+      "note": "เมืองสีรุ้ง 48 ด่าน (27 ต.ค. 2569) · ฝังด้วยลิงก์ GitHub Pages",
+      "embed_url": "https://ikanba2.github.io/krukan-games/rainbow-city/",
+      "stamp_file": "Game-Rainbow-City-Offline.html"
+    },
+    "beat-hero": {
+      "id": "1vWMT-S_h-ovpem46991JpX6P4V4jU4Js",
+      "kind": "game",
+      "file": "Game-Beat-Hero-Offline.html",
+      "live": "/etc/beat-hero",
+      "build": "beat",
+      "note": "จอมจังหวะ 48 เพลง (27 ต.ค. 2569) · ฝังด้วยลิงก์ GitHub Pages",
+      "embed_url": "https://ikanba2.github.io/krukan-games/beat-hero/",
+      "stamp_file": "Game-Beat-Hero-Offline.html"
+    },
+    "keyboard-quest": {
+      "id": "15wb0kVZeX3B77dhreZqB39tXOCwM8eRC",
+      "kind": "game",
+      "file": "Game-Keyboard-Quest-Offline.html",
+      "live": "/etc/techno-keyboard-quest",
+      "build": "kbq",
+      "note": "ภารกิจแป้นพิมพ์ 48 ด่าน (หน้าใหม่ 27 ต.ค. 2569) · ฝังด้วยลิงก์ GitHub Pages",
+      "embed_url": "https://ikanba2.github.io/krukan-games/keyboard-quest/",
+      "stamp_file": "Game-Keyboard-Quest-Offline.html"
+    },
+    "mouse-adventure": {
+      "id": "1bk7_kp8xk43eh235NNPEloD8TjPGtp9-",
+      "kind": "game",
+      "file": "Game-Mouse-Adventure-Offline.html",
+      "live": "/etc/techno-mouse-adventure",
+      "build": "mouse",
+      "note": "ผจญภัยเมาส์ 48 ด่าน (หน้าใหม่ 27 ต.ค. 2569) · ฝังด้วยลิงก์ GitHub Pages",
+      "embed_url": "https://ikanba2.github.io/krukan-games/mouse-adventure/",
+      "stamp_file": "Game-Mouse-Adventure-Offline.html"
+    },
+    "hanuman": {
+      "id": "1bJwJdix2RmWVicFjQVsQaGtzpp4JnTIS",
+      "kind": "game",
+      "file": "Game-Hanuman-Path.html",
+      "live": "/etc/Hanuman",
+      "embed_url": "https://ikanba2.github.io/krukan-games/hanuman-path/",
+      "stamp_file": "Game-Hanuman-Path.html",
+      "note": "หนุมานพิชิตเส้นทาง 3D อัปเกรด 27 ต.ค. 2569 · ฝังด้วยลิงก์ GitHub Pages"
+    },
+    "manga": {
+      "id": "15pWq_0mHclW8wdDYUfMp0s1VibfPET7g",
+      "kind": "page",
+      "file": "นิยายมังงะ_มาสไรเดอร์เทคโน/เว็บอ่านนิยายมังงะ/Techno-Manga-Reader.html",
+      "live": "/Techno-Manga-Reader",
+      "marker": "EP01-cover",
+      "note": "เว็บอ่านนิยายมังงะ Cyber Rider Techno (เมนู นิยายมังงะ) · ฝังด้วยลิงก์ GitHub Pages ตั้งแต่ 27 ต.ค. 2569",
+      "embed_url": "https://ikanba2.github.io/krukan-games/manga/"
+    }
+  }
+}

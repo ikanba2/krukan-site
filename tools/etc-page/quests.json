@@ -1,0 +1,260 @@
+[
+  {
+    "t": "สงครามตัวเลข (Number War)",
+    "p": "math2",
+    "c": "math",
+    "e": "⚔️"
+  },
+  {
+    "t": "เลขโรมัน (Roman Numerals)",
+    "p": "roman",
+    "c": "math",
+    "e": "🏛️"
+  },
+  {
+    "t": "เลขฐาน 2 (Binary Numbers)",
+    "p": "base-number",
+    "c": "math",
+    "e": "💾"
+  },
+  {
+    "t": "เรียงลำดับตัวเลข (Number Order)",
+    "p": "sortnumber",
+    "c": "math",
+    "e": "🔀"
+  },
+  {
+    "t": "สมบัติพลังบวก (Plus Power Treasure)",
+    "p": "marioplus",
+    "c": "math",
+    "e": "🍄"
+  },
+  {
+    "t": "คิดเลขแสนสนุก (Fun Math)",
+    "p": "funmath",
+    "c": "math",
+    "e": "🎈"
+  },
+  {
+    "t": "คู่ซี้บวกสิบ",
+    "p": "plusto10",
+    "c": "math",
+    "e": "🔟"
+  },
+  {
+    "t": "บันไดงูการคูณ",
+    "p": "koon",
+    "c": "math",
+    "e": "🐍"
+  },
+  {
+    "t": "บันไดงูบวกลบพหุนาม",
+    "p": "sankeM1-1",
+    "c": "math",
+    "e": "🐍"
+  },
+  {
+    "t": "เกมเศษส่วนที่เท่ากัน",
+    "p": "sankefaction",
+    "c": "math",
+    "e": "🍕"
+  },
+  {
+    "t": "ช่างแบ่งพิซซ่า (Techno Slice)",
+    "p": "techno-slice",
+    "c": "math",
+    "e": "🍕"
+  },
+  {
+    "t": "สมรภูมิคณิต (Techno Math)",
+    "p": "techno-math",
+    "c": "math",
+    "e": "➗"
+  },
+  {
+    "t": "ประโยคอังกฤษ (Techno Talk)",
+    "p": "techno-talk",
+    "c": "eng",
+    "e": "🗣️"
+  },
+  {
+    "t": "บันไดงูบวกลบเลข (Snakes and Ladders Math)",
+    "p": "plussnake",
+    "c": "math",
+    "e": "🐍"
+  },
+  {
+    "t": "QuickMathMic",
+    "p": "quickmathmic",
+    "c": "math",
+    "e": "🎤"
+  },
+  {
+    "t": "การประมาณ",
+    "p": "pamarn",
+    "c": "math",
+    "e": "🎯"
+  },
+  {
+    "t": "เวลา",
+    "p": "time",
+    "c": "math",
+    "e": "⏰"
+  },
+  {
+    "t": "ฝึกอ่าน ก.ไก่ (Thai Alphabet)",
+    "p": "korkai",
+    "c": "thai",
+    "e": "🐔"
+  },
+  {
+    "t": "ฝึกอ่านภาษาไทย (Thai Reading)",
+    "p": "readthai",
+    "c": "thai",
+    "e": "📖"
+  },
+  {
+    "t": "อ่านไทย อ.2",
+    "p": "อานไทย-อ-2",
+    "c": "thai",
+    "e": "🔡"
+  },
+  {
+    "t": "ครอบครัวคำ (Word Family)",
+    "p": "wordfamily",
+    "c": "eng",
+    "e": "👪"
+  },
+  {
+    "t": "ผจญภัยการอ่าน (Reading Adventure)",
+    "p": "Reading-Adventure",
+    "c": "eng",
+    "e": "🗺️"
+  },
+  {
+    "t": "ฝึกอ่านอังกฤษ 2 (Reading 2)",
+    "p": "reading2",
+    "c": "eng",
+    "e": "📚"
+  },
+  {
+    "t": "วิ่งตามคำสั่ง (Code Runner)",
+    "p": "code-runner",
+    "c": "code",
+    "e": "🏃"
+  },
+  {
+    "t": "เขาวงกตคำสั่ง (Techno Grid)",
+    "p": "techno-grid",
+    "c": "code",
+    "e": "🧩"
+  },
+  {
+    "t": "ก้าวคำสั่ง (Techno Steps)",
+    "p": "techno-steps",
+    "c": "code",
+    "e": "👣"
+  },
+  {
+    "t": "นักจัดแฟ้ม (Techno Folder)",
+    "p": "techno-folder",
+    "c": "code",
+    "e": "📁"
+  },
+  {
+    "t": "ช่างประกอบคอม (Techno Parts)",
+    "p": "techno-parts",
+    "c": "code",
+    "e": "🖥️"
+  },
+  {
+    "t": "แกะรหัสซีซาร์ (Cipher Breaker)",
+    "p": "cipher-breaker",
+    "c": "code",
+    "e": "🔐"
+  },
+  {
+    "t": "จอมพิมพ์ (Type Hero)",
+    "p": "type-hero",
+    "c": "code",
+    "e": "⌨️"
+  },
+  {
+    "t": "สายตรวจเน็ต (Net Patrol)",
+    "p": "net-patrol",
+    "c": "code",
+    "e": "🛡️"
+  },
+  {
+    "t": "ไปรษณีย์ข้อมูล (Packet Express)",
+    "p": "packet-express",
+    "c": "code",
+    "e": "📦"
+  },
+  {
+    "t": "จับผิดโปรแกรม (Bug Buster)",
+    "p": "bug-buster",
+    "c": "code",
+    "e": "🐞"
+  },
+  {
+    "t": "วิ่งเก็บคำตอบ (TechnoRun)",
+    "p": "technorun",
+    "c": "techno",
+    "e": "🏃"
+  },
+  {
+    "t": "ผจญภัยข้ามมิติ (Dimension Quest)",
+    "p": "techno-story",
+    "c": "techno",
+    "e": "📕"
+  },
+  {
+    "t": "ผู้พิทักษ์โลกเน็ต (CyberGuardian)",
+    "p": "secreat",
+    "c": "techno",
+    "e": "🛡️"
+  },
+  {
+    "t": "นักสืบโลกเน็ต (Cyber Detective)",
+    "p": "DIGITAL-CITIZEN-MISSION",
+    "c": "techno",
+    "e": "🕵️"
+  },
+  {
+    "t": "หนุมานพิชิตเส้นทาง (Hanuman Path Quest)",
+    "p": "Hanuman",
+    "c": "techno",
+    "e": "🐒"
+  },
+  {
+    "t": "จอมจังหวะ (Beat Hero)",
+    "p": "beat-hero",
+    "c": "techno",
+    "e": "🎵"
+  },
+  {
+    "t": "เมืองสีรุ้ง (Rainbow City)",
+    "p": "rainbow-city-techno",
+    "c": "techno",
+    "e": "🌈"
+  },
+  {
+    "t": "ตะลุยเมืองอักษร (Techno Aksorn)",
+    "p": "techno-aksorn",
+    "c": "thai",
+    "e": "🔤"
+  },
+  {
+    "t": "ภารกิจแป้นพิมพ์ (Keyboard Quest)",
+    "p": "techno-keyboard-quest",
+    "c": "techno",
+    "e": "⌨️"
+  },
+  {
+    "t": "ผจญภัยเมาส์ (Mouse Adventure)",
+    "p": "techno-mouse-adventure",
+    "c": "techno",
+    "e": "🖱️"
+  }
+]

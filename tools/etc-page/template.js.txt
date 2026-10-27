@@ -1,0 +1,81 @@
+    /* ===================== ตั้งค่าหน้านี้ ===================== */
+    const SITE='https://www.krukan.in.th';
+    const UPDATED='/*__UPDATED__*/'; // ปี ค.ศ.-เดือน-วัน (ใส่ให้อัตโนมัติจาก tools/build-etc-page.py)
+
+    // หมวดหมู่ (ชุดเดียวกับตัวกรองกิจกรรมในหน้า home) เรียงตามลำดับที่แสดง
+    const CATS={
+      computer:{name:'ฝึกใช้คอม',     en:'COMPUTER',  emoji:'🖥️', color:'#4ef4d2'},
+      coding:  {name:'เขียนโค้ด',     en:'CODING',    emoji:'🧩', color:'#a78bfa'},
+      digital: {name:'ดิจิทัล',       en:'DIGITAL',   emoji:'🛡️', color:'#06b6d4'},
+      math:    {name:'คณิตศาสตร์',    en:'MATH',      emoji:'🔢', color:'#3b82f6'},
+      reading: {name:'ภาษาไทย',       en:'THAI',      emoji:'📖', color:'#f472b6'},
+      english: {name:'ภาษาอังกฤษ',    en:'ENGLISH',   emoji:'🔤', color:'#22c55e'},
+      adventure:{name:'ผจญภัย',       en:'ADVENTURE', emoji:'🚀', color:'#fb923c'},
+      exam:    {name:'เตรียมสอบ',     en:'EXAM',      emoji:'📝', color:'#facc15'},
+      other:   {name:'อื่นๆ',         en:'MORE',      emoji:'✨', color:'#94a3b8'}
+    };
+
+    // ภารกิจ (สร้างจาก tools/etc-page/quests.json + ข้อมูลหน้า home โดย tools/build-etc-page.py ห้ามแก้ตรงนี้)
+    // t=ชื่อ p=path ใต้ /etc/ g=หมวด e=อีโมจิ a=ชั้นที่เหมาะ b=คำอธิบายสั้น img=ภาพปก nw=เกมใหม่
+    /*__DATA__*/
+
+    /* ===================== แสดงผล ===================== */
+    const $=s=>document.querySelector(s);
+    const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const url=p=>SITE+'/etc/'+encodeURI(p);
+    let cat='all',term='';
+
+    const counts={};QUESTS.forEach(q=>counts[q.g]=(counts[q.g]||0)+1);
+    const order=Object.keys(CATS).filter(k=>counts[k]);
+    $('#n-total').textContent=QUESTS.length;
+    $('#n-cats').textContent=order.length;
+    $('#n-cov').textContent=QUESTS.filter(q=>q.img).length;
+    $('#updated').textContent=new Date(UPDATED+'T00:00:00').toLocaleDateString('th-TH',{day:'numeric',month:'short',year:'numeric'});
+
+    $('#chips').innerHTML=[['all','🌌','ทั้งหมด','#8b5cf6',QUESTS.length]].concat(
+      order.map(k=>[k,CATS[k].emoji,CATS[k].name,CATS[k].color,counts[k]])
+    ).map(([k,e,n,c,x])=>'<button type="button" class="chip" data-cat="'+k+'" style="--c:'+c+'" aria-pressed="'+(k==='all')+'">'+e+' '+esc(n)+'<em>'+x+'</em></button>').join('');
+
+    const find=q=>(q.t+' '+(q.b||'')+' '+(q.a||'')+' '+CATS[q.g].name+' '+CATS[q.g].en).toLowerCase();
+    let idx=0;
+    const cover=q=>{
+      const c=CATS[q.g],d=Math.min(idx++,24)*28;
+      return '<a class="pcard" data-cat="'+q.g+'" data-name="'+esc(find(q))+'" style="--c:'+c.color+';animation-delay:'+d+'ms" href="'+url(q.p)+'" target="_blank" rel="noopener">'+
+        '<span class="shot"><img src="'+esc(q.img)+'" alt="" width="640" height="360" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add(\'fail\')"><span class="noimg" aria-hidden="true">'+(q.e||c.emoji)+'</span>'+
+        (q.a?'<i class="aud">'+esc(q.a)+'</i>':'')+(q.nw?'<i class="nw">NEW</i>':'')+'</span>'+
+        '<span class="pbody"><b>'+esc(q.t)+'</b><span class="brief">'+esc(q.b||c.name)+'</span><small>'+(q.e||c.emoji)+' '+esc(c.name)+'</small></span></a>';
+    };
+    const plain=q=>{
+      const c=CATS[q.g],d=Math.min(idx++,24)*28;
+      return '<a class="card" data-cat="'+q.g+'" data-name="'+esc(find(q))+'" style="--c:'+c.color+';animation-delay:'+d+'ms" href="'+url(q.p)+'" target="_blank" rel="noopener">'+
+        '<span class="ico" aria-hidden="true">'+(q.e||c.emoji)+'</span>'+
+        '<span class="txt"><b>'+esc(q.t)+'</b><small>'+esc(q.a?c.name+' · '+q.a:c.name)+'</small></span><span class="go" aria-hidden="true">»</span></a>';
+    };
+    $('#sections').innerHTML=order.map(k=>{
+      const c=CATS[k],list=QUESTS.filter(q=>q.g===k),withImg=list.filter(q=>q.img).sort((a,b)=>(b.nw||0)-(a.nw||0)),noImg=list.filter(q=>!q.img);   // มีภาพปก: เกมใหม่ขึ้นก่อน
+      return '<section class="sec" data-cat="'+k+'" style="--c:'+c.color+'" aria-labelledby="h-'+k+'">'+
+        '<div class="sec-h"><h2 id="h-'+k+'"><i aria-hidden="true">'+c.emoji+'</i>'+esc(c.name)+'</h2><small>'+c.en+'</small><span class="cnt">'+list.length+' ภารกิจ</span></div>'+
+        (withImg.length?'<div class="pgrid">'+withImg.map(cover).join('')+'</div>':'')+
+        (noImg.length?'<div class="grid">'+noImg.map(plain).join('')+'</div>':'')+'</section>';
+    }).join('');
+
+    function apply(){
+      let n=0;
+      document.querySelectorAll('.pcard,.card').forEach(el=>{
+        const ok=(cat==='all'||el.dataset.cat===cat)&&(!term||el.dataset.name.includes(term));
+        el.hidden=!ok;if(ok)n++;
+      });
+      document.querySelectorAll('.sec').forEach(sc=>{sc.hidden=!sc.querySelector('.pcard:not([hidden]),.card:not([hidden])')});
+      $('#empty').classList.toggle('show',n===0);
+    }
+    $('#chips').addEventListener('click',e=>{
+      const b=e.target.closest('.chip');if(!b)return;
+      cat=b.dataset.cat;
+      document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));
+      apply();
+    });
+    $('#q').addEventListener('input',e=>{term=e.target.value.trim().toLowerCase();apply()});
+    $('#dice').addEventListener('click',()=>{
+      const q=QUESTS[Math.floor(Math.random()*QUESTS.length)];
+      window.open(url(q.p),'_blank','noopener');
+    });

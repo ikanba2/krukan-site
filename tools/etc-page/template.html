@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0a0824">
+  <title>บทเรียนอื่นๆ · Side Quests | KruKan.in.th</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Kanit:wght@400;500;600;700&family=Orbitron:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#0a0824;--paper:#f4f7ff;--cyan:#4ef4d2;--sun:#ffd34f;--c:#06b6d4;--hud:'Orbitron','Chakra Petch',sans-serif;--cut:12px}
+    *{box-sizing:border-box}
+    html{background:var(--ink)}
+    body{margin:0;min-width:280px;color:var(--paper);font:400 15px/1.5 'Kanit',sans-serif;background:transparent;overflow-x:hidden}
+    a,button,input{font:inherit;color:inherit}
+    :where(a,button,input):focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+
+    /* ===== backdrop ===== */
+    .space{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;background:
+      radial-gradient(ellipse 50% 45% at 6% 10%,#7c3aed66,transparent 70%),
+      radial-gradient(ellipse 45% 40% at 96% 90%,#1e6fd966,transparent 70%),
+      radial-gradient(ellipse 35% 35% at 92% 8%,#db277755,transparent 70%),
+      radial-gradient(ellipse 35% 30% at 10% 95%,#0891b244,transparent 70%),
+      linear-gradient(180deg,#0e0b30,#0a0824 50%,#080d26)}
+    .stars,.stars::after{position:absolute;inset:-50%;background-image:
+      radial-gradient(1px 1px at 23px 41px,#fff,transparent),radial-gradient(1px 1px at 87px 113px,#fffc,transparent),
+      radial-gradient(1.5px 1.5px at 151px 29px,#cfe8ff,transparent),radial-gradient(1px 1px at 199px 171px,#fff9,transparent),
+      radial-gradient(1px 1px at 61px 197px,#fff,transparent),radial-gradient(1.5px 1.5px at 131px 151px,#ffe9c9,transparent),
+      radial-gradient(1px 1px at 173px 83px,#fffa,transparent),radial-gradient(1px 1px at 109px 63px,#fff9,transparent);background-size:180px 180px}
+    .stars{animation:drift 160s linear infinite}
+    .stars::after{content:'';inset:0;background-size:290px 290px;opacity:.7;animation:twinkle 4s ease-in-out infinite alternate}
+    @keyframes drift{to{transform:translate(180px,90px)}}
+    @keyframes twinkle{from{opacity:.25}to{opacity:.8}}
+
+    .page{max-width:1180px;margin:0 auto;padding:16px 16px 20px}
+
+    /* ===== header ===== */
+    .crumbs{font-size:12px;color:#b9c4dc}
+    .crumbs a{text-decoration:none}.crumbs a:hover{text-decoration:underline}
+    .hero{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 20px;margin-top:6px}
+    h1{margin:0;font:700 clamp(26px,5vw,40px)/1.1 'Kanit',sans-serif;text-shadow:0 2px 18px rgba(124,58,237,.6)}
+    h1 small{display:block;margin-top:6px;font:800 12px/1 var(--hud);letter-spacing:.24em;color:var(--cyan)}
+    .stats{display:flex;gap:8px;flex-wrap:wrap}
+    .stat{padding:6px 14px;text-align:center;background:rgba(10,14,34,.6);border:1px solid rgba(255,255,255,.18);clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}
+    .stat b{display:block;font:800 20px/1.2 var(--hud);color:var(--sun)}
+    .stat span{font-size:11px;color:#b9c4dc}
+
+    /* ===== controls ===== */
+    .bar{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 10px}
+    .search{flex:1 1 240px;display:flex;align-items:center;gap:8px;padding:0 14px;height:44px;background:rgba(10,14,34,.7);border:1px solid rgba(255,255,255,.22);border-radius:999px}
+    .search input{flex:1;min-width:0;height:100%;background:none;border:0;outline:0;font-size:15px}
+    .search input::placeholder{color:#8f9bb8}
+    .search:focus-within{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(78,244,210,.2)}
+    .dice{height:44px;padding:0 18px;white-space:nowrap;border:0;cursor:pointer;font-weight:600;color:#1a1200;background:linear-gradient(120deg,#fff3b0,var(--sun));border-radius:999px;transition:transform .15s,filter .15s}
+    .dice:hover{transform:translateY(-1px);filter:brightness(1.08)}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{--c:#06b6d4;padding:6px 14px;border:1px solid color-mix(in srgb,var(--c) 60%,transparent);background:rgba(10,14,34,.6);border-radius:999px;cursor:pointer;font-size:13.5px;transition:background .15s,transform .15s}
+    .chip:hover{transform:translateY(-1px);background:color-mix(in srgb,var(--c) 22%,rgba(10,14,34,.6))}
+    .chip[aria-pressed="true"]{background:linear-gradient(120deg,color-mix(in srgb,var(--c) 85%,#fff 15%),var(--c));border-color:transparent;color:#07101a;font-weight:600}
+    .chip em{font-style:normal;margin-left:4px;opacity:.75;font-size:12px}
+
+    /* ===== grid ===== */
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(222px,1fr));gap:12px;margin-top:14px}
+    .card{--c:#06b6d4;position:relative;display:flex;align-items:center;gap:12px;min-height:76px;padding:12px 14px 12px 12px;text-decoration:none;isolation:isolate;
+      background:linear-gradient(120deg,color-mix(in srgb,var(--c) 70%,#fff),var(--c));
+      clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));
+      transition:transform .18s,filter .18s;animation:rise .4s both}
+    .card::before{content:'';position:absolute;inset:2px;z-index:-1;clip-path:inherit;
+      background:radial-gradient(ellipse at 15% 0,color-mix(in srgb,var(--c) 40%,transparent),transparent 70%),
+      linear-gradient(120deg,color-mix(in srgb,var(--c) 26%,#0b0f28),color-mix(in srgb,var(--c) 10%,#0b0f28))}
+    .card:hover{transform:translateY(-3px);filter:brightness(1.15) drop-shadow(0 8px 14px rgba(0,0,0,.5))}
+    .card[hidden]{display:none}
+    .ico{flex:none;width:44px;height:48px;display:grid;place-items:center;font-size:23px;
+      background:linear-gradient(160deg,#fff,var(--c));clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+    .txt{min-width:0;flex:1}
+    .txt b{display:block;font-weight:600;line-height:1.3;overflow-wrap:anywhere}
+    .txt small{display:block;margin-top:2px;font-size:11.5px;color:color-mix(in srgb,var(--c) 55%,#fff)}
+    .go{flex:none;font-size:18px;opacity:.7;transition:transform .18s,opacity .18s}
+    .card:hover .go{transform:translateX(3px);opacity:1}
+    @keyframes rise{from{opacity:0;transform:translateY(8px)}}
+    .empty{display:none;margin:30px 0;text-align:center;color:#b9c4dc}
+    .empty.show{display:block}
+
+    footer{margin-top:22px;text-align:center;font-size:12.5px;color:#b9c4dc}
+    footer a{color:#dfe7f3}
+    .ai-note{margin:8px auto 0}
+    .ai-btn{padding:4px 14px;color:#dfe7f3;background:rgba(10,14,34,.6);border:1px solid rgba(255,255,255,.22);border-radius:999px;font:500 12px/1.5 'Kanit',sans-serif;cursor:pointer;transition:border-color .2s,background .2s}
+    .ai-btn:hover{border-color:rgba(255,255,255,.55);background:rgba(10,14,34,.85)}
+    .swal2-popup.ai-popup{font-family:'Kanit',sans-serif;border:1px solid rgba(255,255,255,.18);border-radius:18px}
+    .ai-popup .swal2-title{font-size:20px}
+    .ai-popup .ai-body{text-align:left;font-size:14px;line-height:1.65;color:#c9d4e3}
+    .ai-popup dl{margin:0}.ai-popup dt{margin-top:10px;color:#fff;font-weight:600}.ai-popup dd{margin:2px 0 0}.ai-popup ul{margin:2px 0 0;padding-left:20px}
+    .ai-popup b{color:#fff}
+    .ai-popup .ai-ok{color:#04120f!important;font-weight:600;font-family:inherit}
+    .ai-fallback{position:fixed;inset:0;z-index:99;display:grid;place-items:center;background:rgba(3,4,12,.72);padding:16px}
+    .ai-fallback .ai-popup{max-width:640px;background:#0b0f28;border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:20px;color:#e9f2ff}
+    .ai-fallback button{margin-top:14px;padding:8px 22px;border:0;border-radius:8px;background:#4ef4d2;color:#04120f;font-weight:600;cursor:pointer}
+
+
+    /* ===== หมวดหมู่ (แบบเดียวกับหน้า home) + การ์ดปกเกม ===== */
+    .sec{margin-top:26px;scroll-margin-top:12px}
+    .sec[hidden]{display:none}
+    .sec-h{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid color-mix(in srgb,var(--c) 45%,transparent)}
+    .sec-h h2{margin:0;font:700 clamp(19px,3.2vw,25px)/1.2 'Kanit',sans-serif;display:flex;align-items:center;gap:10px}
+    .sec-h h2 i{font-style:normal;display:grid;place-items:center;width:38px;height:42px;font-size:21px;background:linear-gradient(160deg,#fff,var(--c));clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+    .sec-h small{font:800 11px/1 var(--hud);letter-spacing:.2em;color:color-mix(in srgb,var(--c) 60%,#fff)}
+    .sec-h .cnt{margin-left:auto;font-size:12.5px;color:#b9c4dc}
+    .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(262px,1fr));gap:14px}
+    .pgrid + .grid{margin-top:12px}
+    .sec .grid{margin-top:0}
+    .pcard{--c:#06b6d4;position:relative;display:flex;flex-direction:column;padding:2px;text-decoration:none;isolation:isolate;
+      background:linear-gradient(120deg,color-mix(in srgb,var(--c) 70%,#fff),var(--c));
+      clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));
+      transition:transform .18s,filter .18s;animation:rise .4s both}
+    .pcard::before{content:'';position:absolute;inset:2px;z-index:-1;clip-path:inherit;
+      background:linear-gradient(170deg,color-mix(in srgb,var(--c) 24%,#0b0f28),#0a0d26 72%)}
+    .pcard:hover{transform:translateY(-4px);filter:brightness(1.12) drop-shadow(0 10px 16px rgba(0,0,0,.55))}
+    .pcard[hidden]{display:none}
+    .shot{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(135deg,#1a2255,#0d1233);
+      clip-path:polygon(calc(var(--cut) - 2px) 0,100% 0,100% 100%,0 100%,0 calc(var(--cut) - 2px))}
+    .shot img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .4s}
+    .pcard:hover .shot img{transform:scale(1.07)}
+    .shot .noimg{position:absolute;inset:0;display:none;place-items:center;font-size:44px}
+    .shot.fail .noimg{display:grid}
+    .shot.fail img{display:none}
+    .aud{position:absolute;left:8px;bottom:8px;padding:2px 10px;font:600 12px/1.5 'Kanit',sans-serif;font-style:normal;background:rgba(8,11,32,.84);border:1px solid color-mix(in srgb,var(--c) 70%,#fff);border-radius:999px;color:#f4f7ff}
+    .nw{position:absolute;right:8px;top:8px;padding:1px 9px;font:800 11px/1.6 var(--hud);font-style:normal;letter-spacing:.08em;color:#2a1600;background:linear-gradient(120deg,#fff3b0,#ffd34f);border-radius:999px;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+    .pbody{display:block;padding:10px 12px 12px}
+    .pbody b{display:block;font-weight:600;font-size:15.5px;line-height:1.3;overflow-wrap:anywhere}
+    .pbody .brief{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:3px;font-size:12.5px;line-height:1.45;color:#c9d4e3;min-height:2.9em}
+    .pbody small{display:block;margin-top:6px;font-size:11.5px;color:color-mix(in srgb,var(--c) 55%,#fff)}
+
+    @media(max-width:520px){
+      .page{padding:12px 12px 16px}
+      .grid{grid-template-columns:1fr 1fr;gap:8px}
+      .card{flex-direction:column;align-items:flex-start;gap:8px;padding:10px}
+      .go{display:none}
+      .ico{width:38px;height:42px;font-size:20px}
+      .txt b{font-size:14px}
+      .dice{flex:1}
+      .pgrid{grid-template-columns:1fr;gap:12px}
+      .sec-h .cnt{margin-left:0}
+    }
+    @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="space" aria-hidden="true"><div class="stars"></div></div>
+
+  <div class="page">
+    <nav class="crumbs" aria-label="breadcrumb"><a href="https://www.krukan.in.th/home" target="_blank" rel="noopener">หน้าแรก</a> › บทเรียนอื่นๆ</nav>
+
+    <header class="hero">
+      <h1>บทเรียนอื่นๆ <span style="color:var(--cyan)">·</span> ภารกิจเสริม<small>SIDE QUESTS · เกมและกิจกรรมทั้งหมด</small></h1>
+      <div class="stats" aria-label="สรุป">
+        <div class="stat"><b id="n-total">0</b><span>ภารกิจ</span></div>
+        <div class="stat"><b id="n-cats">0</b><span>หมวด</span></div>
+        <div class="stat"><b id="n-cov">0</b><span>มีภาพปก</span></div>
+      </div>
+    </header>
+
+    <div class="bar">
+      <label class="search"><span aria-hidden="true">🔍</span><input id="q" type="search" placeholder="ค้นหาเกม หรือบทเรียน…" autocomplete="off" aria-label="ค้นหา"></label>
+      <button class="dice" id="dice" type="button">🎲 สุ่มภารกิจ</button>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="หมวดหมู่"></div>
+
+    <main id="sections"></main>
+    <p class="empty" id="empty">ไม่พบภารกิจที่ค้นหา ลองเปลี่ยนคำหรือเลือกหมวดอื่นดูนะ 🛰️</p>
+
+    <footer>KruKan.in.th · อัปเดตล่าสุด <time id="updated"></time> ·
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-NC-SA 4.0</a>
+      <div class="ai-note"><button class="ai-btn" type="button" id="ai-btn">🤖 การใช้ AI · AI Disclosure</button></div>
+      <template id="ai-note-tpl"><div class="ai-body"><dl>
+        <dt>เครื่องมือ AI ที่ใช้</dt>
+        <dd>Claude (Anthropic)</dd>
+        <dt>ขอบเขตการใช้</dt>
+        <dd><ul><li><b>Claude:</b> ช่วยเขียนและปรับแต่งโค้ด HTML/CSS/JavaScript ของหน้านี้</li></ul></dd>
+        <dt>ระดับการช่วยเหลือ</dt>
+        <dd>ผู้จัดทำเป็นผู้กำหนดแนวคิด เนื้อหา การจัดหมวดหมู่ และทิศทางการออกแบบทั้งหมด ใช้ AI เป็นเครื่องมือช่วยสร้างโค้ดเท่านั้น</dd>
+      </dl></div></template>
+    </footer>
+  </div>
+
+  <script>
+    /* ===================== ตั้งค่าหน้านี้ ===================== */
+    const SITE='https://www.krukan.in.th';
+    const UPDATED='/*__UPDATED__*/'; // ปี ค.ศ.-เดือน-วัน (ใส่ให้อัตโนมัติจาก tools/build-etc-page.py)
+
+    // หมวดหมู่ (ชุดเดียวกับตัวกรองกิจกรรมในหน้า home) เรียงตามลำดับที่แสดง
+    const CATS={
+      computer:{name:'ฝึกใช้คอม',     en:'COMPUTER',  emoji:'🖥️', color:'#4ef4d2'},
+      coding:  {name:'เขียนโค้ด',     en:'CODING',    emoji:'🧩', color:'#a78bfa'},
+      digital: {name:'ดิจิทัล',       en:'DIGITAL',   emoji:'🛡️', color:'#06b6d4'},
+      math:    {name:'คณิตศาสตร์',    en:'MATH',      emoji:'🔢', color:'#3b82f6'},
+      reading: {name:'ภาษาไทย',       en:'THAI',      emoji:'📖', color:'#f472b6'},
+      english: {name:'ภาษาอังกฤษ',    en:'ENGLISH',   emoji:'🔤', color:'#22c55e'},
+      adventure:{name:'ผจญภัย',       en:'ADVENTURE', emoji:'🚀', color:'#fb923c'},
+      exam:    {name:'เตรียมสอบ',     en:'EXAM',      emoji:'📝', color:'#facc15'},
+      other:   {name:'อื่นๆ',         en:'MORE',      emoji:'✨', color:'#94a3b8'}
+    };
+
+    // ภารกิจ (สร้างจาก tools/etc-page/quests.json + ข้อมูลหน้า home โดย tools/build-etc-page.py ห้ามแก้ตรงนี้)
+    // t=ชื่อ p=path ใต้ /etc/ g=หมวด e=อีโมจิ a=ชั้นที่เหมาะ b=คำอธิบายสั้น img=ภาพปก nw=เกมใหม่
+    /*__DATA__*/
+
+    /* ===================== แสดงผล ===================== */
+    const $=s=>document.querySelector(s);
+    const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const url=p=>SITE+'/etc/'+encodeURI(p);
+    let cat='all',term='';
+
+    const counts={};QUESTS.forEach(q=>counts[q.g]=(counts[q.g]||0)+1);
+    const order=Object.keys(CATS).filter(k=>counts[k]);
+    $('#n-total').textContent=QUESTS.length;
+    $('#n-cats').textContent=order.length;
+    $('#n-cov').textContent=QUESTS.filter(q=>q.img).length;
+    $('#updated').textContent=new Date(UPDATED+'T00:00:00').toLocaleDateString('th-TH',{day:'numeric',month:'short',year:'numeric'});
+
+    $('#chips').innerHTML=[['all','🌌','ทั้งหมด','#8b5cf6',QUESTS.length]].concat(
+      order.map(k=>[k,CATS[k].emoji,CATS[k].name,CATS[k].color,counts[k]])
+    ).map(([k,e,n,c,x])=>'<button type="button" class="chip" data-cat="'+k+'" style="--c:'+c+'" aria-pressed="'+(k==='all')+'">'+e+' '+esc(n)+'<em>'+x+'</em></button>').join('');
+
+    const find=q=>(q.t+' '+(q.b||'')+' '+(q.a||'')+' '+CATS[q.g].name+' '+CATS[q.g].en).toLowerCase();
+    let idx=0;
+    const cover=q=>{
+      const c=CATS[q.g],d=Math.min(idx++,24)*28;
+      return '<a class="pcard" data-cat="'+q.g+'" data-name="'+esc(find(q))+'" style="--c:'+c.color+';animation-delay:'+d+'ms" href="'+url(q.p)+'" target="_blank" rel="noopener">'+
+        '<span class="shot"><img src="'+esc(q.img)+'" alt="" width="640" height="360" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add(\'fail\')"><span class="noimg" aria-hidden="true">'+(q.e||c.emoji)+'</span>'+
+        (q.a?'<i class="aud">'+esc(q.a)+'</i>':'')+(q.nw?'<i class="nw">NEW</i>':'')+'</span>'+
+        '<span class="pbody"><b>'+esc(q.t)+'</b><span class="brief">'+esc(q.b||c.name)+'</span><small>'+(q.e||c.emoji)+' '+esc(c.name)+'</small></span></a>';
+    };
+    const plain=q=>{
+      const c=CATS[q.g],d=Math.min(idx++,24)*28;
+      return '<a class="card" data-cat="'+q.g+'" data-name="'+esc(find(q))+'" style="--c:'+c.color+';animation-delay:'+d+'ms" href="'+url(q.p)+'" target="_blank" rel="noopener">'+
+        '<span class="ico" aria-hidden="true">'+(q.e||c.emoji)+'</span>'+
+        '<span class="txt"><b>'+esc(q.t)+'</b><small>'+esc(q.a?c.name+' · '+q.a:c.name)+'</small></span><span class="go" aria-hidden="true">»</span></a>';
+    };
+    $('#sections').innerHTML=order.map(k=>{
+      const c=CATS[k],list=QUESTS.filter(q=>q.g===k),withImg=list.filter(q=>q.img).sort((a,b)=>(b.nw||0)-(a.nw||0)),noImg=list.filter(q=>!q.img);   // มีภาพปก: เกมใหม่ขึ้นก่อน
+      return '<section class="sec" data-cat="'+k+'" style="--c:'+c.color+'" aria-labelledby="h-'+k+'">'+
+        '<div class="sec-h"><h2 id="h-'+k+'"><i aria-hidden="true">'+c.emoji+'</i>'+esc(c.name)+'</h2><small>'+c.en+'</small><span class="cnt">'+list.length+' ภารกิจ</span></div>'+
+        (withImg.length?'<div class="pgrid">'+withImg.map(cover).join('')+'</div>':'')+
+        (noImg.length?'<div class="grid">'+noImg.map(plain).join('')+'</div>':'')+'</section>';
+    }).join('');
+
+    function apply(){
+      let n=0;
+      document.querySelectorAll('.pcard,.card').forEach(el=>{
+        const ok=(cat==='all'||el.dataset.cat===cat)&&(!term||el.dataset.name.includes(term));
+        el.hidden=!ok;if(ok)n++;
+      });
+      document.querySelectorAll('.sec').forEach(sc=>{sc.hidden=!sc.querySelector('.pcard:not([hidden]),.card:not([hidden])')});
+      $('#empty').classList.toggle('show',n===0);
+    }
+    $('#chips').addEventListener('click',e=>{
+      const b=e.target.closest('.chip');if(!b)return;
+      cat=b.dataset.cat;
+      document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));
+      apply();
+    });
+    $('#q').addEventListener('input',e=>{term=e.target.value.trim().toLowerCase();apply()});
+    $('#dice').addEventListener('click',()=>{
+      const q=QUESTS[Math.floor(Math.random()*QUESTS.length)];
+      window.open(url(q.p),'_blank','noopener');
+    });
+  </script>
+  <script>
+    // AI Disclosure popup: SweetAlert2 is loaded only when the button is first clicked
+    (()=>{
+      const btn=document.getElementById('ai-btn'),tpl=document.getElementById('ai-note-tpl');
+      if(!btn||!tpl)return;
+      const title='🤖 การประกาศการใช้ปัญญาประดิษฐ์';
+      const fallback=()=>{const o=document.createElement('div');o.className='ai-fallback';o.setAttribute('role','dialog');o.innerHTML='<div class="ai-popup"><h2 class="swal2-title">'+title+'</h2>'+tpl.innerHTML+'<button type="button">รับทราบ</button></div>';o.addEventListener('click',e=>{if(e.target===o||e.target.tagName==='BUTTON')o.remove()});document.body.appendChild(o);o.querySelector('button').focus()};
+      const show=()=>Swal.fire({title,html:tpl.innerHTML,width:640,background:'#0b0f28',color:'#e9f2ff',confirmButtonText:'รับทราบ',confirmButtonColor:'#4ef4d2',customClass:{popup:'ai-popup',confirmButton:'ai-ok'},backdrop:'rgba(3,4,12,.72)',heightAuto:false,scrollbarPadding:false});
+      let loading=null;
+      btn.addEventListener('click',()=>{
+        if(window.Swal)return show();
+        loading=loading||new Promise((res,rej)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.all.min.js';s.onload=res;s.onerror=rej;document.head.appendChild(s)});
+        loading.then(show).catch(()=>{loading=null;fallback()});
+      });
+    })();
+  </script>
+</body>
+</html>
