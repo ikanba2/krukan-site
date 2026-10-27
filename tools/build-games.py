@@ -56,6 +56,11 @@ def skill_images(poses=(), rb=False, bots=(), bgs=()):
     return d
 
 
+def math5_images(keys):
+    """ภาพของ 5 เกมคณิต จาก tools/games/math5-art (ย่อจากภาพเดิมของหน้า Sites ด้วย prepare_math5_art.py) คีย์ = ชื่อไฟล์ไม่รวมนามสกุล เช่น bg_numroad pose_cmdr"""
+    return {k: '../math5-art/%s.webp' % k for k in keys}
+
+
 COACH = ['ready', 'thumbs', 'victory', 'heart', 'dance', 'puzzled', 'chin', 'pointR', 'trophy']   # ท่าโค้ชที่ฝังในเกมทักษะ (ลดจาก 17 ท่าเพื่อประหยัดที่บน Sites; K.Coach ใช้เฉพาะท่าที่มี)
 
 GAMES = {
@@ -203,6 +208,61 @@ GAMES = {
         'files': ['../talk/art-kid.js', '../talk/art-things.js', '../talk/art-scene.js', 'levels.js', 'art.js', 'data.js', 'eng-field.js', 'eng-drag.js', 'eng-path.js', 'eng-scroll.js', 'eng-boss.js', 'scene-play.js', 'main.js'],
         'assets': [],
         'images': skill_images(COACH + ['mouse', 'runR'], rb=['robot', 'battery', 'star'], bots=['bot_click', 'bot_code', 'bot_puzzle', 'bot_repair', 'boss_brain', 'item_antenna', 'item_chip', 'item_battery', 'item_gear'], bgs=['city', 'sky', 'workshop']),
+    },
+    'sortnum': {
+        'title': 'NUMBER RUN · เรียงลำดับตัวเลข | KruKan.in.th',
+        'out': 'Game-Number-Run',
+        'name_pad': True, 'fs_prompt': False, 'fs_guide': True,
+        'title_pose': ['pointright'],
+        'skin': 'kids',
+        'extra': ['rider.js', 'scenes.js', 'kit.js'],
+        'files': ['../mathkit/mk-gen.js', '../mathkit/mk-ui.js', '../mathkit/mk-eng.js', 'levels.js', 'data.js', 'eng-sort.js', 'scene-play.js', 'main.js'],
+        'assets': [],
+        'images': dict(skill_images(COACH, bots=['bot_click', 'bot_code', 'bot_puzzle', 'bot_repair', 'boss_brain'], bgs=['city', 'sky', 'workshop'])),
+    },
+    'roman': {
+        'title': 'ROMAN CODE · ภารกิจถอดรหัสเลขโรมัน | KruKan.in.th',
+        'out': 'Game-Roman-Code',
+        'name_pad': True, 'fs_prompt': False, 'fs_guide': True,
+        'title_pose': ['roman'],
+        'skin': 'kids',
+        'extra': ['rider.js', 'scenes.js', 'kit.js'],
+        'files': ['../mathkit/mk-gen.js', '../mathkit/mk-ui.js', '../mathkit/mk-eng.js', 'levels.js', 'data.js', 'eng-roman.js', 'lesson.js', 'scene-play.js', 'main.js'],
+        'assets': [],
+        'images': dict(skill_images(COACH, bots=['bot_click', 'bot_code', 'bot_puzzle', 'bot_repair', 'boss_brain'], bgs=['city', 'sky', 'workshop']), **math5_images(['bg_square', 'bg_forum'])),
+    },
+    'colmath': {
+        'title': 'POWER COLUMNS · คิดเลขแสนสนุก | KruKan.in.th',
+        'out': 'Game-Power-Columns',
+        'name_pad': True, 'fs_prompt': False, 'fs_guide': True,
+        'title_pose': ['colmath'],
+        'skin': 'kids',
+        'extra': ['rider.js', 'scenes.js', 'kit.js'],
+        'files': ['../mathkit/mk-gen.js', '../mathkit/mk-ui.js', '../mathkit/mk-eng.js', 'levels.js', 'data.js', 'eng-col.js', 'scene-play.js', 'main.js'],
+        'assets': [],
+        'images': dict(skill_images(COACH, bots=['bot_click', 'bot_code', 'bot_puzzle', 'bot_repair', 'boss_brain'], bgs=['city', 'sky', 'workshop']), **math5_images(['bg_forest'])),
+    },
+    'snake': {
+        'title': 'SNAKE & LADDER MATH · บันไดงูบวกลบเลข | KruKan.in.th',
+        'out': 'Game-Snake-Ladder-Math',
+        'name_pad': True, 'fs_prompt': False, 'fs_guide': True,
+        'title_pose': ['cheer'],
+        'skin': 'kids',
+        'extra': ['rider.js', 'scenes.js', 'kit.js'],
+        'files': ['../mathkit/mk-gen.js', '../mathkit/mk-ui.js', '../mathkit/mk-eng.js', 'levels.js', 'data.js', 'eng-snake.js', 'scene-play.js', 'main.js'],
+        'assets': [],
+        'images': skill_images(COACH, bots=['bot_click', 'bot_code', 'bot_puzzle', 'bot_repair', 'boss_brain'], bgs=['city', 'sky', 'workshop']),
+    },
+    'plusrun': {
+        'title': 'PLUS POWER HUNTER · สมบัติพลังบวก | KruKan.in.th',
+        'out': 'Game-Plus-Power-Hunter',
+        'name_pad': True, 'fs_prompt': False, 'fs_guide': True,
+        'title_pose': ['plusrun'],
+        'skin': 'kids',
+        'extra': ['rider.js', 'scenes.js', 'kit.js'],
+        'files': ['../mathkit/mk-gen.js', '../mathkit/mk-ui.js', '../mathkit/mk-eng.js', 'levels.js', 'data.js', 'eng-run.js', 'scene-play.js', 'main.js'],
+        'assets': [],
+        'images': dict(skill_images(COACH + ['runR', 'jump', 'land', 'jetpack'], bots=['bot_click', 'bot_code', 'bot_puzzle', 'bot_repair', 'boss_brain'], bgs=['city', 'sky', 'workshop']), **math5_images(['bg_islands'])),
     },
     'rainbow': {
         'title': 'RAINBOW CITY · เมืองสีรุ้ง | KruKan.in.th',

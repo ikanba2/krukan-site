@@ -362,7 +362,10 @@
     }
     setTimer(secs) {
       this.timeLimit = secs; this.timeLeft = secs;
-      if (!this.timerBar) { this.timerBar = KG.ui.bar(this, 690, 14, 270, 22, { value: 1, color: 0x4ef4d2 }).setDepth(25); this.timerT = KG.txt(this, 825, 52, secs + ' วิ', { size: 18, color: KG.SKIN.pop ? '#2d2a5e' : '#4ef4d2', center: true, middle: true }).setDepth(25); }
+      if (!this.timerBar) {
+        const bx = Math.max(690, 640 + this.pips.length * 14 + 16), bw = Math.min(270, 1048 - bx);   // ดาวความคืบหน้ายาวเท่าไร แถบเวลาเลื่อนหลบไปทางขวา
+        this.timerBar = KG.ui.bar(this, bx, 14, bw, 22, { value: 1, color: 0x4ef4d2 }).setDepth(25); this.timerT = KG.txt(this, bx + bw / 2, 52, secs + ' วิ', { size: 18, color: KG.SKIN.pop ? '#2d2a5e' : '#4ef4d2', center: true, middle: true }).setDepth(25);
+      }
     }
     startCountdown() {
       if (this.over) return; this.running = false;

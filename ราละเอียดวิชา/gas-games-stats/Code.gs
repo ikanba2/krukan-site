@@ -9,7 +9,7 @@
 const INITIAL_KEY = 'f0326d34b303db';   // รหัสที่เกมแนบมากับคำขอ (อยู่ในไฟล์เกมสาธารณะ จึงไม่ใช่ความลับ ใช้กันคำขอสุ่มจากที่อื่นเท่านั้น) เปลี่ยนได้ด้วยการแก้ที่นี่ แก้ stats.json แล้ว build เกมใหม่
 const CFG = {
   TZ: 'Asia/Bangkok', TOP: 5, CACHE_S: 30, RATE_N: 40, RATE_S: 600,
-  GAMES: ['steps', 'folder', 'parts', 'slice', 'talk', 'aksorn', 'math', 'debug', 'packet', 'phish', 'code-runner', 'grid', 'typing', 'caesar', 'rainbow', 'beat', 'kbq', 'mouse']
+  GAMES: ['steps', 'folder', 'parts', 'slice', 'talk', 'aksorn', 'math', 'debug', 'packet', 'phish', 'code-runner', 'grid', 'typing', 'caesar', 'rainbow', 'beat', 'kbq', 'mouse', 'snake', 'sortnum', 'colmath', 'roman', 'plusrun']
 };
 const SH = { PLAYS: 'บันทึกการเล่น', PLAYERS: 'ผู้เล่น', DAILY: 'สรุปรายวัน', GAME: 'สรุปรายเกม', RANK: '_รวมดาว', BEST: '_ดีที่สุดรายด่าน', DAYP: '_วันละเครื่อง' };
 const HEAD = {
@@ -24,7 +24,7 @@ const HEAD = {
 // รูปแบบเซลล์ (เลขคอลัมน์ : รูปแบบ) ตั้งทุกครั้งที่ setup กันรูปแบบตกค้างทำให้จำนวนครั้งโชว์เป็นวันที่ และกันด่านแบบ 1:2 ถูกแปลงเป็นเวลา · ความกว้างคอลัมน์ (พิกเซล)
 const FORMAT = { PLAYS: { 1: 'HH:mm:ss', 5: '@' }, PLAYERS: { 5: 'dd/MM HH:mm', 6: 'dd/MM HH:mm', 7: '0' }, GAME: { 4: 'dd/MM HH:mm' } };
 const WIDTH = { PLAYS: { 1: 80, 2: 100, 3: 100, 4: 130, 12: 130, 13: 130 }, PLAYERS: { 1: 130, 2: 130, 3: 170, 4: 110, 5: 120, 6: 120, 7: 130 }, DAILY: { 1: 150, 3: 220, 4: 130, 5: 190 }, GAME: { 1: 100, 2: 130, 3: 190, 4: 120 } };
-const GAME_NAME = { steps: 'ก้าวคำสั่ง (Techno Steps)', folder: 'นักจัดแฟ้ม (Techno Folder)', parts: 'ช่างประกอบคอม (Techno Parts)', slice: 'ช่างแบ่งพิซซ่า (Techno Slice)', talk: 'ประโยคอังกฤษ (Techno Talk)', aksorn: 'ตะลุยเมืองอักษร (Techno Aksorn)', math: 'สมรภูมิคณิต (Techno Math)', debug: 'จับผิดโปรแกรม (Bug Buster)', packet: 'ไปรษณีย์ข้อมูล (Packet Express)', phish: 'สายตรวจเน็ต (Net Patrol)', 'code-runner': 'วิ่งตามคำสั่ง (Code Runner)', grid: 'เขาวงกตคำสั่ง (Techno Grid)', typing: 'จอมพิมพ์ (Type Hero)', caesar: 'แกะรหัสซีซาร์ (Cipher Breaker)', rainbow: 'เมืองสีรุ้ง (Rainbow City)', beat: 'จอมจังหวะ (Beat Hero)', kbq: 'ภารกิจแป้นพิมพ์ (Keyboard Quest)', mouse: 'ผจญภัยเมาส์ (Mouse Adventure)' };
+const GAME_NAME = { steps: 'ก้าวคำสั่ง (Techno Steps)', folder: 'นักจัดแฟ้ม (Techno Folder)', parts: 'ช่างประกอบคอม (Techno Parts)', slice: 'ช่างแบ่งพิซซ่า (Techno Slice)', talk: 'ประโยคอังกฤษ (Techno Talk)', aksorn: 'ตะลุยเมืองอักษร (Techno Aksorn)', math: 'สมรภูมิคณิต (Techno Math)', debug: 'จับผิดโปรแกรม (Bug Buster)', packet: 'ไปรษณีย์ข้อมูล (Packet Express)', phish: 'สายตรวจเน็ต (Net Patrol)', 'code-runner': 'วิ่งตามคำสั่ง (Code Runner)', grid: 'เขาวงกตคำสั่ง (Techno Grid)', typing: 'จอมพิมพ์ (Type Hero)', caesar: 'แกะรหัสซีซาร์ (Cipher Breaker)', rainbow: 'เมืองสีรุ้ง (Rainbow City)', beat: 'จอมจังหวะ (Beat Hero)', kbq: 'ภารกิจแป้นพิมพ์ (Keyboard Quest)', mouse: 'ผจญภัยเมาส์ (Mouse Adventure)', snake: 'บันไดงูบวกลบเลข (Snake Ladder Math)', sortnum: 'เรียงลำดับตัวเลข (Number Run)', colmath: 'คิดเลขแสนสนุก (Power Columns)', roman: 'เลขโรมัน (Roman Code)', plusrun: 'สมบัติพลังบวก (Plus Power Hunter)' };
 
 /* ---------- เริ่มใช้งาน ---------- */
 function setup() {

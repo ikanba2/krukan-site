@@ -7,7 +7,7 @@
       "kind": "home",
       "file": "Home-Play-Learn-Lite.html",
       "live": "/home",
-      "marker": "techno-mouse-adventure",
+      "marker": "ฝากไว้ที่ GitHub Pages แล้วฝังด้วยลิงก์",
       "note": "หน้าแรก (ฉบับ Lite + ภาพปก manga ตัวสด)"
     },
     "etc": {
@@ -173,6 +173,56 @@
       "marker": "EP01-cover",
       "note": "เว็บอ่านนิยายมังงะ Cyber Rider Techno (เมนู นิยายมังงะ) · ฝังด้วยลิงก์ GitHub Pages ตั้งแต่ 27 ต.ค. 2569",
       "embed_url": "https://ikanba2.github.io/krukan-games/manga/"
+    },
+    "plussnake": {
+      "id": "1uJqDO-V5WtQnNsfOnoHNoRNddANZcC02",
+      "kind": "game",
+      "file": "Game-Snake-Ladder-Math-Offline.html",
+      "live": "/etc/plussnake",
+      "build": "snake",
+      "embed_url": "https://ikanba2.github.io/krukan-games/snake-ladder-math/",
+      "stamp_file": "Game-Snake-Ladder-Math-Offline.html",
+      "note": "บันไดงูบวกลบเลข อัปเกรดเป็น Phaser 48 ด่าน (27 ต.ค. 2569) · ฝังด้วยลิงก์ GitHub Pages"
+    },
+    "sortnumber": {
+      "id": "1vCvKroGzaZPbVre10URBpKP91vLtPqWE",
+      "kind": "game",
+      "file": "Game-Number-Run-Offline.html",
+      "live": "/etc/sortnumber",
+      "build": "sortnum",
+      "embed_url": "https://ikanba2.github.io/krukan-games/number-run/",
+      "stamp_file": "Game-Number-Run-Offline.html",
+      "note": "เรียงลำดับตัวเลข อัปเกรดเป็น Phaser 48 ด่าน (27 ต.ค. 2569) · ฝังด้วยลิงก์ GitHub Pages"
+    },
+    "funmath": {
+      "id": "1PR1TSVUlUEp6V5xuOxl5xuwZDNeoRDLo",
+      "kind": "game",
+      "file": "Game-Power-Columns-Offline.html",
+      "live": "/etc/funmath",
+      "build": "colmath",
+      "embed_url": "https://ikanba2.github.io/krukan-games/power-columns/",
+      "stamp_file": "Game-Power-Columns-Offline.html",
+      "note": "คิดเลขแสนสนุก อัปเกรดเป็น Phaser 48 ด่าน (27 ต.ค. 2569) · ฝังด้วยลิงก์ GitHub Pages"
+    },
+    "roman": {
+      "id": "1UVcOzli2td_G2Eqcxf5A3KQd84bp902Y",
+      "kind": "game",
+      "file": "Game-Roman-Code-Offline.html",
+      "live": "/etc/roman",
+      "build": "roman",
+      "embed_url": "https://ikanba2.github.io/krukan-games/roman-code/",
+      "stamp_file": "Game-Roman-Code-Offline.html",
+      "note": "เลขโรมัน อัปเกรดเป็น Phaser 48 ด่าน (27 ต.ค. 2569) · ฝังด้วยลิงก์ GitHub Pages"
+    },
+    "marioplus": {
+      "id": "1A_Ybk5VRTH4u_BhrW4xbU9cQdilxdhGK",
+      "kind": "game",
+      "file": "Game-Plus-Power-Hunter-Offline.html",
+      "live": "/etc/marioplus",
+      "build": "plusrun",
+      "embed_url": "https://ikanba2.github.io/krukan-games/plus-power-hunter/",
+      "stamp_file": "Game-Plus-Power-Hunter-Offline.html",
+      "note": "สมบัติพลังบวก อัปเกรดเป็น Phaser 48 ด่าน (27 ต.ค. 2569) · ฝังด้วยลิงก์ GitHub Pages"
     }
   }
 }

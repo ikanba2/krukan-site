@@ -24,6 +24,12 @@ GAMES = {
     'beat-hero': ('Game-Beat-Hero-Offline.html', 'จอมจังหวะ Beat Hero ฝึกกดคีย์บอร์ดตามจังหวะเพลง'),
     'keyboard-quest': ('Game-Keyboard-Quest-Offline.html', 'ภารกิจแป้นพิมพ์ Keyboard Quest ลูกศร ตัวอักษร ปุ่มพิเศษ คีย์ลัด'),
     'mouse-adventure': ('Game-Mouse-Adventure-Offline.html', 'ผจญภัยเมาส์ Mouse Adventure ฝึกคลิก ลากวาง ลูกกลิ้ง'),
+    # 27 ต.ค. 2569: เกมคณิต 5 เกม (48 ด่านต่อเกม) อัปเกรดจากหน้าเดิมของ Sites
+    'snake-ladder-math': ('Game-Snake-Ladder-Math-Offline.html', 'บันไดงูบวกลบเลข เกมคณิต 48 ด่าน'),
+    'number-run': ('Game-Number-Run-Offline.html', 'เรียงลำดับตัวเลข เกมคณิต 48 ด่าน'),
+    'power-columns': ('Game-Power-Columns-Offline.html', 'คิดเลขแสนสนุก เกมคณิต 48 ด่าน'),
+    'roman-code': ('Game-Roman-Code-Offline.html', 'เลขโรมัน เกมคณิต 48 ด่าน'),
+    'plus-power-hunter': ('Game-Plus-Power-Hunter-Offline.html', 'สมบัติพลังบวก เกมคณิต 48 ด่าน'),
     'hanuman-path': ('Game-Hanuman-Path.html', 'หนุมานพิชิตเส้นทาง 3D สื่อฉายหน้าชั้น ป.4 (สร้างจาก tools/hanuman/build_hanuman.py)'),
     'manga': ('นิยายมังงะ_มาสไรเดอร์เทคโน/เว็บอ่านนิยายมังงะ/Techno-Manga-Reader.html', 'นิยายมังงะ Cyber Rider Techno เว็บอ่านนิยาย 24 ตอน'),   # ผู้ใช้สั่งย้ายมา GitHub 27 ต.ค. 2569
 }
