@@ -1,0 +1,43 @@
+/* ===== Techno ป.3 · ธีม "ดาวธาตุพฤกษา": ป่าเขียว ใบไม้ ผีเสื้อแสง · ทับบนฐานเดียวกับ ป.2 ===== */
+:root{--deep:#06301f;--sea:#0e6b45;--wave:#1fa05a;--aqua:#7ed957;--mint:#c6f06b;--foam:#f4ffe8;--paper:#f8fff0;--line:#cfe9b8;--ink:#0d3321;--soft:#4f7a5a;--coral:#ff7a6b;--sun:#ffd34f;--good:#17b86a}
+body{background:radial-gradient(1200px 600px at 10% -10%,#35b36a 0,transparent 60%),radial-gradient(900px 500px at 100% 0,#1f8a55 0,transparent 55%),linear-gradient(180deg,#0f5a3a 0,#0a3d28 60%,#062a1b 100%) fixed}
+.sea i{border-color:rgba(214,255,160,.55);background:radial-gradient(circle at 30% 30%,rgba(255,255,200,.7),rgba(190,255,120,.15) 60%,transparent 70%);border-radius:50% 0 50% 0;animation-name:rise}
+.sea::after{background:linear-gradient(180deg,transparent,rgba(126,217,87,.16))}
+.waves .w1{fill:rgba(126,217,87,.18)}.waves .w2{fill:rgba(198,240,107,.12)}
+.brand b{color:var(--mint)}
+.btn{background:linear-gradient(180deg,#d6ff8f,#7ed957);box-shadow:0 5px 0 #3f9a2c,0 10px 16px rgba(0,0,0,.25);color:#0d3321}
+.btn:active{box-shadow:0 1px 0 #3f9a2c}
+.btn.sec{background:#fff;color:#14532d;box-shadow:0 5px 0 #b9dfa0,0 8px 14px rgba(0,0,0,.18)}
+.btn.warm{background:linear-gradient(180deg,#ffe58a,#ffc233);box-shadow:0 5px 0 #c58a00,0 10px 16px rgba(0,0,0,.25)}
+.back{background:linear-gradient(180deg,#fff,#e3f7cf);box-shadow:0 4px 0 #a9d98a,0 8px 14px rgba(0,0,0,.22)}
+.back::before{background-color:#14532d;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M15 4.5l-7.5 7.5 7.5 7.5' fill='none' stroke='%23c6f06b' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.st-head small,.kick{color:var(--ac)}
+.panel .kick{color:#1b6b3a;filter:none}
+.hud b{color:#15803d}.hud .btn{box-shadow:0 3px 0 #b9dfa0}
+.opt{border-color:#cfe9b8;box-shadow:0 3px 0 #cfe9b8}.opt:hover{border-color:#7ed957}.opt.sel{border-color:#7ed957;background:#efffdc}
+.note{background:#ecfbd9}.note b{color:#166534}
+.board{background:linear-gradient(180deg,#f1ffe0,#e1f7c6);border-color:#a9d98a}
+.slot{border-color:#a9d98a}.bin{border-color:#a9d98a}.slot.over,.bin.over{background:#efffdc;border-color:#7ed957}
+.card.sel{border-color:#7ed957;box-shadow:0 0 0 4px rgba(126,217,87,.35),0 4px 0 var(--line)}
+.tok button.sel{border-color:#7ed957;background:#efffdc}
+.ghud{background:linear-gradient(90deg,#14532d,#2e8b57)}
+.arena{background:linear-gradient(180deg,#2e8b57,#14532d 60%,#0b3d2a)}
+.arena .craft{width:auto;height:230px}
+.lane{background:linear-gradient(180deg,#2e8b57,#14532d)}
+.lg-bubble{background:#eaffd9;border-color:#7ed957}
+.nums button.sel{background:linear-gradient(180deg,#ffe58a,#ffc233);border-color:#ffc233}
+.nums button{border-color:#cfe9b8;box-shadow:0 3px 0 #cfe9b8}.lg input{border-color:#cfe9b8}
+.cq-msg.hint{background:#efffdc;border-color:#7ed957}.cq-lv.cur{border-color:#ffc233}
+.cq-goal{background:#efffdc}.cq-program{border-color:#a9d98a;background:#f4ffe8}.cq-program.drop{border-color:#17b86a}
+.cq-row.on{border-color:#7ed957;background:#efffdc}
+.tl button.cur{background:linear-gradient(160deg,#fff,var(--ac) 60%)}
+.mcard small{color:#166534}
+.mascot{width:130px}
+.hero .craft{max-height:260px}
+.loading .dots i{background:#7ed957}.loading .dots i:nth-child(2){background:#c6f06b}
+.cargo .card{min-width:120px}
+.field{width:100%;border:3px solid var(--line);border-radius:14px;padding:10px 14px;font:inherit;font-size:18px;background:#fff;color:var(--ink);margin:8px 0}
+.field:focus{outline:0;border-color:#7ed957}
+.exp{min-height:0}
+@media(max-width:1499px){.mascot{width:96px}}
+@media(max-width:700px){.hero .craft{max-height:150px}.mascot{width:58px!important}}

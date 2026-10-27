@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สื่อการสอน: บทที่ 1 แนวคิดเชิงคำนวณ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Sarabun', sans-serif; scroll-behavior: smooth; }
+        #progress-bar { position: fixed; top: 0; left: 0; height: 5px; background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%); width: 0%; z-index: 100; transition: width 0.1s; }
+        .section-title { background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card { background-color: white; border-radius: 1.25rem; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04); border: 1px solid rgba(226, 232, 240, 0.8); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        .nav-link { transition: color 0.3s, border-bottom-color 0.3s; }
+        .nav-link:hover { color: #10b981; border-bottom-color: #10b981; }
+        .fade-in-section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+        #back-to-top { position: fixed; bottom: 24px; right: 24px; display: none; transition: opacity 0.3s, transform 0.3s; background-color: #10b981; }
+        .answer-btn.selected { border-color: #3b82f6; background-color: #dbeafe; }
+        .answer-btn.correct { border-color: #10b981 !important; background-color: #d1fae5 !important; color: #065f46 !important; }
+        .answer-btn.incorrect { border-color: #ef4444 !important; background-color: #fee2e2 !important; color: #991b1b !important; }
+        .draggable-item { cursor: grab; user-select: none; }
+        .draggable-item:active { cursor: grabbing; }
+        .drop-zone { border: 2px dashed #cbd5e1; transition: background-color 0.3s, border-color 0.3s; }
+        .drop-zone.over { background-color: #e0f2fe; border-color: #3b82f6; }
+        .detail-item { cursor: pointer; transition: all 0.2s ease; user-select: none; }
+        .detail-item:hover { transform: scale(1.02); }
+        .detail-item.essential { background-color: #d1fae5; border-color: #10b981; color: #065f46; font-weight: 600; }
+        .detail-item.non-essential { background-color: #fee2e2; border-color: #ef4444; color: #991b1b; }
+        .img-zoom-container { overflow: hidden; border-radius: 1rem; }
+        .img-zoom-container img { transition: transform 0.5s ease; }
+        .img-zoom-container:hover img { transform: scale(1.03); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-emerald-100 selection:text-emerald-900">
+
+    <div id="progress-bar"></div>
+
+    <!-- Header Navigation -->
+    <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-slate-100">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-emerald-600 flex items-center">
+                <i class="fas fa-sitemap mr-2.5 text-emerald-500"></i> วิทยาการคำนวณ ม.2
+            </h1>
+            <div class="hidden md:flex items-center space-x-6 text-slate-600 font-medium">
+                <a href="#decomposition" class="nav-link border-b-2 border-transparent pb-1 hover:text-emerald-600">1. การแยกย่อย</a>
+                <a href="#pattern" class="nav-link border-b-2 border-transparent pb-1 hover:text-emerald-600">2. การหารูปแบบ</a>
+                <a href="#abstraction" class="nav-link border-b-2 border-transparent pb-1 hover:text-emerald-600">3. เชิงนามธรรม</a>
+                <a href="#algorithm" class="nav-link border-b-2 border-transparent pb-1 hover:text-emerald-600">4. อัลกอริทึม</a>
+                <a href="#case-study" class="nav-link border-b-2 border-transparent pb-1 hover:text-emerald-600">กรณีศึกษา</a>
+                <a href="#quiz" class="px-4 py-1.5 bg-emerald-600 text-white rounded-full text-sm font-semibold hover:bg-emerald-700 transition shadow-sm">แบบทดสอบ</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-slate-700 focus:outline-none p-2"><i class="fas fa-bars text-xl"></i></button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-white border-b border-slate-100 space-y-2 font-medium">
+             <a href="#decomposition" class="block py-2 text-center nav-link">1. การแยกย่อย</a>
+             <a href="#pattern" class="block py-2 text-center nav-link">2. การหารูปแบบ</a>
+             <a href="#abstraction" class="block py-2 text-center nav-link">3. เชิงนามธรรม</a>
+             <a href="#algorithm" class="block py-2 text-center nav-link">4. อัลกอริทึม</a>
+             <a href="#case-study" class="block py-2 text-center nav-link">กรณีศึกษา</a>
+             <a href="#quiz" class="block py-2 text-center text-emerald-600 font-bold">แบบทดสอบ</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 md:px-6 py-10 max-w-6xl">
+        <!-- Hero Section -->
+        <section class="text-center mb-16 fade-in-section">
+            <div class="bg-white p-6 md:p-10 rounded-2xl shadow-xl border border-emerald-100">
+                <span class="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 text-emerald-700 text-sm font-bold rounded-full mb-4 border border-emerald-200">
+                    <i class="fas fa-brain text-emerald-500"></i> วิชาวิทยาการคำนวณ ชั้นมัธยมศึกษาปีที่ 2
+                </span>
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-4 section-title">บทที่ 1: แนวคิดเชิงคำนวณ (Computational Thinking)</h2>
+                <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-8">
+                    กระบวนการคิดแก้ปัญหาอย่างเป็นระบบ เพื่อให้ได้แนวทางที่ชัดเจนและมีประสิทธิภาพ สามารถนำไปใช้ได้ทั้งในชีวิตประจำวันและการเขียนโปรแกรมคอมพิวเตอร์
+                </p>
+
+                <!-- Hero Image with 4 Core Pillars Overview -->
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white max-w-5xl mx-auto group">
+                    <img src="https://lh3.googleusercontent.com/d/1G-j8IcgfyKvIP0oLu66gg0SHB2Gk9Qz1" alt="แนวคิดเชิงคำนวณ 4 เสาหลัก (Computational Thinking 4 Pillars)" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.015]">
+                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/90 via-slate-900/60 to-transparent p-5 md:p-8 text-white text-left flex flex-col md:flex-row md:items-end justify-between gap-4">
+                        <div>
+                            <span class="inline-block px-2.5 py-1 bg-emerald-500 text-slate-900 text-xs font-black uppercase tracking-wider rounded mb-2">ภาพรวมเนื้อหา</span>
+                            <h3 class="text-xl md:text-3xl font-bold">4 เสาหลักแห่งแนวคิดเชิงคำนวณ</h3>
+                            <p class="text-slate-300 text-sm md:text-base hidden sm:block mt-1">เครื่องมือทางความคิดที่ช่วยแก้ทุกปัญหาได้อย่างเป็นขั้นตอน</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 text-xs md:text-sm font-semibold">
+                            <span class="bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20 flex items-center gap-1.5"><i class="fas fa-puzzle-piece text-emerald-300"></i> 1. Decomposition</span>
+                            <span class="bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20 flex items-center gap-1.5"><i class="fas fa-shapes text-blue-300"></i> 2. Pattern</span>
+                            <span class="bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20 flex items-center gap-1.5"><i class="fas fa-search-plus text-purple-300"></i> 3. Abstraction</span>
+                            <span class="bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20 flex items-center gap-1.5"><i class="fas fa-route text-teal-300"></i> 4. Algorithm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. Decomposition Section -->
+        <section id="decomposition" class="mb-20 pt-10 fade-in-section">
+            <div class="flex items-center justify-center gap-3 mb-8">
+                <span class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl font-bold">1</span>
+                <h3 class="text-3xl md:text-4xl font-bold section-title">การแบ่งปัญหาใหญ่เป็นปัญหาย่อย (Decomposition)</h3>
+            </div>
+
+            <!-- What is Decomposition Card -->
+            <div class="card p-6 md:p-8 mb-8">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-emerald-800">มันคืออะไร?</h4>
+                </div>
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    คือการแตกปัญหาที่ซับซ้อนหรือมีขนาดใหญ่ออกเป็นส่วนประกอบย่อยๆ ที่มีขนาดเล็กลงและจัดการได้ง่ายขึ้น เหมือนกับการแยกส่วนประกอบของจักรยานออกมาเป็น <strong>ล้อ, โครง, แฮนด์, และเบาะ</strong> เพื่อให้ง่ายต่อการซ่อมแซมหรือทำความเข้าใจการทำงานของแต่ละส่วน
+                </p>
+
+                <!-- Decomposition Visual: Exploded Bicycle Image -->
+                <div class="mt-6 rounded-2xl overflow-hidden border border-emerald-200 shadow-md bg-white">
+                    <img src="https://lh3.googleusercontent.com/d/1KlCByK-9OR2Kn9GBbRcs9JT4lDBNPa8T" alt="การแยกส่วนประกอบของจักรยาน (Decomposition Concept)" class="w-full h-auto object-cover">
+                    <div class="bg-emerald-50/90 p-3.5 text-center text-sm font-medium text-emerald-900 border-t border-emerald-100 flex items-center justify-center gap-2">
+                        <i class="fas fa-info-circle text-emerald-600"></i>
+                        <span><strong>ภาพประกอบ:</strong> การแยกส่วนประกอบจักรยาน (ตัวเฟรม, ล้อหน้า, แฮนด์, เบาะนั่ง, โซ่, บันไดปั่น, ล้อหลัง) ช่วยให้เราเข้าใจและจัดการทีละส่วนได้อย่างเป็นระบบ</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Situation Example Card -->
+            <div class="card p-6 md:p-8 mb-8">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-emerald-800">ตัวอย่างสถานการณ์: การวางแผนทำรายงาน</h4>
+                </div>
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    ปัญหาใหญ่คือ <strong>"ต้องส่งรายงานวิชาวิทยาศาสตร์"</strong> ซึ่งดูน่ากลัวและไม่รู้จะเริ่มตรงไหน แต่ถ้าเราใช้ <strong>Decomposition</strong> เราจะแบ่งปัญหานี้ออกเป็นส่วนย่อยๆ ได้แก่:
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mt-5">
+                    <div class="p-4 bg-emerald-50/70 border border-emerald-200 rounded-xl text-center">
+                        <div class="text-2xl mb-1">🎯</div>
+                        <div class="font-bold text-emerald-900 text-sm">1. เลือกหัวข้อ</div>
+                        <div class="text-xs text-slate-500 mt-1">กำหนดขอบเขต</div>
+                    </div>
+                    <div class="p-4 bg-emerald-50/70 border border-emerald-200 rounded-xl text-center">
+                        <div class="text-2xl mb-1">🔍</div>
+                        <div class="font-bold text-emerald-900 text-sm">2. ค้นหาข้อมูล</div>
+                        <div class="text-xs text-slate-500 mt-1">หนังสือ/อินเทอร์เน็ต</div>
+                    </div>
+                    <div class="p-4 bg-emerald-50/70 border border-emerald-200 rounded-xl text-center">
+                        <div class="text-2xl mb-1">📝</div>
+                        <div class="font-bold text-emerald-900 text-sm">3. สรุปเนื้อหา</div>
+                        <div class="text-xs text-slate-500 mt-1">เรียบเรียงใจความ</div>
+                    </div>
+                    <div class="p-4 bg-emerald-50/70 border border-emerald-200 rounded-xl text-center">
+                        <div class="text-2xl mb-1">🎨</div>
+                        <div class="font-bold text-emerald-900 text-sm">4. จัดทำรูปเล่ม</div>
+                        <div class="text-xs text-slate-500 mt-1">ออกแบบหน้าปก</div>
+                    </div>
+                    <div class="p-4 bg-emerald-50/70 border border-emerald-200 rounded-xl text-center">
+                        <div class="text-2xl mb-1">✅</div>
+                        <div class="font-bold text-emerald-900 text-sm">5. ตรวจทาน</div>
+                        <div class="text-xs text-slate-500 mt-1">เช็กความถูกต้อง</div>
+                    </div>
+                </div>
+                <p class="text-lg text-slate-600 mt-5">เมื่อเห็นเป็นขั้นตอนย่อยๆ แบบนี้แล้ว การทำรายงานก็ดูง่ายขึ้นและสามารถลงมือทำทีละส่วนได้ทันที</p>
+            </div>
+
+            <!-- Mini Game Section -->
+            <div class="card p-6 md:p-8">
+                <h4 class="text-2xl font-bold text-center mb-6 text-emerald-800 flex items-center justify-center gap-2">
+                    <i class="fas fa-gamepad text-emerald-600"></i> เกม: ลองฝึกคิดแบบ Decomposition
+                </h4>
+                <div class="bg-emerald-50/60 p-6 rounded-xl mb-8 border border-emerald-100">
+                    <h5 class="text-xl font-bold mb-2 text-emerald-900">เกมที่ 1: วางแผนจัดงานเลี้ยง</h5>
+                    <p class="mb-4 text-slate-600">"การจัดงานเลี้ยง" เป็นปัญหาใหญ่ ลองลาก "ปัญหาย่อย" ที่ต้องทำไปวางในช่อง "แผนการ" ให้ครบ</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div id="deco-items-1" class="bg-white/80 p-4 rounded-xl border border-slate-200 space-y-3 shadow-inner">
+                            <div draggable="true" data-type="planning" class="draggable-item p-3 bg-white rounded-lg border border-slate-200 shadow-sm font-medium hover:bg-emerald-50 transition flex items-center gap-2">
+                                <i class="fas fa-grip-vertical text-slate-400"></i> จัดเตรียมสถานที่
+                            </div>
+                            <div draggable="true" data-type="planning" class="draggable-item p-3 bg-white rounded-lg border border-slate-200 shadow-sm font-medium hover:bg-emerald-50 transition flex items-center gap-2">
+                                <i class="fas fa-grip-vertical text-slate-400"></i> เชิญแขก
+                            </div>
+                            <div draggable="true" data-type="planning" class="draggable-item p-3 bg-white rounded-lg border border-slate-200 shadow-sm font-medium hover:bg-emerald-50 transition flex items-center gap-2">
+                                <i class="fas fa-grip-vertical text-slate-400"></i> เตรียมอาหารและเครื่องดื่ม
+                            </div>
+                            <div draggable="true" data-type="planning" class="draggable-item p-3 bg-white rounded-lg border border-slate-200 shadow-sm font-medium hover:bg-emerald-50 transition flex items-center gap-2">
+                                <i class="fas fa-grip-vertical text-slate-400"></i> วางแผนกิจกรรม
+                            </div>
+                        </div>
+                        <div id="deco-slots-1" class="space-y-3">
+                            <div data-type="planning" class="drop-zone p-3 rounded-lg min-h-[52px] flex items-center justify-center text-slate-400 font-medium">วางแผนงานที่นี่ 1</div>
+                            <div data-type="planning" class="drop-zone p-3 rounded-lg min-h-[52px] flex items-center justify-center text-slate-400 font-medium">วางแผนงานที่นี่ 2</div>
+                            <div data-type="planning" class="drop-zone p-3 rounded-lg min-h-[52px] flex items-center justify-center text-slate-400 font-medium">วางแผนงานที่นี่ 3</div>
+                            <div data-type="planning" class="drop-zone p-3 rounded-lg min-h-[52px] flex items-center justify-center text-slate-400 font-medium">วางแผนงานที่นี่ 4</div>
+                        </div>
+                    </div>
+                    <div id="deco-game-feedback-1" class="text-center mt-4 font-bold h-6"></div>
+                </div>
+
+                <div class="bg-blue-50/60 p-6 rounded-xl border border-blue-100">
+                    <h5 class="text-xl font-bold mb-2 text-blue-900">เกมที่ 2: วิเคราะห์ปัญหารถเสีย</h5>
+                    <p class="mb-4 text-slate-600">เมื่อรถจักรยานปั่นไม่ได้ ปัญหาอาจเกิดจากหลายส่วน ลองคลิกเลือก "ปัญหาย่อยที่เป็นไปได้" ทั้งหมด</p>
+                    <div id="deco-choices-2" class="flex flex-wrap justify-center gap-4">
+                        <button data-correct="true" class="answer-btn px-5 py-3 bg-white rounded-xl border-2 border-slate-200 font-medium shadow-sm hover:border-blue-400 transition">ยางแบน</button>
+                        <button data-correct="false" class="answer-btn px-5 py-3 bg-white rounded-xl border-2 border-slate-200 font-medium shadow-sm hover:border-blue-400 transition">เบาะนั่งสูงไป</button>
+                        <button data-correct="true" class="answer-btn px-5 py-3 bg-white rounded-xl border-2 border-slate-200 font-medium shadow-sm hover:border-blue-400 transition">โซ่หลุด</button>
+                        <button data-correct="true" class="answer-btn px-5 py-3 bg-white rounded-xl border-2 border-slate-200 font-medium shadow-sm hover:border-blue-400 transition">เบรกติด</button>
+                    </div>
+                    <div id="deco-game-feedback-2" class="text-center mt-4 font-bold h-6"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Pattern Recognition Section -->
+        <section id="pattern" class="mb-20 pt-10 fade-in-section">
+            <div class="flex items-center justify-center gap-3 mb-8">
+                <span class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xl font-bold">2</span>
+                <h3 class="text-3xl md:text-4xl font-bold section-title">การพิจารณารูปแบบ (Pattern Recognition)</h3>
+            </div>
+
+            <!-- What is Pattern Recognition Card with Side-by-Side Image -->
+            <div class="card p-6 md:p-8 mb-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-xl">
+                                <i class="fas fa-shapes"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-blue-900">มันคืออะไร?</h4>
+                        </div>
+                        <p class="text-lg text-slate-600 leading-relaxed">
+                            คือการมองหา<strong>รูปแบบ, ความเหมือน, หรือความคล้ายคลึงกันที่เกิดขึ้นซ้ำๆ</strong> ในปัญหาย่อยๆ ที่เราแบ่งมาแล้ว เมื่อเราเจอปัญหารูปแบบเดิม เราสามารถนำวิธีการแก้ปัญหาที่เคยใช้ได้ผลกับปัญหารูปแบบเดียวกันมาประยุกต์ใช้ได้ทันที ทำให้แก้ปัญหาได้เร็วและแม่นยำขึ้นมาก
+                        </p>
+                        <div class="mt-4 p-4 bg-blue-50/80 rounded-xl border border-blue-100 text-sm text-blue-900">
+                            <strong>💡 จุดสำคัญ:</strong> ในการเขียนโปรแกรม คอมพิวเตอร์ชอบสิ่งที่เกิดซ้ำๆ เพราะสามารถใช้คำสั่งวนซ้ำ (Loop) จัดการได้อย่างมีประสิทธิภาพ
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5">
+                        <div class="img-zoom-container border border-blue-200 shadow-md">
+                            <img src="https://lh3.googleusercontent.com/d/1F3GUPsCoLrX7VIuM7lct0TtZqAdkaWrV" alt="การพิจารณารูปแบบ (Pattern Recognition Hub)" class="w-full h-auto object-cover">
+                            <div class="bg-blue-50/90 p-2.5 text-center text-xs font-semibold text-blue-800 border-t border-blue-100">
+                                🔍 ค้นหารูปแบบและความสัมพันธ์ของข้อมูล
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Situation Example Card with Pattern Routine SVG -->
+            <div class="card p-6 md:p-8 mb-8">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-xl">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-blue-900">ตัวอย่างสถานการณ์: การแต่งตัวไปโรงเรียน</h4>
+                </div>
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    ทุกๆ เช้าที่เราแต่งตัวไปโรงเรียน เราจะทำตาม <strong>"รูปแบบ (Pattern)"</strong> ที่เหมือนกันเสมอ คือ:
+                </p>
+
+                <!-- SVG Flow Diagram: Getting Ready Routine -->
+                <div class="my-6 rounded-2xl overflow-hidden border border-blue-100 shadow-sm bg-white p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 330" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0fdf4"/>
+      <stop offset="100%" stop-color="#eff6ff"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="840" height="330" rx="16" fill="url(#bgGrad)"/>
+  <rect x="2" y="2" width="836" height="326" rx="15" fill="none" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+  <text x="420" y="40" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="20" font-weight="bold" fill="#065f46">
+    🔁 ตัวอย่างการพิจารณารูปแบบ (Pattern Recognition): ลำดับขั้นตอนการแต่งตัว
+  </text>
+  <text x="420" y="66" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="14" fill="#64748b">
+    แม้รายละเอียดจะเปลี่ยน (เช่น สีถุงเท้า ลายเสื้อ) แต่ลำดับขั้นตอนยังคงเป็น "รูปแบบเดิม (Pattern)" ทุกๆ เช้า
+  </text>
+
+  <!-- Step 1 -->
+  <g transform="translate(45, 92)" filter="url(#cardShadow)">
+    <rect width="150" height="160" rx="14" fill="white" stroke="#10b981" stroke-width="2"/>
+    <circle cx="75" cy="48" r="28" fill="#d1fae5"/>
+    <text x="75" y="58" text-anchor="middle" font-size="28">👔</text>
+    <text x="75" y="106" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="15" font-weight="bold" fill="#065f46">1. สวมเสื้อ</text>
+    <text x="75" y="130" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="12" fill="#64748b">เสื้อนักเรียน / เสื้อพละ</text>
+    <rect x="35" y="142" width="80" height="6" rx="3" fill="#10b981"/>
+  </g>
+
+  <!-- Arrow 1 -->
+  <g transform="translate(205, 172)">
+    <path d="M0,0 L24,0" stroke="#10b981" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="24,-6 34,0 24,6" fill="#10b981"/>
+  </g>
+
+  <!-- Step 2 -->
+  <g transform="translate(245, 92)" filter="url(#cardShadow)">
+    <rect width="150" height="160" rx="14" fill="white" stroke="#10b981" stroke-width="2"/>
+    <circle cx="75" cy="48" r="28" fill="#d1fae5"/>
+    <text x="75" y="58" text-anchor="middle" font-size="28">👖</text>
+    <text x="75" y="106" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="15" font-weight="bold" fill="#065f46">2. กางเกง/กระโปรง</text>
+    <text x="75" y="130" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="12" fill="#64748b">จัดเครื่องแบบเรียบร้อย</text>
+    <rect x="35" y="142" width="80" height="6" rx="3" fill="#10b981"/>
+  </g>
+
+  <!-- Arrow 2 -->
+  <g transform="translate(405, 172)">
+    <path d="M0,0 L24,0" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="24,-6 34,0 24,6" fill="#3b82f6"/>
+  </g>
+
+  <!-- Step 3 -->
+  <g transform="translate(445, 92)" filter="url(#cardShadow)">
+    <rect width="150" height="160" rx="14" fill="white" stroke="#3b82f6" stroke-width="2"/>
+    <circle cx="75" cy="48" r="28" fill="#dbeafe"/>
+    <text x="75" y="58" text-anchor="middle" font-size="28">🧦</text>
+    <text x="75" y="106" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="15" font-weight="bold" fill="#1e40af">3. ใส่ถุงเท้า</text>
+    <text x="75" y="130" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="12" fill="#64748b">ถุงเท้าขาวหรือน้ำตาล</text>
+    <rect x="35" y="142" width="80" height="6" rx="3" fill="#3b82f6"/>
+  </g>
+
+  <!-- Arrow 3 -->
+  <g transform="translate(605, 172)">
+    <path d="M0,0 L24,0" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="24,-6 34,0 24,6" fill="#3b82f6"/>
+  </g>
+
+  <!-- Step 4 -->
+  <g transform="translate(645, 92)" filter="url(#cardShadow)">
+    <rect width="150" height="160" rx="14" fill="white" stroke="#3b82f6" stroke-width="2"/>
+    <circle cx="75" cy="48" r="28" fill="#dbeafe"/>
+    <text x="75" y="58" text-anchor="middle" font-size="28">👟</text>
+    <text x="75" y="106" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="15" font-weight="bold" fill="#1e40af">4. ใส่รองเท้า</text>
+    <text x="75" y="130" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="12" fill="#64748b">ผูกเชือกพร้อมเดินทาง</text>
+    <rect x="35" y="142" width="80" height="6" rx="3" fill="#3b82f6"/>
+  </g>
+
+  <!-- Bottom highlight -->
+  <rect x="170" y="278" width="500" height="34" rx="17" fill="#d1fae5" stroke="#10b981" stroke-width="1"/>
+  <text x="420" y="300" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="14" font-weight="bold" fill="#047857">
+    ✨ ประโยชน์: เมื่อมองเห็น Pattern เราจะแก้งานซ้ำๆ ได้เร็วขึ้นและนำไปเขียนโปรแกรมวนซ้ำ (Loop) ได้
+  </text>
+</svg>
+                </div>
+
+                <p class="text-lg text-slate-600">
+                    แม้ว่ารายละเอียดเล็กๆ น้อยๆ จะเปลี่ยนไป (เช่น วันนี้ใส่ถุงเท้าสีขาว อีกวันใส่สีน้ำตาล) แต่ <strong>"รูปแบบ" หรือลำดับขั้นตอนหลักยังคงเหมือนเดิม</strong> ซึ่งทำให้เราแต่งตัวได้อย่างรวดเร็วทุกวันโดยไม่ต้องคิดใหม่ทั้งหมด
+                </p>
+            </div>
+
+            <!-- Mini Game Section -->
+            <div class="card p-6 md:p-8">
+                <h4 class="text-2xl font-bold text-center mb-6 text-blue-900 flex items-center justify-center gap-2">
+                    <i class="fas fa-gamepad text-blue-600"></i> เกม: ลองฝึกหา Pattern
+                </h4>
+                <div class="bg-emerald-50/60 p-6 rounded-xl mb-8 border border-emerald-100">
+                    <h5 class="text-xl font-bold mb-2 text-emerald-900">เกมที่ 1: หาท่าเต้นถัดไป</h5>
+                    <p class="mb-4 text-slate-600">สังเกตรูปแบบของท่าเต้น แล้วคลิกเลือกท่าที่น่าจะเป็นท่าต่อไป</p>
+                    <div class="flex justify-center items-center space-x-5 text-3xl mb-6 py-4 bg-white rounded-xl border border-emerald-100 shadow-sm">
+                        <span class="p-3 bg-emerald-100 text-emerald-700 rounded-lg"><i class="fas fa-arrow-up"></i></span>
+                        <span class="p-3 bg-blue-100 text-blue-700 rounded-lg"><i class="fas fa-arrow-down"></i></span>
+                        <span class="p-3 bg-emerald-100 text-emerald-700 rounded-lg"><i class="fas fa-arrow-up"></i></span>
+                        <span class="p-3 bg-blue-100 text-blue-700 rounded-lg"><i class="fas fa-arrow-down"></i></span>
+                        <span class="p-3 bg-amber-100 text-amber-600 rounded-lg font-bold">?</span>
+                    </div>
+                    <div id="pattern-choices-1" class="flex justify-center gap-4 text-2xl"></div>
+                    <div id="pattern-game-feedback-1" class="text-center mt-4 font-bold h-6"></div>
+                </div>
+
+                <div class="bg-blue-50/60 p-6 rounded-xl border border-blue-100">
+                    <h5 class="text-xl font-bold mb-2 text-blue-900">เกมที่ 2: จับคู่ปัญหาที่มีรูปแบบคล้ายกัน</h5>
+                    <p class="mb-4 text-slate-600">ลากปัญหาจากฝั่งซ้าย ไปคู่กับปัญหาฝั่งขวาที่มี "รูปแบบ" การแก้ปัญหาคล้ายกัน</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div id="pattern-items-2" class="space-y-3">
+                            <div draggable="true" data-match="a" class="draggable-item p-3.5 bg-white rounded-xl border border-slate-200 shadow-sm text-center font-medium hover:bg-blue-50 transition">
+                                <i class="fas fa-shoe-prints text-amber-500 mr-2"></i> การผูกเชือกรองเท้า
+                            </div>
+                            <div draggable="true" data-match="b" class="draggable-item p-3.5 bg-white rounded-xl border border-slate-200 shadow-sm text-center font-medium hover:bg-blue-50 transition">
+                                <i class="fas fa-book text-emerald-500 mr-2"></i> การอ่านหนังสือ 1 เล่ม
+                            </div>
+                        </div>
+                        <div id="pattern-slots-2" class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <div data-match="b" class="drop-zone flex-1 p-3.5 rounded-xl min-h-[52px] flex items-center justify-center text-slate-400 font-medium">ลากมาวางคู่กัน</div>
+                                <span class="w-48 text-sm font-semibold text-slate-700 flex items-center gap-2"><i class="fas fa-tv text-purple-500"></i> การดูซีรีส์ 1 เรื่อง</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div data-match="a" class="drop-zone flex-1 p-3.5 rounded-xl min-h-[52px] flex items-center justify-center text-slate-400 font-medium">ลากมาวางคู่กัน</div>
+                                <span class="w-48 text-sm font-semibold text-slate-700 flex items-center gap-2"><i class="fas fa-user-tie text-blue-500"></i> การผูกเนคไท</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="pattern-game-feedback-2" class="text-center mt-4 font-bold h-6"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Abstraction Section -->
+        <section id="abstraction" class="mb-20 pt-10 fade-in-section">
+            <div class="flex items-center justify-center gap-3 mb-8">
+                <span class="w-10 h-10 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-xl font-bold">3</span>
+                <h3 class="text-3xl md:text-4xl font-bold section-title">การคิดเชิงนามธรรม (Abstraction)</h3>
+            </div>
+
+            <!-- What is Abstraction Card with Side-by-Side Image -->
+            <div class="card p-6 md:p-8 mb-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center text-xl">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-purple-900">มันคืออะไร?</h4>
+                        </div>
+                        <p class="text-lg text-slate-600 leading-relaxed">
+                            คือการ<strong>คัดกรองและมุ่งเน้นเฉพาะข้อมูลที่สำคัญและจำเป็นต่อการแก้ปัญหา</strong> โดยตัดรายละเอียดปลีกย่อยที่ไม่เกี่ยวข้องออกไป เหมือนกับการดูแผนที่รถไฟฟ้า เราสนใจแค่ว่า <em>มีสถานีอะไรบ้าง, สายไหนไปไหน, และเปลี่ยนสายที่ไหน</em> โดยไม่จำเป็นต้องรู้ว่าระหว่างทางมีตึกอะไร หรือถนนหน้าตาเป็นอย่างไร
+                        </p>
+                    </div>
+                    <div class="lg:col-span-5">
+                        <div class="img-zoom-container border border-purple-200 shadow-md">
+                            <img src="https://lh3.googleusercontent.com/d/1kVShlFMYzjlwUkLv7W3elLQQN7m1i4ls" alt="การคิดเชิงนามธรรม (Abstraction Hub)" class="w-full h-auto object-cover">
+                            <div class="bg-purple-50/90 p-2.5 text-center text-xs font-semibold text-purple-800 border-t border-purple-100">
+                                💡 มุ่งเน้นสาระสำคัญ ตัดสิ่งที่ไม่เกี่ยวข้องออก
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Abstraction Visual: Real City vs Metro Map SVG -->
+                <div class="mt-8 rounded-2xl overflow-hidden border border-purple-100 shadow-sm bg-white p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 370" width="100%" height="100%">
+  <defs>
+    <linearGradient id="absBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faf5ff"/>
+      <stop offset="100%" stop-color="#f0fdf4"/>
+    </linearGradient>
+    <filter id="boxShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="840" height="370" rx="16" fill="url(#absBg)"/>
+  <rect x="2" y="2" width="836" height="366" rx="15" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <text x="420" y="38" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="20" font-weight="bold" fill="#1e293b">
+    💡 ตัวอย่างการคิดเชิงนามธรรม (Abstraction): แผนที่เมืองจริง vs แผนที่รถไฟฟ้า
+  </text>
+  <text x="420" y="64" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="14" fill="#64748b">
+    คัดกรองข้อมูลที่ไม่จำเป็นออก (ตึก, รถ, เสาไฟ) และคงไว้เฉพาะสาระสำคัญที่ใช้เดินทาง (สายรถไฟ, สถานีเชื่อมต่อ)
+  </text>
+
+  <!-- Left: Real World (Too complex) -->
+  <g transform="translate(30, 85)" filter="url(#boxShadow)">
+    <rect width="360" height="230" rx="14" fill="white" stroke="#fca5a5" stroke-width="2"/>
+    <rect x="15" y="15" width="330" height="32" rx="8" fill="#fee2e2"/>
+    <text x="180" y="36" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="15" font-weight="bold" fill="#991b1b">
+      ❌ โลกความจริง (มีรายละเอียดซับซ้อนเกินไป)
+    </text>
+
+    <!-- Buildings & Noise graphic -->
+    <g transform="translate(25, 60)">
+      <!-- Ground -->
+      <rect x="0" y="85" width="310" height="15" fill="#e2e8f0" rx="4"/>
+      <!-- Buildings -->
+      <rect x="10" y="20" width="45" height="65" fill="#cbd5e1" rx="2"/>
+      <rect x="20" y="30" width="8" height="10" fill="#94a3b8"/>
+      <rect x="35" y="30" width="8" height="10" fill="#94a3b8"/>
+      <rect x="20" y="50" width="8" height="10" fill="#94a3b8"/>
+      <rect x="35" y="50" width="8" height="10" fill="#94a3b8"/>
+
+      <rect x="65" y="5" width="55" height="80" fill="#94a3b8" rx="2"/>
+      <rect x="75" y="15" width="10" height="12" fill="#e2e8f0"/>
+      <rect x="95" y="15" width="10" height="12" fill="#e2e8f0"/>
+      <rect x="75" y="35" width="10" height="12" fill="#e2e8f0"/>
+      <rect x="95" y="35" width="10" height="12" fill="#e2e8f0"/>
+
+      <!-- Trees & Traffic -->
+      <circle cx="140" cy="70" r="16" fill="#86efac"/>
+      <rect x="137" y="70" width="6" height="15" fill="#a16207"/>
+      <circle cx="165" cy="65" r="20" fill="#4ade80"/>
+      <rect x="162" y="65" width="6" height="20" fill="#a16207"/>
+
+      <!-- Complex Street Grid -->
+      <path d="M190,40 Q240,60 280,30 T305,85" stroke="#f87171" stroke-width="3" fill="none" stroke-dasharray="3 3"/>
+      <text x="250" y="25" font-family="'Sarabun', sans-serif" font-size="11" fill="#ef4444">ถนนคดเคี้ยว/รถติด</text>
+      <text x="145" y="45" font-size="20">🚗</text>
+      <text x="210" y="80" font-size="18">🏢</text>
+    </g>
+
+    <text x="180" y="195" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="12" fill="#dc2626">
+      มีตึก รานค้า เสาไฟ ต้นไม้ ทำให้ดูยากว่ารถไฟวิ่งไปไหน
+    </text>
+  </g>
+
+  <!-- Middle Transition Arrow -->
+  <g transform="translate(400, 185)">
+    <circle cx="20" cy="0" r="22" fill="#10b981"/>
+    <path d="M12,-5 L26,0 L12,5" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="20" y="32" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="11" font-weight="bold" fill="#059669">
+      ตัดทอน
+    </text>
+  </g>
+
+  <!-- Right: Abstract Metro Transit Map -->
+  <g transform="translate(450, 85)" filter="url(#boxShadow)">
+    <rect width="360" height="230" rx="14" fill="white" stroke="#10b981" stroke-width="2"/>
+    <rect x="15" y="15" width="330" height="32" rx="8" fill="#d1fae5"/>
+    <text x="180" y="36" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="15" font-weight="bold" fill="#065f46">
+      ✔ แผนที่แบบนามธรรม (Abstraction)
+    </text>
+
+    <!-- Clean Subway Map Lines -->
+    <g transform="translate(30, 60)">
+      <!-- Green Line -->
+      <path d="M15,30 L110,30 L190,80 L285,80" stroke="#10b981" stroke-width="8" stroke-linecap="round" fill="none"/>
+      <!-- Blue Line -->
+      <path d="M110,95 L110,30 L190,30 L190,95" stroke="#3b82f6" stroke-width="8" stroke-linecap="round" fill="none"/>
+
+      <!-- Station Dots -->
+      <circle cx="15" cy="30" r="7" fill="white" stroke="#10b981" stroke-width="4"/>
+      <text x="15" y="16" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="11" font-weight="bold" fill="#047857">สยาม</text>
+
+      <!-- Interchange Station -->
+      <circle cx="110" cy="30" r="9" fill="white" stroke="#0f172a" stroke-width="4"/>
+      <text x="110" y="14" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="11" font-weight="bold" fill="#0f172a">สถานีเชื่อมต่อ</text>
+
+      <circle cx="190" cy="80" r="7" fill="white" stroke="#10b981" stroke-width="4"/>
+      <text x="190" y="102" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="11" font-weight="bold" fill="#047857">อโศก</text>
+
+      <circle cx="285" cy="80" r="7" fill="white" stroke="#10b981" stroke-width="4"/>
+      <text x="285" y="102" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="11" font-weight="bold" fill="#047857">พร้อมพงษ์</text>
+
+      <circle cx="110" cy="95" r="7" fill="white" stroke="#3b82f6" stroke-width="4"/>
+      <circle cx="190" cy="30" r="7" fill="white" stroke="#3b82f6" stroke-width="4"/>
+    </g>
+
+    <text x="180" y="195" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="12" fill="#059669">
+      แสดงเฉพาะ "สถานี และ สายที่เชื่อมต่อ" ทำให้เข้าใจและใช้งานได้ทันที
+    </text>
+  </g>
+
+  <!-- Bottom Quote -->
+  <text x="420" y="348" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="13" font-weight="bold" fill="#475569">
+    "การคิดเชิงนามธรรมไม่ใช่การคิดให้ยาก แต่คือการตัดสิ่งที่ไม่จำเป็นออกเพื่อให้แก้ปัญหาง่ายที่สุด"
+  </text>
+</svg>
+                </div>
+            </div>
+
+            <!-- Situation Example: TV Remote -->
+            <div class="card p-6 md:p-8 mb-8">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center text-xl">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-purple-900">ตัวอย่างสถานการณ์: การใช้รีโมททีวี</h4>
+                </div>
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    เมื่อเรากดปุ่ม <strong>"เพิ่มเสียง (+)"</strong> บนรีโมท เราสนใจแค่แนวคิดหลักว่าเสียงจะดังขึ้น เราไม่จำเป็นต้องรู้รายละเอียดทางเทคนิคว่ารีโมทส่งสัญญาณอินฟราเรดความถี่เท่าใด ทีวีแปลรหัสอย่างไร หรือแผงวงจรภายในเชื่อมต่อกันแบบไหน รายละเอียดเหล่านี้ถูกซ่อนไว้เบื้องหลัง ทำให้ผู้ใช้ทั่วไปสามารถใช้งานรีโมทได้อย่างสะดวกและง่ายดาย นี่คือพลังของการคิดเชิงนามธรรม
+                </p>
+            </div>
+
+            <!-- Mini Game Section -->
+            <div class="card p-6 md:p-8">
+                <h4 class="text-2xl font-bold text-center mb-6 text-purple-900 flex items-center justify-center gap-2">
+                    <i class="fas fa-gamepad text-purple-600"></i> เกม: ลองฝึกคิดเชิงนามธรรม
+                </h4>
+                <div class="bg-emerald-50/60 p-6 rounded-xl mb-8 border border-emerald-100">
+                    <h5 class="text-xl font-bold mb-2 text-emerald-900">เกมที่ 1: คัดแยกรายละเอียด "การชงกาแฟ"</h5>
+                    <p class="mb-4 text-slate-600">หากต้องการชงกาแฟให้ได้ดื่ม คลิกเลือกเฉพาะ <strong>"รายละเอียดที่จำเป็น"</strong></p>
+                    <div id="abstraction-details-1" class="flex flex-wrap justify-center gap-4">
+                        <div data-essential="true" class="detail-item px-5 py-3.5 bg-white border-2 border-slate-200 rounded-xl shadow-sm font-medium">เมล็ดกาแฟ</div>
+                        <div data-essential="false" class="detail-item px-5 py-3.5 bg-white border-2 border-slate-200 rounded-xl shadow-sm font-medium">ยี่ห้อของแก้ว</div>
+                        <div data-essential="true" class="detail-item px-5 py-3.5 bg-white border-2 border-slate-200 rounded-xl shadow-sm font-medium">น้ำร้อน</div>
+                        <div data-essential="false" class="detail-item px-5 py-3.5 bg-white border-2 border-slate-200 rounded-xl shadow-sm font-medium">สีของเครื่องชงกาแฟ</div>
+                    </div>
+                    <div id="abstraction-game-feedback-1" class="text-center mt-4 font-bold h-6"></div>
+                </div>
+
+                <div class="bg-blue-50/60 p-6 rounded-xl border border-blue-100">
+                    <h5 class="text-xl font-bold mb-2 text-blue-900">เกมที่ 2: หาสาระสำคัญ</h5>
+                    <p class="mb-4 text-center p-4 bg-white rounded-xl border border-blue-200 font-medium text-slate-700 shadow-sm">
+                        "แมวเป็นสัตว์เลี้ยงลูกด้วยนม มีขนปุกปุยทั่วลำตัว มี 4 ขา มีหนวด และชอบกินปลาเป็นอาหาร"
+                    </p>
+                    <p class="mb-4 text-slate-600 text-center">ถ้าต้องการวาดรูป "แมว" แบบง่ายๆ เพื่อให้คนอื่นดูออก เราควรสนใจรายละเอียดใดเป็นหลัก?</p>
+                    <div id="abstraction-choices-2" class="flex flex-wrap justify-center gap-4">
+                        <button data-correct="true" class="answer-btn px-5 py-3 bg-white rounded-xl border-2 border-slate-200 font-medium shadow-sm hover:border-purple-400 transition">มี 4 ขา, มีหาง, มีหนวด</button>
+                        <button data-correct="false" class="answer-btn px-5 py-3 bg-white rounded-xl border-2 border-slate-200 font-medium shadow-sm hover:border-purple-400 transition">เป็นสัตว์เลี้ยงลูกด้วยนม</button>
+                        <button data-correct="false" class="answer-btn px-5 py-3 bg-white rounded-xl border-2 border-slate-200 font-medium shadow-sm hover:border-purple-400 transition">ชอบกินปลา</button>
+                    </div>
+                    <div id="abstraction-game-feedback-2" class="text-center mt-4 font-bold h-6"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Algorithm Design Section -->
+        <section id="algorithm" class="mb-20 pt-10 fade-in-section">
+            <div class="flex items-center justify-center gap-3 mb-8">
+                <span class="w-10 h-10 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center text-xl font-bold">4</span>
+                <h3 class="text-3xl md:text-4xl font-bold section-title">การออกแบบอัลกอริทึม (Algorithm Design)</h3>
+            </div>
+
+            <!-- What is Algorithm Design Card with Side-by-Side Image -->
+            <div class="card p-6 md:p-8 mb-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-teal-100 text-teal-600 flex items-center justify-center text-xl">
+                                <i class="fas fa-route"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-teal-900">มันคืออะไร?</h4>
+                        </div>
+                        <p class="text-lg text-slate-600 leading-relaxed">
+                            คือการออกแบบ<strong>ลำดับขั้นตอนการแก้ปัญหาที่ชัดเจนและเป็นระบบ ทีละขั้น ทีละตอน</strong> ซึ่งถ้าใครทำตามอัลกอริทึมนี้ ก็จะสามารถแก้ปัญหาเดียวกันได้ผลลัพธ์สำเร็จเหมือนกันทุกคน ตัวอย่างที่เห็นได้ชัดที่สุดคือ "สูตรอาหาร" หรือ "คู่มือประกอบเฟอร์นิเจอร์"
+                        </p>
+                    </div>
+                    <div class="lg:col-span-5">
+                        <div class="img-zoom-container border border-teal-200 shadow-md">
+                            <img src="https://lh3.googleusercontent.com/d/1AAfnZvgkjyo0PIJQ2noAsNy_QDXLdEms" alt="การออกแบบอัลกอริทึม (Algorithm Design Hub)" class="w-full h-auto object-cover">
+                            <div class="bg-teal-50/90 p-2.5 text-center text-xs font-semibold text-teal-800 border-t border-teal-100">
+                                🤖 วางขั้นตอนการแก้ปัญหาอย่างเป็นระบบและแน่นอน
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Situation Example: ATM Cash Withdrawal with Flowchart SVG -->
+            <div class="card p-6 md:p-8 mb-8">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-lg bg-teal-100 text-teal-600 flex items-center justify-center text-xl">
+                        <i class="fas fa-money-check-alt"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-teal-900">ตัวอย่างสถานการณ์: การกดเงินจากตู้ ATM</h4>
+                </div>
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    ขั้นตอนการกดเงินจากตู้ ATM ถือเป็นอัลกอริทึมที่ชัดเจนมาก หากสลับขั้นตอน เช่น กดรหัสก่อนสอดบัตร ระบบก็จะไม่ทำงาน:
+                </p>
+
+                <!-- Algorithm ATM Flowchart SVG -->
+                <div class="my-6 rounded-2xl overflow-hidden border border-teal-100 shadow-sm bg-white p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 330" width="100%" height="100%">
+  <defs>
+    <linearGradient id="algoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eff6ff"/>
+      <stop offset="100%" stop-color="#f0fdf4"/>
+    </linearGradient>
+    <filter id="atmShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="840" height="330" rx="16" fill="url(#algoBg)"/>
+  <rect x="2" y="2" width="836" height="326" rx="15" fill="none" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+  <text x="420" y="38" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="20" font-weight="bold" fill="#1e3a8a">
+    🤖 ตัวอย่างการออกแบบอัลกอริทึม (Algorithm Design): ขั้นตอนกดเงินจากตู้ ATM
+  </text>
+  <text x="420" y="64" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="14" fill="#64748b">
+    ลำดับขั้นตอนที่แน่นอน ชัดเจน เรียงลำดับถูกต้อง หากข้ามขั้นตอนจะทำงานไม่สำเร็จ
+  </text>
+
+  <!-- 6 Step Cards in 2 rows or 1 sleek row -->
+  <!-- Step 1 -->
+  <g transform="translate(30, 90)" filter="url(#atmShadow)">
+    <rect width="115" height="135" rx="12" fill="white" stroke="#3b82f6" stroke-width="1.5"/>
+    <rect x="0" y="0" width="115" height="24" rx="12" fill="#dbeafe"/>
+    <text x="57" y="16" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="12" font-weight="bold" fill="#1d4ed8">ขั้นที่ 1</text>
+    <text x="57" y="60" text-anchor="middle" font-size="26">💳</text>
+    <text x="57" y="95" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="13" font-weight="bold" fill="#1e293b">สอดบัตร ATM</text>
+    <text x="57" y="115" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="11" fill="#64748b">เข้าช่องเสียบบัตร</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <path d="M150,155 L165,155" stroke="#3b82f6" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <polygon points="165,150 172,155 165,160" fill="#3b82f6"/>
+
+  <!-- Step 2 -->
+  <g transform="translate(165, 90)" filter="url(#atmShadow)">
+    <rect width="115" height="135" rx="12" fill="white" stroke="#3b82f6" stroke-width="1.5"/>
+    <rect x="0" y="0" width="115" height="24" rx="12" fill="#dbeafe"/>
+    <text x="57" y="16" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="12" font-weight="bold" fill="#1d4ed8">ขั้นที่ 2</text>
+    <text x="57" y="60" text-anchor="middle" font-size="26">🔢</text>
+    <text x="57" y="95" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="13" font-weight="bold" fill="#1e293b">ใส่รหัส PIN</text>
+    <text x="57" y="115" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="11" fill="#64748b">รหัสความปลอดภัย</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <polygon points="285,150 292,155 285,160" fill="#3b82f6"/>
+
+  <!-- Step 3 -->
+  <g transform="translate(295, 90)" filter="url(#atmShadow)">
+    <rect width="115" height="135" rx="12" fill="white" stroke="#3b82f6" stroke-width="1.5"/>
+    <rect x="0" y="0" width="115" height="24" rx="12" fill="#dbeafe"/>
+    <text x="57" y="16" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="12" font-weight="bold" fill="#1d4ed8">ขั้นที่ 3</text>
+    <text x="57" y="60" text-anchor="middle" font-size="26">🏧</text>
+    <text x="57" y="95" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="13" font-weight="bold" fill="#1e293b">เลือก "ถอนเงิน"</text>
+    <text x="57" y="115" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="11" fill="#64748b">กดที่หน้าจอ</text>
+  </g>
+
+  <!-- Arrow 3 -->
+  <polygon points="415,150 422,155 415,160" fill="#10b981"/>
+
+  <!-- Step 4 -->
+  <g transform="translate(425, 90)" filter="url(#atmShadow)">
+    <rect width="115" height="135" rx="12" fill="white" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="115" height="24" rx="12" fill="#d1fae5"/>
+    <text x="57" y="16" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="12" font-weight="bold" fill="#047857">ขั้นที่ 4</text>
+    <text x="57" y="60" text-anchor="middle" font-size="26">💵</text>
+    <text x="57" y="95" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="13" font-weight="bold" fill="#1e293b">ระบุจำนวนเงิน</text>
+    <text x="57" y="115" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="11" fill="#64748b">พิมพ์ยอดที่ต้องการ</text>
+  </g>
+
+  <!-- Arrow 4 -->
+  <polygon points="545,150 552,155 545,160" fill="#10b981"/>
+
+  <!-- Step 5 -->
+  <g transform="translate(555, 90)" filter="url(#atmShadow)">
+    <rect width="115" height="135" rx="12" fill="white" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="115" height="24" rx="12" fill="#d1fae5"/>
+    <text x="57" y="16" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="12" font-weight="bold" fill="#047857">ขั้นที่ 5</text>
+    <text x="57" y="60" text-anchor="middle" font-size="26">💰</text>
+    <text x="57" y="95" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="13" font-weight="bold" fill="#1e293b">รับเงินสด</text>
+    <text x="57" y="115" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="11" fill="#64748b">จากช่องจ่ายเงิน</text>
+  </g>
+
+  <!-- Arrow 5 -->
+  <polygon points="675,150 682,155 675,160" fill="#10b981"/>
+
+  <!-- Step 6 -->
+  <g transform="translate(685, 90)" filter="url(#atmShadow)">
+    <rect width="120" height="135" rx="12" fill="white" stroke="#10b981" stroke-width="2"/>
+    <rect x="0" y="0" width="120" height="24" rx="12" fill="#10b981"/>
+    <text x="60" y="16" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="12" font-weight="bold" fill="white">เสร็จสิ้น ✔</text>
+    <text x="60" y="60" text-anchor="middle" font-size="26">💳</text>
+    <text x="60" y="95" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="13" font-weight="bold" fill="#065f46">รับบัตร ATM คืน</text>
+    <text x="60" y="115" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="11" fill="#64748b">นำบัตรกลับบ้าน</text>
+  </g>
+
+  <rect x="200" y="260" width="440" height="34" rx="17" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+  <text x="420" y="282" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="13" font-weight="bold" fill="#1d4ed8">
+    ⚡ คุณสมบัติอัลกอริทึมที่ดี: ชัดเจน, ไม่กำกวม, มีจุดเริ่มต้นและจุดสิ้นสุดที่แน่นอน
+  </text>
+</svg>
+                </div>
+
+                <p class="text-lg text-slate-600 mt-4">
+                    ไม่ว่าใครจะมาทำตามขั้นตอนนี้ ตราบใดที่ทำตามลำดับอย่างถูกต้อง ก็จะได้ผลลัพธ์คือการถอนเงินสำเร็จเสมอ
+                </p>
+            </div>
+
+            <!-- Mini Game Section -->
+            <div class="card p-6 md:p-8">
+                <h4 class="text-2xl font-bold text-center mb-6 text-teal-900 flex items-center justify-center gap-2">
+                    <i class="fas fa-gamepad text-teal-600"></i> เกม: ลองออกแบบ Algorithm
+                </h4>
+                <div class="bg-emerald-50/60 p-6 rounded-xl mb-8 border border-emerald-100">
+                    <h5 class="text-xl font-bold mb-2 text-emerald-900">เกมที่ 1: เรียงลำดับขั้นตอน "ส่งการบ้านออนไลน์"</h5>
+                    <p class="mb-4 text-slate-600">ลากขั้นตอนต่างๆ ไปวางให้ถูกต้องตามลำดับ 1 - 4</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div id="algo-items-1" class="bg-white/80 p-4 rounded-xl border border-slate-200 space-y-3 shadow-inner">
+                            <div draggable="true" data-order="2" class="draggable-item p-3 bg-white rounded-lg border border-slate-200 shadow-sm font-medium hover:bg-teal-50 transition flex items-center gap-2">
+                                <i class="fas fa-camera text-slate-400"></i> ถ่ายรูปการบ้าน
+                            </div>
+                            <div draggable="true" data-order="4" class="draggable-item p-3 bg-white rounded-lg border border-slate-200 shadow-sm font-medium hover:bg-teal-50 transition flex items-center gap-2">
+                                <i class="fas fa-paper-plane text-slate-400"></i> กดส่ง
+                            </div>
+                            <div draggable="true" data-order="1" class="draggable-item p-3 bg-white rounded-lg border border-slate-200 shadow-sm font-medium hover:bg-teal-50 transition flex items-center gap-2">
+                                <i class="fas fa-mobile-alt text-slate-400"></i> เปิดแอปพลิเคชัน
+                            </div>
+                            <div draggable="true" data-order="3" class="draggable-item p-3 bg-white rounded-lg border border-slate-200 shadow-sm font-medium hover:bg-teal-50 transition flex items-center gap-2">
+                                <i class="fas fa-paperclip text-slate-400"></i> แนบไฟล์รูปภาพ
+                            </div>
+                        </div>
+                        <div id="algo-slots-1" class="space-y-3">
+                            <div class="flex items-center gap-3"><span class="font-bold text-slate-500 w-6">1.</span><div data-order="1" class="drop-zone flex-1 p-3 rounded-lg min-h-[52px] flex items-center justify-center text-slate-400 font-medium">วางขั้นตอนที่ 1</div></div>
+                            <div class="flex items-center gap-3"><span class="font-bold text-slate-500 w-6">2.</span><div data-order="2" class="drop-zone flex-1 p-3 rounded-lg min-h-[52px] flex items-center justify-center text-slate-400 font-medium">วางขั้นตอนที่ 2</div></div>
+                            <div class="flex items-center gap-3"><span class="font-bold text-slate-500 w-6">3.</span><div data-order="3" class="drop-zone flex-1 p-3 rounded-lg min-h-[52px] flex items-center justify-center text-slate-400 font-medium">วางขั้นตอนที่ 3</div></div>
+                            <div class="flex items-center gap-3"><span class="font-bold text-slate-500 w-6">4.</span><div data-order="4" class="drop-zone flex-1 p-3 rounded-lg min-h-[52px] flex items-center justify-center text-slate-400 font-medium">วางขั้นตอนที่ 4</div></div>
+                        </div>
+                    </div>
+                    <div id="algo-game-feedback-1" class="text-center mt-4 font-bold h-6"></div>
+                </div>
+
+                <div class="bg-blue-50/60 p-6 rounded-xl border border-blue-100">
+                    <h5 class="text-xl font-bold mb-2 text-blue-900">เกมที่ 2: เขียนอัลกอริทึม "ข้ามถนนตรงทางม้าลาย"</h5>
+                    <p class="mb-4 text-slate-600">คลิกเลือกขั้นตอนที่ถูกต้องและปลอดภัยที่สุด</p>
+                    <div id="algo-choices-2" class="flex flex-wrap justify-center gap-4">
+                        <button data-correct="true" class="answer-btn px-5 py-3 bg-white rounded-xl border-2 border-slate-200 font-medium shadow-sm hover:border-teal-400 transition">มองซ้าย, มองขวา, เมื่อรถหยุดจึงข้าม</button>
+                        <button data-correct="false" class="answer-btn px-5 py-3 bg-white rounded-xl border-2 border-slate-200 font-medium shadow-sm hover:border-teal-400 transition">วิ่งข้ามไปเลย</button>
+                        <button data-correct="false" class="answer-btn px-5 py-3 bg-white rounded-xl border-2 border-slate-200 font-medium shadow-sm hover:border-teal-400 transition">รอจนไม่มีรถเลยค่อยข้าม</button>
+                    </div>
+                    <div id="algo-game-feedback-2" class="text-center mt-4 font-bold h-6"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case Study Section -->
+        <section id="case-study" class="mb-20 pt-10 fade-in-section">
+            <div class="flex items-center justify-center gap-3 mb-8">
+                <span class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl font-bold">★</span>
+                <h3 class="text-3xl md:text-4xl font-bold section-title">กรณีศึกษา: การนำไปใช้ในชีวิตจริง</h3>
+            </div>
+
+            <div class="card p-6 md:p-10 max-w-4xl mx-auto">
+                <h4 class="text-2xl font-bold mb-3 text-emerald-800 flex items-center gap-2">
+                    <i class="fas fa-layer-group text-emerald-600"></i> ตัวอย่าง: สอนน้องจัดหนังสือตามความสูง
+                </h4>
+                <p class="mb-6 text-slate-600 text-lg leading-relaxed">
+                    สมมติว่าเราต้องการสอนน้องให้จัดเรียงหนังสือกองใหญ่ตามความสูงจากมากไปน้อย เราสามารถนำทั้ง 4 แนวคิดเชิงคำนวณมาบูรณาการแก้ปัญหาได้ดังนี้:
+                </p>
+
+                <!-- Case Study Diagram SVG -->
+                <div class="mb-8 rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-white p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 280" width="100%" height="100%">
+  <defs>
+    <linearGradient id="csBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
+    </linearGradient>
+    <filter id="csShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.07"/>
+    </filter>
+  </defs>
+
+  <rect width="840" height="280" rx="16" fill="url(#csBg)"/>
+  <rect x="2" y="2" width="836" height="276" rx="15" fill="none" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <text x="420" y="34" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="18" font-weight="bold" fill="#0f172a">
+    📚 บูรณาการ 4 เสาหลักแนวคิดเชิงคำนวณ: กรณีศึกษา "สอนน้องจัดเรียงหนังสือตามความสูง"
+  </text>
+
+  <!-- Pillar 1: Decomposition -->
+  <g transform="translate(25, 60)" filter="url(#csShadow)">
+    <rect width="180" height="190" rx="12" fill="white" stroke="#10b981" stroke-width="2"/>
+    <circle cx="90" cy="40" r="22" fill="#d1fae5"/>
+    <text x="90" y="48" text-anchor="middle" font-size="20">🧩</text>
+    <text x="90" y="80" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="14" font-weight="bold" fill="#065f46">1. Decomposition</text>
+    <text x="90" y="100" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="12" font-weight="bold" fill="#047857">(การแบ่งปัญหาย่อย)</text>
+    <foreignObject x="15" y="112" width="150" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Sarabun',sans-serif;font-size:11px;color:#475569;text-align:center;line-height:1.4;">
+        แบ่งงานใหญ่เป็น: "หาหนังสือที่สูงที่สุดในกองที่เหลือทีละเล่ม"
+      </div>
+    </foreignObject>
+  </g>
+
+  <!-- Pillar 2: Pattern Recognition -->
+  <g transform="translate(225, 60)" filter="url(#csShadow)">
+    <rect width="180" height="190" rx="12" fill="white" stroke="#3b82f6" stroke-width="2"/>
+    <circle cx="90" cy="40" r="22" fill="#dbeafe"/>
+    <text x="90" y="48" text-anchor="middle" font-size="20">🔍</text>
+    <text x="90" y="80" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="14" font-weight="bold" fill="#1e40af">2. Pattern</text>
+    <text x="90" y="100" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="12" font-weight="bold" fill="#1d4ed8">(การหารูปแบบ)</text>
+    <foreignObject x="15" y="112" width="150" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Sarabun',sans-serif;font-size:11px;color:#475569;text-align:center;line-height:1.4;">
+        พบรูปแบบซ้ำๆ ว่าทุกรอบใช้วิธีเปรียบเทียบหา "เล่มสูงที่สุด" เหมือนกัน
+      </div>
+    </foreignObject>
+  </g>
+
+  <!-- Pillar 3: Abstraction -->
+  <g transform="translate(425, 60)" filter="url(#csShadow)">
+    <rect width="180" height="190" rx="12" fill="white" stroke="#8b5cf6" stroke-width="2"/>
+    <circle cx="90" cy="40" r="22" fill="#ede9fe"/>
+    <text x="90" y="48" text-anchor="middle" font-size="20">💡</text>
+    <text x="90" y="80" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="14" font-weight="bold" fill="#5b21b6">3. Abstraction</text>
+    <text x="90" y="100" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="12" font-weight="bold" fill="#6d28d9">(การคิดเชิงนามธรรม)</text>
+    <foreignObject x="15" y="112" width="150" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Sarabun',sans-serif;font-size:11px;color:#475569;text-align:center;line-height:1.4;">
+        สนใจเฉพาะ "ความสูง" ตัดสีปก จำนวนหน้า หรือชื่อหนังสือที่ไม่จำเป็นออก
+      </div>
+    </foreignObject>
+  </g>
+
+  <!-- Pillar 4: Algorithm Design -->
+  <g transform="translate(625, 60)" filter="url(#csShadow)">
+    <rect width="180" height="190" rx="12" fill="white" stroke="#059669" stroke-width="2"/>
+    <circle cx="90" cy="40" r="22" fill="#a7f3d0"/>
+    <text x="90" y="48" text-anchor="middle" font-size="20">🤖</text>
+    <text x="90" y="80" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="14" font-weight="bold" fill="#065f46">4. Algorithm</text>
+    <text x="90" y="100" text-anchor="middle" font-family="'Sarabun', sans-serif" font-size="12" font-weight="bold" fill="#047857">(การออกแบบอัลกอริทึม)</text>
+    <foreignObject x="15" y="112" width="150" height="70">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Sarabun',sans-serif;font-size:11px;color:#475569;text-align:center;line-height:1.4;">
+        เขียนขั้นตอน 1-2-3 ชัดเจน เพื่อให้น้องทำตามจนจัดหนังสือเสร็จสมบูรณ์
+      </div>
+    </foreignObject>
+  </g>
+</svg>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-slate-700">
+                    <div class="p-4 bg-emerald-50/70 border border-emerald-200 rounded-xl">
+                        <h5 class="font-bold text-emerald-900 mb-1 flex items-center gap-2"><i class="fas fa-puzzle-piece text-emerald-600"></i> การแบ่งปัญหา (Decomposition)</h5>
+                        <p class="text-sm">แทนที่จะจัดทั้งกองพร้อมกัน เราแบ่งปัญหาเป็น "หาหนังสือเล่มที่สูงที่สุดในกองที่เหลือ" แล้วทำทีละรอบ</p>
+                    </div>
+                    <div class="p-4 bg-blue-50/70 border border-blue-200 rounded-xl">
+                        <h5 class="font-bold text-blue-900 mb-1 flex items-center gap-2"><i class="fas fa-shapes text-blue-600"></i> การหารูปแบบ (Pattern Recognition)</h5>
+                        <p class="text-sm">ทุกๆ รอบ เราทำสิ่งเดียวกันคือ "หาหนังสือที่สูงที่สุด" ในกองที่เล็กลงเรื่อยๆ จนกว่าหนังสือจะหมด</p>
+                    </div>
+                    <div class="p-4 bg-purple-50/70 border border-purple-200 rounded-xl">
+                        <h5 class="font-bold text-purple-900 mb-1 flex items-center gap-2"><i class="fas fa-search-plus text-purple-600"></i> การคิดเชิงนามธรรม (Abstraction)</h5>
+                        <p class="text-sm">รายละเอียดที่ไม่จำเป็น เช่น สีปก, ความหนา, หรือชื่อหนังสือ จะถูกตัดทอนออกไป เราสนใจแค่ <strong>"ความสูง"</strong> เท่านั้น</p>
+                    </div>
+                    <div class="p-4 bg-teal-50/70 border border-teal-200 rounded-xl">
+                        <h5 class="font-bold text-teal-900 mb-1 flex items-center gap-2"><i class="fas fa-route text-teal-600"></i> การออกแบบอัลกอริทึม (Algorithm)</h5>
+                        <p class="text-sm">ได้ขั้นตอนที่ชัดเจน: 1. หาเล่มที่สูงที่สุดในกอง 2. นำมาวางเรียงต่อ 3. ทำซ้ำจนหมดกอง</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz" class="mb-20 pt-10 fade-in-section">
+            <div class="flex items-center justify-center gap-3 mb-8">
+                <span class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xl font-bold">✍</span>
+                <h3 class="text-3xl md:text-4xl font-bold section-title">แบบทดสอบท้ายบท</h3>
+            </div>
+            <div id="quiz-container" class="card p-6 md:p-8 max-w-3xl mx-auto shadow-xl"></div>
+            <div id="quiz-result" class="hidden card p-8 max-w-3xl mx-auto text-center shadow-xl">
+                <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-4xl">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h4 class="text-3xl font-extrabold mb-2 text-slate-800">สรุปผลการทดสอบ</h4>
+                <p id="score-text" class="text-2xl font-bold text-emerald-600 mb-6"></p>
+                <div class="flex justify-center gap-4">
+                    <button id="retry-quiz-btn" class="bg-slate-600 text-white font-bold py-3 px-6 rounded-xl hover:bg-slate-700 transition shadow">
+                        <i class="fas fa-redo mr-2"></i> ทำใหม่อีกครั้ง
+                    </button>
+                    <button id="show-answers-btn" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-xl hover:bg-blue-700 transition shadow">
+                        <i class="fas fa-check-circle mr-2"></i> แสดงเฉลย
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 text-center py-8 border-t border-slate-800">
+        <div class="container mx-auto px-6">
+            <p class="font-medium text-slate-300 mb-1">&copy; สื่อการสอนวิชาวิทยาการคำนวณ ระดับชั้นมัธยมศึกษาปีที่ 2</p>
+            <p class="text-xs text-slate-500">บทที่ 1: แนวคิดเชิงคำนวณ (Computational Thinking) | จัดทำเพื่อการศึกษา</p>
+        </div>
+    </footer>
+    
+    <button id="back-to-top" class="text-white rounded-full shadow-lg w-12 h-12 flex items-center justify-center hover:bg-emerald-700 focus:outline-none z-50">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- General Setup ---
+            const progressBar = document.getElementById('progress-bar');
+            const backToTopButton = document.getElementById('back-to-top');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            window.addEventListener('scroll', () => {
+                const scrollTotal = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                progressBar.style.width = `${(window.scrollY / scrollTotal) * 100}%`;
+                backToTopButton.style.display = (window.scrollY > 300) ? 'flex' : 'none';
+            });
+            backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('is-visible');
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+            
+            // --- Universal Drag & Drop Logic ---
+            let draggedItem = null;
+            function setupDragAndDrop(containerId, slotsId, feedbackId, totalItems) {
+                const container = document.getElementById(containerId);
+                const feedback = document.getElementById(feedbackId);
+                let correctDrops = 0;
+
+                container.querySelectorAll('.draggable-item').forEach(item => {
+                    item.addEventListener('dragstart', e => {
+                        draggedItem = e.target;
+                        setTimeout(() => { if(draggedItem) draggedItem.style.opacity = '0.5'; }, 0);
+                    });
+                    item.addEventListener('dragend', () => {
+                        if (draggedItem) draggedItem.style.opacity = '1';
+                        draggedItem = null;
+                    });
+                });
+
+                document.querySelectorAll(`#${slotsId} .drop-zone`).forEach(zone => {
+                    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('over'); });
+                    zone.addEventListener('dragleave', () => zone.classList.remove('over'));
+                    zone.addEventListener('drop', e => {
+                        e.preventDefault();
+                        zone.classList.remove('over');
+                        if (!draggedItem) return;
+
+                        const correctDataType = zone.dataset.type ? zone.dataset.type === draggedItem.dataset.type : true;
+                        const correctOrder = zone.dataset.order ? zone.dataset.order === draggedItem.dataset.order : true;
+                        const correctMatch = zone.dataset.match ? zone.dataset.match === draggedItem.dataset.match : true;
+
+                        if (zone.children.length === 0 && correctDataType && correctOrder && correctMatch) {
+                            zone.textContent = '';
+                            zone.appendChild(draggedItem);
+                            draggedItem.setAttribute('draggable', 'false');
+                            draggedItem.classList.remove('draggable-item');
+                            draggedItem.classList.add('cursor-not-allowed', 'bg-emerald-50', 'border-emerald-300');
+                            correctDrops++;
+                            if (correctDrops === totalItems) {
+                                feedback.textContent = '🎉 ยอดเยี่ยมมาก! ทำถูกต้องทั้งหมดแล้ว!';
+                                feedback.className = 'text-center mt-4 font-bold h-6 text-emerald-600 text-lg';
+                            }
+                        }
+                    });
+                });
+            }
+
+            // --- Multi-Select Click Game Logic ---
+            function setupMultiChoiceGame(containerId, feedbackId) {
+                const container = document.getElementById(containerId);
+                const feedback = document.getElementById(feedbackId);
+                const correctButtons = container.querySelectorAll('button[data-correct="true"]');
+                const totalCorrect = correctButtons.length;
+                let correctSelections = 0;
+
+                container.querySelectorAll('button').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        if (btn.disabled) return;
+
+                        const isCorrect = btn.dataset.correct === 'true';
+                        if (isCorrect) {
+                            btn.classList.add('correct');
+                            btn.disabled = true;
+                            correctSelections++;
+                            if (correctSelections === totalCorrect) {
+                                feedback.textContent = '🎉 ยอดเยี่ยม! เจอครบทั้ง 3 ปัญหาย่อยแล้ว!';
+                                feedback.className = 'text-center mt-4 font-bold h-6 text-emerald-600 text-lg';
+                                container.querySelectorAll('button').forEach(b => b.disabled = true);
+                            } else {
+                                feedback.textContent = `ถูกต้อง! เจอแล้ว ${correctSelections}/${totalCorrect} ข้อ`;
+                                feedback.className = 'text-center mt-4 font-bold h-6 text-emerald-600';
+                            }
+                        } else {
+                            btn.classList.add('incorrect');
+                            btn.disabled = true;
+                            feedback.textContent = 'ข้อนี้ยังไม่ใช่นะ ลองหาข้ออื่นดูใหม่';
+                            feedback.className = 'text-center mt-4 font-bold h-6 text-red-600';
+                        }
+                    });
+                });
+            }
+            
+            // --- Single-Select Click Game Logic ---
+            function setupSingleChoiceGame(containerId, feedbackId) {
+                const container = document.getElementById(containerId);
+                const feedback = document.getElementById(feedbackId);
+                const buttons = container.querySelectorAll('button');
+
+                buttons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        buttons.forEach(b => b.disabled = true);
+                        const isCorrect = btn.dataset.correct === 'true';
+                        if (isCorrect) {
+                            btn.classList.add('correct');
+                            feedback.textContent = '🎉 ถูกต้องแล้ว! เก่งมาก';
+                            feedback.className = 'text-center mt-4 font-bold h-6 text-emerald-600 text-lg';
+                        } else {
+                            btn.classList.add('incorrect');
+                            feedback.textContent = 'ยังไม่ถูกต้องนะ ลองดูเฉลยที่ไฮไลท์สีเขียว';
+                            feedback.className = 'text-center mt-4 font-bold h-6 text-red-600';
+                            const correctBtn = container.querySelector('button[data-correct="true"]');
+                            if (correctBtn) correctBtn.classList.add('correct');
+                        }
+                    });
+                });
+            }
+
+            // --- Games Initialization ---
+            setupDragAndDrop('deco-items-1', 'deco-slots-1', 'deco-game-feedback-1', 4);
+            setupMultiChoiceGame('deco-choices-2', 'deco-game-feedback-2');
+            
+            const patternChoicesEl = document.getElementById('pattern-choices-1');
+            const patternFeedbackEl = document.getElementById('pattern-game-feedback-1');
+            const patternCorrectAnswer = '<i class="fas fa-arrow-up"></i>';
+            const patternChoices = ['<i class="fas fa-arrow-up"></i>', '<i class="fas fa-arrow-down"></i>', '<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>'];
+            patternChoices.forEach(choice => {
+                const btn = document.createElement('button');
+                btn.className = 'answer-btn px-5 py-3 bg-white rounded-xl border-2 border-slate-200 shadow-sm hover:border-blue-400 transition';
+                btn.innerHTML = choice;
+                btn.onclick = () => {
+                    if (choice === patternCorrectAnswer) {
+                        btn.classList.add('correct');
+                        patternFeedbackEl.textContent = '🎉 ถูกต้อง! รูปแบบคือ ขึ้น-ลง สลับกัน';
+                        patternFeedbackEl.className = 'text-center mt-4 font-bold h-6 text-emerald-600 text-lg';
+                    } else {
+                        btn.classList.add('incorrect');
+                        patternFeedbackEl.textContent = 'ยังไม่ถูกต้องนะ ลองสังเกตลูกศรดูใหม่';
+                        patternFeedbackEl.className = 'text-center mt-4 font-bold h-6 text-red-600';
+                    }
+                    patternChoicesEl.querySelectorAll('button').forEach(b => b.disabled = true);
+                };
+                patternChoicesEl.appendChild(btn);
+            });
+            setupDragAndDrop('pattern-items-2', 'pattern-slots-2', 'pattern-game-feedback-2', 2);
+
+            const abstractionDetails = document.getElementById('abstraction-details-1');
+            const abstractionFeedback = document.getElementById('abstraction-game-feedback-1');
+            let selectedCount = 0;
+            const essentialCount = Array.from(abstractionDetails.children).filter(el => el.dataset.essential === 'true').length;
+            abstractionDetails.querySelectorAll('.detail-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    if (item.classList.contains('essential') || item.classList.contains('non-essential')) return;
+                    if (item.dataset.essential === 'true') {
+                        item.classList.add('essential');
+                        selectedCount++;
+                        if (selectedCount === essentialCount) {
+                            abstractionFeedback.textContent = '🎉 ยอดเยี่ยมมาก! เลือกเฉพาะสิ่งที่จำเป็นได้ถูกต้องทั้งหมด';
+                            abstractionFeedback.className = 'text-center mt-4 font-bold h-6 text-emerald-600 text-lg';
+                        }
+                    } else {
+                        item.classList.add('non-essential');
+                        abstractionFeedback.textContent = 'อ๊ะ! ข้อนี้เป็นรายละเอียดปลีกย่อย ไม่จำเป็นต่อการชงกาแฟนะ';
+                        abstractionFeedback.className = 'text-center mt-4 font-bold h-6 text-red-600';
+                    }
+                });
+            });
+            setupSingleChoiceGame('abstraction-choices-2', 'abstraction-game-feedback-2');
+
+            setupDragAndDrop('algo-items-1', 'algo-slots-1', 'algo-game-feedback-1', 4);
+            setupSingleChoiceGame('algo-choices-2', 'algo-game-feedback-2');
+
+            // --- Quiz Logic ---
+            const quizContainer = document.getElementById('quiz-container');
+            const quizResult = document.getElementById('quiz-result');
+            const scoreText = document.getElementById('score-text');
+            const retryBtn = document.getElementById('retry-quiz-btn');
+            const showAnswersBtn = document.getElementById('show-answers-btn');
+
+            const quizData = [
+                { question: "1. การแตกปัญหา 'การจัดกระเป๋าเดินทาง' ออกเป็น 'เตรียมเสื้อผ้า', 'เตรียมของใช้ส่วนตัว', 'เตรียมเอกสาร' คือขั้นตอนใด", answers: ["การหารูปแบบ", "การออกแบบอัลกอริทึม", "การแบ่งปัญหาเป็นปัญหาย่อย", "การคิดเชิงนามธรรม"], correct: "การแบ่งปัญหาเป็นปัญหาย่อย" },
+                { question: "2. การสังเกตว่า 'การแปรงฟันทุกเช้า' และ 'การแปรงฟันทุกเย็น' มีขั้นตอนที่เหมือนกัน คือแนวคิดใด", answers: ["การพิจารณารูปแบบ", "การออกแบบอัลกอริทึม", "การแบ่งปัญหาเป็นปัญหาย่อย", "การคิดเชิงนามธรรม"], correct: "การพิจารณารูปแบบ" },
+                { question: "3. ในการเขียนโปรแกรมวาด 'แมว' เราไม่จำเป็นต้องสนใจรายละเอียด 'สายพันธุ์ของแมว' นี่คือตัวอย่างของแนวคิดใด", answers: ["การพิจารณารูปแบบ", "การคิดเชิงนามธรรม", "การแบ่งปัญหาเป็นปัญหาย่อย", "การออกแบบอัลกอริทึม"], correct: "การคิดเชิงนามธรรม" },
+                { question: "4. '1.เปิดคอมพิวเตอร์ 2.เปิดโปรแกรม 3.พิมพ์รายงาน' คือตัวอย่างของอะไร", answers: ["การคิดเชิงนามธรรม", "การแบ่งปัญหาเป็นปัญหาย่อย", "การออกแบบอัลกอริทึม", "การพิจารณารูปแบบ"], correct: "การออกแบบอัลกอริทึม" },
+                { question: "5. ข้อใดคือประโยชน์ที่สำคัญที่สุดของ 'การแบ่งปัญหาใหญ่เป็นปัญหาย่อย'", answers: ["ทำให้ปัญหาหายไป", "ทำให้แก้ปัญหาได้เร็วขึ้นเสมอ", "ทำให้ปัญหาซับซ้อนน้อยลงและจัดการง่ายขึ้น", "ทำให้ต้องใช้คนแก้ปัญหามากขึ้น"], correct: "ทำให้ปัญหาซับซ้อนน้อยลงและจัดการง่ายขึ้น" },
+                { question: "6. การเรียงหนังสือตามความสูง จากสูงที่สุดไปต่ำที่สุด เป็นตัวอย่างของการใช้แนวคิดใดมากที่สุด", answers: ["การคิดเชิงนามธรรม", "การออกแบบอัลกอริทึม", "การพิจารณารูปแบบ", "การแบ่งปัญหาเป็นปัญหาย่อย"], correct: "การออกแบบอัลกอริทึม" },
+                { question: "7. 'มุ่งเน้นเฉพาะส่วนที่สำคัญของปัญหา' คือคำจำกัดความของข้อใด", answers: ["Abstraction", "Decomposition", "Pattern Recognition", "Algorithm"], correct: "Abstraction" },
+                { question: "8. การทำอาหารตามสูตรในตำรา คือการทำตามสิ่งใด", answers: ["Pattern", "Decomposition", "Abstraction", "Algorithm"], correct: "Algorithm" },
+                { question: "9. เมื่อต้องการคำนวณพื้นที่รูปหัวใจ ข้อมูลใด 'ไม่จำเป็น' ต้องใช้", answers: ["ความยาวด้าน (w)", "ความลึกของบ่อ (d)", "รัศมีวงกลม", "ค่าพาย (π)"], correct: "ความลึกของบ่อ (d)" },
+                { question: "10. ข้อใดไม่ใช่ องค์ประกอบของแนวคิดเชิงคำนวณ", answers: ["การแบ่งปัญหาใหญ่เป็นปัญหาย่อย", "การพิจารณารูปแบบ", "การคิดเชิงสร้างสรรค์", "การออกแบบอัลกอริทึม"], correct: "การคิดเชิงสร้างสรรค์" }
+            ];
+
+            let userAnswers = [];
+            let currentQuestionIndex = 0;
+
+            function loadQuiz() {
+                quizResult.classList.add('hidden');
+                quizContainer.classList.remove('hidden');
+                userAnswers = Array(quizData.length).fill(null);
+                currentQuestionIndex = 0;
+                showQuestion();
+            }
+
+            function showQuestion() {
+                const q = quizData[currentQuestionIndex];
+                const progressPct = ((currentQuestionIndex + 1) / quizData.length) * 100;
+                quizContainer.innerHTML = `
+                    <div class="mb-4">
+                        <div class="flex justify-between text-xs font-bold text-slate-500 mb-1">
+                            <span>คำถามที่ ${currentQuestionIndex + 1} จาก ${quizData.length}</span>
+                            <span>${Math.round(progressPct)}%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 rounded-full h-2">
+                            <div class="bg-emerald-500 h-2 rounded-full transition-all duration-300" style="width: ${progressPct}%"></div>
+                        </div>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-800 mt-2 mb-6">${q.question}</h4>
+                    <div class="space-y-3">
+                        ${q.answers.map(a => `<button class="answer-btn block w-full text-left p-4 bg-slate-50 hover:bg-emerald-50 rounded-xl border-2 border-slate-200 hover:border-emerald-400 font-medium transition text-slate-700">${a}</button>`).join('')}
+                    </div>
+                `;
+                document.querySelectorAll('#quiz-container .answer-btn').forEach(btn => btn.addEventListener('click', selectAnswer));
+            }
+
+            function selectAnswer(e) {
+                userAnswers[currentQuestionIndex] = e.target.textContent.trim();
+                currentQuestionIndex++;
+                if (currentQuestionIndex < quizData.length) showQuestion();
+                else showResults();
+            }
+
+            function showResults() {
+                quizContainer.classList.add('hidden');
+                quizResult.classList.remove('hidden');
+                let score = userAnswers.reduce((acc, answer, i) => acc + (answer === quizData[i].correct ? 1 : 0), 0);
+                scoreText.textContent = `คุณได้ ${score} / ${quizData.length} คะแนน`;
+            }
+
+            function showAnswers() {
+                quizResult.classList.add('hidden');
+                quizContainer.classList.remove('hidden');
+                quizContainer.innerHTML = '<h4 class="text-2xl font-bold mb-6 text-slate-800 flex items-center gap-2"><i class="fas fa-list-check text-emerald-600"></i> เฉลยคำตอบทั้งหมด</h4>';
+                quizData.forEach((q, i) => {
+                    const el = document.createElement('div');
+                    el.className = 'mb-6 p-5 border border-slate-200 rounded-xl bg-slate-50/50';
+                    let answersHtml = q.answers.map(a => {
+                        let cls = 'bg-white border-slate-200';
+                        if (a === q.correct) cls = 'correct font-bold';
+                        if (a === userAnswers[i] && a !== q.correct) cls = 'incorrect';
+                        return `<button class="answer-btn ${cls} block w-full text-left p-3.5 rounded-lg border-2 mb-2 text-sm" disabled>${a}</button>`;
+                    }).join('');
+                    el.innerHTML = `
+                        <h5 class="text-base font-bold text-slate-800 mb-3">${i + 1}. ${q.question}</h5>
+                        <div class="space-y-2">${answersHtml}</div>
+                        <p class="mt-2 text-xs font-semibold ${userAnswers[i] === q.correct ? 'text-emerald-600' : 'text-red-600'}">
+                            คำตอบของคุณ: ${userAnswers[i] || 'ไม่ได้ตอบ'} ${userAnswers[i] === q.correct ? '✔ ถูกต้อง' : '✘ ผิด'}
+                        </p>
+                    `;
+                    quizContainer.appendChild(el);
+                });
+                const backBtn = document.createElement('button');
+                backBtn.innerHTML = '<i class="fas fa-arrow-left mr-2"></i> กลับไปดูคะแนน';
+                backBtn.className = 'mt-4 bg-emerald-600 text-white font-bold py-3 px-8 rounded-xl hover:bg-emerald-700 transition shadow';
+                backBtn.onclick = showResults;
+                quizContainer.appendChild(backBtn);
+            }
+            
+            retryBtn.addEventListener('click', loadQuiz);
+            showAnswersBtn.addEventListener('click', showAnswers);
+            loadQuiz();
+        });
+    </script>
+</body>
+</html>

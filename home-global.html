@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#05050a">
+  <meta name="description" content="Krukan Online พื้นที่การเรียนรู้ดิจิทัล บทเรียน กิจกรรม การประเมิน และเครื่องมือสำหรับผู้เรียน">
+  <title>Krukan Online | National Stage Learning Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Prompt:wght@900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#05050a;--paper:#f7f7fb;--muted:#a5aebe;--cyan:#4ef4d2;--pink:#ff3d91;--blue:#5ca9ff;--sun:#ffd34f;--violet:#9d77ff;--line:rgba(255,255,255,.13);--panel:#10121b}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-width:280px;color:var(--paper);font:400 16px/1.6 'Kanit',sans-serif;background:var(--ink);overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;z-index:-3;pointer-events:none;background:radial-gradient(ellipse at 5% 10%,#0b2826 0,transparent 38%),radial-gradient(ellipse at 95% 22%,#221022 0,transparent 40%),linear-gradient(145deg,#030408,#090c14 55%,#070910)}
+    body::after{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.13;background-image:linear-gradient(#7a96a333 1px,transparent 1px),linear-gradient(90deg,#7a96a333 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at center,#000,transparent 80%)}
+    a,button{font:inherit}button{color:inherit}img{max-width:100%}
+    ::selection{background:var(--pink);color:#fff}
+    :where(a,button):focus-visible{outline:3px solid var(--cyan);outline-offset:5px}
+    button{touch-action:manipulation}
+    [hidden]{display:none!important}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .skip-link{position:fixed;top:12px;left:12px;z-index:1000;padding:12px 18px;border-radius:12px;color:#061613;background:var(--cyan);transform:translateY(-180%)}
+    .skip-link:focus{transform:none}
+    #space{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.65}
+    #space canvas{display:block}
+    #progress{position:fixed;left:0;top:0;z-index:90;width:100%;height:2px;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--pink),var(--cyan))}
+    .site{position:relative;z-index:2}
+    .hero{width:min(1280px,100%);margin:auto;padding:52px 28px 40px;display:grid;grid-template-columns:minmax(0,1.16fr) minmax(0,.84fr);gap:38px;align-items:center}
+    .hero-copy{min-width:0}
+    .global-tag{display:inline-flex;align-items:center;gap:9px;padding:7px 12px;border:1px solid #4ef4d244;border-radius:999px;color:#bbfff1;background:#0c201e;font:700 12px/1.5 'Space Grotesk',sans-serif;letter-spacing:.07em;text-transform:uppercase}
+    .global-tag i{width:7px;height:7px;flex:none;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px #4ef4d255}
+    .hero-kicker{margin-top:20px;color:#a0aabc;font:700 12px/1.7 'Kanit',sans-serif;letter-spacing:.12em}
+    .hero-brand-lockup{container-type:inline-size;display:grid;grid-template-columns:minmax(0,.39fr) minmax(0,.61fr);align-items:center;gap:18px;width:min(100%,660px);margin-top:14px}
+    .hero-brand-mark{width:100%;aspect-ratio:1;display:grid;place-items:center}
+    .hero-brand-mark img{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 12px 22px #0006)}
+    .hero .hero-title{margin:0;font:900 clamp(2rem,7vw,7.8rem)/.86 'Prompt',sans-serif;font-size:clamp(2rem,17.8cqi,7.8rem);letter-spacing:-.075em;color:#fff;white-space:nowrap;text-shadow:0 18px 60px #0005}
+    .hero .hero-title span{display:inline-block;color:transparent;-webkit-text-stroke:1.5px #ffffff59;background:linear-gradient(105deg,#fff 5%,#ff77b6 35%,#ff1678 53%,#00ffd1 94%);background-size:220% 100%;background-position:45% center;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .hero-lead{margin:24px 0 0;color:#bec5d1;font-size:clamp(1rem,1.5vw,1.2rem);line-height:1.85}
+    .hero-lead strong{color:#fff;font-weight:600}
+    .hero-actions{display:flex;align-items:stretch;flex-wrap:wrap;gap:10px;margin-top:24px}
+    .btn{min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:11px 18px;border-radius:13px;text-decoration:none;border:1px solid var(--line);font-weight:600;font-size:15px;cursor:pointer;transition:transform .2s,background .2s}
+    .btn svg{width:18px;height:18px}
+    .btn.primary{border:0;color:#08201a;background:linear-gradient(110deg,#e2fff8,var(--cyan));box-shadow:0 8px 24px #4ef4d219}
+    .btn.secondary{color:#fff;background:#151b25}
+    .library-cta{position:relative;isolation:isolate;flex:1 1 330px;min-height:72px;justify-content:flex-start;gap:12px;padding:11px 14px;border:1px solid #4ef4d2a8;border-radius:18px;color:#fff;background:radial-gradient(circle at 92% 0%,#ff3d9135,transparent 38%),linear-gradient(135deg,#172c40 0%,#0d1827 58%,#20152d 100%);box-shadow:0 14px 34px #0006,0 0 0 1px #ff3d9122,inset 0 1px #ffffff24;overflow:hidden}
+    .library-cta::before{content:'';position:absolute;z-index:-1;inset:-55% 38% -55% -18%;background:linear-gradient(115deg,transparent,#4ef4d225,transparent);transform:rotate(12deg);transition:transform .45s ease}
+    .library-cta::after{content:'OPEN · RESOURCES';position:absolute;right:13px;top:8px;color:#8affea;font:700 9px/1 'Space Grotesk',sans-serif;letter-spacing:.12em}
+    .library-cta .cta-icon{width:42px;height:42px;flex:none;display:grid;place-items:center;border:1px solid #4ef4d277;border-radius:13px;background:linear-gradient(135deg,#4ef4d22b,#ff3d9130);color:#8affea;box-shadow:inset 0 1px #ffffff38}
+    .library-cta .cta-icon svg{width:22px;height:22px;stroke-width:2.3}
+    .library-cta .cta-copy{display:block;min-width:0;text-align:left}
+    .library-cta .cta-copy small{display:block;color:#91a8bf;font:700 11px/1.35 'Space Grotesk',sans-serif;letter-spacing:.08em}
+    .library-cta .cta-copy strong{display:block;margin-top:2px;color:#fff;font-size:clamp(1.05rem,2vw,1.35rem);line-height:1.35;font-weight:700}
+    .library-cta .cta-arrow{width:34px;height:34px;flex:none;margin-left:auto;padding:8px;border:1px solid #4ef4d277;border-radius:10px;background:#4ef4d2;color:#061816;transition:transform .22s,background .22s}
+    .library-cta:hover{transform:translateY(-4px);border-color:#8affea;box-shadow:0 18px 40px #0008,0 0 0 1px #ff3d9150,inset 0 1px #ffffff38}
+    .library-cta:hover::before{transform:translateX(150%) rotate(12deg)}
+    .library-cta:hover .cta-arrow{transform:translate(3px,-3px);background:#fff8}
+    .btn:hover{transform:translateY(-2px)}
+    .quicklinks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:16px}
+    .quicklink{--c:var(--cyan);min-width:0;min-height:64px;display:flex;align-items:center;gap:9px;padding:10px;color:#fff;text-decoration:none;border:1px solid var(--line);border-radius:13px;background:#101620;transition:border-color .2s,transform .2s}
+    .quicklink:hover{transform:translateY(-2px);border-color:var(--c)}
+    .quick-ico{width:30px;height:34px;flex:none;display:grid;place-items:center;color:var(--c)}
+    .quick-ico svg{width:20px;height:20px}
+    .quicklink small,.quicklink b{display:block;overflow-wrap:anywhere}
+    .quicklink small{color:#aab5c6;font:600 12px/1.4 'Space Grotesk',sans-serif}
+    .quicklink b{margin-top:3px;font-size:14px;line-height:1.4;font-weight:500}
+    .signal-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:20px;padding:16px 0;border-block:1px solid var(--line)}
+    .signal{min-width:0;position:relative;padding-left:12px}
+    .signal i{position:absolute;left:0;top:4px;bottom:4px;width:2px;background:var(--s)}
+    .signal b{display:block;color:#e7edf6;font:700 12px/1.5 'Space Grotesk',sans-serif;letter-spacing:.03em}
+    .signal small{display:block;margin-top:3px;color:#aab5c6;font-size:13px}
+    .hero-art{position:relative;min-height:590px;display:grid;place-items:center;min-width:0}
+    .orbit{position:absolute;border-radius:50%;border:1px solid #ffffff12;animation:spin 38s linear infinite;pointer-events:none}
+    .orbit.o1{width:112%;aspect-ratio:1;border-top-color:#4ef4d266;border-right-color:#ff3d9133}
+    .orbit.o2{width:92%;aspect-ratio:1;border-bottom-color:#ff3d9177;animation-direction:reverse;animation-duration:48s}
+    .orbit::before{content:'';position:absolute;left:50%;top:-4px;width:7px;height:7px;border-radius:50%;background:var(--cyan)}
+    .portrait-card{position:relative;width:min(370px,90%);perspective:1300px;touch-action:manipulation;cursor:pointer;transition:transform .25s ease}
+    .portrait-card::before{content:'';position:absolute;z-index:0;inset:-12px;pointer-events:none;border:1px solid #4ef4d255;border-radius:44px 44px 104px 44px;background:radial-gradient(circle at 20% 15%,#4ef4d22b,transparent 42%),radial-gradient(circle at 85% 82%,#ff3d9129,transparent 44%);opacity:0;transform:scale(.96);transition:opacity .35s,transform .35s}
+    .portrait-flipper{position:relative;z-index:1;width:100%;transform-style:preserve-3d;transition:transform .82s cubic-bezier(.2,.72,.18,1)}
+    .portrait-face{padding:9px;border:1px solid #ffffff29;border-radius:36px 36px 95px 36px;background:#10131c;box-shadow:0 25px 60px #0005;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+    .portrait-front{position:relative}
+    .portrait-back{position:absolute;inset:0;transform:rotateY(180deg)}
+    .portrait-card.is-flipped .portrait-flipper{transform:rotateY(180deg)}
+    .portrait-card.is-flipped::before{opacity:1;transform:scale(1.04)}
+    .portrait{position:relative;aspect-ratio:4/5;border-radius:28px 28px 88px 28px;overflow:hidden;background:#090b11}
+    .portrait img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block}
+    .portrait::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,#040509f5,transparent 56%);pointer-events:none}
+    .portrait-info{position:absolute;left:22px;right:22px;bottom:28px;z-index:2}
+    .portrait-info small{color:var(--cyan);font:600 12px 'Space Grotesk',sans-serif;letter-spacing:.1em}
+    .portrait-info h2{margin:6px 0 2px;font-size:23px;line-height:1.4}
+    .portrait-info p{margin:0;color:#c1cada;font-size:14px}
+    .scan{position:absolute;inset:-5% 0 auto;z-index:3;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:0}
+    .portrait-card:hover .scan,.portrait-card.is-flipped .scan{animation:scan 1s ease both}
+    .portrait-back .portrait-info small{color:var(--pink)}
+    .float-note{position:absolute;z-index:4;max-width:80%;padding:11px 13px;border:1px solid var(--line);border-radius:13px;background:#0c111a;color:#b8c3d3;font-size:12px;box-shadow:0 12px 28px #0004;animation:float 6s ease-in-out infinite alternate}
+    .float-note b{display:block;margin-bottom:3px;color:#fff;font:600 12px 'Space Grotesk',sans-serif;letter-spacing:.06em}
+    .float-note.n1{left:-8px;top:13%;border-left-color:var(--cyan)}
+    .float-note.n2{right:-8px;top:56%;bottom:auto;border-right-color:var(--pink);animation-delay:-2s}
+    .journey{position:absolute;left:50%;bottom:0;transform:translateX(-50%);display:flex;gap:3px;padding:5px;border:1px solid var(--line);border-radius:999px;background:#0a101a;max-width:100%}
+    .journey button{min-height:44px;border:0;border-radius:999px;padding:8px 12px;color:#c0cada;background:transparent;font-size:14px;cursor:pointer;white-space:nowrap}
+    .journey button:hover{color:#fff;background:#ffffff12}
+    main{width:min(1220px,100%);margin:auto;padding:0 24px 80px}
+    .section{margin-top:76px;scroll-margin-top:20px}
+    .section-head{display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:14px;align-items:end;margin-bottom:22px}
+    .section-no{align-self:start;padding-top:8px;color:var(--cyan);font:600 13px 'Space Grotesk',sans-serif}
+    .section-head h2{margin:0;font:700 clamp(2rem,4.7vw,4.2rem)/1.12 'Space Grotesk',sans-serif;letter-spacing:-.055em;overflow-wrap:anywhere}
+    .section-head h2 span{color:#9fa8ba;font-weight:500}
+    .section-head p{margin:9px 0 0;color:#b4bece;font-size:16px;line-height:1.7}
+    .section-meta{color:#a7b3c6;font:500 12px/1.5 'Space Grotesk',sans-serif;text-align:right;max-width:170px}
+    .panel{border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,#121722,#0b1019);box-shadow:0 14px 40px #0002}
+    .learning-panel{padding:16px}.filters{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px}
+    .filter-set{display:flex;flex-wrap:wrap;gap:7px}
+    .filter{min-height:44px;border:1px solid var(--line);border-radius:10px;padding:9px 13px;color:#c5d0e0;background:#111a27;font-size:14px;cursor:pointer}
+    .filter[aria-pressed="true"],.filter.active{color:#08201a;background:var(--cyan);border-color:var(--cyan);font-weight:600}
+    .filter:hover{border-color:var(--cyan)}
+    .filter-note{color:#aab5c6;font-size:13px}
+    .class-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .class-card{--a:#06b6d4;--b:#0369a1;position:relative;min-height:132px;display:flex;align-items:center;gap:12px;padding:14px;border-radius:18px;color:#fff;text-decoration:none;overflow:hidden;border:1px solid #ffffff36;background:linear-gradient(#0006,#0006),linear-gradient(135deg,var(--a),var(--b));box-shadow:inset 0 1px #ffffff26;transition:transform .22s,border-color .22s}
+    .class-card::after{content:'';position:absolute;width:130px;height:130px;right:-45px;bottom:-65px;border-radius:50%;border:24px solid #ffffff0d;pointer-events:none}
+    .class-icon{flex:0 0 38px;width:38px;height:40px;display:grid;place-items:center;border-radius:12px;background:#0510173d;border:1px solid #ffffff33}
+    .class-icon svg{width:20px;height:20px}.class-copy{position:relative;z-index:1;min-width:0}
+    .class-en{display:block;color:#fff;font:600 12px/1.4 'Space Grotesk',sans-serif;letter-spacing:.06em}
+    .class-copy h3{margin:3px 0 0;font-size:16px;line-height:1.4;font-weight:600}
+    .class-copy p{margin:4px 0 0;color:#fff;font-size:12px;line-height:1.5}
+    .class-card:hover{transform:translateY(-4px);border-color:#ffffffaa}
+    .activity-toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .activity-note{margin:0;color:#afbbce;font-size:13px}
+    .poster-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:1fr;gap:16px}
+    .poster-card{--a:var(--pink);position:relative;display:flex;flex-direction:column;min-width:0;padding:8px;border:1px solid var(--line);border-radius:21px;color:#fff;text-decoration:none;background:#111722;box-shadow:0 12px 28px #0002;transition:transform .25s,border-color .25s}
+    .poster-media{position:relative;width:100%;aspect-ratio:16/10;flex:none;border-radius:14px;overflow:hidden;background:#080c13}
+    .poster-media img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .4s}
+    .poster-media.no-image::before{content:'KRUKAN ONLINE';position:absolute;inset:0;display:grid;place-items:center;color:#9eaec2;font:600 13px 'Space Grotesk',sans-serif}
+    .poster-tag{position:absolute;left:8px;top:8px;z-index:2;padding:4px 8px;border-radius:7px;background:#07111fe8;color:#e5f2ff;border:1px solid #ffffff2e;font:600 12px/1.5 'Kanit',sans-serif}
+    .motion-static{position:absolute;inset:0;display:grid;place-items:center;color:#c8fdef;font:700 64px/1.2 monospace;letter-spacing:.2em}
+    .poster-launch{position:absolute;right:9px;bottom:9px;display:grid;place-items:center;width:32px;height:32px;border:1px solid #ffffff3d;border-radius:10px;background:linear-gradient(135deg,#142238f2,#ff3d91e8);color:#fff;box-shadow:0 8px 20px #0006;transition:transform .2s,filter .2s}
+    .poster-launch svg{width:17px;height:17px;stroke-width:2.5}
+    .poster-copy{display:flex;flex:1;flex-direction:column;padding:14px 9px 9px}
+    .poster-copy small{color:#b9c8dc;font:500 12px/1.5 'Space Grotesk',sans-serif}
+    .poster-copy h3{margin:5px 0 0;font-size:19px;line-height:1.4;min-height:2.8em;font-weight:600}
+    .poster-desc{margin:5px 0 15px;color:#b8c4d5;font-size:14px;line-height:1.7;min-height:3.4em}
+    .poster-footer{margin-top:auto;display:flex;justify-content:space-between;gap:8px;padding-top:12px;border-top:1px solid var(--line);font-size:13px;color:#c6d4e5}
+    .poster-footer b{display:inline-flex;align-items:center;gap:4px;font-weight:500;color:var(--cyan)}
+    .poster-footer b svg{width:14px;height:14px;stroke-width:2.5;transition:transform .2s}
+    .poster-card:hover{transform:translateY(-4px);border-color:#4ef4d277}.poster-card:hover img{transform:scale(1.025)}.poster-card:hover .poster-launch,.poster-card:hover .poster-footer b svg{transform:translate(2px,-2px);filter:brightness(1.12)}
+    .feedback-panel{position:relative;overflow:hidden;padding:20px;border-color:#ffffff2d;background:radial-gradient(circle at 0 0,#ff3d912d,transparent 32%),radial-gradient(circle at 100% 100%,#4ef4d22a,transparent 34%),linear-gradient(145deg,#151f30,#0a111d);box-shadow:0 20px 55px #0005,0 0 0 1px #4ef4d21a}
+    .feedback-panel::before{content:'';position:absolute;inset:0 12% auto;height:1px;background:linear-gradient(90deg,transparent,#ff3d91,#4ef4d2,transparent);opacity:.8}
+    .loop-track{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:18px}
+    .loop-track::before{content:'';position:absolute;z-index:0;left:11%;right:11%;top:50%;height:1px;background:linear-gradient(90deg,#ff3d91,#4ef4d2,#5ca9ff);opacity:.5}
+    .loop-step{position:relative;z-index:1;display:flex;align-items:center;gap:10px;padding:12px;border:1px solid #ffffff16;border-radius:15px;background:#ffffff08;box-shadow:inset 0 1px #ffffff12}
+    .loop-step>span{width:36px;height:36px;display:grid;place-items:center;flex:none;color:#071313;font:700 14px 'Space Grotesk',sans-serif;border:0;border-radius:12px;background:var(--c);box-shadow:0 0 22px color-mix(in srgb,var(--c) 35%,transparent)}
+    .loop-step small,.loop-step b{display:block}.loop-step small{color:#b6c3d4;font:500 12px 'Space Grotesk',sans-serif}.loop-step b{margin-top:3px;font-size:14px;font-weight:500}
+    .feedback-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .feedback-card{--c:var(--cyan);position:relative;display:flex;flex-direction:column;min-height:255px;padding:20px;overflow:hidden;border:1px solid #ffffff22;border-top:3px solid var(--c);border-radius:18px;color:#fff;text-decoration:none;background:linear-gradient(145deg,#1a2738,#101a29 62%,#0d1521);box-shadow:0 14px 32px #0003,inset 0 1px #ffffff16;transition:transform .22s,border-color .22s,box-shadow .22s}
+    .feedback-card::before{content:'';position:absolute;right:-54px;top:-64px;width:175px;height:175px;border-radius:50%;background:var(--c);opacity:.1;filter:blur(1px);pointer-events:none}
+    .feedback-card::after{content:'';position:absolute;right:18px;bottom:0;left:18px;height:1px;background:linear-gradient(90deg,transparent,var(--c),transparent);opacity:.65}
+    .feedback-card>*{position:relative;z-index:1}
+    .feedback-icon{width:48px;height:48px;display:grid;place-items:center;color:var(--c);border:1px solid #ffffff1c;border-radius:14px;background:linear-gradient(135deg,#ffffff12,#ffffff04);box-shadow:0 0 24px color-mix(in srgb,var(--c) 18%,transparent)}.feedback-icon svg{width:25px;height:25px}
+    .feedback-card h3{margin:18px 0 5px;font:700 30px 'Space Grotesk',sans-serif;letter-spacing:.02em}
+    .feedback-card p{margin:0;color:#c0cbdb;font-size:15px;line-height:1.7}
+    .feedback-card .feedback-hint{margin:10px 0 18px;color:#abbad0;font-size:13px}
+    .feedback-go{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:auto;padding-top:14px;border-top:1px solid var(--line);color:#d8e5f5;font-size:14px}
+    .feedback-go svg{width:18px;height:18px;stroke-width:2.4;transition:transform .2s}.feedback-card:hover .feedback-go svg{transform:translate(2px,-2px)}
+    .feedback-card:hover{transform:translateY(-6px);border-color:var(--c);box-shadow:0 20px 38px #0006,0 0 26px color-mix(in srgb,var(--c) 14%,transparent),inset 0 1px #ffffff24}
+    .tool-panel{padding:20px;background:#0e1520}
+    .tool-intro{display:flex;align-items:center;gap:14px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+    .tool-intro-icon{width:44px;height:44px;flex:none;display:grid;place-items:center;color:var(--cyan);background:#4ef4d20d;border-radius:12px}
+    .tool-intro h3{margin:0;font-size:18px;font-weight:500}.tool-intro p{margin:4px 0 0;color:#b4c1d3;font-size:14px}
+    .tool-tags{display:none}
+    .tool-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;padding-top:22px}
+    .tool-group{min-width:0}
+    .tool-group h4{margin:0 0 10px;font-size:16px;font-weight:500;color:#e2edf9}
+    .tool-group h4 small{display:block;margin-top:2px;color:#a0b2ca;font:500 12px/1.5 'Space Grotesk',sans-serif}
+    .tool-group-items{display:grid;gap:8px}
+    .tool-card{--c:var(--cyan);display:flex;align-items:center;gap:14px;min-height:82px;padding:13px 14px;border:1px solid #ffffff10;border-radius:13px;color:#fff;text-decoration:none;background:#151f2e;transition:background .2s,border-color .2s}
+    .tool-icon{width:38px;height:38px;flex:none;display:grid;place-items:center;color:var(--c)}.tool-icon svg{width:24px;height:24px}
+    .tool-copy{min-width:0}.tool-copy b{display:block;font-size:16px;font-weight:500}.tool-copy small{display:block;margin-top:3px;color:#b9c7da;font-size:14px;line-height:1.5}
+    .tool-card:hover{background:#1c293a;border-color:#ffffff36}
+    .tool-arrow{margin-left:auto;color:#9baec6}
+    footer{position:relative;padding:50px 24px 42px;text-align:center;border-top:1px solid var(--line);background:#04070d}
+    .footer-ghost{font:700 clamp(2rem,8vw,7.5rem)/1.1 'Space Grotesk',sans-serif;letter-spacing:-.07em;color:#ffffff0b;user-select:none;overflow-wrap:anywhere}
+    .footer-copy{position:relative;margin-top:14px}.footer-copy strong{font:600 14px/1.7 'Space Grotesk',sans-serif;letter-spacing:.07em}
+    .footer-copy p{margin:10px 0 18px;color:#a8b5c8;font-size:13px}
+    .license{display:inline-flex;padding:10px;align-items:center;justify-content:center}
+    .license img{height:48px;width:auto}
+    #top{position:fixed;right:16px;bottom:16px;z-index:80;width:46px;height:46px;display:grid;place-items:center;border:1px solid #ffffff40;border-radius:14px;color:#e1eaf7;background:linear-gradient(135deg,#142238,#4ef4d2);box-shadow:0 10px 24px #0006;opacity:0;visibility:hidden;transform:translateY(9px);transition:.2s;cursor:pointer}
+    #top.show{opacity:1;visibility:visible;transform:none}#top svg{width:20px;height:20px;stroke-width:2.6}
+    .reveal{opacity:1}
+    .reveal.enter{animation:enter .6s ease both}
+    @keyframes enter{from{opacity:.25;transform:translateY(16px)}to{opacity:1;transform:none}}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes float{to{transform:translateY(-6px)}}
+    @keyframes scan{10%{opacity:1}100%{top:102%;opacity:0}}
+    .motion-paused *,.motion-paused *::before,.motion-paused *::after{animation-play-state:paused!important;transition:none!important}
+    html.motion-paused{scroll-behavior:auto}
+    .motion-paused .reveal{animation:none!important;opacity:1;transform:none}
+    .motion-paused .scan{display:none}
+    .motion-paused .interactive:hover,.motion-paused .btn:hover,.motion-paused .quicklink:hover,.motion-paused .poster-card:hover img{transform:none}
+    @media(max-width:1100px){.hero{grid-template-columns:minmax(0,1fr);gap:28px}.hero-copy{width:100%;max-width:760px;margin:auto}.hero-art{width:min(520px,100%);min-height:560px;margin:auto}.section-meta{display:none}}
+    @media(max-width:900px){.class-grid,.poster-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.feedback-grid{grid-template-columns:1fr}.feedback-card{min-height:230px}.loop-step b{font-size:13px}}
+    @media(max-width:600px){.hero{padding:22px 18px 28px}.global-tag{font-size:12px;letter-spacing:0}.hero-kicker{font-size:12px;letter-spacing:.03em}.hero-brand-lockup{gap:10px}.hero-lead{font-size:16px;line-height:1.8}.hero-actions .btn{flex:1 1 145px}.quicklinks{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-art{min-height:430px}.portrait-card{width:min(290px,86%)}.portrait-info h2{font-size:20px}.portrait-info p{font-size:13px}.float-note{display:none}.journey button{padding:8px 10px}.class-grid,.poster-grid,.tool-grid{grid-template-columns:1fr}.class-card{min-height:125px}.poster-grid{gap:14px}.section{margin-top:54px}.section-head{grid-template-columns:24px minmax(0,1fr);gap:8px}.section-head h2{font-size:clamp(1.7rem,7.5vw,2.5rem)}main{padding:0 14px 60px}.panel{border-radius:20px}.learning-panel,.feedback-panel,.tool-panel{padding:12px}.loop-track{grid-template-columns:1fr;gap:0}.loop-track::before{display:none}.loop-step{padding:9px}.tool-grid{gap:24px}.section-head p{font-size:15px}.poster-copy h3{font-size:18px}.license img{height:48px}}
+    @media(max-width:600px){.signal-strip{grid-template-columns:repeat(4,minmax(118px,1fr));overflow-x:auto;padding-bottom:12px}.signal{min-width:118px}}
+    @media(max-width:360px){.hero{padding-inline:14px}.quicklinks{grid-template-columns:1fr}.global-tag{font-size:11px}.journey{border-radius:14px;flex-wrap:wrap;justify-content:center;width:100%}.journey button{font-size:13px;min-height:40px}.hero-art{padding-bottom:28px;min-height:440px}.portrait-info{left:16px;right:16px}.hero .hero-title{-webkit-text-stroke:0}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}#space{display:none}}
+    @media(hover:none),(pointer:coarse){.interactive:hover,.btn:hover,.quicklink:hover,.poster-card:hover img{transform:none}}
+    /* Compact content density */
+    .activity-toolbar{margin-bottom:12px}
+    .poster-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;grid-auto-rows:1fr}
+    .poster-card{padding:5px;border-radius:15px}
+    .poster-media{aspect-ratio:16/8.2;border-radius:10px}
+    .poster-copy{padding:8px 6px 6px}
+    .poster-copy small{font-size:12px;line-height:1.3}
+    .poster-copy h3{margin-top:2px;font-size:15px;line-height:1.25;min-height:2.5em}
+    .poster-desc{margin:3px 0 6px;font-size:12px;line-height:1.35;min-height:2.7em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .poster-footer{padding-top:7px;font-size:12px;line-height:1.3}
+    .poster-launch{right:7px;bottom:7px;width:28px;height:28px;border-radius:9px}
+    .tool-panel{padding:14px}
+    .tool-intro{gap:10px;padding-bottom:12px}
+    .tool-intro-icon{width:38px;height:38px}
+    .tool-intro h3{font-size:16px}.tool-intro p{margin-top:2px;font-size:13px}
+    .tool-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;padding-top:14px}
+    .tool-group h4{margin-bottom:6px;font-size:15px}.tool-group h4 small{font-size:11px;line-height:1.35}
+    .tool-group-items{gap:6px}
+    .tool-card{min-height:64px;gap:10px;padding:9px 10px;border-radius:11px}
+    .tool-icon{width:32px;height:32px}.tool-icon svg{width:19px;height:19px}
+    .tool-copy b{font-size:14px}.tool-copy small{margin-top:2px;font-size:12px;line-height:1.35}
+    .tool-arrow{display:grid;place-items:center;width:28px;height:28px;flex:none;margin-left:auto;border:1px solid #ffffff20;border-radius:9px;background:#0c1522;color:#a8b7cc;transition:transform .2s,background .2s,color .2s,border-color .2s}
+    .tool-arrow svg{width:15px;height:15px;stroke-width:2.5}
+    .tool-card:hover .tool-arrow{transform:translate(2px,-2px);border-color:transparent;background:var(--c);color:#07100e}
+    @media(max-width:1100px){.poster-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.tool-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:600px){.poster-grid{grid-template-columns:1fr;gap:12px}.tool-grid{grid-template-columns:1fr;gap:16px}.tool-card{min-height:62px}}
+    /* Lightweight hover polish: transform/opacity only, no continuous JS animation */
+    @media (hover:hover) and (pointer:fine){
+      .interactive{position:relative;isolation:isolate;overflow:hidden}
+      .interactive::before{content:'';position:absolute;z-index:0;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 20%,#ffffff1e 46%,transparent 68%);transform:translateX(-125%);transition:transform .5s ease}
+      .interactive:hover::before{transform:translateX(125%)}
+      .interactive>*{position:relative;z-index:1}
+      .class-card:hover{transform:translateY(-6px) scale(1.012);border-color:#ffffffd0;box-shadow:0 16px 30px #0005,inset 0 1px #ffffff44}
+      .class-card:hover .class-icon{transform:rotate(-5deg) scale(1.08);background:#ffffff22;border-color:#ffffff8c}
+      .class-icon{transition:transform .22s,background .22s,border-color .22s}
+      .poster-card:hover{transform:translateY(-6px) scale(1.012);border-color:var(--a);box-shadow:0 20px 38px #0006,0 0 0 1px var(--a)}
+      .poster-card:hover .poster-tag{background:#07111ff5;border-color:#ffffff68;transform:translateY(-1px)}
+      .poster-tag{transition:transform .22s,background .22s,border-color .22s}
+      .tool-card:hover{transform:translateY(-4px) scale(1.01);background:linear-gradient(110deg,#1d3045,#132235);border-color:#ffffff5c;box-shadow:0 14px 26px #0005}
+      .tool-card:hover .tool-icon{transform:scale(1.12) rotate(-5deg)}
+      .tool-icon{transition:transform .22s}
+      .quicklink:hover{transform:translateY(-4px);border-color:var(--c);box-shadow:0 10px 22px #0004}
+      .quicklink:hover .quick-ico svg{transform:scale(1.15) rotate(-6deg)}
+      .quick-ico svg{transition:transform .22s}
+      .feedback-card:hover .feedback-icon{transform:translateY(-2px) rotate(-3deg)}
+      .feedback-card:hover .feedback-icon svg{transform:scale(1.12)}
+      .feedback-icon,.feedback-icon svg{transition:transform .22s}
+      .portrait-card:hover{transform:translateY(-5px) scale(1.01)}
+      .portrait-card:hover .portrait-flipper{transform:rotateY(180deg)}
+      .portrait-card:hover::before{opacity:1;transform:scale(1.04)}
+      .journey button:hover{transform:translateY(-2px);box-shadow:0 6px 14px #0005}
+      #top:hover{transform:translateY(-4px) scale(1.06);box-shadow:0 14px 30px #0008}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#learning">ข้ามไปเลือกชั้นเรียน</a>
+  <noscript><p style="padding:16px;color:white;background:#172437">เปิด JavaScript เพื่อแสดงรายการบทเรียนและกิจกรรม หรือ <a style="color:#4ef4d2" href="https://www.krukan.in.th/" target="_top">เข้าสู่เว็บไซต์ Krukan Online</a></p></noscript>
+  <div id="progress"></div><div id="space" aria-hidden="true"></div>
+  <div class="site">
+    <section class="hero" id="home">
+      <div class="hero-copy reveal on">
+        <div class="global-tag"><i></i>National Stage · Website Competition 2026</div>
+        <div class="hero-kicker">DIGITAL LEARNING GATEWAY · ศูนย์การเรียนรู้ดิจิทัล</div>
+        <div class="hero-brand-lockup"><div class="hero-brand-mark"><img src="https://i.postimg.cc/MGZBxxy0/Untitled-design-(1).png" alt="โลโก้ Krukan Online" width="240" height="240" fetchpriority="high" decoding="async"></div><h1 class="hero-title">DATA<br><span>CORE</span></h1></div>
+        <p class="hero-lead">พื้นที่เรียนรู้ที่เชื่อม <strong>บทเรียน สื่อ กิจกรรม การประเมินผล และเครื่องมือดิจิทัล</strong> ไว้ในประสบการณ์เดียว เพื่อให้ผู้เรียนเข้าถึงสิ่งที่ต้องการได้รวดเร็วและสนุกขึ้น</p>
+        <div class="hero-actions"><button class="btn primary" type="button" data-scroll="learning"><i data-lucide="sparkles"></i>เริ่มเรียนรู้</button><a class="btn library-cta" href="https://script.google.com/macros/s/AKfycbxuMR-BajBEGSI1zKvHzpZHdByOuDAvBk0IpXwMQayjwDRGVQ9RMi_RWk7xtleWpzj3AQ/exec" target="_blank" rel="noopener"><span class="cta-icon"><i data-lucide="library-big"></i></span><span class="cta-copy"><small lang="en">DIGITAL RESOURCE HUB</small><strong>คลังสื่อการสอน</strong></span><i class="cta-arrow" data-lucide="arrow-up-right"></i></a></div>
+        <div class="quicklinks" aria-label="ข้อมูลและผลงาน">
+          <a class="quicklink" style="--c:#ff5e9f" href="https://www.krukan.in.th/contact" target="_top"><span class="quick-ico"><i data-lucide="mail"></i></span><span><small>CONTACT</small><b>ช่องทางการติดต่อ</b></span></a>
+          <a class="quicklink" style="--c:#4ef4d2" href="https://sites.google.com/atg.go.th/watthachumnum-school/home" target="_blank" rel="noopener"><span class="quick-ico"><i data-lucide="school"></i></span><span><small>SCHOOL</small><b>โรงเรียนวัดท่าชุมนุม</b></span></a>
+          <a class="quicklink" style="--c:#5ca9ff" href="https://www.atg.go.th/" target="_blank" rel="noopener"><span class="quick-ico"><i data-lucide="landmark"></i></span><span><small>EDUCATION AREA</small><b>สพป.อ่างทอง</b></span></a>
+          <a class="quicklink" style="--c:#6ecbff" href="https://www.krukan.in.th/pa/pa-68" target="_top"><span class="quick-ico"><i data-lucide="file-check-2"></i></span><span><small>AGREEMENT</small><b>PA 2568</b></span></a>
+          <a class="quicklink" style="--c:#58f0c6" href="https://www.krukan.in.th/pa/pa-69" target="_top"><span class="quick-ico"><i data-lucide="badge-check"></i></span><span><small>AGREEMENT</small><b>PA 2569</b></span></a>
+          <a class="quicklink" style="--c:#ff70ae" href="https://www.krukan.in.th/pa/pa-70" target="_top"><span class="quick-ico"><i data-lucide="rocket"></i></span><span><small>AGREEMENT</small><b>PA 2570</b></span></a>
+        </div>
+        <div class="signal-strip"><div class="signal"><i style="--s:#5ca9ff"></i><b>RESPONSIVE</b><small>ใช้งานได้ทุกอุปกรณ์</small></div><div class="signal"><i style="--s:#4ef4d2"></i><b>INTERACTIVE</b><small>เรียนรู้แบบโต้ตอบ</small></div><div class="signal"><i style="--s:#ffd34f"></i><b>PLAY &amp; LEARN</b><small>สนุกพร้อมการเรียนรู้</small></div><div class="signal"><i style="--s:#ff3d91"></i><b>EVOLVING</b><small>พัฒนาและอัปเดตต่อเนื่อง</small></div></div>
+      </div>
+      <div class="hero-art reveal on"><div class="orbit o1"></div><div class="orbit o2"></div><div class="float-note n1"><b>AUTHORIZED EDUCATOR</b>Teacher · Designer · Developer</div><div class="float-note n2"><b>LEARNING SYSTEM</b>Ready · Responsive · Interactive</div><article class="portrait-card" id="portrait" tabindex="0" role="button" aria-pressed="false" aria-label="ภาพโปรไฟล์สองด้าน แตะเพื่อสลับภาพ"><div class="portrait-flipper"><div class="portrait-face portrait-front"><div class="portrait"><div class="scan"></div><img src="https://i.postimg.cc/909275Yh/af03e81f-513f-41ca-a56c-f11b19dd1264.png" alt="นายยุทธการ เจียตระกูล ภาพหลัก" width="480" height="600" fetchpriority="high" decoding="async"><div class="portrait-info"><small>EDUCATOR PROFILE</small><h2>นายยุทธการ เจียตระกูล</h2><p>ครูชำนาญการ · โรงเรียนวัดท่าชุมนุม</p></div></div></div><div class="portrait-face portrait-back"><div class="portrait"><div class="scan"></div><img src="https://lh3.googleusercontent.com/d/1Zq3TYuXMtMZtRgytRjL0o5zS2gKEeZQK=w900" alt="นายยุทธการ เจียตระกูล ภาพอีกด้าน" width="480" height="600" decoding="async"><div class="portrait-info"><small>EDUCATOR PROFILE</small><h2>นายยุทธการ เจียตระกูล</h2><p>ครูชำนาญการ · โรงเรียนวัดท่าชุมนุม</p></div></div></div></div></article><div class="journey"><button data-scroll="learning">บทเรียน</button><button data-scroll="play">กิจกรรม</button><button data-scroll="feedback">ประเมินผล</button><button data-scroll="tools">เครื่องมือ</button></div></div>
+    </section>
+
+    <main id="main-content">
+      <section class="section reveal" id="learning" tabindex="-1"><div class="section-head"><div class="section-no">01</div><div><h2>LEARNING <span>ORBITS</span></h2><p>เลือกชั้นเรียน แล้วเข้าสู่บทเรียนได้ทันที</p></div><div class="section-meta">PRIMARY 6 · SECONDARY 3</div></div><div class="learning-panel panel"><div class="filters"><div class="filter-set" role="group" aria-label="กรองระดับชั้น"><button type="button" class="filter active" data-filter="all" aria-pressed="true" aria-controls="class-grid">ทั้งหมด</button><button type="button" class="filter" data-filter="primary" aria-pressed="false" aria-controls="class-grid">ประถมศึกษา</button><button type="button" class="filter" data-filter="secondary" aria-pressed="false" aria-controls="class-grid">มัธยมศึกษา</button></div><div class="filter-note">9 เส้นทาง · สีประจำแต่ละระดับชั้น</div></div><div id="class-grid" class="class-grid"></div><p id="class-status" class="sr-only" role="status" aria-live="polite"></p></div></section>
+      <section class="section reveal" id="play"><div class="section-head"><div class="section-no">02</div><div><h2>PLAY &amp; <span>LEARN</span></h2><p>กิจกรรมเสริมแบบ Game-based และ Interactive Learning</p></div><div class="section-meta">16 INTERACTIVE EXPERIENCES</div></div><div class="activity-toolbar"><div class="filter-set" role="group" aria-label="กรองกิจกรรมตามทักษะ">
+<button type="button" class="filter active" data-activity-filter="all" aria-controls="poster-grid" aria-pressed="true">ทั้งหมด</button><button type="button" class="filter" data-activity-filter="reading" aria-controls="poster-grid" aria-pressed="false">การอ่าน</button><button type="button" class="filter" data-activity-filter="math" aria-controls="poster-grid" aria-pressed="false">คณิตศาสตร์</button><button type="button" class="filter" data-activity-filter="digital" aria-controls="poster-grid" aria-pressed="false">ดิจิทัล</button><button type="button" class="filter" data-activity-filter="exam" aria-controls="poster-grid" aria-pressed="false">เตรียมสอบ</button>
+</div><p class="activity-note" id="activity-status" role="status" aria-live="polite">16 กิจกรรม · เปิดในแท็บใหม่</p></div><div id="poster-grid" class="poster-grid"></div></section>
+      <section class="section reveal" id="feedback"><div class="section-head"><div class="section-no">03</div><div><h2>FEEDBACK <span>LOOP</span></h2><p>คะแนน ความคิดเห็น และข้อมูลสะท้อนกลับเพื่อพัฒนาการเรียนรู้</p></div><div class="section-meta">ASSESS · LISTEN · IMPROVE</div></div><div class="feedback-panel panel"><div class="loop-track"><div class="loop-step" style="--c:#ff3d91"><span>01</span><div><small>ASSESS</small><b>ตรวจสอบผลการเรียนรู้</b></div></div><div class="loop-step" style="--c:#4ef4d2"><span>02</span><div><small>LISTEN</small><b>รับฟังความคิดเห็น</b></div></div><div class="loop-step" style="--c:#5ca9ff"><span>03</span><div><small>IMPROVE</small><b>ดูภาพรวมเพื่อพัฒนา</b></div></div></div><div class="feedback-grid"><a class="feedback-card" style="--c:#ff3d91" href="https://script.google.com/macros/s/AKfycbwkEkCy3Xa2YSjpBdT5Wy-K2_T5h1siDCWXyUBgMHmYxpOsntX72qiErJ7_stUc6up0aw/exec" target="_blank" rel="noopener"><div class="feedback-icon"><i data-lucide="star"></i></div><h3>SCORE</h3><p>ตรวจสอบคะแนนและผลการเรียนรู้</p><p class="feedback-hint">ใช้ผลคะแนนช่วยเลือกเรื่องที่จะกลับไปทบทวน</p><div class="feedback-go"><span>เปิดดูคะแนน</span><i data-lucide="arrow-up-right"></i></div></a><a class="feedback-card" style="--c:#4ef4d2" href="https://www.krukan.in.th/poll" target="_blank" rel="noopener"><div class="feedback-icon"><i data-lucide="messages-square"></i></div><h3>POLL</h3><p>แบบสอบถามและความคิดเห็นจากผู้ใช้งาน</p><p class="feedback-hint">บอกสิ่งที่ชอบ จุดที่ติดขัด และสิ่งที่อยากให้พัฒนา</p><div class="feedback-go"><span>แสดงความคิดเห็น</span><i data-lucide="arrow-up-right"></i></div></a><a class="feedback-card" style="--c:#5ca9ff" href="https://www.krukan.in.th/indicator" target="_blank" rel="noopener"><div class="feedback-icon"><i data-lucide="chart-no-axes-combined"></i></div><h3>STATS</h3><p>ดูข้อมูลสถิติและภาพรวมการใช้งาน</p><p class="feedback-hint">เปิดหน้าข้อมูลเพื่อดูรายละเอียดและบริบทของสถิติ</p><div class="feedback-go"><span>ดูข้อมูลสถิติ</span><i data-lucide="arrow-up-right"></i></div></a></div></div></section>
+      <section class="section reveal" id="tools"><div class="section-head"><div class="section-no">04</div><div><h2>DIGITAL <span>TOOLKIT</span></h2><p>เครื่องมือที่ช่วยให้การเรียนรู้ การสร้างงาน และการประเมินทำได้คล่องขึ้น</p></div><div class="section-meta">10 ESSENTIAL TOOLS</div></div><div class="tool-panel panel"><div class="tool-intro"><div class="tool-intro-icon"><i data-lucide="boxes"></i></div><div><h3>เลือกเครื่องมือให้เหมาะกับงาน</h3><p>สร้างสื่อ เขียนโปรแกรม จัดกิจกรรม และประเมินผลได้จากที่เดียว</p></div><div class="tool-tags"><span>CODING</span><span>DESIGN</span><span>CLASSROOM</span><span>ASSESSMENT</span></div></div><div id="tool-grid" class="tool-grid"></div></div></section>
+    </main>
+    <footer><div class="footer-ghost">KRUKAN ONLINE</div><div class="footer-copy"><strong>DESIGNED FOR LEARNING · BUILT FOR EXPERIENCE</strong><p>© 2026 KRUKAN ONLINE · โรงเรียนวัดท่าชุมนุม · สพป.อ่างทอง</p><a class="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener"><img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png" alt="Creative Commons BY-NC-SA 4.0"></a></div></footer>
+  </div>
+  <button id="top" type="button" aria-label="กลับขึ้นด้านบน"><i data-lucide="arrow-up"></i></button>
+
+  <script>
+    const DATA={
+      classes:[
+        {name:'ประถมศึกษาปีที่ 1',short:'ป.1',level:'primary',url:'https://www.krukan.in.th/Class/Primary1',icon:'puzzle',a:'#06b6d4',b:'#0369a1',desc:'เริ่มต้นสนุกกับดิจิทัล'},
+        {name:'ประถมศึกษาปีที่ 2',short:'ป.2',level:'primary',url:'https://www.krukan.in.th/Class/Primary2',icon:'mouse-pointer-click',a:'#2563eb',b:'#3730a3',desc:'เรียนรู้ผ่านการลงมือทำ'},
+        {name:'ประถมศึกษาปีที่ 3',short:'ป.3',level:'primary',url:'https://www.krukan.in.th/Class/Primary3',icon:'code-2',a:'#0d9488',b:'#047857',desc:'คิดเป็น ทำเป็น สนุกเป็น'},
+        {name:'ประถมศึกษาปีที่ 4',short:'ป.4',level:'primary',url:'https://www.krukan.in.th/Class/Primary4',icon:'shield-check',a:'#f59e0b',b:'#b45309',desc:'ภารกิจนักแก้ปัญหา'},
+        {name:'ประถมศึกษาปีที่ 5',short:'ป.5',level:'primary',url:'https://www.krukan.in.th/Class/Primary5',icon:'database',a:'#f97316',b:'#c2410c',desc:'ข้อมูล โปรแกรม และไอเดีย'},
+        {name:'ประถมศึกษาปีที่ 6',short:'ป.6',level:'primary',url:'https://www.krukan.in.th/Class/Primary6',icon:'globe-2',a:'#d99a00',b:'#854d0e',desc:'พร้อมสู่โลกดิจิทัล'},
+        {name:'มัธยมศึกษาปีที่ 1',short:'ม.1',level:'secondary',url:'https://www.krukan.in.th/Class/Secondary1',icon:'server',a:'#e11d74',b:'#9d174d',desc:'Computing Explorer'},
+        {name:'มัธยมศึกษาปีที่ 2',short:'ม.2',level:'secondary',url:'https://www.krukan.in.th/Class/Secondary2',icon:'brain-circuit',a:'#7c3aed',b:'#4c1d95',desc:'Code · Logic · Create'},
+        {name:'มัธยมศึกษาปีที่ 3',short:'ม.3',level:'secondary',url:'https://www.krukan.in.th/Class/Secondary3',icon:'satellite-dish',a:'#c026d3',b:'#701a75',desc:'Technology Mission'}
+      ],
+      activities:[
+        {title:'ฝึกอ่าน ก.ไก่',url:'https://www.krukan.in.th/etc/korkai',image:'https://i.postimg.cc/0jCS6RzF/skr-nch-xt-2026-09-10-193135.png',new:true},{title:'Reading 2',url:'https://www.krukan.in.th/etc/reading2',image:'https://i.postimg.cc/wTGvwjdH/skr-nch-xt-2026-09-10-193650.png',new:true},{title:'CyberGuardian',url:'https://www.krukan.in.th/etc/secreat',image:'https://i.postimg.cc/vmzwS06Y/skr-nch-xt-2026-09-10-193903.png',new:true},{title:'O-NET Tutor P.6',url:'https://www.krukan.in.th/etc/vvv',image:'https://i.postimg.cc/mk4Xf4fT/skr-nch-xt-2026-09-10-194422.png',new:true},{title:'บันไดงู บวกลบเลข',url:'https://www.krukan.in.th/etc/plussnake',image:'https://i.postimg.cc/66hz2DxN/skr-nch-xt-2026-09-10-194527.png',new:true},{title:'Math Arena',url:'https://www.krukan.in.th/etc/mathMix',image:'https://i.postimg.cc/N0L424vD/skr-nch-xt-2026-09-10-211357.png',new:true},
+        {title:'ลบเลขมอนสเตอร์',url:'https://www.krukan.in.th/etc/demox',image:'https://img2.pic.in.th/pic/-2025-09-29-142641.png'},{title:'เรียงลำดับตัวเลข',url:'https://www.krukan.in.th/etc/sortnumber',image:'https://img2.pic.in.th/-2026-04-21-140222.png'},{title:'ฝึกอ่านภาษาไทย',url:'https://www.krukan.in.th/etc/readthai',image:'https://img2.pic.in.th/pic/-2025-07-10-205614.png'},{title:'สนุกกับการบวกเลข',url:'https://www.krukan.in.th/etc/mathplus',image:'https://img2.pic.in.th/pic/-2025-07-20-212543.png'},{title:'สมบัติพลังบวก',url:'https://www.krukan.in.th/etc/marioplus',image:'https://img2.pic.in.th/pic/-2025-09-25-095330.png'},{title:'Word-Family',url:'https://www.krukan.in.th/etc/wordfamily',image:'https://i.postimg.cc/PqHxBRFj/Screenshot-2026-09-09-131427.png'},{title:'คิดเลขแสนสนุก',url:'https://www.krukan.in.th/etc/funmath',image:'https://img2.pic.in.th/pic/-2025-10-14-210051.png'},{title:'Reading Adventure',url:'https://www.krukan.in.th/etc/Reading-Adventure',image:'https://i.postimg.cc/PxRdr3Ks/Screenshot-2026-09-09-131616.png'},{title:'เลขโรมัน',url:'https://www.krukan.in.th/etc/roman',image:'https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/roman-numerals-1652705686.png'},{title:'เลขฐาน 2',url:'https://www.krukan.in.th/etc/base-number',image:'https://upload.wikimedia.org/wikipedia/commons/7/75/Binary_counter.gif'}
+      ],
+      tools:[
+        {name:'Scratch',category:'Coding & Create',icon:'cat',url:'https://scratch.mit.edu/',c:'#ffad62'},{name:'KidBright',category:'IoT & Coding',icon:'bot',url:'https://simulator.kid-bright.org/home',c:'#48f2bd'},{name:'Blooket',category:'Game Quiz',icon:'box',url:'https://www.blooket.com/',c:'#69b7ff'},{name:'ClassMana',category:'Classroom',icon:'clipboard-check',url:'https://th.classmana.com/',c:'#5ee6aa'},{name:'Quizalize',category:'Assessment',icon:'award',url:'https://www.quizalize.com/',c:'#c497ff'},{name:'Kahoot',category:'Live Quiz',icon:'swords',url:'https://kahoot.it/',c:'#9783ff'},{name:'Code.org',category:'Computer Science',icon:'code-2',url:'https://code.org/',c:'#62eaff'},{name:'Canva',category:'Design',icon:'paintbrush',url:'https://www.canva.com/',c:'#58d7ff'},{name:'Python',category:'Programming',icon:'braces',url:'https://www.w3schools.com/python/trypython.asp?filename=demo_compiler',c:'#ffd15c'},{name:'เสบียงครู',category:'Teacher Resources',icon:'book-marked',url:'https://sites.google.com/view/sebiyngkru/home',c:'#ff6aa6'}
+      ]
+    };
+
+    const ACTIVITY_INFO={
+      'ฝึกอ่าน ก.ไก่':{group:'reading',desc:'ฝึกอ่านพยัญชนะไทยผ่านกิจกรรม ก.ไก่'},
+      'Reading 2':{group:'reading',desc:'ฝึกการอ่านผ่านกิจกรรม Reading 2'},
+      'CyberGuardian':{group:'digital',desc:'เรียนรู้ผ่านกิจกรรม CyberGuardian'},
+      'O-NET Tutor P.6':{group:'exam',desc:'ทบทวนเพื่อเตรียมสอบ O-NET ระดับประถมศึกษาปีที่ 6',audience:'ป.6'},
+      'บันไดงู บวกลบเลข':{group:'math',desc:'ฝึกบวกและลบเลขผ่านเกมบันไดงู'},
+      'Math Arena':{group:'math',desc:'ฝึกทักษะคณิตศาสตร์ผ่านกิจกรรม Math Arena'},
+      'ลบเลขมอนสเตอร์':{group:'math',desc:'ฝึกทักษะการลบเลขผ่านเกมมอนสเตอร์'},
+      'เรียงลำดับตัวเลข':{group:'math',desc:'ฝึกเรียงลำดับและเปรียบเทียบตัวเลข'},
+      'ฝึกอ่านภาษาไทย':{group:'reading',desc:'ฝึกทักษะการอ่านภาษาไทย'},
+      'สนุกกับการบวกเลข':{group:'math',desc:'ฝึกทักษะการบวกเลขผ่านกิจกรรม'},
+      'สมบัติพลังบวก':{group:'math',desc:'เรียนรู้การบวกผ่านเกมสมบัติพลังบวก'},
+      'Word-Family':{group:'reading',desc:'เรียนรู้คำศัพท์ผ่านกิจกรรม Word-Family'},
+      'คิดเลขแสนสนุก':{group:'math',desc:'ฝึกคิดเลขผ่านกิจกรรมคณิตศาสตร์'},
+      'Reading Adventure':{group:'reading',desc:'ฝึกการอ่านผ่านกิจกรรม Reading Adventure'},
+      'เลขโรมัน':{group:'math',desc:'เรียนรู้เรื่องตัวเลขโรมัน'},
+      'เลขฐาน 2':{group:'digital',desc:'เรียนรู้เรื่องระบบเลขฐานสอง'}
+    };
+    const GROUP_LABELS={reading:'การอ่าน',math:'คณิตศาสตร์',digital:'ดิจิทัล',exam:'เตรียมสอบ'};
+    const TOOL_GROUPS=[
+      {title:'เขียนโปรแกรม',english:'CODING',items:[['Scratch','สร้างเรื่องราวและโปรแกรมด้วยบล็อกคำสั่ง'],['KidBright','เรียนรู้การเขียนโปรแกรมและ IoT'],['Code.org','เรียนรู้วิทยาการคอมพิวเตอร์'],['Python','ทดลองเขียนและรันภาษา Python']]},
+      {title:'สร้างสื่อการเรียนรู้',english:'DESIGN & RESOURCES',items:[['Canva','ออกแบบสื่อและงานนำเสนอ'],['เสบียงครู','แหล่งทรัพยากรสำหรับครู']]},
+      {title:'เกมและการประเมิน',english:'QUIZ & ASSESSMENT',items:[['Blooket','จัดกิจกรรมตอบคำถามผ่านเกม'],['Quizalize','สร้างกิจกรรมประเมินการเรียนรู้'],['Kahoot','จัดกิจกรรมตอบคำถาม']]},
+      {title:'จัดการชั้นเรียน',english:'CLASSROOM',items:[['ClassMana','เครื่องมือสำหรับจัดการชั้นเรียน']]}
+    ];
+    const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+    const escapeHTML=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const motionQuery=matchMedia('(prefers-reduced-motion: reduce)');
+    let backgroundControl=null,backgroundLoading=false;
+    const motionPaused=()=>motionQuery.matches;
+    const animationAllowed=()=>!motionPaused()&&!document.hidden;
+    function icons(){try{window.lucide?.createIcons({attrs:{'aria-hidden':'true','focusable':'false'}})}catch{}}
+
+    function renderClasses(filter='all'){
+      const list=filter==='all'?DATA.classes:DATA.classes.filter(x=>x.level===filter);
+      $('#class-grid').innerHTML=list.map(x=>'<a class="class-card interactive" href="'+x.url+'" target="_blank" rel="noopener" style="--a:'+x.a+';--b:'+x.b+'"><div class="class-icon" aria-hidden="true"><i data-lucide="'+x.icon+'"></i></div><div class="class-copy"><span class="class-en" lang="en">'+(x.level==='primary'?'PRIMARY':'SECONDARY')+' '+x.short.replace(/[^\d]/g,'')+'</span><h3>'+escapeHTML(x.name)+'</h3><p>'+escapeHTML(x.desc)+'</p></div></a>').join('');
+      $('#class-status').textContent='แสดง '+list.length+' ชั้นเรียน · เปิดบทเรียนในแท็บใหม่';
+      icons();
+    }
+    function renderActivities(filter='all'){
+      const tones=['#ff6da8','#ffd34f','#4ef4d2','#89baff','#cba9ff'];
+      const list=DATA.activities.filter(x=>filter==='all'||ACTIVITY_INFO[x.title]?.group===filter);
+      $('#poster-grid').innerHTML=list.map((x,i)=>{
+        const info=ACTIVITY_INFO[x.title]||{group:'digital',desc:x.title};
+        const topic=GROUP_LABELS[info.group],gif=/\.gif(?:$|\?)/i.test(x.image);
+        const paused=gif&&motionPaused();
+        return '<a class="poster-card interactive tilt" href="'+x.url+'" target="_blank" rel="noopener" style="--a:'+tones[i%tones.length]+'"><div class="poster-media"><img '+(paused?'hidden ':'src="'+x.image+'" ')+'data-image-src="'+x.image+'"'+(gif?' data-motion-image':'')+' alt="'+escapeHTML(x.title)+'" loading="lazy" decoding="async" width="640" height="400">'+(gif?'<span class="motion-static"'+(paused?'':' hidden')+' aria-hidden="true">0 1</span>':'')+'<span class="poster-tag">'+topic+'</span><span class="poster-launch" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></div><div class="poster-copy"><small lang="en">'+(x.new?'NEW ACTIVITY':'INTERACTIVE ACTIVITY')+'</small><h3>'+escapeHTML(x.title)+'</h3><p class="poster-desc">'+escapeHTML(info.desc)+'</p><div class="poster-footer"><span>'+escapeHTML(info.audience||topic)+'</span><b>เปิดกิจกรรม <i data-lucide="arrow-up-right"></i></b></div></div></a>';
+      }).join('');
+      $$('#poster-grid img').forEach(img=>img.addEventListener('error',()=>{
+        if(!img.getAttribute('src'))return;
+        img.parentElement.classList.add('no-image');img.hidden=true;img.dataset.failed='true';
+      }));
+      $('#activity-status').textContent=list.length+' กิจกรรม · เปิดในแท็บใหม่';
+      icons();initTilt();
+    }
+    function renderTools(){
+      $('#tool-grid').innerHTML=TOOL_GROUPS.map(group=>'<section class="tool-group"><h4>'+group.title+'<small lang="en">'+group.english+'</small></h4><div class="tool-group-items">'+group.items.map(([name,desc])=>{
+        const x=DATA.tools.find(t=>t.name===name);
+        return '<a class="tool-card interactive" href="'+x.url+'" target="_blank" rel="noopener" style="--c:'+x.c+'"><div class="tool-icon" aria-hidden="true"><i data-lucide="'+x.icon+'"></i></div><div class="tool-copy"><b>'+escapeHTML(x.name)+'</b><small>'+escapeHTML(desc)+'</small></div><span class="tool-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span></a>';
+      }).join('')+'</div></section>').join('');
+      icons();
+    }
+    function loadScript(src){
+      return new Promise((resolve,reject)=>{
+        const script=document.createElement('script');
+        script.src=src;script.async=true;script.onload=resolve;script.onerror=reject;
+        document.head.appendChild(script);
+      });
+    }
+    function ensureBackground(){
+      if(backgroundControl||backgroundLoading||!animationAllowed())return;
+      if(window.THREE){initThree();return}
+      backgroundLoading=true;
+      loadScript('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js')
+        .then(()=>{backgroundLoading=false;if(animationAllowed())initThree()})
+        .catch(()=>{backgroundLoading=false});
+    }
+    function syncMotion(){
+      const paused=motionPaused();
+      document.documentElement.classList.toggle('motion-paused',paused);
+      $$('.tilt,#portrait').forEach(el=>{el.style.transform=''});
+      $$('[data-motion-image]').forEach(img=>{
+        const fallback=img.parentElement.querySelector('.motion-static');
+        if(paused){img.removeAttribute('src');img.hidden=true;if(fallback)fallback.hidden=false}
+        else if(img.dataset.failed!=='true'){if(!img.getAttribute('src'))img.src=img.dataset.imageSrc;img.hidden=false;if(fallback)fallback.hidden=true}
+      });
+      backgroundControl?.sync();
+    }
+    function initMotion(){
+      syncMotion();
+      const preferenceChanged=()=>{syncMotion();ensureBackground()};
+      if(motionQuery.addEventListener)motionQuery.addEventListener('change',preferenceChanged);
+      else motionQuery.addListener(preferenceChanged);
+      document.addEventListener('visibilitychange',()=>{
+        backgroundControl?.sync();if(!document.hidden)ensureBackground();
+      });
+      addEventListener('pagehide',()=>backgroundControl?.stop());
+      addEventListener('pageshow',()=>backgroundControl?.sync());
+    }
+    function initScroll(){
+      $$('[data-scroll]').forEach(btn=>btn.addEventListener('click',()=>{
+        const el=document.getElementById(btn.dataset.scroll);
+        if(!el)return;
+        scrollTo({top:Math.max(0,el.getBoundingClientRect().top+scrollY-16),behavior:motionPaused()?'auto':'smooth'});
+        if(!el.hasAttribute('tabindex'))el.setAttribute('tabindex','-1');
+        el.focus({preventScroll:true});
+      }));
+      let queued=false;
+      const update=()=>{
+        queued=false;
+        const max=document.documentElement.scrollHeight-innerHeight;
+        $('#progress').style.transform='scaleX('+(max>0?Math.min(1,Math.max(0,scrollY/max)):0)+')';
+        $('#top').classList.toggle('show',scrollY>600);
+      };
+      addEventListener('scroll',()=>{if(!queued){queued=true;requestAnimationFrame(update)}},{passive:true});
+      addEventListener('resize',update,{passive:true});
+      $('#top').addEventListener('click',()=>{
+        scrollTo({top:0,behavior:motionPaused()?'auto':'smooth'});
+        $('.hero-title').setAttribute('tabindex','-1');$('.hero-title').focus({preventScroll:true});
+      });
+      update();
+    }
+    function initReveal(){
+      if(!('IntersectionObserver' in window))return;
+      const observer=new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+          if(!entry.isIntersecting)return;
+          if(!motionPaused())entry.target.classList.add('enter');
+          observer.unobserve(entry.target);
+        });
+      },{threshold:0,rootMargin:'0px'});
+      $$('.section.reveal').forEach(el=>observer.observe(el));
+    }
+    function initTilt(){
+      if(!matchMedia('(hover: hover) and (pointer: fine)').matches)return;
+      $$('.tilt:not([data-tilt])').forEach(el=>{
+        el.dataset.tilt='true';let raf=0;
+        el.addEventListener('pointermove',event=>{
+          if(!animationAllowed())return;
+          cancelAnimationFrame(raf);
+          raf=requestAnimationFrame(()=>{
+            if(!animationAllowed())return;
+            const r=el.getBoundingClientRect();
+            const x=(event.clientX-r.left)/r.width-.5,y=(event.clientY-r.top)/r.height-.5;
+            el.style.transform='perspective(1000px) rotateX('+(-y*2)+'deg) rotateY('+(x*3)+'deg)';
+          });
+        });
+        el.addEventListener('pointerleave',()=>{cancelAnimationFrame(raf);el.style.transform=''});
+      });
+    }
+    function initProfileCard(){
+      const card=$('#portrait');
+      if(!card)return;
+      const setFlipped=flipped=>{
+        card.classList.toggle('is-flipped',flipped);
+        card.setAttribute('aria-pressed',String(flipped));
+      };
+      card.addEventListener('pointerup',event=>{
+        if(event.pointerType==='mouse')return;
+        setFlipped(!card.classList.contains('is-flipped'));
+      },{passive:true});
+      card.addEventListener('keydown',event=>{
+        if(event.key!=='Enter'&&event.key!==' ')return;
+        event.preventDefault();setFlipped(!card.classList.contains('is-flipped'));
+      });
+    }
+    function initThree(){
+      if(backgroundControl||!window.THREE||!animationAllowed())return;
+      const host=$('#space');let renderer;
+      try{
+        const low=innerWidth<700||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=4)||(navigator.deviceMemory&&navigator.deviceMemory<=4);
+        const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(62,innerWidth/innerHeight,.1,500);
+        camera.position.set(0,1,44);
+        renderer=new THREE.WebGLRenderer({alpha:true,antialias:false,powerPreference:'low-power'});
+        renderer.setClearColor(0,0);renderer.setPixelRatio(Math.min(devicePixelRatio,1.1));renderer.setSize(innerWidth,innerHeight);
+        host.appendChild(renderer.domElement);
+        const count=low?120:240,positions=new Float32Array(count*3),colors=new Float32Array(count*3);
+        const palette=[new THREE.Color('#4ef4d2'),new THREE.Color('#ff3d91'),new THREE.Color('#c9d8ed')];
+        for(let i=0;i<count;i++){
+          const k=i*3,c=palette[i%palette.length];
+          positions[k]=(Math.random()-.5)*145;positions[k+1]=(Math.random()-.5)*100;positions[k+2]=(Math.random()-.5)*80;
+          colors[k]=c.r;colors[k+1]=c.g;colors[k+2]=c.b;
+        }
+        const geometry=new THREE.BufferGeometry();
+        geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('color',new THREE.BufferAttribute(colors,3));
+        const stars=new THREE.Points(geometry,new THREE.PointsMaterial({size:.14,vertexColors:true,transparent:true,opacity:.6,depthWrite:false}));
+        const knot=new THREE.Mesh(new THREE.TorusKnotGeometry(9,1.6,48,6),new THREE.MeshBasicMaterial({color:0x4ef4d2,wireframe:true,transparent:true,opacity:.035,depthWrite:false}));
+        knot.position.set(18,-4,-18);
+        scene.add(stars,knot);
+        let raf=0,last=0,run=false,lost=false;const gap=low?50:33;
+        const frame=now=>{
+          if(!run)return;
+          raf=requestAnimationFrame(frame);
+          if(now-last<gap)return;
+          const dt=Math.min((now-last)/1000,.1);last=now;
+          stars.rotation.y+=dt*.013;knot.rotation.x+=dt*.022;knot.rotation.y+=dt*.028;
+          renderer.render(scene,camera);
+        };
+        const stop=()=>{run=false;cancelAnimationFrame(raf);raf=0};
+        const sync=()=>{
+          if(!animationAllowed()||lost){stop();return}
+          if(!run){run=true;last=performance.now();raf=requestAnimationFrame(frame)}
+        };
+        backgroundControl={sync,stop};
+        let resizeTimer;
+        addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{
+          camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);
+          if(!lost)renderer.render(scene,camera);
+        },150)},{passive:true});
+        renderer.domElement.addEventListener('webglcontextlost',event=>{event.preventDefault();lost=true;stop()});
+        renderer.domElement.addEventListener('webglcontextrestored',()=>{lost=false;sync()});
+        renderer.render(scene,camera);sync();
+      }catch{
+        renderer?.dispose();host.replaceChildren();backgroundControl=null;
+      }
+    }
+    function initFilters(){
+      $$('[data-filter]').forEach(btn=>btn.addEventListener('click',()=>{
+        $$('[data-filter]').forEach(x=>{const active=x===btn;x.classList.toggle('active',active);x.setAttribute('aria-pressed',String(active))});
+        renderClasses(btn.dataset.filter);
+      }));
+      $$('[data-activity-filter]').forEach(btn=>btn.addEventListener('click',()=>{
+        $$('[data-activity-filter]').forEach(x=>{const active=x===btn;x.classList.toggle('active',active);x.setAttribute('aria-pressed',String(active))});
+        renderActivities(btn.dataset.activityFilter);
+      }));
+    }
+    function start(){
+      renderClasses();renderActivities();renderTools();initMotion();initFilters();initScroll();initReveal();initProfileCard();
+      loadScript('https://unpkg.com/lucide@1.44.0/dist/umd/lucide.min.js').then(icons).catch(()=>{});
+      if('requestIdleCallback' in window)requestIdleCallback(ensureBackground,{timeout:2000});
+      else setTimeout(ensureBackground,100);
+    }
+    if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});
+    else start();
+  </script>
+</body>
+</html>
